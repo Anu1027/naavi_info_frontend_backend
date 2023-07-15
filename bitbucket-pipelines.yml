@@ -1,5 +1,5 @@
 #bitbucket-pipelines.yml
-image: node:16.0.0
+image: node:^16.10.0
 
 pipelines:
   branches:
