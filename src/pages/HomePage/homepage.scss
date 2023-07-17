@@ -40,7 +40,8 @@
         font-weight: 500;
         border-radius: 35px;
         background: linear-gradient(89deg, #47b4d5 0%, #29449d 100%);
-        padding: 0.5rem 1.5rem;
+        padding: 0.7rem 1.5rem;
+        font-size: 0.8rem;
       }
 
       .business-btn {
@@ -79,11 +80,7 @@
     }
 
     .background-tint {
-      // width: 100%;
-      // height: 99%;
       position: absolute;
-      // left: 0;
-      // top: 0;
       inset: 0;
       background: rgba(0, 0, 0, 0.19);
       z-index: 2;
@@ -95,7 +92,7 @@
       color: #fff;
       display: flex;
       font-size: 3.5rem;
-      font-weight: 600;
+      font-weight: 700;
       inset: 0;
       bottom: 8rem;
       justify-content: center;
@@ -107,73 +104,77 @@
       background: rgba(0, 0, 0, 0.65);
       width: 100%;
       z-index: 3;
-      bottom: 1%;
+      bottom: 0.5%;
       left: 0;
       height: 5rem;
       position: absolute;
     }
 
-    .input-box1 {
+    .input-box-container {
       position: absolute;
       z-index: 4;
-      height: 3rem;
-      bottom: 4%;
+      height: 5rem;
+      bottom: 0.5%;
+      width: 100%;
       display: flex;
-      left: 18%;
-
-      input {
-        border: none;
-        border-radius: 15px;
-        width: 25rem;
-        padding: 0 3rem;
-        font-weight: 500;
-
-        &::placeholder {
-          opacity: 0.5;
-        }
-      }
-    }
-
-    .input-box2 {
-      position: absolute;
-      z-index: 4;
-      height: 3rem;
-      bottom: 4%;
-      display: flex;
-      left: calc(25rem + 20%);
-
-      input {
-        border: none;
-        border-radius: 15px;
-        width: 15rem;
-        padding: 0 3rem;
-        font-weight: 500;
-
-        &::placeholder {
-          opacity: 0.5;
-        }
-      }
-    }
-
-    .createPath-btn {
-      position: absolute;
-      z-index: 4;
-      height: 3rem;
-      bottom: 4%;
-      display: flex;
-      left: calc(40rem + 22%);
-      color: white;
-      background: linear-gradient(89deg, #47b4d5 0%, #29449d 100%);
-      border-radius: 15px;
-      padding: 0 3rem;
       justify-content: center;
       align-items: center;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all ease 0.2s;
+      gap: 1rem;
 
-      &:hover {
-        transform: scale(1.05);
+      .input-box1 {
+        z-index: 4;
+        height: 3rem;
+        display: flex;
+
+        input {
+          border: none;
+          border-radius: 45px;
+          width: 22rem;
+          padding: 0 2rem 0 1rem;
+          font-weight: 500;
+
+          &::placeholder {
+            opacity: 0.5;
+          }
+        }
+      }
+
+      .input-box2 {
+        z-index: 4;
+        height: 3rem;
+        display: flex;
+
+        input {
+          border: none;
+          border-radius: 45px;
+          width: 12rem;
+          padding: 0 2rem 0 1rem;
+          font-weight: 500;
+
+          &::placeholder {
+            opacity: 0.5;
+          }
+        }
+      }
+
+      .createPath-btn {
+        z-index: 4;
+        height: 3rem;
+        display: flex;
+        color: white;
+        background: linear-gradient(89deg, #47b4d5 0%, #29449d 100%);
+        border-radius: 45px;
+        padding: 0 2rem;
+        justify-content: center;
+        align-items: center;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all ease 0.2s;
+        font-size: 0.9rem;
+
+        &:hover {
+          transform: scale(1.05);
+        }
       }
     }
   }

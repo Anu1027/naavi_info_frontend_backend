@@ -49,13 +49,15 @@ const HomePage = () => {
         <div className="background-tint"></div>
         <div className="mid-text">Find Your Next Adventure</div>
         <div className="background-tint1"></div>
-        <div className="input-box1">
-          <input type="text" placeholder="What Do You Want To Accomplish?" />
+        <div className="input-box-container">
+          <div className="input-box1">
+            <input type="text" placeholder="What Do You Want To Accomplish?" />
+          </div>
+          <div className="input-box2">
+            <input type="text" placeholder="By When?" />
+          </div>
+          <div className="createPath-btn">Create Path</div>
         </div>
-        <div className="input-box2">
-          <input type="text" placeholder="By When?" />
-        </div>
-        <div className="createPath-btn">Create Path</div>
       </div>
     </div>
   );
