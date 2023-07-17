@@ -4,9 +4,48 @@ import "./homepage.scss";
 
 import logo from "../../static/images/logo.svg";
 import homepageImg from "../../static/images/homepageImg.svg";
+import discoverIcon from "../../static/images/homepage/discoverIcon.svg";
+import refineIcon from "../../static/images/homepage/refineIcon.svg";
+import mentorIcon from "../../static/images/homepage/mentorIcon.svg";
+import analyzeIcon from "../../static/images/homepage/analyzeIcon.svg";
+import adjustIcon from "../../static/images/homepage/adjustIcon.svg";
+import accomplishIcon from "../../static/images/homepage/accomplishIcon.svg";
 
 const HomePage = () => {
   const navigate = useNavigate();
+
+  const hiwData = [
+    {
+      id: 1,
+      name: "Discover",
+      icon: discoverIcon,
+    },
+    {
+      id: 2,
+      name: "Refine",
+      icon: refineIcon,
+    },
+    {
+      id: 3,
+      name: "Get Mentored",
+      icon: mentorIcon,
+    },
+    {
+      id: 4,
+      name: "Analyze",
+      icon: analyzeIcon,
+    },
+    {
+      id: 5,
+      name: "Adjust",
+      icon: adjustIcon,
+    },
+    {
+      id: 6,
+      name: "Accomoplish",
+      icon: accomplishIcon,
+    },
+  ];
 
   return (
     <div className="homepage">
@@ -32,15 +71,14 @@ const HomePage = () => {
           </div>
         </div>
         <div className="btns-div">
-          {/* <div
-            className="business-btn"
+          <div
+            className="gs-Btn"
             onClick={() => {
               navigate("/dashboard");
             }}
           >
-            Business
-          </div> */}
-          <div className="gs-Btn">Get Started</div>
+            Get Started
+          </div>
         </div>
       </div>
       <div className="color-box"></div>
@@ -57,6 +95,22 @@ const HomePage = () => {
             <input type="text" placeholder="By When?" />
           </div>
           <div className="createPath-btn">Create Path</div>
+        </div>
+      </div>
+      <div className="hiw-container">
+        <div className="hiw-text">How It Works</div>
+        <div className="hiw-options">
+          {hiwData.map((e, i) => {
+            return (
+              <div className="each-hiw-option" key={e.id}>
+                <div className="img-border">
+                  <img src={e.icon} alt="" />
+                </div>
+                <div className="each-hiw-option-name">{e.name}</div>
+              </div>
+            );
+          })}
+          <div className="centre-line"></div>
         </div>
       </div>
     </div>
