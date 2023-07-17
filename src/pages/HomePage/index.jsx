@@ -95,7 +95,14 @@ const HomePage = () => {
           <div className="input-box2">
             <input type="text" placeholder="By When?" />
           </div>
-          <div className="createPath-btn">Create Path</div>
+          <div
+            className="createPath-btn"
+            onClick={() => {
+              navigate("/maps");
+            }}
+          >
+            Create Path
+          </div>
         </div>
       </div>
       <div className="hiw-container">
