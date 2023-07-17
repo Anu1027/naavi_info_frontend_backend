@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./homepage.scss";
 
+//images
 import logo from "../../static/images/logo.svg";
 import homepageImg from "../../static/images/homepageImg.svg";
 import discoverIcon from "../../static/images/homepage/discoverIcon.svg";
