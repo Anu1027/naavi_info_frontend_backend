@@ -7,6 +7,7 @@ import logo from "../../static/images/logo.svg";
 import careerIcon from "../../static/images/mapspage/careerIcon.svg";
 import educationIcon from "../../static/images/mapspage/educationIcon.svg";
 import immigrationIcon from "../../static/images/mapspage/immigrationIcon.svg";
+import plus from "../../static/images/mapspage/plus.svg";
 
 const MapsPage = () => {
   const navigate = useNavigate();
@@ -132,6 +133,28 @@ const MapsPage = () => {
               >
                 Immigration
               </div>
+            </div>
+          </div>
+          <div className="mid-area">
+            <div className="input-div1">
+              <input type="text" placeholder="Choose Starting Coordinates.." />
+            </div>
+            <div className="destination-container">
+              <div className="dest-txt">Destination 1</div>
+              <div className="input-div2">
+                <input type="text" placeholder="Where Do You Want To Go?" />
+              </div>
+              <div className="input-div2">
+                <input type="text" placeholder="By When?" />
+              </div>
+            </div>
+            <div className="add-div">
+              <img src={plus} alt="" />
+              Add Destination
+            </div>
+            <div className="maps-btns-div">
+              <div className="gs-Btn-maps">Get Started</div>
+              <div className="reset-btn">Reset</div>
             </div>
           </div>
         </div>
