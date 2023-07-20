@@ -4,7 +4,7 @@ import "./homepage.scss";
 
 //images
 import logo from "../../static/images/logo.svg";
-import homepageImg from "../../static/images/homepageImg.svg";
+import homepageImg from "../../static/images/homepageImg.png";
 import discoverIcon from "../../static/images/homepage/discoverIcon.svg";
 import refineIcon from "../../static/images/homepage/refineIcon.svg";
 import mentorIcon from "../../static/images/homepage/mentorIcon.svg";
