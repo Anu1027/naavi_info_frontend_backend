@@ -7,11 +7,15 @@ import Cookies from "js-cookie";
 import { MainContext } from "../../context/Context";
 import { useAppContextDetails } from "../../context/AppContext";
 import { Helmet, HelmetProvider } from "react-helmet-async";
+import { GlobalContex } from "../../globalContext";
 
 //images
 import googlelogo from "../../static/images/googlelogo.svg";
 
 const DashboardLoginPage = () => {
+  const { selectedApp, setLoginData,
+    globalMenu,
+    setBankerEmail, } = useContext(GlobalContex);
   const { userLoginHandler } = useContext(MainContext);
   const { appFullLogo, websiteTitle, websiteDescription } = useAppContextDetails();
   const navigate = useNavigate();
@@ -21,11 +25,18 @@ const DashboardLoginPage = () => {
 
   const handleLoginSuccess = (data) => {
     userLoginHandler(email, data?.accessToken, data?.idToken);
+    localStorage.setItem("bankerEmailNew", data?.user.email);
+    localStorage.setItem("TokenId", data?.idToken);
+    localStorage.setItem("loginData", JSON.stringify(data));
+    setLoginData(data);
+    setBankerEmail(data?.user?.email);
     registerApp({ email, app_code: "naavi" });
     registerApp({ email, app_code: "ice" });
     localStorage.setItem("username", data?.user?.username);
     Cookies.set(APP_USER_TOKEN, data?.idToken);
-    navigate("/postLogin");
+    navigate("/Publishers");
+    // navigate("/postLogin");
+    // navigate(`/${selectedApp?.appName}`)
   };
 
   const attemptLogin = () => {

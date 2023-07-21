@@ -5,6 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import "./static/master.scss";
 import MainContextProvider from "./context/Context";
 import AppContextProvider from "./context/AppContext";
+import { GlobalContexProvider } from "./globalContext";
 import { QueryClient, QueryClientProvider } from "react-query";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -20,9 +21,11 @@ root.render(
     <AppContextProvider>
       <MainContextProvider>
         <React.StrictMode>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
+          <GlobalContexProvider>
+            <BrowserRouter>
+              <App />
+            </BrowserRouter>
+          </GlobalContexProvider>
         </React.StrictMode>
       </MainContextProvider>
     </AppContextProvider>
