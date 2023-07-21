@@ -13,6 +13,7 @@ import { GlobalContex } from "../../globalContext";
 //cPage/Component Imports
 
 import Publishers from "../../Apps/Publishers/publishers";
+import Admins from "../../Apps/Admins/admins";
 
 const RoutePage = () => {
   const { loginData, setBankerTag, setBanker, showMobileMenu } =
@@ -46,6 +47,7 @@ const RoutePage = () => {
     <>
       <Routes>
         <Route path="Publishers" element={<Publishers />} />
+        <Route path="Admins" element={<Admins />} />
       </Routes>
     </>
   );

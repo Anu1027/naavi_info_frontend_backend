@@ -8,7 +8,7 @@ import MapsPage from "./pages/MapsPage";
 import { GlobalContex } from "./globalContext";
 
 function App() {
-  const { loginData, selectedApp, setSelectedApp, globalMenu } =
+  const { loginData, selectedApp, setSelectedApp, globalMenu,MainMenu } =
     useContext(GlobalContex);
 
   useEffect(() => {
@@ -18,8 +18,8 @@ function App() {
     } else if (localStorage.getItem("selectedApp")) {
       localStorage.setItem("selectedApp", JSON.stringify(selectedApp));
     } else {
-      localStorage.setItem("selectedApp", JSON.stringify(globalMenu[0]));
-      setSelectedApp(globalMenu[0]);
+      localStorage.setItem("selectedApp", JSON.stringify(MainMenu[0]));
+      setSelectedApp(MainMenu[0]);
     }
   }, [selectedApp]);
   return (

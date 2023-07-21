@@ -6,6 +6,7 @@ import { ReactComponent as Collapse1_img } from "./static/images/collapse1.svg";
 import axios from "axios";
 import Lock from "./static/images/lock.svg";
 import pubAdminIcon from "./static/images/pubAdminIcon.svg";
+import NaaviMainImg from "./static/images/sidebarIcons/NaaviMainImg.svg"
 
 export const GlobalContex = createContext();
 
@@ -191,20 +192,50 @@ export const GlobalContexProvider = ({ children }) => {
   const [authorDetail, setAuthorDetail] = useState(null);
   const [refetchArticles, setRefetchArticles] = useState(false);
 
-  const globalMenu = [
+  const MainMenu = [
     {
-      appName: "Publishers",
-      appLogo: pubAdminIcon,
-      appFullLogo: publicationsFull,
+      appName: "Admins",
+      appLogo: NaaviMainImg,
+      appFullLogo: NaaviMainImg,
       appColor: "#4B9DDC",
       appTextColor: "#212529",
       appData: "Don’t Have A/Publications/Account?",
-      DispName: "For Publishers"
+      DispName: "For Admins"
     }
+  ];
+
+  const globalMenu = [
+    // {
+    //   appName: "Publishers",
+    //   appLogo: pubAdminIcon,
+    //   appFullLogo: publicationsFull,
+    //   appColor: "#4B9DDC",
+    //   appTextColor: "#212529",
+    //   appData: "Don’t Have A/Publications/Account?",
+    //   DispName: "For Publishers"
+    // }
   ];
 
   // const { pathname } = useLocation();
   // console.log(pathname + " pathname")
+
+  const adminMenu = [
+    {
+      menuName: "Paths",
+      menuIcon: pubAdminIcon,
+      enabled: true,
+    },
+    {
+      menuName: "Vendors",
+      menuIcon: pubAdminIcon,
+      enabled: true,
+    },
+    {
+      menuName: "CRM",
+      menuIcon: pubAdminIcon,
+      enabled: true,
+    }
+  ];
 
 
   const web3Menu = [
@@ -352,8 +383,8 @@ export const GlobalContexProvider = ({ children }) => {
     } else if (localStorage.getItem("selectedApp")) {
       localStorage.setItem("selectedApp", JSON.stringify(selectedApp));
     } else {
-      localStorage.setItem("selectedApp", JSON.stringify(globalMenu[0]));
-      setSelectedApp(globalMenu[0]);
+      localStorage.setItem("selectedApp", JSON.stringify(MainMenu[0]));
+      setSelectedApp(MainMenu[0]);
     }
   }, [selectedApp]);
 
@@ -519,6 +550,7 @@ export const GlobalContexProvider = ({ children }) => {
 
   const value = {
     globalMenu,
+    MainMenu,
     web3Menu,
     collapse,
     setCollapse,
@@ -736,6 +768,7 @@ export const GlobalContexProvider = ({ children }) => {
 
     refetchCourses,
     setRefetchCourses,
+    adminMenu,
 
     getDisplayDate
 

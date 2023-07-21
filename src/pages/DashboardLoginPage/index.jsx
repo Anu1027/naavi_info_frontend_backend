@@ -34,7 +34,7 @@ const DashboardLoginPage = () => {
     registerApp({ email, app_code: "ice" });
     localStorage.setItem("username", data?.user?.username);
     Cookies.set(APP_USER_TOKEN, data?.idToken);
-    navigate("/Publishers");
+    // navigate("/Publishers");
     // navigate("/postLogin");
     // navigate(`/${selectedApp?.appName}`)
   };

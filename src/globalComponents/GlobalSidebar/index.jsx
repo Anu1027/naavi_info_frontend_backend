@@ -30,6 +30,7 @@ const GlobalSidebar = ({ globalMenu }) => {
     authorDetail,
     publicationDetail,
     selectedPublication,
+    MainMenu,
     allPublications
   } = useContext(GlobalContex);
 
@@ -44,12 +45,12 @@ const GlobalSidebar = ({ globalMenu }) => {
 
     if (localStorage.getItem("selectedApp") && selectedApp === null) {
       setSelectedApp(JSON.parse(localStorage.getItem("selectedApp")));
-      setSelectedApp(globalMenu[0]);
+      setSelectedApp(MainMenu[0]);
     } else if (localStorage.getItem("selectedApp")) {
-      localStorage.setItem("selectedApp", JSON.stringify(globalMenu[0]));
+      localStorage.setItem("selectedApp", JSON.stringify(MainMenu[0]));
 
     }
-  }, [selectedApp, setSelectedApp, globalMenu]);
+  }, [selectedApp, setSelectedApp, MainMenu, globalMenu]);
 
   // useEffect(() => {
   //   const lastPart = window.location.pathname.split("/").pop();
@@ -70,8 +71,18 @@ const GlobalSidebar = ({ globalMenu }) => {
             opacity: loginData ? 1 : 0,
           }}
         >
-          <div>
-            <img src={PubMainImg} alt="publications" />
+          <div className="globalItem" onClick={(e) => {
+            setSelectedApp(MainMenu[0]);
+            navigate(`/${MainMenu[0].appName}`);
+          }} style={{
+            cursor: "pointer",
+            opacity: 1,
+            border: selectedApp?.appName === MainMenu[0].appName ? "solid 0.5px #e7e7e7" : "",
+          }}>
+            <img src={MainMenu[0].appLogo} alt="naaviImg" style={{ width: "35px" }} />
+            <div className="hoveredData1">
+              {MainMenu[0].DispName}
+            </div>
           </div>
           <div
             style={{
@@ -92,6 +103,7 @@ const GlobalSidebar = ({ globalMenu }) => {
                   className="globalItem"
                   style={{
                     opacity: selectedApp?.appName === item.appName ? 1 : 0.3,
+                    border: selectedApp?.appName === item.appName ? "solid 0.5px #e7e7e7" : ""
                   }}
                   onClick={(e) => {
                     if (loginData) {
