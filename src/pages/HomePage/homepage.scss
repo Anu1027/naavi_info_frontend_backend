@@ -235,7 +235,7 @@
         width: 100%;
         z-index: 3;
         left: 0;
-        height: 5rem;
+        height: 8rem;
         position: absolute;
         bottom: 0;
       }
@@ -243,8 +243,8 @@
       .input-box-container-mobile {
         position: absolute;
         z-index: 4;
-        height: 5rem;
-        bottom: 0;
+        height: 7rem;
+        bottom: 1rem;
         width: 100%;
         display: flex;
         justify-content: center;
@@ -253,9 +253,9 @@
 
         .input-box1-mobile {
           z-index: 4;
-          height: 3rem;
+          height: 4rem;
           display: flex;
-          width: 75%;
+          width: 90%;
           position: relative;
           border-radius: 45px;
           background: white;
@@ -274,20 +274,20 @@
 
           .createPath-btn-mobile {
             z-index: 4;
-            height: 2rem;
+            height: 2.5rem;
             display: flex;
             color: white;
             background: linear-gradient(89deg, #47b4d5 0%, #29449d 100%);
             border-radius: 45px;
-            padding: 0 1.5rem;
+            padding: 0 2rem;
             justify-content: center;
             align-items: center;
             font-weight: 600;
             transition: all ease 0.2s;
             font-size: 0.9rem;
             position: absolute;
-            right: 0.5rem;
-            top: 0.5rem;
+            right: 1rem;
+            top: 0.75rem;
           }
         }
       }
