@@ -9,6 +9,7 @@ import educationIcon from "../../static/images/mapspage/educationIcon.svg";
 import immigrationIcon from "../../static/images/mapspage/immigrationIcon.svg";
 import plus from "../../static/images/mapspage/plus.svg";
 import close from "../../static/images/mapspage/close.svg";
+import hamIcon from "../../static/images/icons/hamIcon.svg";
 
 const MapsPage = () => {
   const navigate = useNavigate();
@@ -66,6 +67,9 @@ const MapsPage = () => {
   return (
     <div className="mapspage">
       <div className="maps-navbar">
+        <div className="hamMenu">
+          <img src={hamIcon} alt="" />
+        </div>
         <div
           className="logo"
           onClick={() => {
@@ -232,7 +236,9 @@ const MapsPage = () => {
             </div>
             <div className="maps-btns-div">
               <div className="gs-Btn-maps">Get Started</div>
-              <div className="reset-btn" onClick={handleResetContainer}>Reset</div>
+              <div className="reset-btn" onClick={handleResetContainer}>
+                Reset
+              </div>
             </div>
           </div>
         </div>

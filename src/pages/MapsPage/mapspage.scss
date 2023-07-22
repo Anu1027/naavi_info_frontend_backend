@@ -9,6 +9,18 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
+
+    .hamMenu {
+      display: none;
+      position: absolute;
+      left: 1rem;
+      height: 100%;
+
+      img {
+        width: 20px;
+      }
+    }
 
     .logo {
       display: flex;
@@ -246,6 +258,43 @@
 
             &:hover {
               transform: scale(1.05);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .mapspage {
+    .maps-navbar {
+      .hamMenu {
+        display: flex;
+      }
+      .menu-items {
+        display: none;
+      }
+      .btns-div {
+        display: none;
+      }
+    }
+
+    .maps-color-box {
+      height: 0.5rem;
+    }
+
+    .maps-container {
+      height: calc(100% - 4.5rem);
+      .maps-sidebar {
+        width: 100%;
+        .mid-area {
+          .input-div1 {
+            width: 80%;
+          }
+          .destination-container {
+            .input-div2 {
+              width: 80%;
             }
           }
         }
