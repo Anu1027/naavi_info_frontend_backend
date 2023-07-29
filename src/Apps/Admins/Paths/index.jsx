@@ -4,6 +4,7 @@ import Skeleton from "react-loading-skeleton";
 import NavBar from "../../../globalComponents/NavBar";
 import { GlobalContex } from "../../../globalContext";
 import "../../../static/scss/list.scss";
+import Steps from "./Steps";
 // import Articles from "./Articles";
 // import Authors from "./Authors";
 // import Categories from "./Categories";
@@ -27,12 +28,13 @@ const Paths = () => {
     useContext(GlobalContex);
 
   useEffect(() => {
-    setTabSelected("Paths");
+    setTabSelected("Steps");
   }, []);
 
   const tabComponent = useMemo(() => {
     switch (tabSelected) {
-    
+      case "Steps":
+        return <Steps />
       default:
         return (
           <div
@@ -60,7 +62,7 @@ const Paths = () => {
         tabs={tabs}
         tabSelected={tabSelected}
         setTabSelected={setTabSelected}
-        enabledFilters={[true, true, true, false, false,true]}
+        enabledFilters={[true, true, true, false, false, true]}
       />
 
       {tabComponent}
