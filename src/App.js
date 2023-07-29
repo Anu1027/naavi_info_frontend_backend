@@ -6,13 +6,14 @@ import PostLoginPage from "./pages/PostLoginPage";
 import RoutePage from "./pages/RoutePage/routepage";
 import MapsPage from "./pages/MapsPage";
 import { GlobalContex } from "./globalContext";
+import FirstPage from "./pages/Registration/pages/FirstPage";
+import RegistrationHomePage from "./pages/Registration/pages/HomePage";
 
 function App() {
-  const { loginData, selectedApp, setSelectedApp, globalMenu,MainMenu } =
+  const { loginData, selectedApp, setSelectedApp, globalMenu, MainMenu } =
     useContext(GlobalContex);
 
   useEffect(() => {
-
     if (localStorage.getItem("selectedApp") && selectedApp === null) {
       setSelectedApp(JSON.parse(localStorage.getItem("selectedApp")));
     } else if (localStorage.getItem("selectedApp")) {
@@ -26,6 +27,39 @@ function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       {/* <Route path="/dashboard" element={<DashboardLoginPage />} /> */}
+      <Route
+        exact
+        path="/register"
+        element={
+          window.innerWidth > 600 ? (
+            <RegistrationHomePage />
+          ) : (
+            <DashboardLoginPage />
+          )
+        }
+      />
+      <Route
+        exact
+        path="/register/affiliate"
+        element={
+          window.innerWidth > 600 ? <FirstPage /> : <DashboardLoginPage />
+        }
+      />
+      <Route
+        exact
+        path="/register/affiliate/:id"
+        element={
+          window.innerWidth > 600 ? <FirstPage /> : <DashboardLoginPage />
+        }
+      />
+      <Route exact path="/register/pre-registered" element={<FirstPage />} />
+      <Route
+        exact
+        path="/register/pre-registered/:id"
+        element={<FirstPage />}
+      />
+      <Route exact path="/register/by-myself" element={<FirstPage />} />
+      <Route exact path="/register/by-myself/:id" element={<FirstPage />} />
       <Route
         path="/example"
         element={
