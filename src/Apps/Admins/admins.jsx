@@ -8,6 +8,7 @@ import TabsLayout from "../../globalComponents/TabsLayout";
 // import AdminModal from "../../globalComponents/AdminModal";
 import MobileMenu from "../../globalComponents/MobileMenu/mobilemenu";
 import "../commonAppCss.scss";
+import Paths from "./Paths";
 
 
 
@@ -44,13 +45,15 @@ const Admins = () => {
 
   const conditionalPages = () => {
     switch (selectedTab?.menuName) {
-    //   case "Management":
-    //     return (
-    //       <Web3Dashboard
-    //         tabSelected={tabSelected}
-    //         setTabSelected={setTabSelected}
-    //       />
-    //     );
+      case "Paths":
+        return <Paths />;
+      //   case "Management":
+      //     return (
+      //       <Web3Dashboard
+      //         tabSelected={tabSelected}
+      //         setTabSelected={setTabSelected}
+      //       />
+      //     );
       default:
         return (
           <div

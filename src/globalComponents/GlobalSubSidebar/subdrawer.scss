@@ -12,6 +12,19 @@
     height: calc(100vh - 385px);
 }
 
+.menuItems{
+    width: 100%;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    height: 60px;
+    border: 1px solid rgba(231, 231, 231, 1);
+    margin: 20px 0 5px 0;
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+}
+
 .draw-title {
     font-weight: 600;
     font-size: 24px;

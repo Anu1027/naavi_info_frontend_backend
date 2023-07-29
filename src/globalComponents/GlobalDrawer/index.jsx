@@ -50,6 +50,7 @@ import NewCaseStudy from "./NewCaseStudy";
 import NewReport from "./NewReport";
 import NewDocumentary from "./NewDocumentary";
 import NewCourse from "./NewCourse";
+import NewStep from "./NewStep";
 // import NewBond from "./NewBond";
 
 function GlobalDrawer({ onClose, pathname }) {
@@ -217,6 +218,34 @@ function GlobalDrawer({ onClose, pathname }) {
         },
       ]);
     }
+    if (pathname === "/Admins") {
+      setMenuList([
+        {
+          name: "Step",
+          icon: CourseIcon,
+          enabled: true,
+          // enabled: licenseCheck === "active" ? true : false,
+        },
+        {
+          name: "Path",
+          icon: CourseIcon,
+          enabled: true,
+          // enabled: licenseCheck === "active" ? true : false,
+        },
+        {
+          name: "Vendor",
+          icon: CourseIcon,
+          enabled: true,
+          // enabled: licenseCheck === "active" ? true : false,
+        },
+        {
+          name: "Mentor",
+          icon: CourseIcon,
+          enabled: true,
+          // enabled: licenseCheck === "active" ? true : false,
+        },
+      ]);
+    }
   }, [slider]);
 
   useEffect(() => {
@@ -228,7 +257,6 @@ function GlobalDrawer({ onClose, pathname }) {
       case "/Banker":
         setDrawerTitle("New");
         break;
-
       default:
         setDrawerTitle("New Item");
         break;
@@ -407,16 +435,26 @@ function GlobalDrawer({ onClose, pathname }) {
             setLoading={setLoading}
           />
         );
-        case "Course":
-          return (
-            <NewCourse
-              step={step}
-              setStep={setStep}
-              setMainMenu={setMainMenu}
-              loading={loading}
-              setLoading={setLoading}
-            />
-          );
+      case "Course":
+        return (
+          <NewCourse
+            step={step}
+            setStep={setStep}
+            setMainMenu={setMainMenu}
+            loading={loading}
+            setLoading={setLoading}
+          />
+        );
+      case "Step":
+        return (
+          <NewStep
+            step={step}
+            setStep={setStep}
+            setMainMenu={setMainMenu}
+            loading={loading}
+            setLoading={setLoading}
+          />
+        );
 
       // case "Bond Tier":
       //   return <NewBondTier step={step} setStep={setStep} />;
@@ -427,19 +465,25 @@ function GlobalDrawer({ onClose, pathname }) {
       default:
         return (
           <>
-            <label className={classNames.searchBox}>
-              <input
+            {/* <label className={classNames.searchBox}> */}
+            {/* <input
                 type="text"
                 placeholder="Search For New Item To Add.."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-              />
-            </label>
+              /> */}
+            {/* </label> */}
+            <div className="text" style={{ marginLeft: "35px" }}>What item would you like to add? </div>
             <div
               className={classNames.verticalScrollBox}
             // style={{ display: "flex", justifyContent: "space-between" }}
             >
-              {menuList
+              {menuList.map(({ name, icon, enabled }) => (
+                <div className="menuItems" onClick={() => setMainMenu(name)}>
+                  <div className="text" >{name}</div>
+                </div>
+              ))}
+              {/* {menuList
                 ?.filter((o) =>
                   o?.name?.toLowerCase().includes(search?.toLowerCase())
                 )
@@ -450,6 +494,7 @@ function GlobalDrawer({ onClose, pathname }) {
                     enabled={enabled}
                     onClick={
                       name === "Brand" ||
+                        name === "Step" ||
                         name === "App" ||
                         name === "Publication" ||
                         name === "Author"
@@ -459,7 +504,7 @@ function GlobalDrawer({ onClose, pathname }) {
                           : ""
                     }
                   />
-                ))}
+                ))} */}
             </div>
           </>
         );
@@ -495,7 +540,7 @@ function GlobalDrawer({ onClose, pathname }) {
           <div className={classNames.header}>
             <div className={classNames.content}>
               <div className={classNames.title}>
-                {mainMenu ? "New" + " " + mainMenu : "New Item"}
+                {mainMenu ? "Add New" + " " + mainMenu : "New Item"}
               </div>
               <div className={classNames.breadCrumbs}>
                 <span

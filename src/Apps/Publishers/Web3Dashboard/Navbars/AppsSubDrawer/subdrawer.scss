@@ -1,8 +1,6 @@
-
-
-.scrollbarSideDraw{
-   padding: 0px 30px;
-   padding-bottom: 30px;
+.scrollbarSideDraw {
+    padding: 0px 30px;
+    padding-bottom: 30px;
 }
 
 .navs-disp {
@@ -83,7 +81,7 @@
 
 }
 
-.icon-imgs{
+.icon-imgs {
     overflow: hidden;
     position: relative;
     height: 40px;
@@ -156,7 +154,7 @@
 //     z-index: 10;
 // }
 
-.usertyp-border:hover{
+.usertyp-border:hover {
     background: #e5e5e5;
     padding-left: 10px;
     transition: 0.4s all ease;
@@ -206,7 +204,7 @@
     transform: TranslateX(0%);
 }
 
-.backButton{
+.backButton {
     width: 39px;
     height: 39px;
     display: flex;
@@ -216,24 +214,27 @@
     cursor: pointer;
 }
 
-.breadcrumb{
+.breadcrumb {
     // font-weight: bold;
     font-weight: 400;
     font-size: 13px;
     padding-bottom: 40px;
-    .crumbs{
+
+    .crumbs {
         font-weight: 400;
-      &:hover{
-        font-weight: 600;
-        cursor: pointer;
-      }
+
+        &:hover {
+            font-weight: 600;
+            cursor: pointer;
+        }
     }
-    .crumbSelected{
+
+    .crumbSelected {
         text-decoration: underline;
         font-weight: 600;
     }
-    
-  }
+
+}
 
 //   .breadcrumbSelected{
 //     font-weight: bold;
@@ -245,7 +246,7 @@
 //         cursor: pointer;
 //       }
 //     }
-    
+
 //   }
 
 // .breadcrumb{
@@ -270,7 +271,7 @@
 //     padding-top: 6px;
 // }
 
-.sidebarTitle{
+.sidebarTitle {
     padding-top: 20px;
     padding-bottom: 20px;
     font-family: 'Montserrat';
@@ -283,21 +284,22 @@
     color: #464B4E;
 }
 
-.sidebarScroll{
+.sidebarScroll {
     height: calc(100vh - 330px);
     overflow: scroll;
 }
 
-.sidebarCard{
+.sidebarCard {
     border: 0.5px solid #E7E7E7;
-    padding:30px;
+    padding: 30px;
     font-weight: 500;
     font-size: 15px;
     display: flex;
     align-items: center;
     margin-top: 20px;
     position: relative;
-    &:hover{
+
+    &:hover {
         background: whitesmoke;
         padding-left: 40px;
         transition: 0.2s all ease;
@@ -305,9 +307,9 @@
     }
 }
 
-.sidebarCardDisabled{
+.sidebarCardDisabled {
     border: 0.5px solid #E7E7E7;
-    padding:30px;
+    padding: 30px;
     font-weight: 500;
     font-size: 15px;
     display: flex;
@@ -319,7 +321,7 @@
 
 // mcbAppEdit
 
-.lableName{
+.lableName {
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -329,24 +331,26 @@
     color: #182542;
     padding-bottom: 20px;
 }
-.inputWrap1{
+
+.inputWrap1 {
     // margin-bottom: 50px;
     height: 62px;
     width: 100%;
-    padding:20px;
+    padding: 20px;
     border: 0.5px solid #e7e7e7;
     font-weight: 700;
     font-size: 16px;
     line-height: 20px;
     overflow-x: scroll;
-    input{
+
+    input {
         border: none;
         width: 100%;
-        
+
     }
 }
 
-.editIcon{
+.editIcon {
     position: absolute;
     top: 48%;
     right: 0;
@@ -359,7 +363,8 @@
     justify-content: center;
     align-items: center;
     margin-right: -15px;
-    &:hover{
+
+    &:hover {
         background-color: whitesmoke;
         transform: scale(1.05);
         cursor: pointer;
@@ -370,66 +375,83 @@
 
 
 
-    .logoCard{
-        position: relative;
-        width: 103px;
-        height: 80px;
-        border: 0.5px solid #E7E7E7;
+.logoCard {
+    position: relative;
+    width: 103px;
+    height: 80px;
+    border: 0.5px solid #E7E7E7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .editIcon1 {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin-right: -15px;
+        margin-top: -15px;
+        border: 0.5px solid #e7e7e7;
+        width: 37px;
+        height: 37px;
+        background-color: white;
+        border-radius: 50%;
         display: flex;
         justify-content: center;
         align-items: center;
-    
-        .editIcon1{
-            position: absolute;
-            top: 0;
-            right: 0;
-            margin-right: -15px;
-            margin-top: -15px;
-            border: 0.5px solid #e7e7e7;
-            width: 37px;
-            height: 37px;
-            background-color: white;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            &:hover{
-                background-color: whitesmoke;
-                transform: scale(1.05);
-                cursor: pointer;
-                transition: all 300ms ease-in-out;
-            }
+
+        &:hover {
+            background-color: whitesmoke;
+            transform: scale(1.05);
+            cursor: pointer;
+            transition: all 300ms ease-in-out;
         }
     }
-    .iconLabel{
-        // position:absolute;
-        // bottom: 0;
-        width: 103px;
-        text-align: center;
-        font-weight: 700;
-        font-size: 10px;
-        line-height: 12px;
-        // text-align: center;  
-        padding-top: 10px;
+}
+
+.iconLabel {
+    // position:absolute;
+    // bottom: 0;
+    width: 103px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 12px;
+    // text-align: center;  
+    padding-top: 10px;
+}
+
+.colourInput {
+    display: grid;
+    grid-template-columns: 7fr 2fr;
+    border: 0.5px solid #e7e7e7;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    height: 62px;
+
+    &>div:first-child {
+        display: flex;
+        align-items: center;
+        padding-left: 20px;
     }
+}
 
-    .colourInput{
-        display: grid;
-        grid-template-columns: 7fr 2fr;
-        border: 0.5px solid #e7e7e7;
-        font-weight: 700;
-        font-size: 16px;
-        line-height: 20px;
-        height: 62px;
-        & > div:first-child{
-            display: flex;
-            align-items: center;
-          padding-left: 20px;
-        }   
-    }
+.NextBtn {
+    background: rgba(75, 157, 220, 1);
+    color: white;
+    font-weight: 600;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+    margin-top: 20px;
+    height: 50px;
+    display: flex;
+    margin: 20px auto;
+    width: 90%;
+}
 
-
-.footerBtns{
+.footerBtns {
     background-color: white;
     position: absolute;
     // width: 400px;
@@ -443,39 +465,43 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
 
-   
+
     border-top: 0.5px solid #e7e7e7;
     display: flex;
     justify-content: space-between;
-    & > div:first-child{
+
+    &>div:first-child {
         width: 50%;
-        
+
         opacity: 0.3;
         border-right: 0.5px solid #e7e7e7;
         display: flex;
         align-items: center;
         justify-content: center;
-        &:hover{
+
+        &:hover {
             background-color: whitesmoke;
             transition: all 300ms ease-in-out;
             cursor: pointer;
             opacity: 1;
         }
     }
-    & > div:not(:first-child){
+
+    &>div:not(:first-child) {
         width: 50%;
-       
+
         border-left: 0.5px solid #e7e7e7;
         display: flex;
         align-items: center;
         justify-content: center;
-        &:hover{
+
+        &:hover {
             background-color: #182542;
             color: white;
             transition: all 300ms ease-in-out;
             cursor: pointer;
         }
-    }   
+    }
 }
 
 .filesUpload {
@@ -486,73 +512,85 @@
     justify-content: space-between;
     padding-bottom: 30px;
     margin-bottom: 25px;
+
     &.last {
-      margin-bottom: 30px;
+        margin-bottom: 30px;
     }
+
     .fileInp {
-      border: 1px solid #e7e7e7;
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      img {
-        height: 55%;
-        width: auto;
-        cursor: pointer;
+        border: 1px solid #e7e7e7;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            height: 55%;
+            width: auto;
+            cursor: pointer;
+
+            &:hover {
+                transform: scale(1.03);
+            }
+
+            &.true {
+                transform: scale(1);
+                height: 100%;
+                width: 100%;
+                object-fit: contain;
+
+                &.white {
+                    background: white;
+                }
+            }
+        }
+
+        input {
+            display: none;
+        }
+
+        .text {
+            font-weight: 500;
+            position: absolute;
+            bottom: -25px;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .hovTxt {
+            display: none;
+            font-size: 13px;
+        }
 
         &:hover {
-          transform: scale(1.03);
+            .hovTxt {
+                display: flex;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                justify-content: center;
+                align-items: center;
+                background: #fffa;
+                font-weight: bold;
+                text-align: center;
+            }
         }
-        &.true {
-          transform: scale(1);
-          height: 100%;
-          width: 100%;
-          object-fit: contain;
-          &.white {
-            background: white;
-          }
+
+        &.icon {
+            flex: 0 0 26%;
+            max-width: 26%;
         }
-      }
-      input {
-        display: none;
-      }
-      .text {
-        font-weight: 500;
-        position: absolute;
-        bottom: -25px;
-        font-size: 13px;
-        text-align: center;
-      }
-      .hovTxt {
-        display: none;
-        font-size: 13px;
-      }
-      &:hover {
-        .hovTxt {
-          display: flex;
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          justify-content: center;
-          align-items: center;
-          background: #fffa;
-          font-weight: bold;
-          text-align: center;
+
+        &.cover {
+            flex: 0 0 42%;
+            max-width: 42%;
         }
-      }
-      &.icon {
-        flex: 0 0 26%;
-        max-width: 26%;
-      }
-      &.cover {
-        flex: 0 0 42%;
-        max-width: 42%;
-      }
-      &.fullLogo {
-        flex: 0 0 48%;
-        max-width: 48%;
-      }
+
+        &.fullLogo {
+            flex: 0 0 48%;
+            max-width: 48%;
+        }
     }
-  }
+}

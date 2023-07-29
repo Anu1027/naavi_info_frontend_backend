@@ -41,6 +41,10 @@ const TabsLayout = () => {
 
   const handleAddNew = () => {
     switch (pathname) {
+      case "/Admins":
+        // setGlobalMenuAdd(true);
+        setSlider(true)
+        break;
       case "/Publishers":
         // setGlobalMenuAdd(true);
         setSlider(true)

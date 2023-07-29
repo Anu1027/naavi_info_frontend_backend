@@ -4,7 +4,7 @@
 .newConglomerate {
   flex: 1;
   padding: 0px 40px;
-  padding-bottom: 8vh;
+  padding-bottom: 1vh;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -51,6 +51,16 @@
         flex: 0 0 200px;
         border: none;
         padding: 23px 30px;
+        font-size: 13px;
+        border: 0.5px solid #E7E7E7;
+        border-radius: 35px;
+        margin: 20px 0 40px 0;
+      }
+
+      .box-textarea {
+        flex: 0 0 200px;
+        border: none;
+        padding: 23px 17px;
         font-size: 13px;
         border: 0.5px solid #E7E7E7;
         border-radius: 35px;
@@ -179,6 +189,19 @@
             }
           }
         }
+      }
+
+      .saveBtn{
+        background: rgba(75, 157, 220, 1);
+        color: white;
+        font-weight: 600 ;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        border-radius: 25px;
+        margin-top: 20px;
+        height: 50px;
+        display: flex;
       }
 
       .inputBtn{
@@ -474,6 +497,8 @@
           display: flex;
           justify-content: center;
           align-items: center;
+          height: 125px;
+          border-radius: 25px;
 
           img {
             height: 55%;
@@ -533,8 +558,8 @@
           }
 
           &.icon {
-            flex: 0 0 26%;
-            max-width: 26%;
+            flex: 0 0 30%;
+            max-width: 30%;
           }
 
           &.cover {
@@ -644,6 +669,15 @@
         }
       }
     }
+  }
+
+  .expandBox{
+    background: rgba(241, 241, 241, 0.37);
+    border-radius: 25px;
+    padding: 20px;
+  }
+  .topmarg{
+    margin-top: 20px;
   }
 
   .titleOp {

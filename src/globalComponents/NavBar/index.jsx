@@ -232,6 +232,7 @@ const NavBar = ({
                 style={{
                   display: "flex",
                   justifyContent: "space-between",
+                  borderBottom: "1px solid rgba(231, 231, 231, 0.5019607843)",
                   // alignItems: "center",
                 }}
               >
