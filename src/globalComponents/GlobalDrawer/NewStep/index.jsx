@@ -65,6 +65,7 @@ const NewStep = ({ step, setStep, setMainMenu, loading, setLoading }) => {
         refetchArticles,
         setSlider,
         setRefetchArticles,
+        NumberToText
     } = useContext(GlobalContex);
 
     //
@@ -108,6 +109,8 @@ const NewStep = ({ step, setStep, setMainMenu, loading, setLoading }) => {
     const [keywords, setKeywords] = useState("")
     const [keywordsArr, setKeywordsArr] = useState([])
     const [customUrl, setCustomUrl] = useState("")
+    const [microSteps, setMicroSteps] = useState([])
+    const [stepNumber, setStepNumber] = useState(0)
 
     useEffect(() => {
         localStorage.setItem("step", step);
@@ -231,6 +234,10 @@ const NewStep = ({ step, setStep, setMainMenu, loading, setLoading }) => {
     const removeKeyword = (item) => {
         setKeywordsArr(keywordsArr.filter((keyword) => keyword !== item));
     };
+
+    const addMicroStep = () => {
+        setMicroSteps([...microSteps, { title: "", description: "" }]);
+    }
 
     const getContent = () => {
         switch (step) {
@@ -764,30 +771,35 @@ const NewStep = ({ step, setStep, setMainMenu, loading, setLoading }) => {
                                     Add first microstep
                                 </div>
                                 <br />
-                                <div className="expandBox">
-                                    <div className="name topmarg">Name the microstep</div>
-                                    <div className="inputWrap">
-                                        <input
-                                            // value={microstepTitle}
-                                            // onChange={(e) => setMicrostepTitle(e.target.value)}
-                                            type="text"
-                                            className="text"
-                                            placeholder="name.."
-                                        />
-                                    </div>
-                                    <div className="name topmarg">Describe the step</div>
-                                    <textarea type="text" class="box-textarea" placeholder="Description..." rows="5" cols="40" spellcheck="false"></textarea>
-                                    <div style={{ display: "flex" }}>
-                                        <img src={blackPlus} alt="plus" width="15px" />&nbsp;&nbsp;&nbsp;
-                                        <div className="name">Add first nanostep</div>
-                                    </div>
-                                    <div className="saveBtn">Save</div>
-                                </div>
+                                {Array(stepNumber).fill("").map((item, index) => {
+                                    return <>
+                                        <div className="expandBox">
+                                            <div className="name topmarg">Name the microstep</div>
+                                            <div className="inputWrap">
+                                                <input
+                                                    // value={microstepTitle}
+                                                    // onChange={(e) => setMicrostepTitle(e.target.value)}
+                                                    type="text"
+                                                    className="text"
+                                                    placeholder="name.."
+                                                />
+                                            </div>
+                                            <div className="name topmarg">Describe the step</div>
+                                            <textarea type="text" class="box-textarea" placeholder="Description..." rows="5" cols="40" spellcheck="false"></textarea>
+                                            <div style={{ display: "flex" }}>
+                                                <img src={blackPlus} alt="plus" width="15px" />&nbsp;&nbsp;&nbsp;
+                                                <div className="name">Add first nanostep</div>
+                                            </div>
+                                            <div className="saveBtn">Save</div>
+                                        </div>
+                                        <br />
+                                    </>
+                                })}
                                 <br />
                                 <br />
-                                <div style={{ display: "flex" }}>
+                                <div style={{ display: "flex", cursor: "pointer" }} onClick={() => setStepNumber(stepNumber + 1)}>
                                     <img src={blackPlus} alt="plus" width="15px" />&nbsp;&nbsp;&nbsp;
-                                    <div className="name">Add second microstep</div>
+                                    <div className="name">Add microstep {stepNumber+1}</div>
                                 </div>
                                 <br />
                                 <br />
@@ -902,10 +914,10 @@ const NewStep = ({ step, setStep, setMainMenu, loading, setLoading }) => {
                         </div >
 
                         {/* <div className="footerBtns"> */}
-                            <div className="NextBtn">
-                                Next Step
-                            </div>
-                            {/* <div
+                        <div className="NextBtn">
+                            Next Step
+                        </div>
+                        {/* <div
                                 className="newField"
                                 style={{ fontWeight: 700 }}
                                 onClick={(e) => {

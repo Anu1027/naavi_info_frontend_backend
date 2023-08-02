@@ -9,6 +9,7 @@ import TabsLayout from "../../globalComponents/TabsLayout";
 import MobileMenu from "../../globalComponents/MobileMenu/mobilemenu";
 import "../commonAppCss.scss";
 import Paths from "./Paths";
+import CRM from "./CRM";
 
 
 
@@ -47,6 +48,8 @@ const Admins = () => {
     switch (selectedTab?.menuName) {
       case "Paths":
         return <Paths />;
+      case "CRM":
+        return <CRM />;
       //   case "Management":
       //     return (
       //       <Web3Dashboard

@@ -225,11 +225,11 @@ export const GlobalContexProvider = ({ children }) => {
       menuIcon: pubAdminIcon,
       enabled: true,
     },
-    {
-      menuName: "Vendors",
-      menuIcon: pubAdminIcon,
-      enabled: true,
-    },
+    // {
+    //   menuName: "Vendors",
+    //   menuIcon: pubAdminIcon,
+    //   enabled: true,
+    // },
     {
       menuName: "CRM",
       menuIcon: pubAdminIcon,
@@ -261,7 +261,7 @@ export const GlobalContexProvider = ({ children }) => {
     }
   ];
 
- 
+
 
 
 
@@ -308,6 +308,25 @@ export const GlobalContexProvider = ({ children }) => {
     const suffix = getOrdinalSuffix(day);
     const formattedDate = dateObj.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
     return formattedDate.replace(/\d+/, `${day}${suffix}`);
+  }
+
+  const NumberToText = (number) => {
+    console.log(number + " number")
+    // if (!Number.isInteger(number) || number < 0) {
+    //   throw new Error("Input must be a positive integer");
+    // }
+
+    const suffixes = ["th", "st", "nd", "rd", "th", "th", "th", "th", "th", "th"];
+    const specialCases = [11, 12, 13];
+
+    let suffix;
+    if (specialCases.includes(number % 100)) {
+      suffix = suffixes[1];
+    } else {
+      suffix = suffixes[number % 10];
+    }
+
+    return <span>{number + suffix}</span>;
   }
 
   // useEffect(() => {
@@ -762,6 +781,7 @@ export const GlobalContexProvider = ({ children }) => {
 
     slider,
     setSlider,
+    NumberToText,
 
     selectedAuthor,
     setSelectedAuthor,
