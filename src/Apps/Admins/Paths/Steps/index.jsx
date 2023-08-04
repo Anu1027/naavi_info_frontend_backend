@@ -174,39 +174,126 @@ const Steps = () => {
     };
 
     const contentSection = (item, gridClass, gridValues) => {
-        console.log(item , "item")
+        console.log(item, "item")
         return (
-            <div
-                onClick={(e) => {
-                    setSlectedAuthor(item);
-                    setShowSubDraw(true);
-                }}
-                className={gridClass}
-                style={{
-                    gridTemplateColumns: gridValues,
-                }}
-            >
-                <div style={{ display: "flex", alignItems: "center" }}>
-                    <img
-                        src={item.icon ? item.icon : defaultImg}
-                        alt=""
-                        style={{
-                            // borderRadius: "50%",
-                            width: "30px",
-                            height: "30px",
-                        }}
-                    // className={classNames.icon}
-                    />
-                    <div style={{ paddingLeft: "15px" }}>
-                        <div className="title">
-                            {item?.name}
-                            {/* <Paragraph copyable={{ text: item.name }}>{item.name}</Paragraph> */}
-                        </div>
-                        <div className="subtitle">
-                            {item?._id}
-                            {/* <Paragraph copyable={{ text: item._id }}>
+            <div style={{ height: "250px", borderBottom: "solid 0.5px #E7E7E7" }}>
+                <div
+                    onClick={(e) => {
+                        setSlectedAuthor(item);
+                        setShowSubDraw(true);
+                    }}
+                    className={gridClass}
+                    style={{
+                        gridTemplateColumns: gridValues,
+                        border: "none"
+                    }}
+                >
+                    <div style={{ display: "flex", alignItems: "center" }}>
+                        <img
+                            src={item.icon ? item.icon : defaultImg}
+                            alt=""
+                            style={{
+                                // borderRadius: "50%",
+                                width: "30px",
+                                height: "30px",
+                            }}
+                        // className={classNames.icon}
+                        />
+                        <div style={{ paddingLeft: "15px" }}>
+                            <div className="title">
+                                {item?.name}
+                                {/* <Paragraph copyable={{ text: item.name }}>{item.name}</Paragraph> */}
+                            </div>
+                            <div className="subtitle">
+                                {item?._id}
+                                {/* <Paragraph copyable={{ text: item._id }}>
                                 {item._id}
                             </Paragraph> */}
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "center",
+                            justifyContent: "flex-start",
+                        }}
+                    >
+                        <div style={{ textAlign: "right" }}>
+                            <div className="title">
+                                {item?.country}
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "center",
+                            justifyContent: "flex-start",
+                        }}
+                    >
+                        <div style={{ textAlign: "right" }}>
+                            <div className="title">
+                                {item?.type}
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "center",
+                            justifyContent: "flex-start",
+                        }}
+                    >
+                        <div style={{ textAlign: "right" }}>
+                            <div className="title">
+                                {item?.cost}
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "center",
+                            justifyContent: "flex-start",
+                        }}
+                    >
+                        <div style={{ textAlign: "right" }}>
+                            <div className="title">
+                                {item?.vendors.length}
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "center",
+                            justifyContent: "flex-start",
+                        }}
+                    >
+                        <div style={{ textAlign: "right" }}>
+                            <div className="title">
+                                {item?.Mentors.length}
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "center",
+                            justifyContent: "flex-start",
+                        }}
+                    >
+                        <div style={{ textAlign: "right" }}>
+                            <div className="title">
+                                {item?.microsteps.length}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -216,11 +303,15 @@ const Steps = () => {
                         flexDirection: "row",
                         alignItems: "center",
                         justifyContent: "flex-start",
+                        padding: "5px 30px"
                     }}
                 >
-                    <div style={{ textAlign: "right" }}>
-                        <div className="title">
-                            {item?.country}
+                    <div style={{ textAlign: "left" }}>
+                        <div className="title" style={{ fontSize: "0.9rem", fontWeight: 600, color: "#18191D",marginBottom:"10px" }}>
+                            Description
+                        </div>
+                        <div className="subtitle" style={{ fontSize: "0.65rem", fontWeight: 400, color: "#18191D"}}>
+                            {item?.description}
                         </div>
                     </div>
                 </div>
@@ -229,69 +320,13 @@ const Steps = () => {
                         display: "flex",
                         flexDirection: "row",
                         alignItems: "center",
-                        justifyContent: "flex-start",
+                        justifyContent: "flex-end",
+                        padding: "5px 30px",
+                        marginTop:"40px"
                     }}
                 >
-                    <div style={{ textAlign: "right" }}>
-                        <div className="title">
-                            {item?.type}
-                        </div>
-                    </div>
-                </div>
-                <div
-                    style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        alignItems: "center",
-                        justifyContent: "flex-start",
-                    }}
-                >
-                    <div style={{ textAlign: "right" }}>
-                        <div className="title">
-                            {item?.cost}
-                        </div>
-                    </div>
-                </div>
-                <div
-                    style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        alignItems: "center",
-                        justifyContent: "flex-start",
-                    }}
-                >
-                    <div style={{ textAlign: "right" }}>
-                        <div className="title">
-                           {item?.vendors.length}
-                        </div>
-                    </div>
-                </div>
-                <div
-                    style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        alignItems: "center",
-                        justifyContent: "flex-start",
-                    }}
-                >
-                    <div style={{ textAlign: "right" }}>
-                        <div className="title">
-                          {item?.Mentors.length}
-                        </div>
-                    </div>
-                </div>
-                <div
-                    style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        alignItems: "center",
-                        justifyContent: "flex-start",
-                    }}
-                >
-                    <div style={{ textAlign: "right" }}>
-                        <div className="title">
-                           {item?.microsteps.length}
-                        </div>
+                    <div className="actionBtn" style={{ textAlign: "right" }}>
+                        Actions
                     </div>
                 </div>
             </div>
