@@ -13,11 +13,11 @@ import { GlobalContex } from "../../globalContext";
 import googlelogo from "../../static/images/googlelogo.svg";
 
 const DashboardLoginPage = () => {
-  const { selectedApp, setLoginData, globalMenu, setBankerEmail } =
-    useContext(GlobalContex);
+  const { selectedApp, setLoginData,
+    globalMenu,
+    setBankerEmail, } = useContext(GlobalContex);
   const { userLoginHandler } = useContext(MainContext);
-  const { appFullLogo, websiteTitle, websiteDescription } =
-    useAppContextDetails();
+  const { appFullLogo, websiteTitle, websiteDescription } = useAppContextDetails();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -96,7 +96,7 @@ const DashboardLoginPage = () => {
             <img src={googlelogo} alt="" />
             <div>Continue With Google</div>
           </div>
-          <div className="register-div" onClick={(e) => navigate("/register")}>
+          <div className="register-div">
             <p>Click Here To Register With Email</p>
           </div>
         </div>

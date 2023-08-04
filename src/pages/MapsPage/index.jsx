@@ -10,6 +10,7 @@ import immigrationIcon from "../../static/images/mapspage/immigrationIcon.svg";
 import plus from "../../static/images/mapspage/plus.svg";
 import close from "../../static/images/mapspage/close.svg";
 import hamIcon from "../../static/images/icons/hamIcon.svg";
+import MapComponent from "./MapComponent";
 
 const MapsPage = () => {
   const navigate = useNavigate();
@@ -241,6 +242,9 @@ const MapsPage = () => {
               </div>
             </div>
           </div>
+        </div>
+        <div className="maps-content-area">
+            <MapComponent />
         </div>
       </div>
     </div>

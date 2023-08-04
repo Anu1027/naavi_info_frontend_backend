@@ -7,9 +7,16 @@ import MainContextProvider from "./context/Context";
 import AppContextProvider from "./context/AppContext";
 import { GlobalContexProvider } from "./globalContext";
 import { QueryClient, QueryClientProvider } from "react-query";
-import RegistrationContextProvider from "./RegistrationContext";
+import { CoinContextProvider } from "./context/CoinContext";
+import VaultPageContextProvider from "./context/VaultPageContext";
+import { store } from "./app/store.ts";
+import { Provider } from "react-redux";
+import { saveState } from "./app/browser-storage.ts";
+import ContextProvider from "./pages/dashboard/WalletScan/globalComponents/Context/Context";
+import { GlobalContexProvider1 } from "./pages/dashboard/WalletScan/globalContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -17,20 +24,33 @@ const queryClient = new QueryClient({
     },
   },
 });
+
+store.subscribe(() => {
+  saveState(store.getState().loginData);
+});
+
 root.render(
   <QueryClientProvider client={queryClient}>
-    <RegistrationContextProvider>
-      <AppContextProvider>
-        <MainContextProvider>
-          <React.StrictMode>
+    <AppContextProvider>
+      <MainContextProvider>
+        <CoinContextProvider>
+          <VaultPageContextProvider>
             <GlobalContexProvider>
-              <BrowserRouter>
-                <App />
-              </BrowserRouter>
+              <GlobalContexProvider1>
+                <ContextProvider>
+                  <React.StrictMode>
+                    <BrowserRouter>
+                      <Provider store={store}>
+                        <App />
+                      </Provider>
+                    </BrowserRouter>
+                  </React.StrictMode>
+                </ContextProvider>
+              </GlobalContexProvider1>
             </GlobalContexProvider>
-          </React.StrictMode>
-        </MainContextProvider>
-      </AppContextProvider>
-    </RegistrationContextProvider>
+          </VaultPageContextProvider>
+        </CoinContextProvider>
+      </MainContextProvider>
+    </AppContextProvider>
   </QueryClientProvider>
 );

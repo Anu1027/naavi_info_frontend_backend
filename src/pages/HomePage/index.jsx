@@ -80,7 +80,7 @@ const HomePage = () => {
           <div
             className="gs-Btn"
             onClick={() => {
-              navigate("/dashboard");
+              navigate("/login");
             }}
           >
             Get Started
