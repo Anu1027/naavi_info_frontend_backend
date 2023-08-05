@@ -184,10 +184,10 @@ const Dashboard = () => {
 
   useEffect(() => {
     setShowDrop(false);
-    if (sideNav === "Accountants") {
+    if (sideNav === "Mentors") {
       handleSpecalities();
       handleAccountant();
-    } else if (sideNav === "Services") {
+    } else if (sideNav === "Institutions") {
       // handleFollowList();
       handleAutomatedServices();
     }
@@ -376,7 +376,7 @@ const Dashboard = () => {
           </div>
           <div className="dashboard-screens">
             <div style={{ height: "100%" }}>
-              {sideNav === "Accountants" ? (
+              {sideNav === "Mentors" ? (
                 <>
                   <div className="dash-nav">
                     <div
@@ -386,7 +386,7 @@ const Dashboard = () => {
                       <input
                         className="search-input"
                         type="text"
-                        placeholder="Search For Accountants..."
+                        placeholder="Search For Mentors..."
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
                       />
@@ -608,7 +608,7 @@ const Dashboard = () => {
                     </div>
                   </div>
                 </>
-              ) : sideNav === "Services" ? (
+              ) : sideNav === "Institutions" ? (
                 <>
                   <div className="dash-nav">
                     <div
@@ -618,7 +618,7 @@ const Dashboard = () => {
                       <input
                         className="search-input"
                         type="text"
-                        placeholder="Search For Services..."
+                        placeholder="Search For Institutions..."
                         value={searchservice}
                         onChange={(e) => setSearchservice(e.target.value)}
                       />
@@ -669,7 +669,9 @@ const Dashboard = () => {
                           setShowDrop(false);
                         }}
                       >
-                        <div className="serviceby-title">Services By</div>
+                        <div className="serviceby-title">
+                          Institutions Used By
+                        </div>
                         <div className="serciceby-option-box">
                           <div className="serviceby-imgbox">
                             <img
@@ -793,7 +795,7 @@ const Dashboard = () => {
                         className="serviceby-title1"
                         onClick={() => setShowDrop(false)}
                       >
-                        Automated Services
+                        Naavi Recommended Institutions
                       </div>
                       <div
                         className="serviceby-allbox"
@@ -1055,7 +1057,7 @@ const Dashboard = () => {
                     <Vaults searchedValue={searchVault} />
                   </div>
                 </>
-              ) : sideNav === "Tasks" ? (
+              ) : sideNav === "Next Steps" ? (
                 <>
                   <div className="dash-nav">
                     <div
@@ -1214,7 +1216,7 @@ const Dashboard = () => {
       <>
         {showDrop ? (
           <div className="m-drop" onMouseDown={(e) => e.stopPropagation()}>
-            <div className="m-each">
+            {/* <div className="m-each">
               <div className="m-left">
                 <div className="m-left-icon-box">
                   <img className="m-left-icon" src={accounts} alt="" />
@@ -1235,8 +1237,8 @@ const Dashboard = () => {
               <div className="m-right-icon-box">
                 <img className="m-right-icon" src={sidearrow} alt="" />
               </div>
-            </div>
-            <div className="m-each">
+            </div> */}
+            <div className="m-each" style={{ opacity: "0.5" }}>
               <div className="m-left">
                 <div className="m-left-icon-box">
                   <img className="m-left-icon" src={profilea} alt="" />
@@ -1248,7 +1250,7 @@ const Dashboard = () => {
               </div>
             </div>
             <div className="m-each-line"> </div>
-            <div className="m-each">
+            <div className="m-each" style={{ opacity: "0.5" }}>
               <div className="m-left">
                 <div className="m-left-icon-box">
                   <img className="m-left-icon" src={support} alt="" />
@@ -1259,7 +1261,7 @@ const Dashboard = () => {
                 <img className="m-right-icon" src={sidearrow} alt="" />
               </div>
             </div>
-            <div className="m-each">
+            <div className="m-each" style={{ opacity: "0.5" }}>
               <div className="m-left">
                 <div className="m-left-icon-box">
                   <img className="m-left-icon" src={settings} alt="" />
@@ -1287,12 +1289,10 @@ const Dashboard = () => {
         )}
       </>
       <>
-        {openRight && sideNav === "Services" ? (
+        {openRight && sideNav === "Institutions" ? (
           <div className="all-follow" onClick={() => setShowDrop(false)}>
             <div className="all-follow-head-box">
-              <div className="all-follow-head-title">
-                Accountants You Follow
-              </div>
+              <div className="all-follow-head-title">Mentors You Follow</div>
               <div
                 className="all-follow-head-box-img-box"
                 onClick={() => setOpenRight(false)}

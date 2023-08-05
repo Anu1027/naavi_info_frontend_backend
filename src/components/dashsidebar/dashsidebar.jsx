@@ -3,50 +3,50 @@ import realtorwhite from "../../static/images/dashboard/realtorwhite.svg";
 import "./dashsidebar.scss";
 import { useStore } from "../store/store.ts";
 import { useNavigate } from "react-router-dom";
-import logo from './logo.svg'
+import logo from "./logo.svg";
 
 const sidebarMenu1 = [
   {
     id: 0,
-    title: "Scanner",
+    title: "Paths",
   },
   {
     id: 1,
-    title: "Services",
+    title: "Mentors",
   },
   {
     id: 2,
-    title: "Tasks",
-  },
-  {
-    id: 3,
-    title: "Calendar",
+    title: "Institutions",
   },
 ];
 
 const sidebarMenu2 = [
   {
     id: 0,
-    title: "Vaults",
+    title: "My Journey",
   },
   {
     id: 1,
-    title: "Cabinet",
+    title: "Next Steps",
   },
   {
     id: 2,
-    title: "Accountants",
+    title: "Calendar",
+  },
+  {
+    id: 3,
+    title: "Cabinet",
   },
 ];
 
 const sidebarMenu3 = [
   {
     id: 0,
-    title: "TaxGPT",
+    title: "Vaults",
   },
   {
     id: 1,
-    title: "Settings",
+    title: "Naavi GPT",
   },
 ];
 
@@ -54,12 +54,30 @@ const Dashsidebar = ({ isNotOnMainPage }) => {
   const { sideNav, setsideNav, setBuy } = useStore();
   const navigate = useNavigate();
   return (
-    <div className="dashboard-sidebar" style={{ overflow: "hidden" }}>
-      <div className="dashboard-left">
-        <img className="dashboard-logo" src={logo} alt="" />
+    <div className="dashboard-sidebar1" style={{ overflow: "hidden" }}>
+      <div className="logo-border">
+        <div className="dashboard-left">
+          <img
+            className="dashboard-logo"
+            src={logo}
+            alt=""
+            style={{ width: "50%" }}
+          />
+        </div>
       </div>
-      <div style={{ overflowY: "scroll", height: "75vh", marginTop: "30px" }}>
+      <div style={{ overflowY: "scroll", height: "calc(100% - 70px)", padding: '30px 2vw 0px 2vw' }}>
         <div>
+        <div
+          style={{
+            marginLeft: "15px",
+            fontWeight: "600",
+            fontSize: "18px",
+            marginBottom: "1.5rem",
+            color: "#100F0D",
+          }}
+        >
+          Discover
+        </div>
           {sidebarMenu1.map((each, i) => {
             return (
               <div
@@ -72,7 +90,7 @@ const Dashsidebar = ({ isNotOnMainPage }) => {
                   //   sideNav === each.title
                   //     ? "0px 2px 2px rgba(0, 0, 0, 0.25)"
                   //     : "",
-                  fontWeight: sideNav === each.title ? "700" : "500",
+                  // fontWeight: sideNav === each.title ? "700" : "500",
                   borderRadius: sideNav === each.title ? "35px" : "",
                 }}
                 key={i}
@@ -90,6 +108,17 @@ const Dashsidebar = ({ isNotOnMainPage }) => {
           })}
         </div>
         <div className="sidebar-line"></div>
+        <div
+          style={{
+            marginLeft: "15px",
+            fontWeight: "600",
+            fontSize: "18px",
+            marginBottom: "1.5rem",
+            color: "#100F0D",
+          }}
+        >
+          Manage
+        </div>
         <div>
           {sidebarMenu2.map((ele, j) => {
             return (
@@ -114,6 +143,17 @@ const Dashsidebar = ({ isNotOnMainPage }) => {
           })}
         </div>
         <div className="sidebar-line"></div>
+        <div
+          style={{
+            marginLeft: "15px",
+            fontWeight: "600",
+            fontSize: "18px",
+            marginBottom: "1.5rem",
+            color: "#100F0D",
+          }}
+        >
+          Tools
+        </div>
         <div>
           {sidebarMenu3.map((ele, j) => {
             return (
@@ -138,7 +178,7 @@ const Dashsidebar = ({ isNotOnMainPage }) => {
           })}
         </div>
       </div>
-      <div
+      {/* <div
         className="side-btn"
         style={{
           background: "#59A2DD",
@@ -153,7 +193,7 @@ const Dashsidebar = ({ isNotOnMainPage }) => {
         }}
       >
         Upgrade To Plus
-      </div>
+      </div> */}
     </div>
   );
 };
