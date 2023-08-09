@@ -11,6 +11,7 @@ import plus from "../../static/images/mapspage/plus.svg";
 import close from "../../static/images/mapspage/close.svg";
 import hamIcon from "../../static/images/icons/hamIcon.svg";
 import MapComponent from "./MapComponent";
+import Listview from "../Listview";
 
 const PathComponent = () => {
   const navigate = useNavigate();
@@ -19,6 +20,7 @@ const PathComponent = () => {
     { id: 1, inputValue1: "", inputValue2: "", removable: false },
   ]);
   const [pathOption, setPathOption] = useState("Map View");
+  const [searchTerm, setSearchterm] = useState('');
 
   const handleAddContainer = () => {
     const lastContainer = containers[containers.length - 1];
@@ -64,6 +66,9 @@ const PathComponent = () => {
     setContainers([
       { id: 1, inputValue1: "", inputValue2: "", removable: false },
     ]);
+    if(pathOption === 'List View') {
+      setSearchterm('');
+    }
   };
 
   return (
@@ -77,7 +82,7 @@ const PathComponent = () => {
               //   setOption("Career");
               // }}
               style={{
-                cursor: 'not-allowed',
+                cursor: "not-allowed",
                 opacity: 0.5,
               }}
             >
@@ -133,7 +138,7 @@ const PathComponent = () => {
               //   setOption("Immigration");
               // }}
               style={{
-                cursor: 'not-allowed',
+                cursor: "not-allowed",
                 opacity: 0.5,
               }}
             >
@@ -177,7 +182,12 @@ const PathComponent = () => {
                     type="text"
                     value={container.inputValue1}
                     placeholder="Where Do You Want To Go?"
-                    onChange={(e) => handleInputChange(e, container.id, 1)}
+                    onChange={(e) => {
+                      handleInputChange(e, container.id, 1);
+                      if(pathOption === 'List View') {
+                        setSearchterm(e.target.value);
+                      }
+                    }}
                   />
                 </div>
                 <div className="input-div-2">
@@ -240,7 +250,15 @@ const PathComponent = () => {
               </div>
             </div>
           </div>
-          <>{pathOption === "Map View" ? <MapComponent /> : ""}</>
+          <>
+            {pathOption === "Map View" ? (
+              <MapComponent />
+            ) : pathOption === "List View" ? (
+              <Listview searchTerm={searchTerm} />
+            ) : (
+              ""
+            )}
+          </>
         </div>
       </div>
     </div>
