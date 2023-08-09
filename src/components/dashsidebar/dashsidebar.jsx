@@ -69,7 +69,7 @@ const Dashsidebar = ({ isNotOnMainPage }) => {
         <div>
         <div
           style={{
-            marginLeft: "15px",
+            // marginLeft: "15px",
             fontWeight: "600",
             fontSize: "18px",
             marginBottom: "1.5rem",
@@ -110,7 +110,7 @@ const Dashsidebar = ({ isNotOnMainPage }) => {
         <div className="sidebar-line"></div>
         <div
           style={{
-            marginLeft: "15px",
+            // marginLeft: "15px",
             fontWeight: "600",
             fontSize: "18px",
             marginBottom: "1.5rem",
@@ -145,7 +145,7 @@ const Dashsidebar = ({ isNotOnMainPage }) => {
         <div className="sidebar-line"></div>
         <div
           style={{
-            marginLeft: "15px",
+            // marginLeft: "15px",
             fontWeight: "600",
             fontSize: "18px",
             marginBottom: "1.5rem",
