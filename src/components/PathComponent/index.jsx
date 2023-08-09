@@ -14,10 +14,11 @@ import MapComponent from "./MapComponent";
 
 const PathComponent = () => {
   const navigate = useNavigate();
-  const [option, setOption] = useState("Career");
+  const [option, setOption] = useState("Education");
   const [containers, setContainers] = useState([
     { id: 1, inputValue1: "", inputValue2: "", removable: false },
   ]);
+  const [pathOption, setPathOption] = useState("Map View");
 
   const handleAddContainer = () => {
     const lastContainer = containers[containers.length - 1];
@@ -72,8 +73,12 @@ const PathComponent = () => {
           <div className="top-icons1">
             <div
               className="each-icon1"
-              onClick={() => {
-                setOption("Career");
+              // onClick={() => {
+              //   setOption("Career");
+              // }}
+              style={{
+                cursor: 'not-allowed',
+                opacity: 0.5,
               }}
             >
               <div
@@ -124,8 +129,12 @@ const PathComponent = () => {
             </div>
             <div
               className="each-icon1"
-              onClick={() => {
-                setOption("Immigration");
+              // onClick={() => {
+              //   setOption("Immigration");
+              // }}
+              style={{
+                cursor: 'not-allowed',
+                opacity: 0.5,
               }}
             >
               <div
@@ -194,7 +203,44 @@ const PathComponent = () => {
           </div>
         </div>
         <div className="maps-content-area1">
-          <MapComponent />
+          <div className="path-options-div">
+            <div className="path-options">
+              <div
+                className="each-path-opt"
+                onClick={() => {
+                  setPathOption("Map View");
+                }}
+                style={{
+                  background: pathOption === "Map View" ? "#F1F4F6" : "",
+                }}
+              >
+                Map View
+              </div>
+              <div
+                className="each-path-opt"
+                onClick={() => {
+                  setPathOption("Mentor View");
+                }}
+                style={{
+                  background: pathOption === "Mentor View" ? "#F1F4F6" : "",
+                }}
+              >
+                Mentor View
+              </div>
+              <div
+                className="each-path-opt"
+                onClick={() => {
+                  setPathOption("List View");
+                }}
+                style={{
+                  background: pathOption === "List View" ? "#F1F4F6" : "",
+                }}
+              >
+                List View
+              </div>
+            </div>
+          </div>
+          <>{pathOption === "Map View" ? <MapComponent /> : ""}</>
         </div>
       </div>
     </div>

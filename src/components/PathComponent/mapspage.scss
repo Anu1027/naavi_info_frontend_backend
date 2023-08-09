@@ -183,43 +183,38 @@
     .maps-content-area1 {
       width: 70%;
       height: 100%;
+
+      .path-options-div {
+        width: 100%;
+        height: 3rem;
+        display: flex;
+        justify-content: center;
+
+        .path-options {
+          width: fit-content;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          padding: 1rem 2rem;
+          border: 0.5px solid #e5e5e5;
+          border-bottom-left-radius: 45px;
+          border-bottom-right-radius: 45px;
+
+          .each-path-opt {
+            font-size: 0.8rem;
+            font-weight: 300;
+            padding: 5px 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all ease 0.2s;
+
+            &:hover {
+              transform: scale(1.05);
+            }
+          }
+        }
+      }
     }
   }
 }
-
-// @media screen and (max-width: 800px) {
-//   .mapspage {
-//     .maps-navbar {
-//       .hamMenu {
-//         display: flex;
-//       }
-//       .menu-items {
-//         display: none;
-//       }
-//       .btns-div {
-//         display: none;
-//       }
-//     }
-
-//     .maps-color-box {
-//       height: 0.5rem;
-//     }
-
-//     .maps-container {
-//       height: calc(100% - 4.5rem);
-//       .maps-sidebar {
-//         width: 100%;
-//         .mid-area {
-//           .input-div1 {
-//             width: 80%;
-//           }
-//           .destination-container {
-//             .input-div2 {
-//               width: 80%;
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// }

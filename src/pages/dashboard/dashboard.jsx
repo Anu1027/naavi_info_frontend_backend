@@ -1183,7 +1183,7 @@ const Dashboard = () => {
                       <input
                         className="search-input"
                         type="text"
-                        placeholder="Search..."
+                        placeholder="Search For Paths..."
                         // value={searchVault}
                         // onChange={(e) => setSearchVault(e.target.value)}
                       />
