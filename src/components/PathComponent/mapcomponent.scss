@@ -1,0 +1,23 @@
+.map-component1 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    vertical-align: middle;
+
+    path {
+      fill: #3c89bf;
+    }
+
+    .rsm-zoomable-group {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
