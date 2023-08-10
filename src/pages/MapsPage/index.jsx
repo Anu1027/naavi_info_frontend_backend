@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import MapComponent from "./MapComponent";
+import GoogleMapComponent from "./GoogleMapComponent";
 import "./mapspage.scss";
 
 //images
@@ -10,7 +12,6 @@ import immigrationIcon from "../../static/images/mapspage/immigrationIcon.svg";
 import plus from "../../static/images/mapspage/plus.svg";
 import close from "../../static/images/mapspage/close.svg";
 import hamIcon from "../../static/images/icons/hamIcon.svg";
-import MapComponent from "./MapComponent";
 
 const MapsPage = () => {
   const navigate = useNavigate();
@@ -18,6 +19,8 @@ const MapsPage = () => {
   const [containers, setContainers] = useState([
     { id: 1, inputValue1: "", inputValue2: "", removable: false },
   ]);
+  const [map, setMap] = useState(/** @type google.maps.Map */ (null));
+  const [currentLocation, setCurrentLocation] = useState(null);
 
   const handleAddContainer = () => {
     const lastContainer = containers[containers.length - 1];
@@ -59,10 +62,28 @@ const MapsPage = () => {
     }
   };
 
+  // Fetch current location using Geolocation API
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setCurrentLocation({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          });
+        },
+        (error) => {
+          console.error("Error getting current location:", error);
+        }
+      );
+    }
+  }, []);
+
   const handleResetContainer = () => {
     setContainers([
       { id: 1, inputValue1: "", inputValue2: "", removable: false },
     ]);
+    map.panTo(currentLocation)
   };
 
   return (
@@ -222,15 +243,6 @@ const MapsPage = () => {
                 </div>
               </div>
             ))}
-            {/* <div className="destination-container">
-              <div className="dest-txt">Destination 1</div>
-              <div className="input-div2">
-                <input type="text" placeholder="Where Do You Want To Go?" />
-              </div>
-              <div className="input-div2">
-                <input type="text" placeholder="By When?" />
-              </div>
-            </div> */}
             <div className="add-div" onClick={handleAddContainer}>
               <img src={plus} alt="" />
               Add Destination
@@ -244,7 +256,7 @@ const MapsPage = () => {
           </div>
         </div>
         <div className="maps-content-area">
-            <MapComponent />
+          <GoogleMapComponent map={map} setMap={setMap} />
         </div>
       </div>
     </div>
