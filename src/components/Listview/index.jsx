@@ -12,9 +12,9 @@ const Listview = ({ searchTerm }) => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("http://universities.hipolabs.com/search")
+      .get("https://careers.marketsverse.com/universities/get")
       .then((response) => {
-        let result = response?.data;
+        let result = response?.data?.data;
         // console.log(result, "leadSourceData result");
         setLeadSourceData(result);
         setLoading(false);

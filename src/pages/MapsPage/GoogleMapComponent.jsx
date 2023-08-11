@@ -1,36 +1,19 @@
-import React, { useState, useEffect } from "react";
-import {
-  useJsApiLoader,
-  GoogleMap,
-  Marker,
-  Autocomplete,
-} from "@react-google-maps/api";
+import React from "react";
+import { useJsApiLoader, GoogleMap, Marker } from "@react-google-maps/api";
 import "./googlemapcomponent.scss";
 
-const GoogleMapComponent = ({ map, setMap }) => {
+const GoogleMapComponent = ({
+  map,
+  setMap,
+  searchTerm,
+  currentLocation,
+  setCurrentLocation,
+}) => {
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: "AIzaSyB5MJ2jMHzl_ghkbxOsyPmeBmYw_sUsIRQ",
     libraries: ["places"],
   });
-  const [currentLocation, setCurrentLocation] = useState(null);
 
-  // Fetch current location using Geolocation API
-  useEffect(() => {
-    if (navigator?.geolocation) {
-      navigator?.geolocation?.getCurrentPosition(
-        (position) => {
-          setCurrentLocation({
-            lat: position?.coords?.latitude,
-            lng: position?.coords?.longitude,
-          });
-        },
-        (error) => {
-          console.error("Error getting current location:", error);
-        }
-      );
-    }
-  }, []);
- 
   if (!isLoaded) {
     return (
       <div className="gmap-container">

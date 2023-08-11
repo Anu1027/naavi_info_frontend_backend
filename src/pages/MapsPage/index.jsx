@@ -1,8 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import MapComponent from "./MapComponent";
 import GoogleMapComponent from "./GoogleMapComponent";
 import "./mapspage.scss";
+import {
+  useJsApiLoader,
+  GoogleMap,
+  Marker,
+  Autocomplete,
+} from "@react-google-maps/api";
+import { LoadScript } from "@react-google-maps/api";
 
 //images
 import logo from "../../static/images/logo.svg";
@@ -21,6 +27,10 @@ const MapsPage = () => {
   ]);
   const [map, setMap] = useState(/** @type google.maps.Map */ (null));
   const [currentLocation, setCurrentLocation] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
+  const autocompleteRef = useRef(null);
+  const [resetLoaction, setResetLocation] = useState(false);
+  const [selectedPlace, setSelectedPlace] = useState(null);
 
   const handleAddContainer = () => {
     const lastContainer = containers[containers.length - 1];
@@ -62,14 +72,14 @@ const MapsPage = () => {
     }
   };
 
-  // Fetch current location using Geolocation API
   useEffect(() => {
     if (navigator.geolocation) {
+      setSelectedPlace("");
       navigator.geolocation.getCurrentPosition(
         (position) => {
           setCurrentLocation({
             lat: position.coords.latitude,
-            lng: position.coords.longitude
+            lng: position.coords.longitude,
           });
         },
         (error) => {
@@ -77,188 +87,236 @@ const MapsPage = () => {
         }
       );
     }
-  }, []);
+  }, [resetLoaction]);
 
   const handleResetContainer = () => {
     setContainers([
       { id: 1, inputValue1: "", inputValue2: "", removable: false },
     ]);
-    map.panTo(currentLocation)
+    setResetLocation(!resetLoaction);
+    // map.panTo(currentLocation);
+  };
+
+  const handlePlaceSelect = () => {
+    if (autocompleteRef?.current) {
+      const place = autocompleteRef?.current?.getPlace();
+      if (place?.geometry && place?.geometry?.location) {
+        const location = {
+          lat: place?.geometry?.location?.lat(),
+          lng: place?.geometry?.location?.lng(),
+        };
+        setCurrentLocation(location);
+        setSelectedPlace(place.formatted_address);
+        if (map) {
+          map.panTo(location);
+        }
+      }
+    }
   };
 
   return (
     <div className="mapspage">
-      <div className="maps-navbar">
-        <div className="hamMenu">
-          <img src={hamIcon} alt="" />
-        </div>
-        <div
-          className="logo"
-          onClick={() => {
-            navigate("/");
-          }}
-        >
-          <img src={logo} alt="logo" />
-        </div>
-        <div className="menu-items">
-          <div>
-            <p>Paths</p>
+      <LoadScript
+        googleMapsApiKey="AIzaSyB5MJ2jMHzl_ghkbxOsyPmeBmYw_sUsIRQ"
+        libraries={["places"]}
+      >
+        <div className="maps-navbar">
+          <div className="hamMenu">
+            <img src={hamIcon} alt="" />
           </div>
-          <div>
-            <p>Explore</p>
-          </div>
-          <div>
-            <p>Products</p>
-          </div>
-          <div>
-            <p>Resources</p>
-          </div>
-          <div>
-            <p>Vendors</p>
-          </div>
-        </div>
-        <div className="btns-div">
           <div
-            className="gs-Btn"
+            className="logo"
             onClick={() => {
-              navigate("/dashboard");
+              navigate("/");
             }}
           >
-            Get Started
+            <img src={logo} alt="logo" />
           </div>
-        </div>
-      </div>
-      <div className="maps-color-box"></div>
-      <div className="maps-container">
-        <div className="maps-sidebar">
-          <div className="top-icons">
-            <div
-              className="each-icon"
-              onClick={() => {
-                setOption("Career");
-              }}
-            >
-              <div
-                className="border-div"
-                style={{
-                  border:
-                    option === "Career"
-                      ? "1px solid #100F0D"
-                      : "1px solid #e7e7e7",
-                }}
-              >
-                <img src={careerIcon} alt="" />
-              </div>
-              <div
-                className="icon-name-txt"
-                style={{
-                  fontWeight: option === "Career" ? "600" : "",
-                }}
-              >
-                Career
-              </div>
+          <div className="menu-items">
+            <div>
+              <p>Paths</p>
             </div>
-            <div
-              className="each-icon"
-              onClick={() => {
-                setOption("Education");
-              }}
-            >
-              <div
-                className="border-div"
-                style={{
-                  border:
-                    option === "Education"
-                      ? "1px solid #100F0D"
-                      : "1px solid #e7e7e7",
-                }}
-              >
-                <img src={educationIcon} alt="" />
-              </div>
-              <div
-                className="icon-name-txt"
-                style={{
-                  fontWeight: option === "Education" ? "600" : "",
-                }}
-              >
-                Education
-              </div>
+            <div>
+              <p>Explore</p>
             </div>
-            <div
-              className="each-icon"
-              onClick={() => {
-                setOption("Immigration");
-              }}
-            >
-              <div
-                className="border-div"
-                style={{
-                  border:
-                    option === "Immigration"
-                      ? "1px solid #100F0D"
-                      : "1px solid #e7e7e7",
-                }}
-              >
-                <img src={immigrationIcon} alt="" />
-              </div>
-              <div
-                className="icon-name-txt"
-                style={{
-                  fontWeight: option === "Immigration" ? "600" : "",
-                }}
-              >
-                Immigration
-              </div>
+            <div>
+              <p>Products</p>
+            </div>
+            <div>
+              <p>Resources</p>
+            </div>
+            <div>
+              <p>Vendors</p>
             </div>
           </div>
-          <div className="mid-area">
-            <div className="input-div1">
-              <input type="text" placeholder="Choose Starting Coordinates.." />
-            </div>
-            {containers.map((container, index) => (
-              <div className="destination-container" key={container.id}>
-                <div className="dest-txt">
-                  <div>Destination {container.id}</div>
-                  {container.removable && (
-                    <div onClick={() => handleRemoveContainer(container.id)}>
-                      <img src={close} alt="" />
-                    </div>
-                  )}
-                </div>
-                <div className="input-div2">
-                  <input
-                    type="text"
-                    value={container.inputValue1}
-                    placeholder="Where Do You Want To Go?"
-                    onChange={(e) => handleInputChange(e, container.id, 1)}
-                  />
-                </div>
-                <div className="input-div2">
-                  <input
-                    type="text"
-                    value={container.inputValue2}
-                    placeholder="By When?"
-                    onChange={(e) => handleInputChange(e, container.id, 2)}
-                  />
-                </div>
-              </div>
-            ))}
-            <div className="add-div" onClick={handleAddContainer}>
-              <img src={plus} alt="" />
-              Add Destination
-            </div>
-            <div className="maps-btns-div">
-              <div className="gs-Btn-maps">Get Started</div>
-              <div className="reset-btn" onClick={handleResetContainer}>
-                Reset
-              </div>
+          <div className="btns-div">
+            <div
+              className="gs-Btn"
+              onClick={() => {
+                navigate("/dashboard");
+              }}
+            >
+              Get Started
             </div>
           </div>
         </div>
-        <div className="maps-content-area">
-          <GoogleMapComponent map={map} setMap={setMap} />
+        <div className="maps-color-box"></div>
+        <div className="maps-container">
+          <div className="maps-sidebar">
+            <div className="top-icons">
+              <div
+                className="each-icon"
+                onClick={() => {
+                  setOption("Career");
+                }}
+              >
+                <div
+                  className="border-div"
+                  style={{
+                    border:
+                      option === "Career"
+                        ? "1px solid #100F0D"
+                        : "1px solid #e7e7e7",
+                  }}
+                >
+                  <img src={careerIcon} alt="" />
+                </div>
+                <div
+                  className="icon-name-txt"
+                  style={{
+                    fontWeight: option === "Career" ? "600" : "",
+                  }}
+                >
+                  Career
+                </div>
+              </div>
+              <div
+                className="each-icon"
+                onClick={() => {
+                  setOption("Education");
+                }}
+              >
+                <div
+                  className="border-div"
+                  style={{
+                    border:
+                      option === "Education"
+                        ? "1px solid #100F0D"
+                        : "1px solid #e7e7e7",
+                  }}
+                >
+                  <img src={educationIcon} alt="" />
+                </div>
+                <div
+                  className="icon-name-txt"
+                  style={{
+                    fontWeight: option === "Education" ? "600" : "",
+                  }}
+                >
+                  Education
+                </div>
+              </div>
+              <div
+                className="each-icon"
+                onClick={() => {
+                  setOption("Immigration");
+                }}
+              >
+                <div
+                  className="border-div"
+                  style={{
+                    border:
+                      option === "Immigration"
+                        ? "1px solid #100F0D"
+                        : "1px solid #e7e7e7",
+                  }}
+                >
+                  <img src={immigrationIcon} alt="" />
+                </div>
+                <div
+                  className="icon-name-txt"
+                  style={{
+                    fontWeight: option === "Immigration" ? "600" : "",
+                  }}
+                >
+                  Immigration
+                </div>
+              </div>
+            </div>
+            <div className="mid-area">
+              <div className="input-div1">
+                <input
+                  type="text"
+                  placeholder="Choose Starting Coordinates.."
+                />
+              </div>
+              {containers.map((container, index) => (
+                <div className="destination-container" key={container.id}>
+                  <div className="dest-txt">
+                    <div>Destination {container.id}</div>
+                    {container.removable && (
+                      <div onClick={() => handleRemoveContainer(container.id)}>
+                        <img src={close} alt="" />
+                      </div>
+                    )}
+                  </div>
+                  <div className="input-div2">
+                    <Autocomplete
+                      onLoad={(autocomplete) => {
+                        autocompleteRef.current = autocomplete;
+                        autocomplete?.setBounds(map?.getBounds());
+                      }}
+                      onPlaceChanged={handlePlaceSelect}
+                    >
+                      <input
+                        type="text"
+                        placeholder="Where Do You Want To Go?"
+                        // value={container.inputValue1}
+                        // onChange={(e) => {
+                        //   handleInputChange(e, container.id, 1);
+                        //   setSearchTerm(e.target.value);
+                        // }}
+                        value={selectedPlace || ""}
+                        onChange={(e) => {
+                          handleInputChange(e, container.id, 1);
+                          setSelectedPlace(e.target.value);
+                        }}
+                      />
+                    </Autocomplete>
+                  </div>
+                  <div className="input-div2">
+                    <input
+                      type="text"
+                      value={container.inputValue2}
+                      placeholder="By When?"
+                      onChange={(e) => handleInputChange(e, container.id, 2)}
+                    />
+                  </div>
+                </div>
+              ))}
+              <div className="add-div" onClick={handleAddContainer}>
+                <img src={plus} alt="" />
+                Add Destination
+              </div>
+              <div className="maps-btns-div">
+                <div className="gs-Btn-maps">Get Started</div>
+                <div className="reset-btn" onClick={handleResetContainer}>
+                  Reset
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="maps-content-area">
+            <GoogleMapComponent
+              map={map}
+              setMap={setMap}
+              searchTerm={searchTerm}
+              currentLocation={currentLocation}
+              setCurrentLocation={setCurrentLocation}
+            />
+          </div>
         </div>
-      </div>
+      </LoadScript>
     </div>
   );
 };
