@@ -19,6 +19,8 @@ import plus from "../../static/images/mapspage/plus.svg";
 import close from "../../static/images/mapspage/close.svg";
 import hamIcon from "../../static/images/icons/hamIcon.svg";
 
+const libraries = ["places"];
+
 const MapsPage = () => {
   const navigate = useNavigate();
   const [option, setOption] = useState("Career");
@@ -118,7 +120,7 @@ const MapsPage = () => {
     <div className="mapspage">
       <LoadScript
         googleMapsApiKey="AIzaSyB5MJ2jMHzl_ghkbxOsyPmeBmYw_sUsIRQ"
-        libraries={["places"]}
+        libraries={libraries}
       >
         <div className="maps-navbar">
           <div className="hamMenu">
