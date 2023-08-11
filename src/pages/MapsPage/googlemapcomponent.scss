@@ -13,18 +13,16 @@
     z-index: 1;
   }
 
-  .map-controls {
+  .place-details {
     position: absolute;
     z-index: 2;
     display: flex;
     top: 2rem;
-    left: 50%;
-
-    .reset-gBtn {
-      background: white;
-      padding: 1rem 2rem;
-      font-weight: 500;
-      cursor: pointer;
-    }
+    bottom: 2rem;
+    right: 2rem;
+    background: white;
+    height: calc(100% - 4rem);
+    padding: 1rem;
+    border-radius: 10px;
   }
 }

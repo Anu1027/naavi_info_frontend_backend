@@ -22,6 +22,7 @@ const GoogleMapComponent = ({
           {currentLocation && <Marker position={currentLocation} />}
         </GoogleMap>
       </div>
+      <div className="place-details"></div>
     </div>
   );
 };

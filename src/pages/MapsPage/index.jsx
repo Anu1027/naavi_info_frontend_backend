@@ -33,6 +33,7 @@ const MapsPage = () => {
   const autocompleteRef = useRef(null);
   const [resetLoaction, setResetLocation] = useState(false);
   const [selectedPlace, setSelectedPlace] = useState(null);
+  const [placesId, setPlacesId] = useState(null);
 
   const handleAddContainer = () => {
     const lastContainer = containers[containers.length - 1];
@@ -108,13 +109,34 @@ const MapsPage = () => {
           lng: place?.geometry?.location?.lng(),
         };
         setCurrentLocation(location);
-        setSelectedPlace(place.formatted_address);
+        setSelectedPlace(place?.formatted_address);
+        const placeId = place?.place_id;
+        setPlacesId(placeId);
         if (map) {
           map.panTo(location);
         }
       }
     }
   };
+
+  const fetchPlaceDetails = async (placeId) => {
+    if (placeId !== null) {
+      try {
+        const response = await fetch(
+          `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&key=AIzaSyB5MJ2jMHzl_ghkbxOsyPmeBmYw_sUsIRQ`
+        );
+        const data = await response.json();
+        console.log(data?.result, "place info");
+        return data.result;
+      } catch (error) {
+        console.log(error, "error in getting place info");
+      }
+    }
+  };
+
+  useEffect(() => {
+    fetchPlaceDetails(placesId);
+  }, [placesId]);
 
   return (
     <div className="mapspage">
