@@ -34,6 +34,7 @@ const MapsPage = () => {
   const [resetLoaction, setResetLocation] = useState(false);
   const [selectedPlace, setSelectedPlace] = useState(null);
   const [placesId, setPlacesId] = useState(null);
+  const [placeInfo, setPlaceInfo] = useState('');
 
   const handleAddContainer = () => {
     const lastContainer = containers[containers.length - 1];
@@ -98,6 +99,7 @@ const MapsPage = () => {
     ]);
     setResetLocation(!resetLoaction);
     // map.panTo(currentLocation);
+    setPlaceInfo('');
   };
 
   const handlePlaceSelect = () => {
@@ -120,13 +122,15 @@ const MapsPage = () => {
   };
 
   const fetchPlaceDetails = async (placeId) => {
+    console.log(placeId, 'placeid')
     if (placeId !== null) {
       try {
         const response = await fetch(
-          `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&key=AIzaSyB5MJ2jMHzl_ghkbxOsyPmeBmYw_sUsIRQ`
+          `https://careers.marketsverse.com/api/places?place_id=${placeId}`
         );
         const data = await response.json();
         console.log(data?.result, "place info");
+        setPlaceInfo(data?.result);
         return data.result;
       } catch (error) {
         console.log(error, "error in getting place info");
@@ -337,6 +341,7 @@ const MapsPage = () => {
               searchTerm={searchTerm}
               currentLocation={currentLocation}
               setCurrentLocation={setCurrentLocation}
+              placeInfo={placeInfo}
             />
           </div>
         </div>
