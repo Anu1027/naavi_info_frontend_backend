@@ -78,6 +78,19 @@
             width: 100%;
             text-align: center;
             text-transform: lowercase;
+            display: flex;
+            justify-content: center;
+
+            p {
+              margin: 0;
+              width: fit-content;
+              cursor: pointer;
+              transition: all ease 0.2s;
+
+              &:hover {
+                transform: scale(1.05);
+              }
+            }
           }
         }
       }

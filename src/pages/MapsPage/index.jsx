@@ -9,6 +9,8 @@ import {
   Autocomplete,
 } from "@react-google-maps/api";
 import { LoadScript } from "@react-google-maps/api";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 //images
 import logo from "../../static/images/logo.svg";
@@ -34,7 +36,9 @@ const MapsPage = () => {
   const [resetLoaction, setResetLocation] = useState(false);
   const [selectedPlace, setSelectedPlace] = useState(null);
   const [placesId, setPlacesId] = useState(null);
-  const [placeInfo, setPlaceInfo] = useState('');
+  const [placeInfo, setPlaceInfo] = useState("");
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [showDatePicker, setShowDatePicker] = useState(false);
 
   const handleAddContainer = () => {
     const lastContainer = containers[containers.length - 1];
@@ -98,8 +102,9 @@ const MapsPage = () => {
       { id: 1, inputValue1: "", inputValue2: "", removable: false },
     ]);
     setResetLocation(!resetLoaction);
-    // map.panTo(currentLocation);
-    setPlaceInfo('');
+    setPlaceInfo("");
+    setSelectedDate("");
+    setShowDatePicker(false);
   };
 
   const handlePlaceSelect = () => {
@@ -122,14 +127,14 @@ const MapsPage = () => {
   };
 
   const fetchPlaceDetails = async (placeId) => {
-    console.log(placeId, 'placeid')
+    // console.log(placeId, 'placeid')
     if (placeId !== null) {
       try {
         const response = await fetch(
           `https://careers.marketsverse.com/api/places?place_id=${placeId}`
         );
         const data = await response.json();
-        console.log(data?.result, "place info");
+        // console.log(data?.result, "place info");
         setPlaceInfo(data?.result);
         return data.result;
       } catch (error) {
@@ -141,6 +146,22 @@ const MapsPage = () => {
   useEffect(() => {
     fetchPlaceDetails(placesId);
   }, [placesId]);
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+    setShowDatePicker(false);
+  };
+
+  const CustomInput = ({ value, onClick }) => (
+    <input
+      type="text"
+      placeholder="By When?"
+      value={value}
+      onClick={onClick}
+      onFocus={() => setShowDatePicker(true)}
+      onBlur={() => setShowDatePicker(false)}
+    />
+  );
 
   return (
     <div className="mapspage">
@@ -181,7 +202,7 @@ const MapsPage = () => {
             <div
               className="gs-Btn"
               onClick={() => {
-                navigate("/dashboard");
+                navigate("/login");
               }}
             >
               Get Started
@@ -313,11 +334,26 @@ const MapsPage = () => {
                     </Autocomplete>
                   </div>
                   <div className="input-div2">
-                    <input
+                    {/* <input
                       type="text"
-                      value={container.inputValue2}
                       placeholder="By When?"
-                      onChange={(e) => handleInputChange(e, container.id, 2)}
+                      // value={container.inputValue2}
+                      // onChange={(e) => handleInputChange(e, container.id, 2)}
+                      // onFocus={() => setShowDatePicker(true)}
+                      // onBlur={() => setShowDatePicker(false)}
+                      onFocus={(e) => e.target.blur()}
+                      value={
+                        selectedDate ? selectedDate.toLocaleDateString() : ""
+                      }
+                    /> */}
+                    <DatePicker
+                      selected={selectedDate}
+                      onChange={handleDateChange}
+                      dateFormat="MM/dd/yyyy"
+                      showMonthDropdown
+                      showYearDropdown
+                      dropdownMode="select"
+                      customInput={<CustomInput />}
                     />
                   </div>
                 </div>

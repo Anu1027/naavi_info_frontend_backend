@@ -100,7 +100,7 @@ const Listview = ({ searchTerm }) => {
                                     window.open(each, "_blank");
                                   }}
                                 >
-                                  {each}
+                                  <p>{each}</p>
                                 </div>
                               );
                             })}

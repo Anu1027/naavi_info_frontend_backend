@@ -15,13 +15,13 @@ const PostLoginPage = () => {
 
   useEffect(() => {
     if (!email) {
-      navigate("/dashboard");
+      navigate("/dashboard/login");
     }
   }, []);
 
   const onLogoutClick = () => {
     userLoginHandler();
-    navigate("/dashboard");
+    navigate("/login");
   };
 
   return (

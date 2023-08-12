@@ -31,7 +31,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      {/* <Route path="/dashboard" element={<DashboardLoginPage />} /> */}
+      <Route path="/dashboard" element={<DashboardLoginPage />} />
       <Route
         path="/example"
         element={
@@ -43,7 +43,7 @@ function App() {
         }
       />
       <Route
-        path="/dashboard"
+        path="/login"
         element={
           loginData !== null ? (
             <Navigate to={`/${selectedApp?.appName}`} />
@@ -55,7 +55,7 @@ function App() {
       <Route
         path="/*"
         element={
-          loginData !== null ? <RoutePage /> : <Navigate to="/dashboard" />
+          loginData !== null ? <RoutePage /> : <Navigate to="/login" />
         }
       />
       <Route path="/postLogin" element={<PostLoginPage />} />

@@ -10,6 +10,8 @@ import {
 } from "@react-google-maps/api";
 import { LoadScript } from "@react-google-maps/api";
 import "./mapspage.scss";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 //images
 import logo from "../../static/images/logo.svg";
@@ -37,6 +39,9 @@ const PathComponent = () => {
   const [pathResetLoaction, setPathResetLocation] = useState(false);
   const [pathSelectedPlace, setPathSelectedPlace] = useState(null);
   const [pathPlacesId, setPathPlacesId] = useState(null);
+  const [pathPlaceInfo, setPathPlaceInfo] = useState("");
+  const [pathSelectedDate, setPathSelectedDate] = useState(null);
+  const [pathShowDatePicker, setPathShowDatePicker] = useState(false);
 
   const handleAddContainer = () => {
     const lastContainer = containers[containers.length - 1];
@@ -106,6 +111,9 @@ const PathComponent = () => {
       setSearchterm("");
     }
     setPathResetLocation(!pathResetLoaction);
+    setPathPlaceInfo("");
+    setPathShowDatePicker(false);
+    setPathSelectedDate("");
   };
 
   const handlePlaceSelect = () => {
@@ -128,16 +136,18 @@ const PathComponent = () => {
   };
 
   const fetchPlaceDetails = async (placeId) => {
+    // console.log(placeId, 'placeid')
     if (placeId !== null) {
       try {
         const response = await fetch(
-          `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&key=AIzaSyB5MJ2jMHzl_ghkbxOsyPmeBmYw_sUsIRQ`
+          `https://careers.marketsverse.com/api/places?place_id=${placeId}`
         );
         const data = await response.json();
-        console.log(data?.result, "place info");
+        // console.log(data?.result, "place info");
+        setPathPlaceInfo(data?.result);
         return data.result;
       } catch (error) {
-        console.log(error, "error in getting place info");
+        console.log(error, "error in getting place info in path component");
       }
     }
   };
@@ -145,6 +155,22 @@ const PathComponent = () => {
   useEffect(() => {
     fetchPlaceDetails(pathPlacesId);
   }, [pathPlacesId]);
+
+  const handleDateChange = (date) => {
+    setPathSelectedDate(date);
+    setPathShowDatePicker(false);
+  };
+
+  const CustomInput = ({ value, onClick }) => (
+    <input
+      type="text"
+      placeholder="By When?"
+      value={value}
+      onClick={onClick}
+      onFocus={() => setPathShowDatePicker(true)}
+      onBlur={() => setPathShowDatePicker(false)}
+    />
+  );
 
   return (
     <div className="mapspage1">
@@ -260,13 +286,35 @@ const PathComponent = () => {
                     )}
                   </div>
                   <div className="input-div-2">
-                    <Autocomplete
-                      onLoad={(autocomplete) => {
-                        autocompleteRef.current = autocomplete;
-                        autocomplete?.setBounds(pathMap?.getBounds());
-                      }}
-                      onPlaceChanged={handlePlaceSelect}
-                    >
+                    {pathOption === "Map View" ? (
+                      <Autocomplete
+                        onLoad={(autocomplete) => {
+                          autocompleteRef.current = autocomplete;
+                          autocomplete?.setBounds(pathMap?.getBounds());
+                        }}
+                        onPlaceChanged={handlePlaceSelect}
+                      >
+                        <input
+                          type="text"
+                          placeholder="Where Do You Want To Go?"
+                          // value={container.inputValue1}
+                          // onChange={(e) => {
+                          //   handleInputChange(e, container.id, 1);
+                          //   if (pathOption === "List View") {
+                          //     setSearchterm(e.target.value);
+                          //   }
+                          // }}
+                          value={pathSelectedPlace || ""}
+                          onChange={(e) => {
+                            handleInputChange(e, container.id, 1);
+                            setPathSelectedPlace(e.target.value);
+                            if (pathOption === "List View") {
+                              setSearchterm(e.target.value);
+                            }
+                          }}
+                        />
+                      </Autocomplete>
+                    ) : (
                       <input
                         type="text"
                         placeholder="Where Do You Want To Go?"
@@ -277,20 +325,29 @@ const PathComponent = () => {
                         //     setSearchterm(e.target.value);
                         //   }
                         // }}
-                        value={pathSelectedPlace || ""}
+                        value={searchTerm}
                         onChange={(e) => {
                           handleInputChange(e, container.id, 1);
-                          setPathSelectedPlace(e.target.value);
+                          setSearchterm(e.target.value);
                         }}
                       />
-                    </Autocomplete>
+                    )}
                   </div>
                   <div className="input-div-2">
-                    <input
+                    {/* <input
                       type="text"
                       value={container.inputValue2}
                       placeholder="By When?"
                       onChange={(e) => handleInputChange(e, container.id, 2)}
+                    /> */}
+                    <DatePicker
+                      selected={pathSelectedDate}
+                      onChange={handleDateChange}
+                      dateFormat="MM/dd/yyyy"
+                      showMonthDropdown
+                      showYearDropdown
+                      dropdownMode="select"
+                      customInput={<CustomInput />}
                     />
                   </div>
                 </div>
@@ -353,6 +410,7 @@ const PathComponent = () => {
                   pathSearchTerm={pathSearchTerm}
                   pathCurrentLocation={pathCurrentLocation}
                   setPathCurrentLocation={setPathCurrentLocation}
+                  pathPlaceInfo={pathPlaceInfo}
                 />
               ) : pathOption === "List View" ? (
                 <Listview searchTerm={searchTerm} />

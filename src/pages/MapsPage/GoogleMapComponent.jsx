@@ -42,7 +42,9 @@ const GoogleMapComponent = ({
         style={{ display: placeInfo ? "flex" : "none" }}
       >
         <PlaceDetails place={placeInfo} />
+
         <div className="place-name">{placeInfo?.name}</div>
+
         {placeInfo?.rating && (
           <div className="user-rating-div">
             <div className="ratings">
@@ -54,6 +56,7 @@ const GoogleMapComponent = ({
             <div>({placeInfo?.user_ratings_total?.toLocaleString()})</div>
           </div>
         )}
+
         {placeInfo?.formatted_address && (
           <div className="address-div">
             <div>
@@ -62,6 +65,7 @@ const GoogleMapComponent = ({
             {placeInfo?.formatted_address}
           </div>
         )}
+
         {placeInfo?.formatted_phone_number && (
           <div className="phone-no-div">
             <div>
@@ -70,12 +74,13 @@ const GoogleMapComponent = ({
             {placeInfo?.formatted_phone_number}
           </div>
         )}
+
         {placeInfo?.opening_hours?.open_now && (
           <div style={{ fontWeight: "500" }}>
             {placeInfo?.opening_hours?.open_now ? (
               <span style={{ color: "green" }}>Open</span>
             ) : (
-              <span style={{ color: "red" }}>Cloded</span>
+              <span style={{ color: "red" }}>Closed</span>
             )}
           </div>
         )}
@@ -90,13 +95,14 @@ const GoogleMapComponent = ({
                 href={placeInfo?.website}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ textDecoration: "none", color: "#100f0d" }}
+                style={{ textDecoration: "none", color: "#100f0d", textTransform: 'lowercase' }}
               >
                 {shortenWebsiteUrl(placeInfo?.website)}
               </a>
             </div>
           </div>
         )}
+
         {placeInfo?.reviews?.length > 0 && (
           <div className="reviews-div">
             <div className="reviews-text">Reviews</div>
