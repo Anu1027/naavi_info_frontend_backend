@@ -61,7 +61,7 @@ const Publishers = () => {
               height: "70vh",
             }}
           >
-            Coming Soon 5
+            Coming Soon
           </div>
         );
         break;

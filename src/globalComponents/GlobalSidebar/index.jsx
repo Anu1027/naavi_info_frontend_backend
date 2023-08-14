@@ -185,7 +185,8 @@ const GlobalSidebar = ({ globalMenu }) => {
                 className="bottomIcon"
                 onClick={(e) => {
                   localStorage.clear();
-                  window.location.reload();
+                  // window.location.reload();
+                  navigate('/dashboard');
                 }}
               >
                 <img src={Lock} alt="" />

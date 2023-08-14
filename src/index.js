@@ -14,6 +14,7 @@ import { Provider } from "react-redux";
 import { saveState } from "./app/browser-storage.ts";
 import ContextProvider from "./pages/dashboard/WalletScan/globalComponents/Context/Context";
 import { GlobalContexProvider1 } from "./pages/dashboard/WalletScan/globalContext";
+import RegistrationContextProvider from "./RegistrationContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -31,26 +32,28 @@ store.subscribe(() => {
 
 root.render(
   <QueryClientProvider client={queryClient}>
-    <AppContextProvider>
-      <MainContextProvider>
-        <CoinContextProvider>
-          <VaultPageContextProvider>
-            <GlobalContexProvider>
-              <GlobalContexProvider1>
-                <ContextProvider>
-                  <React.StrictMode>
-                    <BrowserRouter>
-                      <Provider store={store}>
-                        <App />
-                      </Provider>
-                    </BrowserRouter>
-                  </React.StrictMode>
-                </ContextProvider>
-              </GlobalContexProvider1>
-            </GlobalContexProvider>
-          </VaultPageContextProvider>
-        </CoinContextProvider>
-      </MainContextProvider>
-    </AppContextProvider>
+    <RegistrationContextProvider>
+      <AppContextProvider>
+        <MainContextProvider>
+          <CoinContextProvider>
+            <VaultPageContextProvider>
+              <GlobalContexProvider>
+                <GlobalContexProvider1>
+                  <ContextProvider>
+                    <React.StrictMode>
+                      <BrowserRouter>
+                        <Provider store={store}>
+                          <App />
+                        </Provider>
+                      </BrowserRouter>
+                    </React.StrictMode>
+                  </ContextProvider>
+                </GlobalContexProvider1>
+              </GlobalContexProvider>
+            </VaultPageContextProvider>
+          </CoinContextProvider>
+        </MainContextProvider>
+      </AppContextProvider>
+    </RegistrationContextProvider>
   </QueryClientProvider>
 );

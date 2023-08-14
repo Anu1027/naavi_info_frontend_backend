@@ -13,11 +13,11 @@ import { GlobalContex } from "../../globalContext";
 import googlelogo from "../../static/images/googlelogo.svg";
 
 const DashboardLoginPage = () => {
-  const { selectedApp, setLoginData,
-    globalMenu,
-    setBankerEmail, } = useContext(GlobalContex);
+  const { selectedApp, setLoginData, globalMenu, setBankerEmail } =
+    useContext(GlobalContex);
   const { userLoginHandler } = useContext(MainContext);
-  const { appFullLogo, websiteTitle, websiteDescription } = useAppContextDetails();
+  const { appFullLogo, websiteTitle, websiteDescription } =
+    useAppContextDetails();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -34,8 +34,7 @@ const DashboardLoginPage = () => {
     registerApp({ email, app_code: "ice" });
     localStorage.setItem("username", data?.user?.username);
     Cookies.set(APP_USER_TOKEN, data?.idToken);
-    // navigate("/Publishers");
-    // navigate("/postLogin");
+    navigate("/Publishers");
     // navigate(`/${selectedApp?.appName}`)
   };
 
@@ -96,7 +95,7 @@ const DashboardLoginPage = () => {
             <img src={googlelogo} alt="" />
             <div>Continue With Google</div>
           </div>
-          <div className="register-div">
+          <div className="register-div" onClick={(e) => navigate("/register")}>
             <p>Click Here To Register With Email</p>
           </div>
         </div>
