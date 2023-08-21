@@ -1,8 +1,13 @@
-import React from "react";
-import { useJsApiLoader, GoogleMap, Marker } from "@react-google-maps/api";
+import React, { useEffect, useState } from "react";
+import {
+  GoogleMap,
+  Marker,
+  DirectionsRenderer,
+} from "@react-google-maps/api";
 import "./googlemapcomponent.scss";
 import RatingComponent from "./RatingComponent";
 import PlaceDetails from "./PlaceDetails";
+import { useCoinContextData } from "../../context/CoinContext";
 
 const webIcon =
   "https://www.gstatic.com/images/icons/material/system_gm/2x/public_gm_blue_24dp.png";
@@ -18,12 +23,56 @@ const GoogleMapComponent = ({
   currentLocation,
   setCurrentLocation,
   placeInfo,
+  selectedPlace,
+  directions,
+  setDirections,
+  selectedLocation,
+  showDirections,
 }) => {
+  // const {
+  //   directions,
+  //   setDirections,
+  //   selectedLocation,
+  //   setSelectedLocation,
+  //   showDirections,
+  //   setShowDirections,
+  // } = useCoinContextData();
+
   const shortenWebsiteUrl = (url) => {
     const parsedUrl = new URL(url);
     const domain = parsedUrl.hostname;
     return domain;
   };
+
+  const directionsService = new window.google.maps.DirectionsService(); // Create DirectionsService instance
+
+  // Handle directions response 1
+  const handleDirectionsResponse = (response, status) => {
+    if (status === "OK") {
+      setDirections(response);
+      const directionsRenderer = new window.google.maps.DirectionsRenderer();
+      directionsRenderer.setDirections(response);
+      directionsRenderer.setMap(map);
+    } else {
+      console.error("Error fetching directions:", status);
+    }
+  };
+
+  // Fetch directions when selectedPlace changes
+  useEffect(() => {
+    if (map && currentLocation !== null && selectedLocation !== null) {
+      directionsService.route(
+        {
+          origin: currentLocation,
+          destination: selectedLocation,
+          travelMode: window.google.maps.TravelMode.DRIVING,
+        },
+        handleDirectionsResponse
+      );
+    }
+  }, [map, currentLocation, selectedLocation]);
+
+  
 
   return (
     <div className="gmap-container">
@@ -35,6 +84,13 @@ const GoogleMapComponent = ({
           onLoad={(map) => setMap(map)}
         >
           {currentLocation && <Marker position={currentLocation} />}
+          {currentLocation !== null &&
+            selectedLocation !== null &&
+            directions && (
+              <DirectionsRenderer
+                directions={directions}
+              />
+            )}
         </GoogleMap>
       </div>
       <div
@@ -95,7 +151,11 @@ const GoogleMapComponent = ({
                 href={placeInfo?.website}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ textDecoration: "none", color: "#100f0d", textTransform: 'lowercase' }}
+                style={{
+                  textDecoration: "none",
+                  color: "#100f0d",
+                  textTransform: "lowercase",
+                }}
               >
                 {shortenWebsiteUrl(placeInfo?.website)}
               </a>

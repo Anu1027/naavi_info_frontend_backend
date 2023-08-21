@@ -1,23 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
 import GoogleMapComponent from "./GoogleMapComponent";
 import "./mapspage.scss";
 import {
-  useJsApiLoader,
-  GoogleMap,
-  Marker,
   Autocomplete,
 } from "@react-google-maps/api";
 import { LoadScript } from "@react-google-maps/api";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useCoinContextData } from "../../context/CoinContext";
 
 //images
-import logo from "../../static/images/logo.svg";
-import careerIcon from "../../static/images/mapspage/careerIcon.svg";
-import educationIcon from "../../static/images/mapspage/educationIcon.svg";
-import immigrationIcon from "../../static/images/mapspage/immigrationIcon.svg";
 import plus from "../../static/images/mapspage/plus.svg";
 import close from "../../static/images/mapspage/close.svg";
 import hamIcon from "../../static/images/icons/hamIcon.svg";
@@ -25,16 +16,6 @@ import hamIcon from "../../static/images/icons/hamIcon.svg";
 const libraries = ["places"];
 
 const MapsPage = () => {
-  const navigate = useNavigate();
-  // const {
-  //   directions,
-  //   setDirections,
-  //   selectedLocation,
-  //   setSelectedLocation,
-  //   showDirections,
-  //   setShowDirections,
-  // } = useCoinContextData();
-  const [option, setOption] = useState("Career");
   const [containers, setContainers] = useState([
     { id: 1, inputValue1: "", inputValue2: "", removable: false },
   ]);
@@ -50,7 +31,6 @@ const MapsPage = () => {
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [directions, setDirections] = useState(null);
   const [selectedLocation, setSelectedLocation] = useState(null);
-  const [showDirections, setShowDirections] = useState(true);
 
   const handleAddContainer = () => {
     const lastContainer = containers[containers.length - 1];
@@ -111,9 +91,6 @@ const MapsPage = () => {
   }, [resetLoaction]);
 
   const handleResetContainer = () => {
-    // const directionsRenderer = new window.google.maps.DirectionsRenderer();
-    // directionsRenderer.setMap(map);
-    // directionsRenderer.setDirections({ routes: [] }); // Clear directions
     setContainers([
       { id: 1, inputValue1: "", inputValue2: "", removable: false },
     ]);
@@ -125,7 +102,6 @@ const MapsPage = () => {
     setShowDatePicker(false);
     setDirections(null);
     setSelectedLocation(null);
-    setShowDirections(false);
   };
 
   const handlePlaceSelect = () => {
@@ -194,125 +170,9 @@ const MapsPage = () => {
           <div className="hamMenu">
             <img src={hamIcon} alt="" />
           </div>
-          <div
-            className="logo"
-            onClick={() => {
-              navigate("/");
-            }}
-          >
-            <img src={logo} alt="logo" />
-          </div>
-          <div className="menu-items">
-            <div>
-              <p>Paths</p>
-            </div>
-            <div>
-              <p>Explore</p>
-            </div>
-            <div>
-              <p>Products</p>
-            </div>
-            <div>
-              <p>Resources</p>
-            </div>
-            <div>
-              <p>Vendors</p>
-            </div>
-          </div>
-          <div className="btns-div">
-            <div
-              className="gs-Btn"
-              onClick={() => {
-                navigate("/login");
-              }}
-            >
-              Get Started
-            </div>
-          </div>
         </div>
-        <div className="maps-color-box"></div>
         <div className="maps-container">
           <div className="maps-sidebar">
-            <div className="top-icons">
-              <div
-                className="each-icon"
-                onClick={() => {
-                  setOption("Career");
-                }}
-              >
-                <div
-                  className="border-div"
-                  style={{
-                    border:
-                      option === "Career"
-                        ? "1px solid #100F0D"
-                        : "1px solid #e7e7e7",
-                  }}
-                >
-                  <img src={careerIcon} alt="" />
-                </div>
-                <div
-                  className="icon-name-txt"
-                  style={{
-                    fontWeight: option === "Career" ? "600" : "",
-                  }}
-                >
-                  Career
-                </div>
-              </div>
-              <div
-                className="each-icon"
-                onClick={() => {
-                  setOption("Education");
-                }}
-              >
-                <div
-                  className="border-div"
-                  style={{
-                    border:
-                      option === "Education"
-                        ? "1px solid #100F0D"
-                        : "1px solid #e7e7e7",
-                  }}
-                >
-                  <img src={educationIcon} alt="" />
-                </div>
-                <div
-                  className="icon-name-txt"
-                  style={{
-                    fontWeight: option === "Education" ? "600" : "",
-                  }}
-                >
-                  Education
-                </div>
-              </div>
-              <div
-                className="each-icon"
-                onClick={() => {
-                  setOption("Immigration");
-                }}
-              >
-                <div
-                  className="border-div"
-                  style={{
-                    border:
-                      option === "Immigration"
-                        ? "1px solid #100F0D"
-                        : "1px solid #e7e7e7",
-                  }}
-                >
-                  <img src={immigrationIcon} alt="" />
-                </div>
-                <div
-                  className="icon-name-txt"
-                  style={{
-                    fontWeight: option === "Immigration" ? "600" : "",
-                  }}
-                >
-                  Immigration
-                </div>
-              </div>
-            </div>
             <div className="mid-area">
               <div className="input-div1">
                 <input
@@ -341,11 +201,6 @@ const MapsPage = () => {
                       <input
                         type="text"
                         placeholder="Where Do You Want To Go?"
-                        // value={container.inputValue1}
-                        // onChange={(e) => {
-                        //   handleInputChange(e, container.id, 1);
-                        //   setSearchTerm(e.target.value);
-                        // }}
                         value={selectedPlace || ""}
                         onChange={(e) => {
                           handleInputChange(e, container.id, 1);
@@ -355,18 +210,6 @@ const MapsPage = () => {
                     </Autocomplete>
                   </div>
                   <div className="input-div2">
-                    {/* <input
-                      type="text"
-                      placeholder="By When?"
-                      // value={container.inputValue2}
-                      // onChange={(e) => handleInputChange(e, container.id, 2)}
-                      // onFocus={() => setShowDatePicker(true)}
-                      // onBlur={() => setShowDatePicker(false)}
-                      onFocus={(e) => e.target.blur()}
-                      value={
-                        selectedDate ? selectedDate.toLocaleDateString() : ""
-                      }
-                    /> */}
                     <DatePicker
                       selected={selectedDate}
                       onChange={handleDateChange}
@@ -403,7 +246,6 @@ const MapsPage = () => {
               directions={directions}
               setDirections={setDirections}
               selectedLocation={selectedLocation}
-              showDirections={showDirections}
             />
           </div>
         </div>
