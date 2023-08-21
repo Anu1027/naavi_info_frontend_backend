@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useJsApiLoader, GoogleMap, Marker } from "@react-google-maps/api";
+import { GoogleMap, Marker, DirectionsRenderer } from "@react-google-maps/api";
 import "./mapcomponent.scss";
 import PlaceDetails from "../../pages/MapsPage/PlaceDetails";
 import RatingComponent from "../../pages/MapsPage/RatingComponent";
@@ -18,12 +18,51 @@ const MapComponent = ({
   pathCurrentLocation,
   setPathCurrentLocation,
   pathPlaceInfo,
+  pathSelectedPlace,
+  pathDirections,
+  setPathDirections,
+  pathSelectedLocation,
+  pathShowDirections,
 }) => {
+
   const shortenWebsiteUrl = (url) => {
     const parsedUrl = new URL(url);
     const domain = parsedUrl.hostname;
     return domain;
   };
+
+  const directionsService = new window.google.maps.DirectionsService(); // Create DirectionsService instance
+
+  // Handle directions response 1
+  const handleDirectionsResponse = (response, status) => {
+    if (status === "OK") {
+      setPathDirections(response);
+      const directionsRenderer = new window.google.maps.DirectionsRenderer();
+      directionsRenderer.setDirections(response);
+      directionsRenderer.setMap(pathMap);
+    } else {
+      console.error("Error fetching directions:", status);
+    }
+  };
+
+  // Fetch directions when selectedPlace changes
+  useEffect(() => {
+    if (
+      pathMap &&
+      pathCurrentLocation !== null &&
+      pathSelectedLocation !== null
+    ) {
+      directionsService.route(
+        {
+          origin: pathCurrentLocation,
+          destination: pathSelectedLocation,
+          travelMode: window.google.maps.TravelMode.DRIVING,
+        },
+        handleDirectionsResponse
+      );
+    }
+  }, [pathMap, pathCurrentLocation, pathSelectedLocation]);
+
   return (
     <div className="map-component1">
       <div className="map-content1">
@@ -33,7 +72,12 @@ const MapComponent = ({
           mapContainerStyle={{ width: "100%", height: "100%" }}
           onLoad={(pathMap) => setPathMap(pathMap)}
         >
-          {pathCurrentLocation && <Marker position={pathCurrentLocation} />}
+          {pathSelectedLocation === null && pathCurrentLocation && <Marker position={pathCurrentLocation} />}
+          {pathCurrentLocation !== null &&
+            pathSelectedLocation !== null &&
+            pathDirections && (
+              <DirectionsRenderer directions={pathDirections} />
+            )}
         </GoogleMap>
       </div>
       <div
@@ -94,7 +138,11 @@ const MapComponent = ({
                 href={pathPlaceInfo?.website}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ textDecoration: "none", color: "#100f0d", textTransform: 'lowercase' }}
+                style={{
+                  textDecoration: "none",
+                  color: "#100f0d",
+                  textTransform: "lowercase",
+                }}
               >
                 {shortenWebsiteUrl(pathPlaceInfo?.website)}
               </a>

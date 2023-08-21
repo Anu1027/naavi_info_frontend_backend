@@ -42,6 +42,9 @@ const PathComponent = () => {
   const [pathPlaceInfo, setPathPlaceInfo] = useState("");
   const [pathSelectedDate, setPathSelectedDate] = useState(null);
   const [pathShowDatePicker, setPathShowDatePicker] = useState(false);
+  const [pathDirections, setPathDirections] = useState(null);
+  const [pathSelectedLocation, setPathSelectedLocation] = useState(null);
+  const [pathShowDirections, setPathShowDirections] = useState(true);
 
   const handleAddContainer = () => {
     const lastContainer = containers[containers.length - 1];
@@ -86,6 +89,7 @@ const PathComponent = () => {
   useEffect(() => {
     if (navigator.geolocation) {
       setPathSelectedPlace("");
+      setPathSelectedLocation(null);
       navigator.geolocation.getCurrentPosition(
         (position) => {
           setPathCurrentLocation({
@@ -104,16 +108,25 @@ const PathComponent = () => {
   }, [pathResetLoaction]);
 
   const handleResetContainer = () => {
-    setContainers([
-      { id: 1, inputValue1: "", inputValue2: "", removable: false },
-    ]);
-    if (pathOption === "List View") {
-      setSearchterm("");
-    }
-    setPathResetLocation(!pathResetLoaction);
-    setPathPlaceInfo("");
-    setPathShowDatePicker(false);
-    setPathSelectedDate("");
+    // const directionsRenderer = new window.google.maps.DirectionsRenderer();
+    // directionsRenderer.setMap(map);
+    // directionsRenderer.setDirections({ routes: [] }); // Clear directions
+    // setContainers([
+    //   { id: 1, inputValue1: "", inputValue2: "", removable: false },
+    // ]);
+    // if (pathOption === "List View") {
+    //   setSearchterm("");
+    // }
+    // setPathResetLocation(!pathResetLoaction);
+    // setPathSelectedPlace(null);
+    // setPathPlacesId(null);
+    // setPathPlaceInfo("");
+    // setPathSelectedDate(null);
+    // setPathShowDatePicker(false);
+    // setPathDirections(null);
+    // setPathSelectedLocation(null);
+    // setPathShowDirections(null);
+    window.location.reload();
   };
 
   const handlePlaceSelect = () => {
@@ -124,7 +137,7 @@ const PathComponent = () => {
           lat: place?.geometry?.location?.lat(),
           lng: place?.geometry?.location?.lng(),
         };
-        setPathCurrentLocation(location);
+        setPathSelectedLocation(location);
         setPathSelectedPlace(place?.formatted_address);
         const placeId = place?.place_id;
         setPathPlacesId(placeId);
@@ -411,6 +424,11 @@ const PathComponent = () => {
                   pathCurrentLocation={pathCurrentLocation}
                   setPathCurrentLocation={setPathCurrentLocation}
                   pathPlaceInfo={pathPlaceInfo}
+                  pathSelectedPlace={pathSelectedPlace}
+                  pathDirections={pathDirections}
+                  setPathDirections={setPathDirections}
+                  pathSelectedLocation={pathSelectedLocation}
+                  pathShowDirections={pathShowDirections}
                 />
               ) : pathOption === "List View" ? (
                 <Listview searchTerm={searchTerm} />

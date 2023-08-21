@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  GoogleMap,
-  Marker,
-  DirectionsRenderer,
-} from "@react-google-maps/api";
+import { GoogleMap, Marker, DirectionsRenderer } from "@react-google-maps/api";
 import "./googlemapcomponent.scss";
 import RatingComponent from "./RatingComponent";
 import PlaceDetails from "./PlaceDetails";
@@ -72,8 +68,6 @@ const GoogleMapComponent = ({
     }
   }, [map, currentLocation, selectedLocation]);
 
-  
-
   return (
     <div className="gmap-container">
       <div className="map-content">
@@ -83,13 +77,13 @@ const GoogleMapComponent = ({
           mapContainerStyle={{ width: "100%", height: "100%" }}
           onLoad={(map) => setMap(map)}
         >
-          {currentLocation && <Marker position={currentLocation} />}
+          {selectedLocation === null && currentLocation && (
+            <Marker position={currentLocation} />
+          )}
           {currentLocation !== null &&
             selectedLocation !== null &&
-            directions && (
-              <DirectionsRenderer
-                directions={directions}
-              />
+            directions !== null && (
+              <DirectionsRenderer directions={directions} />
             )}
         </GoogleMap>
       </div>

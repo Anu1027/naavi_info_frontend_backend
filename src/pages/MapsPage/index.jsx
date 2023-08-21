@@ -114,18 +114,19 @@ const MapsPage = () => {
     // const directionsRenderer = new window.google.maps.DirectionsRenderer();
     // directionsRenderer.setMap(map);
     // directionsRenderer.setDirections({ routes: [] }); // Clear directions
-    setContainers([
-      { id: 1, inputValue1: "", inputValue2: "", removable: false },
-    ]);
-    setResetLocation(!resetLoaction);
-    setSelectedPlace(null);
-    setPlacesId(null);
-    setPlaceInfo("");
-    setSelectedDate(null);
-    setShowDatePicker(false);
-    setDirections(null);
-    setSelectedLocation(null);
-    setShowDirections(false);
+    // setContainers([
+    //   { id: 1, inputValue1: "", inputValue2: "", removable: false },
+    // ]);
+    // setResetLocation(!resetLoaction);
+    // setSelectedPlace(null);
+    // setPlacesId(null);
+    // setPlaceInfo("");
+    // setSelectedDate(null);
+    // setShowDatePicker(false);
+    // setDirections(null);
+    // setSelectedLocation(null);
+    // setShowDirections(false);
+    window.location.reload();
   };
 
   const handlePlaceSelect = () => {
