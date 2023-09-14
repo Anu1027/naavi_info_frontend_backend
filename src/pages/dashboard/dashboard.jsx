@@ -42,6 +42,7 @@ import WalletScan from "./WalletScan";
 import MapsPage from "../MapsPage";
 import PathComponent from "../../components/PathComponent";
 import JourneyPage from "../JourneyPage";
+import CurrentStep from "../CurrentStep";
 
 const accountantsData = [
   {
@@ -1287,6 +1288,63 @@ const Dashboard = () => {
                     onClick={() => setShowDrop(false)}
                   >
                     <JourneyPage />
+                  </div>
+                </>
+              ) : sideNav === "Current Step" ? (
+                <>
+                  <div className="dash-nav">
+                    <div
+                      className="search-input-box"
+                      onClick={() => setShowDrop(false)}
+                    >
+                      <input
+                        className="search-input"
+                        type="text"
+                        placeholder="Search..."
+                        // value={searchVault}
+                        // onChange={(e) => setSearchVault(e.target.value)}
+                      />
+                    </div>
+                    <div
+                      className="search-box"
+                      onClick={() => setShowDrop(false)}
+                    >
+                      <img className="search-icon" src={searchic} alt="" />
+                    </div>
+                    <div
+                      className="full-user"
+                      onClick={() => setShowDrop(!showDrop)}
+                    >
+                      <div className="user-box">
+                        <img
+                          className="user-icon"
+                          src={
+                            JSON.parse(localStorage.getItem("user"))?.user
+                              ?.profile_img !== undefined
+                              ? JSON.parse(localStorage.getItem("user"))?.user
+                                  ?.profile_img
+                              : profile
+                          }
+                          alt=""
+                        />
+                      </div>
+                      <div
+                        className="arrow-box"
+                        style={{
+                          transform: showDrop ? "rotate(180deg)" : "",
+                          cursor: "pointer",
+                        }}
+                      >
+                        <img className="arrow-icon" src={downarrow} alt="" />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className="services-main"
+                    style={{ height: "calc(100% - 70px)" }}
+                    onClick={() => setShowDrop(false)}
+                  >
+                    <CurrentStep />
                   </div>
                 </>
               ) : (

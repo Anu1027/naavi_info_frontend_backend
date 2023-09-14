@@ -27,8 +27,12 @@ const sidebarMenu2 = [
   },
   {
     id: 1,
-    title: "Next Steps",
+    title: "Current Step",
   },
+  // {
+  //   id: 2,
+  //   title: "Next Steps",
+  // },
   {
     id: 2,
     title: "Calendar",
