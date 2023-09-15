@@ -3,7 +3,7 @@ import realtorwhite from "../../static/images/dashboard/realtorwhite.svg";
 import "./accDashsidebar.scss";
 import { useStore } from "../store/store.ts";
 import { useNavigate } from "react-router-dom";
-import logo from './logo.svg'
+import logo from "./logo.svg";
 
 const sidebarMenu1 = [
   {
@@ -71,7 +71,12 @@ const AccDashsidebar = ({ isNotOnMainPage }) => {
           display: "flex",
         }}
       >
-        <img className="dashboard-logo" src={logo} alt="" />
+        <img
+          className="dashboard-logo"
+          src={logo}
+          alt=""
+          style={{ width: "85%" }}
+        />
       </div>
       <div
         style={{
@@ -116,7 +121,7 @@ const AccDashsidebar = ({ isNotOnMainPage }) => {
                     navigate("/dashboard/accountants");
                   } else if (each.click) {
                     setaccsideNav(each.title);
-                  } 
+                  }
                 }}
               >
                 {each.title}

@@ -741,7 +741,7 @@ const AccProfile = () => {
     } else if (editCountry) {
       setEditCountry(false);
       setNewCountry("");
-    } 
+    }
     // else if (editPartneringInstitutions) {
     //   setEditPartneringInstitutions(false);
     //   setNewPartneringInstitutions("");
@@ -754,7 +754,7 @@ const AccProfile = () => {
     // } else if (editSpecialities) {
     //   setEditSpecialities(false);
     //   setNewSpecialities("");
-    // } 
+    // }
     else if (editCoverPic) {
       setEditCoverPic(false);
       setNewCoverPic("");
@@ -941,9 +941,7 @@ const AccProfile = () => {
                             </div>
                           </div>
                           <div className="pfl-boxr">
-                            <div className="pfl-box-label">
-                              Accountant Username
-                            </div>
+                            <div className="pfl-box-label">Naavi Username</div>
                             <div className="pfl-box-inp">
                               {profileData?.bankerTag}
                             </div>
@@ -1207,7 +1205,7 @@ const AccProfile = () => {
                           <div className="pfr-head">Make Profile Public</div>
                           <div className="pfr-desc">
                             Making your profile public will allow you to be
-                            discovered on the Accountants.io directory.
+                            discovered on the Naavi directory.
                           </div>
                         </div>
                         <div className="pfr-btn1">
@@ -1238,7 +1236,7 @@ const AccProfile = () => {
                       <div className="pfr-1">
                         <div>
                           <div className="pfr-head">
-                            Create An Accountant Profile
+                            Create An Vendor Profile
                           </div>
                           <div className="pfr-desc">
                             Click here to change your password. You will need to
@@ -1281,7 +1279,7 @@ const AccProfile = () => {
                       setShowDrop(false);
                     }}
                   >
-                    <div>Create An Accountant Profile</div>
+                    <div>Create An Vendor Profile</div>
                     <div>
                       <img src={arrow} alt="" />
                     </div>
@@ -2024,14 +2022,14 @@ const AccProfile = () => {
                       funcValue={brandDisplayName}
                     />
                     <InputDivsCheckFunctionality
-                      heading="Accountant Username"
+                      heading="Naavi Username"
                       placeholderText="Username.."
                       setFunc={setBrandUserName}
                       funcValue={brandUserName}
                       userNameAvailable={userNameAvailable1}
                     />
                     <InputDivsTextArea1
-                      heading="Accountant Bio"
+                      heading="Naavi Bio"
                       placeholderText="Bio..."
                       setFunc={setBrandDescription}
                       funcValue={brandDescription}
@@ -2159,7 +2157,7 @@ const AccProfile = () => {
 
             {createBrandProfileStep === 3 && (
               <div className="successMsg">
-                You Have Successfully Created Your Accountant Profile.
+                You Have Successfully Created Your Naavi Profile.
               </div>
             )}
           </div>
@@ -2718,8 +2716,14 @@ const AccProfile = () => {
             </div>
           </div>
 
-          <div className="overall-div" style={{ height: "calc(100% - 10.5rem)" }}>
-            <div className="each-action1" style={{ height: "12rem", padding: '0' }}>
+          <div
+            className="overall-div"
+            style={{ height: "calc(100% - 10.5rem)" }}
+          >
+            <div
+              className="each-action1"
+              style={{ height: "12rem", padding: "0" }}
+            >
               <div style={{ height: "100%", width: "100%" }}>
                 <img
                   src={profileData?.coverPicURL}
@@ -2733,7 +2737,10 @@ const AccProfile = () => {
               <div className="new-txt">New</div>
               <div className="linee"></div>
             </div>
-            <div className="each-action1" style={{ height: "12rem", padding: '0' }}>
+            <div
+              className="each-action1"
+              style={{ height: "12rem", padding: "0" }}
+            >
               <ImageUploadDivCoverPic
                 setFunc={setNewCoverPic}
                 funcValue={newCoverPic}
@@ -3155,20 +3162,20 @@ export const ImageUploadDivCoverPic = ({ setFunc, funcValue }) => {
   return (
     <div
       className="imageUploadDiv"
-      onClick={() => setSelectedDropDown('')}
-      style={{ width: '100%', height: '100%' }}
+      onClick={() => setSelectedDropDown("")}
+      style={{ width: "100%", height: "100%" }}
     >
       {funcValue ? (
         <div
           className="imageDiv"
-          style={{ height: '100%', width: '100%', marginRight: '0' }}
+          style={{ height: "100%", width: "100%", marginRight: "0" }}
         >
           <img
             src={funcValue}
             alt="planBAccountPic"
             className="profileImg"
             htmlFor="profileUpdateImgPlanB"
-            style={{ width: '100%', height: '100%' }}
+            style={{ width: "100%", height: "100%" }}
           />
         </div>
       ) : (
@@ -3176,9 +3183,9 @@ export const ImageUploadDivCoverPic = ({ setFunc, funcValue }) => {
           htmlFor="profileUpdateImgPlanB"
           className="uploadFileDiv"
           style={{
-            width: '100%',
-            height: '100%',
-            marginBottom: '0',
+            width: "100%",
+            height: "100%",
+            marginBottom: "0",
           }}
         >
           <input
@@ -3192,12 +3199,12 @@ export const ImageUploadDivCoverPic = ({ setFunc, funcValue }) => {
           />
           <div
             style={{
-              width: '100%',
-              height: '100%',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              border: 'none',
+              width: "100%",
+              height: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              border: "none",
             }}
           >
             {planBAccountPicUploading ? (
@@ -3207,7 +3214,7 @@ export const ImageUploadDivCoverPic = ({ setFunc, funcValue }) => {
                 <img
                   src={upload}
                   alt=""
-                  style={{ width: '50px', height: '50px' }}
+                  style={{ width: "50px", height: "50px" }}
                 />
               </div>
             )}

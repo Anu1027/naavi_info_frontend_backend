@@ -92,12 +92,12 @@ const Directory = () => {
           <div className="top-div" style={{ background: backgroundColor }}>
             <div className="hiding-div" style={{ background: backgroundColor }}>
               <div className="static-div">
-                <div>Find Your Next Accountant</div>
+                <div>Find Your Next Mentor</div>
               </div>
               <div className="search-container">
                 <input
                   type="text"
-                  placeholder="Search Accountants By Name.."
+                  placeholder="Search Mentors By Name.."
                   onChange={(event) => filterItem(event.target.value)}
                 />
                 <div className="search-btn">
@@ -205,7 +205,7 @@ const Directory = () => {
               <div className="mob-top-div">
                 <div className="mob-hiding-div">
                   <div className="mob-static-div">
-                    <div>Find An Accountant</div>
+                    <div>Find A Mentor</div>
                   </div>
                   <div className="mob-search-container">
                     <input
