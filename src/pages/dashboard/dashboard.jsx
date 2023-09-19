@@ -201,8 +201,8 @@ const Dashboard = () => {
   const handleAutomatedServices = () => {
     setisLoading(true);
     let obj = {
-      app_code: "TaxChains",
-      product_creator: "shorupan@taxchains.com",
+      app_code: "naavi",
+      product_creator: "ramkaluru@edutechex.com",
     };
     GetAutomatedServices(obj)
       .then((res) => {
