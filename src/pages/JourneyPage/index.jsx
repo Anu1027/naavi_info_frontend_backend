@@ -1,10 +1,13 @@
 import React from "react";
+import { useStore } from "../../components/store/store.ts";
 import "./journey.scss";
 
 import dummy from "./dummy.svg";
 import arrow from "./arrow.svg";
 
 const JourneyPage = () => {
+  const { sideNav, setsideNav } = useStore();
+
   return (
     <div className="journeypage">
       <div className="journey-top-area">
@@ -14,7 +17,9 @@ const JourneyPage = () => {
         </div>
       </div>
       <div className="journey-steps-area">
-        <div className="each-j-step relative-div">
+        <div className="each-j-step relative-div" onClick={() => {
+          setsideNav('Current Step')
+        }}>
           <div className="each-j-img">
             <img src={dummy} alt="" />
           </div>
@@ -37,7 +42,9 @@ const JourneyPage = () => {
           </div>
         </div>
 
-        <div className="each-j-step relative-div">
+        <div className="each-j-step relative-div" onClick={() => {
+          setsideNav('Current Step')
+        }}>
           <div className="each-j-img">
             <img src={dummy} alt="" />
           </div>
@@ -54,7 +61,9 @@ const JourneyPage = () => {
           </div>
         </div>
 
-        <div className="each-j-step">
+        <div className="each-j-step" onClick={() => {
+          setsideNav('Current Step')
+        }}>
           <div className="each-j-img">
             <img src={dummy} alt="" />
           </div>
@@ -68,7 +77,9 @@ const JourneyPage = () => {
           </div>
         </div>
 
-        <div className="each-j-step relative-div">
+        <div className="each-j-step relative-div" onClick={() => {
+          setsideNav('Current Step')
+        }}>
           <div className="each-j-img">
             <img src={dummy} alt="" />
           </div>
@@ -85,7 +96,9 @@ const JourneyPage = () => {
           </div>
         </div>
 
-        <div className="each-j-step relative-div">
+        <div className="each-j-step relative-div" onClick={() => {
+          setsideNav('Current Step')
+        }}>
           <div className="each-j-img">
             <img src={dummy} alt="" />
           </div>
@@ -102,7 +115,9 @@ const JourneyPage = () => {
           </div>
         </div>
 
-        <div className="each-j-step">
+        <div className="each-j-step" onClick={() => {
+          setsideNav('Current Step')
+        }}>
           <div className="each-j-img">
             <img src={dummy} alt="" />
           </div>
