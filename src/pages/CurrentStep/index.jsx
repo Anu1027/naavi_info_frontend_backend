@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import "./currentstep.scss";
 
 import dummy from "../JourneyPage/dummy.svg";
+import edutech from "./edutech.svg";
+import resory from "./resory.svg";
+import lek from "./lek.svg";
 
 const CurrentStep = () => {
-
   const [showNewDiv, setShowNewDiv] = useState(null);
 
   const handleRejectClick = () => {
@@ -29,7 +31,9 @@ const CurrentStep = () => {
               <div className="macro-image-div">
                 <img src={dummy} alt="" />
               </div>
-              <div className="step-text">Choose the right <br /> curriculum</div>
+              <div className="step-text">
+                Choose the right <br /> curriculum
+              </div>
               <div className="macro-text-div">
                 Choosing the right curriculum is an important decision, whether
                 it's for yourself, your child, or a group of students. The
@@ -90,14 +94,33 @@ const CurrentStep = () => {
                       : ""
                   }`}
                 >
-                  <div className="accept-btn">Accept Offer</div>
-                  <div
-                    className="reject-btn"
-                    onClick={() => {
-                      handleRejectClick();
-                    }}
-                  >
-                    Reject Offer
+                  <div className="nano-img">
+                    <img src={edutech} alt="" />
+                  </div>
+                  <div className="nano-price">
+                    <div className="disount-price">₹155</div>
+                    <div className="original-price">₹205</div>
+                  </div>
+                  <div className="nano-speed-container">
+                    <div className="speed-div">
+                      <span>Speed: </span>
+                      <span>14 Days</span>
+                    </div>
+                    <div className="speed-div">
+                      <span>Success Rate:</span>
+                      <span>525/622</span>
+                    </div>
+                  </div>
+                  <div className="nano-btns">
+                    <div className="accept-btn">Accept Offer</div>
+                    <div
+                      className="reject-btn"
+                      onClick={() => {
+                        handleRejectClick();
+                      }}
+                    >
+                      Reject Offer
+                    </div>
                   </div>
                 </div>
               </div>
