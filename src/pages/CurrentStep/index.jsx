@@ -8,13 +8,40 @@ import lek from "./lek.svg";
 
 const CurrentStep = () => {
   const [showNewDiv, setShowNewDiv] = useState(null);
+  const [position1, setPosition1] = useState(1);
+  const [position2, setPosition2] = useState(2);
+  const [position3, setPosition3] = useState(3);
 
   const handleRejectClick = () => {
-    setShowNewDiv(false);
+    if (position1 === 1) {
+      setPosition1(3);
+    } else if (position1 === 2) {
+      setPosition1(1);
+    } else {
+      setPosition1(2);
+    }
 
-    setTimeout(() => {
-      setShowNewDiv(true);
-    }, 200);
+    if (position2 === 2) {
+      setPosition2(1);
+    } else if (position2 === 3) {
+      setPosition2(2);
+    } else {
+      setPosition2(3);
+    }
+
+    if (position3 === 3) {
+      setPosition3(2);
+    } else if (position3 === 2) {
+      setPosition3(1);
+    } else {
+      setPosition3(3);
+    }
+
+    // setShowNewDiv(false);
+
+    // setTimeout(() => {
+    //   setShowNewDiv(true);
+    // }, 200);
   };
 
   return (
@@ -85,7 +112,7 @@ const CurrentStep = () => {
               </div>
               <div className="nano-overall-div">
                 <div className="nano-div1"></div>
-                <div
+                {/* <div
                   className={`nano-div2 ${
                     showNewDiv === true
                       ? "slide-in"
@@ -122,7 +149,39 @@ const CurrentStep = () => {
                       Reject Offer
                     </div>
                   </div>
-                </div>
+                </div> */}
+                <Carousel1
+                  showNewDiv={showNewDiv}
+                  handleRejectClick={handleRejectClick}
+                  position1={position1}
+                  // position2={position2}
+                  // position3={position3}
+                  image={resory}
+                  originalprice={"250"}
+                  discountprice={"999"}
+                />
+
+                <Carousel2
+                  showNewDiv={showNewDiv}
+                  handleRejectClick={handleRejectClick}
+                  // position1={position1}
+                  position2={position2}
+                  // position3={position3}
+                  image={edutech}
+                  originalprice={"250"}
+                  discountprice={"155"}
+                />
+
+                <Carousel3
+                  showNewDiv={showNewDiv}
+                  handleRejectClick={handleRejectClick}
+                  // position1={position1}
+                  // position2={position2}
+                  position3={position3}
+                  image={lek}
+                  originalprice={"250"}
+                  discountprice={"273"}
+                />
               </div>
             </div>
           </div>
@@ -142,3 +201,185 @@ const CurrentStep = () => {
 };
 
 export default CurrentStep;
+
+const Carousel1 = ({
+  showNewDiv,
+  handleRejectClick,
+  position1,
+  // position2,
+  // position3,
+  image,
+  originalprice,
+  discountprice,
+}) => {
+  return (
+    <div
+      className={`nano-div2 ${
+        showNewDiv === true
+          ? "slide-in"
+          : showNewDiv === false
+          ? "fade-out"
+          : ""
+      }`}
+      style={{
+        left: position1 === 1 ? "0" : position1 === 2 ? "25%" : "50%",
+        zIndex : position1 === 2 ? '3' : '2'
+      }}
+    >
+      <div className="nano-img">
+        <img src={image} alt="" />
+      </div>
+      <div className="nano-price">
+        <div className="disount-price">₹{discountprice}</div>
+        <div className="original-price">₹{originalprice}</div>
+      </div>
+      <div className="nano-speed-container">
+        <div className="speed-div">
+          <span>Speed: </span>
+          <span>14 Days</span>
+        </div>
+        <div className="speed-div">
+          <span>Success Rate:</span>
+          <span>525/622</span>
+        </div>
+      </div>
+      <div className="nano-btns">
+        <div className="accept-btn">Accept Offer</div>
+        <div
+          className="reject-btn"
+          onClick={() => {
+            handleRejectClick();
+          }}
+        >
+          Reject Offer
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const Carousel2 = ({
+  showNewDiv,
+  handleRejectClick,
+  // position1,
+  position2,
+  // position3,
+  image,
+  originalprice,
+  discountprice,
+}) => {
+  return (
+    <div
+      className={`nano-div2 ${
+        showNewDiv === true
+          ? "slide-in"
+          : showNewDiv === false
+          ? "fade-out"
+          : ""
+      }`}
+      style={{
+        left: position2 === 1 ? "0" : position2 === 2 ? "25%" : "50%",
+        zIndex : position2 === 2 ? '3' : '2'
+      }}
+    >
+      <div className="nano-img">
+        <img src={image} alt="" />
+      </div>
+      <div className="nano-price">
+        <div className="disount-price">₹{discountprice}</div>
+        <div className="original-price">₹{originalprice}</div>
+      </div>
+      <div className="nano-speed-container">
+        <div className="speed-div">
+          <span>Speed: </span>
+          <span>14 Days</span>
+        </div>
+        <div className="speed-div">
+          <span>Success Rate:</span>
+          <span>525/622</span>
+        </div>
+      </div>
+      <div className="nano-btns">
+        <div className="accept-btn">Accept Offer</div>
+        <div
+          className="reject-btn"
+          onClick={() => {
+            handleRejectClick();
+          }}
+        >
+          Reject Offer
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const Carousel3 = ({
+  showNewDiv,
+  handleRejectClick,
+  // position1,
+  // position2,
+  position3,
+  image,
+  originalprice,
+  discountprice,
+}) => {
+  return (
+    <div
+      className={`nano-div2 ${
+        showNewDiv === true
+          ? "slide-in"
+          : showNewDiv === false
+          ? "fade-out"
+          : ""
+      }`}
+      style={{
+        left:
+          // position1 === 1
+          //   ? "0"
+          //   : position1 === 2
+          //   ? "25%"
+          //   : position1 === 3
+          //   ? "50%"
+          //   : position2 === 1
+          //   ? "0"
+          //   : position2 === 2
+          //   ? "25%"
+          //   : position2 === 3
+          //   ? "50%"
+          //   :
+          position3 === 1 ? "0" : position3 === 2 ? "25%" : "50%",
+          zIndex : position3 === 2 ? '3' : '2'
+      }}
+    >
+      <div className="nano-img">
+        <img src={image} alt="" />
+      </div>
+      <div className="nano-price">
+        <div className="disount-price">₹{discountprice}</div>
+        <div className="original-price">₹{originalprice}</div>
+      </div>
+      <div className="nano-speed-container">
+        <div className="speed-div">
+          <span>Speed: </span>
+          <span>14 Days</span>
+        </div>
+        <div className="speed-div">
+          <span>Success Rate:</span>
+          <span>525/622</span>
+        </div>
+      </div>
+      <div className="nano-btns">
+        <div className="accept-btn">Accept Offer</div>
+        <div
+          className="reject-btn"
+          onClick={() => {
+            handleRejectClick();
+          }}
+        >
+          Reject Offer
+        </div>
+      </div>
+    </div>
+  );
+};
