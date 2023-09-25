@@ -174,6 +174,8 @@ const Dashboard = () => {
   const [isServiceByLoading, setIsServiceByLoading] = useState(false);
   const [choice, setChoice] = useState("");
   const [searchVault, setSearchVault] = useState("");
+  const [selectedDropDown, setSelectedDropDown] = useState("Type Of Node");
+  const [selectedNode, setSelectedNode] = useState("");
 
   const userDetails = JSON.parse(localStorage.getItem("user"));
 
@@ -189,7 +191,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     setShowDrop(false);
-    if (sideNav === "Mentors") {
+    if (sideNav === "Nodes") {
       handleSpecalities();
       handleAccountant();
     } else if (sideNav === "Services") {
@@ -381,7 +383,7 @@ const Dashboard = () => {
           </div>
           <div className="dashboard-screens">
             <div style={{ height: "100%" }}>
-              {sideNav === "Mentors" ? (
+              {sideNav === "Nodes" ? (
                 <>
                   <div className="dash-nav">
                     <div
@@ -391,7 +393,7 @@ const Dashboard = () => {
                       <input
                         className="search-input"
                         type="text"
-                        placeholder="Search For Mentors..."
+                        placeholder="Search For Nodes..."
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
                       />
@@ -434,7 +436,10 @@ const Dashboard = () => {
                     className="account-container"
                     onClick={() => setShowDrop(false)}
                   >
-                    <div className="account-left">
+                    <div
+                      className="account-left"
+                      style={{ paddingBottom: "0" }}
+                    >
                       <div className="filter-actions-box">
                         {/* <div className="filter-action1">Add A Filter</div>
                         <div className="filter-action2">Add A Filter</div> */}
@@ -551,7 +556,7 @@ const Dashboard = () => {
                       </div>
                     </div>
                     <div className="account-right">
-                      <div className="account-right-box1">
+                      {/* <div className="account-right-box1">
                         <div className="account-right-title">Country</div>
                         <div style={{ overflowY: "scroll", height: "73%" }}>
                           <div className="check-div">
@@ -572,8 +577,8 @@ const Dashboard = () => {
                           </div>
                         </div>
                         <div className="account-right-btn">See All</div>
-                      </div>
-                      <div className="account-right-box2">
+                      </div> */}
+                      {/* <div className="account-right-box2">
                         <div className="account-right-title">Specialty</div>
                         {Speaclities != null &&
                         Speaclities != undefined &&
@@ -609,6 +614,317 @@ const Dashboard = () => {
                           <></>
                         )}
                         <div className="account-right-btn">See All</div>
+                      </div> */}
+                      <div className="account-right-box1-d">
+                        <div className="each-dd-option">
+                          <div
+                            className="each-dd-option-div"
+                            onClick={() => {
+                              setSelectedDropDown("Type Of Node");
+                            }}
+                          >
+                            <div
+                              style={{
+                                fontWeight:
+                                  selectedDropDown === "Type Of Node"
+                                    ? "600"
+                                    : "",
+                              }}
+                            >
+                              Type Of Node
+                            </div>
+                            <div className="each-down-arrow">
+                              <img
+                                src={downarrow}
+                                alt=""
+                                style={{
+                                  transform:
+                                    selectedDropDown === "Type Of Node"
+                                      ? "rotate(180deg)"
+                                      : "",
+                                }}
+                              />
+                            </div>
+                          </div>
+                          <div
+                            className="hidden-nodes-div"
+                            style={{
+                              display:
+                                selectedDropDown === "Type Of Node"
+                                  ? "flex"
+                                  : "none",
+                            }}
+                          >
+                            <div className="each-hidden-node">
+                              <div
+                                className="check-boxx"
+                                onClick={() => {
+                                  if (selectedNode === "Distributor") {
+                                    setSelectedNode("");
+                                  } else {
+                                    setSelectedNode("Distributor");
+                                  }
+                                }}
+                              >
+                                <img
+                                  className=""
+                                  src={correct}
+                                  alt=""
+                                  style={{
+                                    visibility:
+                                      selectedNode === "Distributor"
+                                        ? "visible"
+                                        : "hidden",
+                                  }}
+                                />
+                              </div>
+                              <div>Distributor</div>
+                            </div>
+                            <div className="each-hidden-node">
+                              <div
+                                className="check-boxx"
+                                onClick={() => {
+                                  if (selectedNode === "Vendor") {
+                                    setSelectedNode("");
+                                  } else {
+                                    setSelectedNode("Vendor");
+                                  }
+                                }}
+                              >
+                                <img
+                                  className=""
+                                  src={correct}
+                                  alt=""
+                                  style={{
+                                    visibility:
+                                      selectedNode === "Vendor"
+                                        ? "visible"
+                                        : "hidden",
+                                  }}
+                                />
+                              </div>
+                              <div>Vendor</div>
+                            </div>
+                            <div className="each-hidden-node">
+                              <div
+                                className="check-boxx"
+                                onClick={() => {
+                                  if (selectedNode === "Mentor") {
+                                    setSelectedNode("");
+                                  } else {
+                                    setSelectedNode("Mentor");
+                                  }
+                                }}
+                              >
+                                <img
+                                  className=""
+                                  src={correct}
+                                  alt=""
+                                  style={{
+                                    visibility:
+                                      selectedNode === "Mentor"
+                                        ? "visible"
+                                        : "hidden",
+                                  }}
+                                />
+                              </div>
+                              <div>Mentor</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="each-dd-option">
+                          <div
+                            className="each-dd-option-div"
+                            onClick={() => {
+                              setSelectedDropDown("Category");
+                            }}
+                          >
+                            <div
+                              style={{
+                                fontWeight:
+                                  selectedDropDown === "Category" ? "600" : "",
+                              }}
+                            >
+                              Category
+                            </div>
+                            <div className="each-down-arrow">
+                              <img
+                                src={downarrow}
+                                alt=""
+                                style={{
+                                  transform:
+                                    selectedDropDown === "Category"
+                                      ? "rotate(180deg)"
+                                      : "",
+                                }}
+                              />
+                            </div>
+                          </div>
+                          <div
+                            className="hidden-nodes-div"
+                            style={{
+                              display:
+                                selectedDropDown === "Category"
+                                  ? "flex"
+                                  : "none",
+                            }}
+                          >
+                            {Speaclities != null &&
+                            Speaclities != undefined &&
+                            Speaclities.data != null &&
+                            Speaclities.data != undefined ? (
+                              <>
+                                {Speaclities.data.map((each, i) => (
+                                  <div className="each-hidden-node" key={i}>
+                                    <div
+                                      className="check-boxx"
+                                      onClick={() =>
+                                        handleSpecalityChange(each)
+                                      }
+                                    >
+                                      <img
+                                        className=""
+                                        src={correct}
+                                        alt=""
+                                        style={{
+                                          visibility:
+                                            specalitiesChecked.includes(
+                                              each.subCategory
+                                            )
+                                              ? "visible"
+                                              : "hidden",
+                                        }}
+                                      />
+                                    </div>
+                                    <div>{each.subCategory}</div>
+                                  </div>
+                                ))}
+                              </>
+                            ) : (
+                              <></>
+                            )}
+                          </div>
+                        </div>
+                        <div className="each-dd-option">
+                          <div
+                            className="each-dd-option-div"
+                            onClick={() => {
+                              setSelectedDropDown("Country");
+                            }}
+                          >
+                            <div
+                              style={{
+                                fontWeight:
+                                  selectedDropDown === "Country" ? "600" : "",
+                              }}
+                            >
+                              Country
+                            </div>
+                            <div className="each-down-arrow">
+                              <img
+                                src={downarrow}
+                                alt=""
+                                style={{
+                                  transform:
+                                    selectedDropDown === "Country"
+                                      ? "rotate(180deg)"
+                                      : "",
+                                }}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div className="each-dd-option">
+                          <div
+                            className="each-dd-option-div"
+                            onClick={() => {
+                              setSelectedDropDown("Price Range");
+                            }}
+                          >
+                            <div
+                              style={{
+                                fontWeight:
+                                  selectedDropDown === "Price Range"
+                                    ? "600"
+                                    : "",
+                              }}
+                            >
+                              Price Range
+                            </div>
+                            <div className="each-down-arrow">
+                              <img
+                                src={downarrow}
+                                alt=""
+                                style={{
+                                  transform:
+                                    selectedDropDown === "Price Range"
+                                      ? "rotate(180deg)"
+                                      : "",
+                                }}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div className="each-dd-option">
+                          <div
+                            className="each-dd-option-div"
+                            onClick={() => {
+                              setSelectedDropDown("Pre-Requisites");
+                            }}
+                          >
+                            <div
+                              style={{
+                                fontWeight:
+                                  selectedDropDown === "Pre-Requisites"
+                                    ? "600"
+                                    : "",
+                              }}
+                            >
+                              Pre-Requisites
+                            </div>
+                            <div className="each-down-arrow">
+                              <img
+                                src={downarrow}
+                                alt=""
+                                style={{
+                                  transform:
+                                    selectedDropDown === "Pre-Requisites"
+                                      ? "rotate(180deg)"
+                                      : "",
+                                }}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div className="each-dd-option">
+                          <div
+                            className="each-dd-option-div"
+                            onClick={() => {
+                              setSelectedDropDown("Rating");
+                            }}
+                          >
+                            <div
+                              style={{
+                                fontWeight:
+                                  selectedDropDown === "Rating" ? "600" : "",
+                              }}
+                            >
+                              Rating
+                            </div>
+                            <div className="each-down-arrow">
+                              <img
+                                src={downarrow}
+                                alt=""
+                                style={{
+                                  transform:
+                                    selectedDropDown === "Rating"
+                                      ? "rotate(180deg)"
+                                      : "",
+                                }}
+                              />
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -674,9 +990,7 @@ const Dashboard = () => {
                           setShowDrop(false);
                         }}
                       >
-                        <div className="serviceby-title">
-                        Services Used By
-                        </div>
+                        <div className="serviceby-title">Services Used By</div>
                         <div className="serciceby-option-box">
                           <div className="serviceby-imgbox">
                             <img
@@ -1468,7 +1782,7 @@ const Dashboard = () => {
         {openRight && sideNav === "Services" ? (
           <div className="all-follow" onClick={() => setShowDrop(false)}>
             <div className="all-follow-head-box">
-              <div className="all-follow-head-title">Mentors You Follow</div>
+              <div className="all-follow-head-title">Nodes You Follow</div>
               <div
                 className="all-follow-head-box-img-box"
                 onClick={() => setOpenRight(false)}
