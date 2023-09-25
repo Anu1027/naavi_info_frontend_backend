@@ -36,12 +36,6 @@ const CurrentStep = () => {
     } else {
       setPosition3(3);
     }
-
-    // setShowNewDiv(false);
-
-    // setTimeout(() => {
-    //   setShowNewDiv(true);
-    // }, 200);
   };
 
   return (
@@ -111,7 +105,6 @@ const CurrentStep = () => {
                 Curriculum
               </div>
               <div className="nano-overall-div">
-                <div className="nano-div1"></div>
                 {/* <div
                   className={`nano-div2 ${
                     showNewDiv === true
@@ -223,7 +216,8 @@ const Carousel1 = ({
       }`}
       style={{
         left: position1 === 1 ? "0" : position1 === 2 ? "25%" : "50%",
-        zIndex : position1 === 2 ? '3' : '2'
+        zIndex: position1 === 2 ? "3" : "2",
+        height: position1 === 2 ? "100%" : "75%",
       }}
     >
       <div className="nano-img">
@@ -279,7 +273,8 @@ const Carousel2 = ({
       }`}
       style={{
         left: position2 === 1 ? "0" : position2 === 2 ? "25%" : "50%",
-        zIndex : position2 === 2 ? '3' : '2'
+        zIndex: position2 === 2 ? "3" : "2",
+        height: position2 === 2 ? "100%" : "75%",
       }}
     >
       <div className="nano-img">
@@ -349,7 +344,8 @@ const Carousel3 = ({
           //   ? "50%"
           //   :
           position3 === 1 ? "0" : position3 === 2 ? "25%" : "50%",
-          zIndex : position3 === 2 ? '3' : '2'
+        zIndex: position3 === 2 ? "3" : "2",
+        height: position3 === 2 ? "100%" : "75%",
       }}
     >
       <div className="nano-img">
