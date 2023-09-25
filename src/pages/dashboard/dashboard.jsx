@@ -192,7 +192,7 @@ const Dashboard = () => {
     if (sideNav === "Mentors") {
       handleSpecalities();
       handleAccountant();
-    } else if (sideNav === "Institutions") {
+    } else if (sideNav === "Services") {
       // handleFollowList();
       handleAutomatedServices();
     }
@@ -613,7 +613,7 @@ const Dashboard = () => {
                     </div>
                   </div>
                 </>
-              ) : sideNav === "Institutions" ? (
+              ) : sideNav === "Services" ? (
                 <>
                   <div className="dash-nav">
                     <div
@@ -623,7 +623,7 @@ const Dashboard = () => {
                       <input
                         className="search-input"
                         type="text"
-                        placeholder="Search For Institutions..."
+                        placeholder="Search For Services..."
                         value={searchservice}
                         onChange={(e) => setSearchservice(e.target.value)}
                       />
@@ -675,7 +675,7 @@ const Dashboard = () => {
                         }}
                       >
                         <div className="serviceby-title">
-                          Institutions Used By
+                        Services Used By
                         </div>
                         <div className="serciceby-option-box">
                           <div className="serviceby-imgbox">
@@ -800,7 +800,7 @@ const Dashboard = () => {
                         className="serviceby-title1"
                         onClick={() => setShowDrop(false)}
                       >
-                        Naavi Recommended Institutions
+                        Naavi Recommended Services
                       </div>
                       <div
                         className="serviceby-allbox"
@@ -1465,7 +1465,7 @@ const Dashboard = () => {
         )}
       </>
       <>
-        {openRight && sideNav === "Institutions" ? (
+        {openRight && sideNav === "Services" ? (
           <div className="all-follow" onClick={() => setShowDrop(false)}>
             <div className="all-follow-head-box">
               <div className="all-follow-head-title">Mentors You Follow</div>

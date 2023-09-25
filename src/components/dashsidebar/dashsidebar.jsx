@@ -16,7 +16,7 @@ const sidebarMenu1 = [
   },
   {
     id: 2,
-    title: "Institutions",
+    title: "Services",
   },
 ];
 
