@@ -9,8 +9,8 @@ import eye1 from "../../static/images/login/eye1.svg";
 import eye2 from "../../static/images/login/eye2.svg";
 import { Loginservice, RegisterOnApp } from "../../services/loginapis";
 import { useStore } from "../../components/store/store.ts";
-import logo from './logo.svg'
-import loadinglogo from './loadinglogo.svg'
+import logo from "./logo.svg";
+import loadinglogo from "./loadinglogo.svg";
 
 const IconMenu = [
   {
@@ -53,9 +53,9 @@ const Loginpage = () => {
         };
         RegisterOnApp(obj).then((response) => {
           let result = response?.data;
-          if (result?.status) {
-            console.log(result?.status, "registered on TaxChains");
-          }
+          // if (result?.status) {
+          //   console.log(result?.status, "registered on TaxChains");
+          // }
         });
         let obj1 = {
           email,
@@ -64,9 +64,9 @@ const Loginpage = () => {
         };
         RegisterOnApp(obj1).then((response) => {
           let result = response?.data;
-          if (result?.status) {
-            console.log(result?.status, "registered on ice");
-          }
+          // if (result?.status) {
+          //   console.log(result?.status, "registered on ice");
+          // }
         });
         localStorage.setItem("user", JSON.stringify(result));
         setiserror(false);
@@ -87,7 +87,12 @@ const Loginpage = () => {
     <div className="login-main">
       <div className="login-box">
         <div className="full-logo-box">
-          <img className="full-logo" src={logo} alt="" style={{width: '50%'}}/>
+          <img
+            className="full-logo"
+            src={logo}
+            alt=""
+            style={{ width: "50%" }}
+          />
         </div>
         <div className="toggle-box">
           <div
@@ -149,11 +154,13 @@ const Loginpage = () => {
         <div className="login-btn" onClick={() => handleLogin()}>
           Login
         </div>
-        <div className="google-btn" onClick={() => handleLogin()}>
-          <div>
-            <img className="g-img" src={google} alt="" />
-          </div>
-          <div>Continue With Google</div>
+        <div
+          className="google-btn"
+          onClick={() => {
+            navigate("/register");
+          }}
+        >
+          <div>Register With Email</div>
         </div>
       </div>
       <div>

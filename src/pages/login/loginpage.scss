@@ -385,11 +385,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  // background: #1F304F;
   background: linear-gradient(89deg, #47B4D5 0%, #29449D 100%);
   padding: 0px 20px;
   border-radius: 35px;
-  // border: 1px solid #1F304F;
   color: #FFFFFF;
   font-weight: 700;
   font-size: 20px;
@@ -408,10 +406,9 @@
   border-radius: 35px;
   border: 1px solid #E5E5E5;
   color: #1F304F;
-  font-weight: 600;
   font-size: 16px;
   cursor: pointer;
-  @include btn-animate(#1F304F);
+  @include btn-animate(#356CBE);
 }
 
 .g-img{
