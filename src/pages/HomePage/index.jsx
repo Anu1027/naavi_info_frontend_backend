@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./homepage.scss";
 
@@ -60,20 +60,40 @@ const HomePage = () => {
           <img src={logo} alt="logo" />
         </div>
         <div className="menu-items">
-          <div>
+          <div
+            onClick={() => {
+              navigate("/");
+            }}
+          >
             <p>Paths</p>
           </div>
-          <div>
+          <div
+            onClick={() => {
+              navigate("/");
+            }}
+          >
             <p>Explore</p>
           </div>
-          <div>
+          <div
+            onClick={() => {
+              navigate("/");
+            }}
+          >
             <p>Products</p>
           </div>
-          <div>
+          <div
+            onClick={() => {
+              navigate("/");
+            }}
+          >
             <p>Resources</p>
           </div>
-          <div>
-            <p>Vendors</p>
+          <div
+            onClick={() => {
+              navigate("/directory/nodes");
+            }}
+          >
+            <p>Nodes</p>
           </div>
         </div>
         <div className="btns-div">

@@ -11,8 +11,14 @@ import MobMenu from "../../../components/mobMenu/mobMenu";
 import { GetAllAccountantsWithoutFollowers } from "../../../services/accountant";
 import { useLocation } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
+import { useNavigate } from "react-router-dom";
+
+//images
+import logo from "../../../static/images/logo.svg";
+import hamIcon from "../../../static/images/icons/hamIcon.svg";
 
 const SingleDirectory = () => {
+  let navigate = useNavigate();
   const { pathname } = useLocation();
   const { mobMenuOpen } = useStore();
   const { width } = useWindowDimensions();
@@ -105,7 +111,68 @@ const SingleDirectory = () => {
 
   return (
     <div className="single-directory-page">
-      <NavBar />
+      {/* <NavBar /> */}
+      <div className="nodes-navbar">
+        <div className="nodes-hamMenu-home">
+          <img src={hamIcon} alt="" />
+        </div>
+        <div
+          className="nodes-logo"
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          <img src={logo} alt="logo" />
+        </div>
+        <div className="nodes-menu-items">
+          <div
+            onClick={() => {
+              navigate("/");
+            }}
+          >
+            <p>Paths</p>
+          </div>
+          <div
+            onClick={() => {
+              navigate("/");
+            }}
+          >
+            <p>Explore</p>
+          </div>
+          <div
+            onClick={() => {
+              navigate("/");
+            }}
+          >
+            <p>Products</p>
+          </div>
+          <div
+            onClick={() => {
+              navigate("/");
+            }}
+          >
+            <p>Resources</p>
+          </div>
+          <div
+            onClick={() => {
+              navigate("/directory/nodes");
+            }}
+          >
+            <p>Nodes</p>
+          </div>
+        </div>
+        <div className="nodes-btns-div">
+          <div
+            className="nodes-gs-Btn"
+            onClick={() => {
+              navigate("/login");
+            }}
+          >
+            Get Started
+          </div>
+        </div>
+      </div>
+      <div className="nodes-color-box"></div>
       {width > 768 ? (
         <div className="single-directory-content">
           {loading ? (
@@ -260,7 +327,9 @@ const SingleDirectory = () => {
               border: "0.5px solid #e7e7e7",
             }}
           >
-            <div>What {singleDirectory?.displayName} Can Do For You</div>
+            <div style={{ fontSize: "1.25rem", fontWeight: "500" }}>
+              What {singleDirectory?.displayName} Can Do For You
+            </div>
             <div
               style={{
                 display: "flex",
@@ -278,7 +347,7 @@ const SingleDirectory = () => {
                       className="each-service"
                       style={{
                         marginTop: "30px",
-                        marginRight: '0'
+                        marginRight: "0",
                       }}
                       key={i}
                       onClick={() => {
@@ -346,7 +415,7 @@ const SingleDirectory = () => {
                         className="each-service"
                         style={{
                           marginTop: "30px",
-                          marginRight: '0'
+                          marginRight: "0",
                         }}
                       >
                         <div>
@@ -372,238 +441,6 @@ const SingleDirectory = () => {
               )}
             </div>
           </div>
-
-          <div
-            className="service-container1"
-            style={{ right: showProductInfo ? "0" : "-100%" }}
-          >
-            <div className="malls" style={{ width: "100%", height: "100%" }}>
-              <div className="malls-products">
-                <div className="content-area">
-                  <div className="left-divv" style={{ width: "100%" }}>
-                    <div
-                      className="productt-det"
-                      style={{ borderBottom: "none" }}
-                    >
-                      <img
-                        src={selectedProduct?.product?.product_icon}
-                        alt=""
-                        style={{ width: "20%", height: "100%" }}
-                      />
-                      <div className="pro-name">
-                        <p
-                          style={{
-                            fontSize: "40px",
-                            fontWeight: "600",
-                            color: "#1F304F",
-                            marginTop: "0",
-                          }}
-                        >
-                          {selectedProduct?.product?.product_name}
-                        </p>
-                        <p
-                          style={{
-                            color: "#1F304F",
-                            display: " -webkit-box",
-                            webkitLineClamp: "2",
-                            webkitBoxOrient: "vertical",
-                            overflow: "hidden",
-                            textOverflow: "ellipsis",
-                          }}
-                        >
-                          {selectedProduct?.product?.sub_text}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="price-section">
-                      <div
-                        className="about-section"
-                        style={{ borderBottom: "none", padding: "0 0 1rem" }}
-                      >
-                        <p
-                          style={{
-                            fontSize: "25px",
-                            fontWeight: "600",
-                            color: "#1F304F",
-                          }}
-                        >
-                          About {selectedProduct?.product?.product_name}
-                        </p>
-                        <div>{selectedProduct?.product?.full_description}</div>
-                      </div>
-                      <div
-                        className="price-divv"
-                        style={{ borderBottom: "none" }}
-                      >
-                        <p
-                          style={{
-                            fontSize: "25px",
-                            fontWeight: "600",
-                            color: "#1F304F",
-                          }}
-                        >
-                          Pricing Details
-                        </p>
-                        <div className="pricing">
-                          <div className="billing-txt">Billing Type:</div>
-                          <div className="pricing-btns">
-                            <button
-                              style={{
-                                background: selectedProduct?.product?.lifetime
-                                  ? "rgba(229, 229, 229, 0.37)"
-                                  : "#FFFFFF",
-                                border: "0.5px solid #e5e5e5",
-                              }}
-                              className="onetym-btn"
-                            >
-                              One Time
-                            </button>
-                            <button
-                              style={{
-                                background: selectedProduct?.product?.lifetime
-                                  ? "#FFFFFF"
-                                  : "rgba(229, 229, 229, 0.37)",
-                                border: "0.5px solid #e5e5e5",
-                              }}
-                              className="onetym-btn"
-                            >
-                              Recurring
-                            </button>
-                          </div>
-                        </div>
-                        <div className="pricing">
-                          <div className="billing-txt">Frequency:</div>
-                          <div className="pricing-btns">
-                            <button
-                              style={{
-                                background: selectedProduct?.product?.monthly
-                                  ? "rgba(229, 229, 229, 0.37)"
-                                  : "#FFFFFF",
-                                border: "0.5px solid #e5e5e5",
-                              }}
-                              className="onetym-btn"
-                            >
-                              Monthly
-                            </button>
-                            <button
-                              style={{
-                                background: selectedProduct?.product?.monthly
-                                  ? "#FFFFFF"
-                                  : "rgba(229, 229, 229, 0.37)",
-                                border: "0.5px solid #e5e5e5",
-                              }}
-                              className="onetym-btn"
-                            >
-                              Anually
-                            </button>
-                          </div>
-                        </div>
-                        <div className="pricing">
-                          <div className="billing-txt">Staking:</div>
-                          <div className="pricing-btns">
-                            <button
-                              style={{
-                                background: selectedProduct?.product
-                                  ?.staking_allowed
-                                  ? "rgba(229, 229, 229, 0.37)"
-                                  : "#FFFFFF",
-                                border: "0.5px solid #e5e5e5",
-                              }}
-                              className="onetym-btn"
-                            >
-                              Allowed
-                            </button>
-                            <button
-                              style={{
-                                background: selectedProduct?.product
-                                  ?.staking_allowed
-                                  ? "#FFFFFF"
-                                  : "rgba(229, 229, 229, 0.37)",
-                                border: "0.5px solid #e5e5e5",
-                              }}
-                              className="onetym-btn"
-                            >
-                              Not Allowed
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        className="price-divv"
-                        style={{
-                          paddingTop: "0",
-                          height: "12rem",
-                          borderBottom: "none",
-                        }}
-                      >
-                        <p
-                          style={{
-                            fontSize: "1.5rem",
-                            fontWeight: "700",
-                            color: "#1F304F",
-                          }}
-                        >
-                          Other Data
-                        </p>
-                        <div className="pricing">
-                          <div className="billing-txt">Affiliate Points:</div>
-                          <div className="pricing-btns">
-                            <button
-                              style={{
-                                background: selectedProduct?.product
-                                  ?.points_creation
-                                  ? "rgba(229, 229, 229, 0.37)"
-                                  : "#FFFFFF",
-                              }}
-                              className="onetym-btn"
-                            >
-                              Yes
-                            </button>
-                            <button
-                              style={{
-                                background: selectedProduct?.product
-                                  ?.points_creation
-                                  ? "#FFFFFF"
-                                  : "rgba(229, 229, 229, 0.37)",
-                                border: "0.5px solid #e5e5e5",
-                              }}
-                              className="onetym-btn"
-                            >
-                              No
-                            </button>
-                          </div>
-                        </div>
-                        <div className="pricing">
-                          <div className="billing-txt">Grace Period:</div>
-                          <div
-                            className="pricing-btns"
-                            style={{
-                              justifyContent: "flex-end",
-                              color: "#1F304F",
-                              fontWeight: "600",
-                            }}
-                          >
-                            {selectedProduct?.product?.grace_period} Days
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {showProductInfo && (
-            <div
-              className="overlay"
-              onClick={() => {
-                setShowProductInfo(false);
-                setSelectedProduct("");
-              }}
-            ></div>
-          )}
         </div>
       ) : (
         <>
@@ -903,6 +740,234 @@ const SingleDirectory = () => {
             </>
           )}
         </>
+      )}
+      <div
+        className="service-container1"
+        style={{
+          right: showProductInfo ? "0" : "-100%",
+          // display: showProductInfo ? 'block' : 'none'
+        }}
+      >
+        <div className="malls" style={{ width: "100%", height: "100%" }}>
+          <div className="malls-products">
+            <div className="content-area">
+              <div className="left-divv" style={{ width: "100%" }}>
+                <div className="productt-det" style={{ borderBottom: "none" }}>
+                  <img
+                    src={selectedProduct?.product?.product_icon}
+                    alt=""
+                    style={{ width: "20%", height: "100%" }}
+                  />
+                  <div className="pro-name">
+                    <p
+                      style={{
+                        fontSize: "40px",
+                        fontWeight: "600",
+                        color: "#1F304F",
+                        marginTop: "0",
+                      }}
+                    >
+                      {selectedProduct?.product?.product_name}
+                    </p>
+                    <p
+                      style={{
+                        color: "#1F304F",
+                        display: " -webkit-box",
+                        webkitLineClamp: "2",
+                        webkitBoxOrient: "vertical",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                      }}
+                    >
+                      {selectedProduct?.product?.sub_text}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="price-section">
+                  <div
+                    className="about-section"
+                    style={{ borderBottom: "none", padding: "0 0 1rem" }}
+                  >
+                    <p
+                      style={{
+                        fontSize: "25px",
+                        fontWeight: "600",
+                        color: "#1F304F",
+                      }}
+                    >
+                      About {selectedProduct?.product?.product_name}
+                    </p>
+                    <div>{selectedProduct?.product?.full_description}</div>
+                  </div>
+                  <div className="price-divv" style={{ borderBottom: "none" }}>
+                    <p
+                      style={{
+                        fontSize: "25px",
+                        fontWeight: "600",
+                        color: "#1F304F",
+                      }}
+                    >
+                      Pricing Details
+                    </p>
+                    <div className="pricing">
+                      <div className="billing-txt">Billing Type:</div>
+                      <div className="pricing-btns">
+                        <button
+                          style={{
+                            background: selectedProduct?.product?.lifetime
+                              ? "rgba(229, 229, 229, 0.37)"
+                              : "#FFFFFF",
+                            border: "0.5px solid #e5e5e5",
+                          }}
+                          className="onetym-btn"
+                        >
+                          One Time
+                        </button>
+                        <button
+                          style={{
+                            background: selectedProduct?.product?.lifetime
+                              ? "#FFFFFF"
+                              : "rgba(229, 229, 229, 0.37)",
+                            border: "0.5px solid #e5e5e5",
+                          }}
+                          className="onetym-btn"
+                        >
+                          Recurring
+                        </button>
+                      </div>
+                    </div>
+                    <div className="pricing">
+                      <div className="billing-txt">Frequency:</div>
+                      <div className="pricing-btns">
+                        <button
+                          style={{
+                            background: selectedProduct?.product?.monthly
+                              ? "rgba(229, 229, 229, 0.37)"
+                              : "#FFFFFF",
+                            border: "0.5px solid #e5e5e5",
+                          }}
+                          className="onetym-btn"
+                        >
+                          Monthly
+                        </button>
+                        <button
+                          style={{
+                            background: selectedProduct?.product?.monthly
+                              ? "#FFFFFF"
+                              : "rgba(229, 229, 229, 0.37)",
+                            border: "0.5px solid #e5e5e5",
+                          }}
+                          className="onetym-btn"
+                        >
+                          Anually
+                        </button>
+                      </div>
+                    </div>
+                    <div className="pricing">
+                      <div className="billing-txt">Staking:</div>
+                      <div className="pricing-btns">
+                        <button
+                          style={{
+                            background: selectedProduct?.product
+                              ?.staking_allowed
+                              ? "rgba(229, 229, 229, 0.37)"
+                              : "#FFFFFF",
+                            border: "0.5px solid #e5e5e5",
+                          }}
+                          className="onetym-btn"
+                        >
+                          Allowed
+                        </button>
+                        <button
+                          style={{
+                            background: selectedProduct?.product
+                              ?.staking_allowed
+                              ? "#FFFFFF"
+                              : "rgba(229, 229, 229, 0.37)",
+                            border: "0.5px solid #e5e5e5",
+                          }}
+                          className="onetym-btn"
+                        >
+                          Not Allowed
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className="price-divv"
+                    style={{
+                      paddingTop: "0",
+                      height: "12rem",
+                      borderBottom: "none",
+                    }}
+                  >
+                    <p
+                      style={{
+                        fontSize: "1.5rem",
+                        fontWeight: "700",
+                        color: "#1F304F",
+                      }}
+                    >
+                      Other Data
+                    </p>
+                    <div className="pricing">
+                      <div className="billing-txt">Affiliate Points:</div>
+                      <div className="pricing-btns">
+                        <button
+                          style={{
+                            background: selectedProduct?.product
+                              ?.points_creation
+                              ? "rgba(229, 229, 229, 0.37)"
+                              : "#FFFFFF",
+                          }}
+                          className="onetym-btn"
+                        >
+                          Yes
+                        </button>
+                        <button
+                          style={{
+                            background: selectedProduct?.product
+                              ?.points_creation
+                              ? "#FFFFFF"
+                              : "rgba(229, 229, 229, 0.37)",
+                            border: "0.5px solid #e5e5e5",
+                          }}
+                          className="onetym-btn"
+                        >
+                          No
+                        </button>
+                      </div>
+                    </div>
+                    <div className="pricing">
+                      <div className="billing-txt">Grace Period:</div>
+                      <div
+                        className="pricing-btns"
+                        style={{
+                          justifyContent: "flex-end",
+                          color: "#1F304F",
+                          fontWeight: "600",
+                        }}
+                      >
+                        {selectedProduct?.product?.grace_period} Days
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {showProductInfo && (
+        <div
+          className="overlay"
+          onClick={() => {
+            setShowProductInfo(false);
+            setSelectedProduct("");
+          }}
+        ></div>
       )}
     </div>
   );

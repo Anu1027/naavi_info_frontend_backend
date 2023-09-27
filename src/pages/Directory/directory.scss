@@ -294,14 +294,97 @@
 .single-directory-page {
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
+  position: relative;
+
+  .nodes-navbar {
+    width: 100%;
+    height: 4rem;
+    padding: 0 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+
+    .nodes-hamMenu-home {
+      display: none;
+      position: absolute;
+      left: 1rem;
+      height: 100%;
+
+      img {
+        width: 20px;
+      }
+    }
+
+    .nodes-logo {
+      display: flex;
+    }
+
+    .nodes-menu-items {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      font-size: 0.9rem;
+
+      p {
+        margin: 0;
+        cursor: pointer;
+        transition: all ease 0.2s;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+
+    .nodes-btns-div {
+      display: flex;
+      gap: 1rem;
+
+      .nodes-gs-Btn {
+        color: white;
+        font-weight: 500;
+        border-radius: 35px;
+        background: linear-gradient(89deg, #47b4d5 0%, #29449d 100%);
+        padding: 0.7rem 1.5rem;
+        font-size: 0.8rem;
+      }
+
+      .nodes-business-btn {
+        color: white;
+        font-weight: 500;
+        border-radius: 35px;
+        background: #100f0d;
+        padding: 0.5rem 1.5rem;
+      }
+
+      div {
+        cursor: pointer;
+        transition: all ease 0.2s;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+
+  .nodes-color-box {
+    width: 100%;
+    height: 1rem;
+    background: linear-gradient(89deg, #47b4d5 0%, #29449d 100%);
+  }
 
   .single-directory-content {
-    height: calc(100% - 77px);
-    margin: 77px auto 0;
+    width: 100%;
+    height: calc(100% - 5rem);
+    margin: 0 auto;
     overflow-y: scroll;
-    width: 100vw;
+    overflow-x: hidden;
     background: rgba(237, 237, 237, 0.37);
-    padding: 0 10vw;
+    padding: 0 8rem;
+    position: relative;
 
     .single-cover-pic {
       width: 100%;
@@ -438,24 +521,24 @@
         width: unset;
       }
     }
+  }
 
-    .service-container1 {
-      position: absolute;
-      right: -100%;
-      width: 50%;
-      height: calc(100% - 77px);
-      border-left: 0.5px solid #e5e5e5;
-      border-top: 0.5px solid #e5e5e5;
-      top: 77px;
-      z-index: 17;
-      transition: all ease 0.5s;
-    }
+  .service-container1 {
+    position: absolute;
+    right: -100%;
+    width: 50%;
+    height: 100%;
+    border-left: 0.5px solid #e5e5e5;
+    border-top: 0.5px solid #e5e5e5;
+    top: 0;
+    z-index: 17;
+    transition: all ease 0.5s;
+  }
 
-    .overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 16;
-    }
+  .overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 16;
   }
 }
 

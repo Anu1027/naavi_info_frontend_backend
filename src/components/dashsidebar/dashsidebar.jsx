@@ -89,7 +89,7 @@ const Dashsidebar = ({ isNotOnMainPage }) => {
                 style={{
                   background: sideNav === each.title ? "#FFFFFF" : "",
                   color: sideNav === each.title ? "#100F0D" : "",
-                  // paddingLeft: sideNav === each.title ? '20px' : '',
+                  paddingLeft: sideNav === each.title ? '20px' : '',
                   // boxShadow:
                   //   sideNav === each.title
                   //     ? "0px 2px 2px rgba(0, 0, 0, 0.25)"
