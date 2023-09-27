@@ -1334,23 +1334,6 @@ const Dashboard = () => {
                           className="services-each-menu"
                           style={{
                             background:
-                              coinType === "crypto"
-                                ? "rgba(241, 241, 241, 0.5)"
-                                : "",
-                            fontWeight: coinType === "crypto" ? "700" : "",
-                          }}
-                          onClick={() => {
-                            setCoinType("crypto");
-                            setSearch("");
-                          }}
-                        >
-                          Crypto
-                        </div>
-
-                        <div
-                          className="services-each-menu"
-                          style={{
-                            background:
                               coinType === "fiat"
                                 ? "rgba(241, 241, 241, 0.5)"
                                 : "",
@@ -1362,6 +1345,23 @@ const Dashboard = () => {
                           }}
                         >
                           Forex
+                        </div>
+
+                        <div
+                          className="services-each-menu"
+                          style={{
+                            background:
+                              coinType === "crypto"
+                                ? "rgba(241, 241, 241, 0.5)"
+                                : "",
+                            fontWeight: coinType === "crypto" ? "700" : "",
+                          }}
+                          onClick={() => {
+                            setCoinType("crypto");
+                            setSearch("");
+                          }}
+                        >
+                          Crypto
                         </div>
                       </div>
 

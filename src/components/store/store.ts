@@ -97,7 +97,7 @@ export const useStore = create<Store>((set) => ({
     set({ mallselectedCoin: selectedcoin }),
   balanceToggle: false,
   setBalanceToggle: (toggle) => set({ balanceToggle: toggle }),
-  coinType: "crypto",
+  coinType: "fiat",
   setCoinType: (ctype) => set({ coinType: ctype }),
   check: false,
   setCheck: (chk) => set({ check: chk }),
