@@ -93,7 +93,7 @@ const HomePage = () => {
               navigate("/directory/nodes");
             }}
           >
-            <p>Nodes</p>
+            <p>Partners</p>
           </div>
         </div>
         <div className="btns-div">

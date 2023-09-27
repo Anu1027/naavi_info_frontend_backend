@@ -191,7 +191,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     setShowDrop(false);
-    if (sideNav === "Nodes") {
+    if (sideNav === "Partners") {
       handleSpecalities();
       handleAccountant();
     } else if (sideNav === "Services") {
@@ -383,7 +383,7 @@ const Dashboard = () => {
           </div>
           <div className="dashboard-screens">
             <div style={{ height: "100%" }}>
-              {sideNav === "Nodes" ? (
+              {sideNav === "Partners" ? (
                 <>
                   <div className="dash-nav">
                     <div
@@ -393,7 +393,7 @@ const Dashboard = () => {
                       <input
                         className="search-input"
                         type="text"
-                        placeholder="Search For Nodes..."
+                        placeholder="Search For Partners..."
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
                       />
@@ -1782,7 +1782,7 @@ const Dashboard = () => {
         {openRight && sideNav === "Services" ? (
           <div className="all-follow" onClick={() => setShowDrop(false)}>
             <div className="all-follow-head-box">
-              <div className="all-follow-head-title">Nodes You Follow</div>
+              <div className="all-follow-head-title">Partners You Follow</div>
               <div
                 className="all-follow-head-box-img-box"
                 onClick={() => setOpenRight(false)}

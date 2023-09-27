@@ -12,7 +12,7 @@ const sidebarMenu1 = [
   },
   {
     id: 1,
-    title: "Nodes",
+    title: "Partners",
   },
   {
     id: 2,

@@ -115,7 +115,7 @@ const Loginpage = () => {
             }}
             onClick={() => setLoginType("Accountants")}
           >
-            Nodes
+            Partners
           </div>
         </div>
         <div className="input-box">

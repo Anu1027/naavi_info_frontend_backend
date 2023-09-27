@@ -158,7 +158,7 @@ const SingleDirectory = () => {
               navigate("/directory/nodes");
             }}
           >
-            <p>Nodes</p>
+            <p>Partners</p>
           </div>
         </div>
         <div className="nodes-btns-div">

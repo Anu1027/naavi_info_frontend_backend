@@ -135,7 +135,7 @@ const NodesPage = () => {
               navigate("/directory/nodes");
             }}
           >
-            <p>Nodes</p>
+            <p>Partners</p>
           </div>
         </div>
         <div className="nodes-btns-div">
@@ -159,7 +159,7 @@ const NodesPage = () => {
             <div className="search-container">
               <input
                 type="text"
-                placeholder="Search Nodes By Name.."
+                placeholder="Search Partners By Name.."
                 onChange={(event) => filterItem(event.target.value)}
               />
               <div className="search-btn">
@@ -170,7 +170,7 @@ const NodesPage = () => {
         </div>
         <div className="bottom-div">
           <div className="directory-scroll-div">
-            <div className="acc-txt">Nodes</div>
+            <div className="acc-txt">Partners</div>
             <div className="accountants-div">
               {loading
                 ? Array(10)
