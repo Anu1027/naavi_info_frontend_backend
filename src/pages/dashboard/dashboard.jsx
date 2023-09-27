@@ -1376,7 +1376,7 @@ const Dashboard = () => {
                     <Vaults searchedValue={searchVault} />
                   </div>
                 </>
-              ) : sideNav === "Next Steps" ? (
+              ) : sideNav === "Task Manager" ? (
                 <>
                   <div className="dash-nav">
                     <div

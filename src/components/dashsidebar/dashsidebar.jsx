@@ -29,10 +29,6 @@ const sidebarMenu2 = [
     id: 1,
     title: "Current Step",
   },
-  // {
-  //   id: 2,
-  //   title: "Next Steps",
-  // },
   {
     id: 2,
     title: "Calendar",
@@ -40,6 +36,10 @@ const sidebarMenu2 = [
   {
     id: 3,
     title: "Cabinet",
+  },
+  {
+    id: 4,
+    title: "Task Manager",
   },
 ];
 
@@ -69,19 +69,25 @@ const Dashsidebar = ({ isNotOnMainPage }) => {
           />
         </div>
       </div>
-      <div style={{ overflowY: "scroll", height: "calc(100% - 70px)", padding: '30px 2vw 0px 2vw' }}>
+      <div
+        style={{
+          overflowY: "scroll",
+          height: "calc(100% - 70px)",
+          padding: "30px 2vw 0px 2vw",
+        }}
+      >
         <div>
-        <div
-          style={{
-            // marginLeft: "15px",
-            fontWeight: "600",
-            fontSize: "18px",
-            marginBottom: "1.5rem",
-            color: "#100F0D",
-          }}
-        >
-          Discover
-        </div>
+          <div
+            style={{
+              // marginLeft: "15px",
+              fontWeight: "600",
+              fontSize: "18px",
+              marginBottom: "1.5rem",
+              color: "#100F0D",
+            }}
+          >
+            Discover
+          </div>
           {sidebarMenu1.map((each, i) => {
             return (
               <div
@@ -89,7 +95,7 @@ const Dashsidebar = ({ isNotOnMainPage }) => {
                 style={{
                   background: sideNav === each.title ? "#FFFFFF" : "",
                   color: sideNav === each.title ? "#100F0D" : "",
-                  paddingLeft: sideNav === each.title ? '20px' : '',
+                  paddingLeft: sideNav === each.title ? "20px" : "",
                   // boxShadow:
                   //   sideNav === each.title
                   //     ? "0px 2px 2px rgba(0, 0, 0, 0.25)"
