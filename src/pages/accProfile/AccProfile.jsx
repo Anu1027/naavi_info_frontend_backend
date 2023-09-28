@@ -42,6 +42,7 @@ import cover from "../../images/cover.svg";
 import uploadGrey from "../../images/uploadGrey.svg";
 import close from "../../images/close.svg";
 import arrow from "../../images/arrow.svg";
+import colorArrow from "../../images/colorArrow.svg";
 import edit from "../../images/edit.svg";
 import downArrow from "../../images/downArrow.svg";
 import upArrow from "../../images/upArrow.svg";
@@ -132,6 +133,29 @@ const AccProfile = () => {
   const [changing, setChanging] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  // create distributor profile
+  // const [createDistributorProfile, setCreateDistributorProfile] = useState(false);
+  // const [createDistributorProfileStep, setCreateDistributorProfileStep] = useState(1);
+  // const [distributorProfilePicture, setDistributorProfilePicture] = useState();
+  // const [distributorFirstName, setDistributorFirstName] = useState();
+  // const [distributorLastName, setDistributorLastName] = useState();
+  // const [distributorUserName, setDistributorUserName] = useState("");
+  // const [distributorCoverPhoto1, setDistributorCoverPhoto1] = useState();
+  // const [distributorDisplayName, setDistributorDisplayName] = useState();
+  // const [distributorUserName1, setDistributorUserName1] = useState("");
+  // const [distributorDescription, setDistributorDescription] = useState();
+  // const [distributorColorCode, setDistributorColorCode] = useState();
+  // const [distributorHeadquarter, setDistributorHeadquarter] = useState();
+  // const [distributorAddress, setDistributorAddress] = useState();
+  // const [distributorWhiteProPic, setDistributorWhiteProPic] = useState();
+  // const [isloading1, setIsloading1] = useState(false);
+  // const [distributorStatus, setDistributorStatus] = useState("");
+  // const [distributorHidden, setDistributorHidden] = useState(false);
+  // const [distributorUserNameAvailable, setDistributorUserNameAvailable] = useState(false);
+  // const [distributorUserNameAvailable1, setDistributorUserNameAvailable1] = useState(false);
+  // const [distributorChanging, setDistributorChanging] = useState(false);
+  // const [loading1, setLoading1] = useState(false);
+
   let navigate = useNavigate();
 
   // edit accountant data
@@ -184,7 +208,7 @@ const AccProfile = () => {
     const path_inside_brain = "root/";
 
     const jwts = await signJwt(fileName, emailDev, secret);
-    console.log(jwts, "lkjkswedcf");
+    // console.log(jwts, "lkjkswedcf");
     let { data } = await axios.post(
       `https://drivetest.globalxchange.io/file/dev-upload-file?email=${emailDev}&path=${path_inside_brain}&token=${jwts}&name=${fileName}`,
       formData,
@@ -1272,18 +1296,46 @@ const AccProfile = () => {
                     </div>
                   </div>
                 ) : (
-                  <div
-                    className="create-acc"
-                    onClick={() => {
-                      setCreateBrandProfile(true);
-                      setShowDrop(false);
-                    }}
-                  >
-                    <div>Create An Vendor Profile</div>
-                    <div>
-                      <img src={arrow} alt="" />
+                  <>
+                    <div
+                      className="create-acc"
+                      onClick={() => {
+                        setCreateBrandProfile(true);
+                        setShowDrop(false);
+                      }}
+                    >
+                      <div>Create An Vendor Profile</div>
+                      <div>
+                        <img src={colorArrow} alt="" />
+                      </div>
                     </div>
-                  </div>
+
+                    <div
+                      className="create-acc"
+                      onClick={() => {
+                        setCreateBrandProfile(true);
+                        setShowDrop(false);
+                      }}
+                    >
+                      <div>Create An Distributor Profile</div>
+                      <div>
+                        <img src={colorArrow} alt="" />
+                      </div>
+                    </div>
+
+                    <div
+                      className="create-acc"
+                      onClick={() => {
+                        setCreateBrandProfile(true);
+                        setShowDrop(false);
+                      }}
+                    >
+                      <div>Create An Mentor Profile</div>
+                      <div>
+                        <img src={colorArrow} alt="" />
+                      </div>
+                    </div>
+                  </>
                 )}
               </>
             </div>
@@ -1984,6 +2036,10 @@ const AccProfile = () => {
                       setBrandDescription("");
                       setBrandUserName("");
                       setBrandDisplayName("");
+                      setUserName("");
+                      setLastName("");
+                      setFirstName("");
+                      setProfilePicture("");
                     }}
                     className="close-div"
                   >
