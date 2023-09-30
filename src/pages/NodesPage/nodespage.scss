@@ -108,7 +108,7 @@
         .static-div {
           width: 100%;
           height: calc(100% - 4rem);
-          background: #100F0D;
+          background: #100f0d;
           display: flex;
           color: #ffffff;
           justify-content: center;
@@ -228,14 +228,14 @@
           height: 2rem;
           margin-bottom: 1rem;
         }
-  
+
         .accountants-div {
           width: 100%;
           // height: calc(100% - 2rem);
           display: flex;
           flex-wrap: wrap;
           gap: 2.75%;
-  
+
           .each-accountant {
             display: flex;
             flex-direction: column;
@@ -248,11 +248,11 @@
             cursor: pointer;
             transition: all ease 0.2s;
             border: 0.5px solid #e5e5e5;
-  
+
             &:hover {
               box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
             }
-  
+
             .cover-pic {
               width: 100%;
               height: 7rem;
@@ -260,21 +260,21 @@
               border-top-left-radius: 15px;
               border-top-right-radius: 15px;
             }
-  
+
             .account-img-box {
               display: flex;
               height: 108px;
               justify-content: center;
               margin-top: -50px;
               z-index: 2;
-  
+
               .account-img {
                 border-radius: 50%;
                 height: 108px;
                 width: 108px;
               }
             }
-  
+
             .account-name {
               font-size: 25px;
               font-weight: 600;
@@ -285,7 +285,7 @@
               justify-content: center;
               padding: 0 35px;
             }
-  
+
             .account-work {
               color: #1f304f;
               display: flex;
@@ -298,7 +298,7 @@
               text-align: center;
               padding: 7px 35px 0;
             }
-  
+
             .account-country {
               color: #1f304f;
               font-size: 15px;
@@ -308,13 +308,13 @@
               margin-top: 35px;
               padding: 0 35px;
             }
-  
+
             .account-countries-all {
               display: flex;
               margin-bottom: 25px;
               width: 100%;
               padding: 0 35px;
-  
+
               .account-countries-each {
                 background: hsla(0, 0%, 100%, 0.25);
                 border: 0.5px solid #e5e5e5;
@@ -333,7 +333,7 @@
                 width: unset;
               }
             }
-  
+
             .account-speaclities {
               color: #1f304f;
               font-size: 15px;
@@ -343,7 +343,7 @@
               margin-top: 35px;
               padding: 0 35px;
             }
-  
+
             .account-speaclities-all {
               display: flex;
               flex-wrap: wrap;
@@ -351,7 +351,7 @@
               margin-bottom: 0;
               width: 100%;
               padding: 0 35px;
-  
+
               .account-speaclities-each {
                 background: hsla(0, 0%, 100%, 0.25);
                 border: 0.5px solid #e5e5e5;
@@ -373,9 +373,51 @@
             }
           }
         }
-
       }
+    }
+  }
+}
 
+@media screen and (max-width: 800px) {
+  .nodesPage {
+    .nodes-navbar {
+      padding: 0;
+      justify-content: center;
+      .nodes-menu-items {
+        display: none;
+      }
+      .nodes-btns-div {
+        display: none;
+      }
+    }
+    .nodespage-content {
+      .top-div {
+        padding: 0;
+        .hiding-div {
+          .search-container {
+            width: 93%;
+            .search-btn {
+              display: none;
+            }
+          }
+        }
+      }
+      .bottom-div {
+        padding: 0 6vw;
+        .directory-scroll-div {
+          .acc-txt {
+            display: none;
+          }
+          .accountants-div {
+            .each-accountant {
+              min-width: 100%;
+              .account-name {
+                text-align: center;
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
