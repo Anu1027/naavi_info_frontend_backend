@@ -140,6 +140,7 @@ export const CoinContextProvider = ({ children }) => {
   const [showDirections, setShowDirections] = useState(true);
 
   const [searchTerm, setSearchterm] = useState("");
+  const [pathItemSelected, setPathItemSelected] = useState(false);
 
   useEffect(() => {
     if (coinType == "bonds" || coinType == "moneyMarkets") {
@@ -379,6 +380,8 @@ export const CoinContextProvider = ({ children }) => {
 
         searchTerm,
         setSearchterm,
+        pathItemSelected,
+        setPathItemSelected,
       }}
     >
       {children}

@@ -48,7 +48,8 @@ const PathComponent = () => {
   const [pathDirections, setPathDirections] = useState(null);
   const [pathSelectedLocation, setPathSelectedLocation] = useState(null);
   const [pathShowDirections, setPathShowDirections] = useState(true);
-  const { searchTerm, setSearchterm } = useCoinContextData();
+  const { searchTerm, setSearchterm, pathItemSelected, setPathItemSelected } =
+    useCoinContextData();
 
   const handleAddContainer = () => {
     const lastContainer = containers[containers.length - 1];
@@ -285,32 +286,91 @@ const PathComponent = () => {
                 </div>
               </div>
             </div>
-            <div className="mid-area1">
-              <div className="input-div-1">
-                <input
-                  type="text"
-                  placeholder="Choose Starting Coordinates.."
-                />
-              </div>
-              {containers.map((container, index) => (
-                <div className="destination-container1" key={container.id}>
-                  <div className="dest-txt1">
-                    <div>Destination {container.id}</div>
-                    {container.removable && (
-                      <div onClick={() => handleRemoveContainer(container.id)}>
-                        <img src={close} alt="" />
-                      </div>
-                    )}
+            {pathItemSelected ? (
+              <div className="mid-area1" style={{ borderBottom: "none" }}>
+                <div
+                  style={{
+                    fontWeight: "400",
+                    marginTop: "0.5rem",
+                    marginBottom: "0.5rem",
+                  }}
+                >
+                  What do you want to do with this path?
+                </div>
+                <div className="maps-btns-div1">
+                  <div
+                    className="reset-btn1"
+                    style={{ fontWeight: "400", textAlign: "left" }}
+                  >
+                    Explore Path
                   </div>
-                  <div className="input-div-2">
-                    {pathOption === "Map View" ? (
-                      <Autocomplete
-                        onLoad={(autocomplete) => {
-                          autocompleteRef.current = autocomplete;
-                          autocomplete?.setBounds(pathMap?.getBounds());
-                        }}
-                        onPlaceChanged={handlePlaceSelect}
-                      >
+                  <div
+                    className="reset-btn1"
+                    style={{ fontWeight: "400", textAlign: "left" }}
+                  >
+                    Select Path
+                  </div>
+                  <div
+                    className="reset-btn1"
+                    style={{ fontWeight: "400", textAlign: "left" }}
+                    onClick={() => {
+                      setPathItemSelected(false);
+                    }}
+                  >
+                    Go Back
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="mid-area1">
+                <div className="input-div-1">
+                  <input
+                    type="text"
+                    placeholder="Choose Starting Coordinates.."
+                  />
+                </div>
+                {containers.map((container, index) => (
+                  <div className="destination-container1" key={container.id}>
+                    <div className="dest-txt1">
+                      <div>Destination {container.id}</div>
+                      {container.removable && (
+                        <div
+                          onClick={() => handleRemoveContainer(container.id)}
+                        >
+                          <img src={close} alt="" />
+                        </div>
+                      )}
+                    </div>
+                    <div className="input-div-2">
+                      {pathOption === "Map View" ? (
+                        <Autocomplete
+                          onLoad={(autocomplete) => {
+                            autocompleteRef.current = autocomplete;
+                            autocomplete?.setBounds(pathMap?.getBounds());
+                          }}
+                          onPlaceChanged={handlePlaceSelect}
+                        >
+                          <input
+                            type="text"
+                            placeholder="Where Do You Want To Go?"
+                            // value={container.inputValue1}
+                            // onChange={(e) => {
+                            //   handleInputChange(e, container.id, 1);
+                            //   if (pathOption === "List View") {
+                            //     setSearchterm(e.target.value);
+                            //   }
+                            // }}
+                            value={pathSelectedPlace || ""}
+                            onChange={(e) => {
+                              handleInputChange(e, container.id, 1);
+                              setPathSelectedPlace(e.target.value);
+                              if (pathOption === "List View") {
+                                setSearchterm(e.target.value);
+                              }
+                            }}
+                          />
+                        </Autocomplete>
+                      ) : (
                         <input
                           type="text"
                           placeholder="Where Do You Want To Go?"
@@ -321,65 +381,45 @@ const PathComponent = () => {
                           //     setSearchterm(e.target.value);
                           //   }
                           // }}
-                          value={pathSelectedPlace || ""}
+                          value={searchTerm}
                           onChange={(e) => {
                             handleInputChange(e, container.id, 1);
-                            setPathSelectedPlace(e.target.value);
-                            if (pathOption === "List View") {
-                              setSearchterm(e.target.value);
-                            }
+                            setSearchterm(e.target.value);
                           }}
                         />
-                      </Autocomplete>
-                    ) : (
-                      <input
-                        type="text"
-                        placeholder="Where Do You Want To Go?"
-                        // value={container.inputValue1}
-                        // onChange={(e) => {
-                        //   handleInputChange(e, container.id, 1);
-                        //   if (pathOption === "List View") {
-                        //     setSearchterm(e.target.value);
-                        //   }
-                        // }}
-                        value={searchTerm}
-                        onChange={(e) => {
-                          handleInputChange(e, container.id, 1);
-                          setSearchterm(e.target.value);
-                        }}
-                      />
-                    )}
-                  </div>
-                  <div className="input-div-2">
-                    {/* <input
+                      )}
+                    </div>
+                    <div className="input-div-2">
+                      {/* <input
                       type="text"
                       value={container.inputValue2}
                       placeholder="By When?"
                       onChange={(e) => handleInputChange(e, container.id, 2)}
                     /> */}
-                    <DatePicker
-                      selected={pathSelectedDate}
-                      onChange={handleDateChange}
-                      dateFormat="MM/dd/yyyy"
-                      showMonthDropdown
-                      showYearDropdown
-                      dropdownMode="select"
-                      customInput={<CustomInput />}
-                    />
+                      <DatePicker
+                        selected={pathSelectedDate}
+                        onChange={handleDateChange}
+                        dateFormat="MM/dd/yyyy"
+                        showMonthDropdown
+                        showYearDropdown
+                        dropdownMode="select"
+                        customInput={<CustomInput />}
+                      />
+                    </div>
+                  </div>
+                ))}
+                <div className="add-div1" onClick={handleAddContainer}>
+                  <img src={plus} alt="" />
+                  Add Destination
+                </div>
+                <div className="maps-btns-div1">
+                  <div className="gs-Btn-maps1">Get Started</div>
+                  <div className="reset-btn1" onClick={handleResetContainer}>
+                    Reset
                   </div>
                 </div>
-              ))}
-              <div className="add-div1" onClick={handleAddContainer}>
-                <img src={plus} alt="" />
-                Add Destination
               </div>
-              <div className="maps-btns-div1">
-                <div className="gs-Btn-maps1">Get Started</div>
-                <div className="reset-btn1" onClick={handleResetContainer}>
-                  Reset
-                </div>
-              </div>
-            </div>
+            )}
           </div>
           <div className="maps-content-area1">
             <div className="path-options-div">
