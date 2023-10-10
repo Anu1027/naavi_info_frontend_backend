@@ -139,6 +139,8 @@ export const CoinContextProvider = ({ children }) => {
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [showDirections, setShowDirections] = useState(true);
 
+  const [searchTerm, setSearchterm] = useState("");
+
   useEffect(() => {
     if (coinType == "bonds" || coinType == "moneyMarkets") {
       // console.log('bonds');
@@ -374,6 +376,9 @@ export const CoinContextProvider = ({ children }) => {
         setSelectedLocation,
         showDirections,
         setShowDirections,
+
+        searchTerm,
+        setSearchterm,
       }}
     >
       {children}

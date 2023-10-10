@@ -11,6 +11,7 @@ import {
 import { LoadScript } from "@react-google-maps/api";
 import "./mapspage.scss";
 import DatePicker from "react-datepicker";
+import { useCoinContextData } from "../../context/CoinContext";
 import "react-datepicker/dist/react-datepicker.css";
 
 //images
@@ -21,6 +22,8 @@ import immigrationIcon from "../../static/images/mapspage/immigrationIcon.svg";
 import plus from "../../static/images/mapspage/plus.svg";
 import close from "../../static/images/mapspage/close.svg";
 import hamIcon from "../../static/images/icons/hamIcon.svg";
+import axios from "axios";
+import Pathview from "../Pathview";
 
 const libraries = ["places"];
 
@@ -31,7 +34,7 @@ const PathComponent = () => {
     { id: 1, inputValue1: "", inputValue2: "", removable: false },
   ]);
   const [pathOption, setPathOption] = useState("Map View");
-  const [searchTerm, setSearchterm] = useState("");
+  // const [searchTerm, setSearchterm] = useState("");
   const [pathMap, setPathMap] = useState(/** @type google.maps.Map */ (null));
   const [pathCurrentLocation, setPathCurrentLocation] = useState(null);
   const [pathSearchTerm, setPathSearchTerm] = useState("");
@@ -45,6 +48,7 @@ const PathComponent = () => {
   const [pathDirections, setPathDirections] = useState(null);
   const [pathSelectedLocation, setPathSelectedLocation] = useState(null);
   const [pathShowDirections, setPathShowDirections] = useState(true);
+  const { searchTerm, setSearchterm } = useCoinContextData();
 
   const handleAddContainer = () => {
     const lastContainer = containers[containers.length - 1];
@@ -383,6 +387,18 @@ const PathComponent = () => {
                 <div
                   className="each-path-opt"
                   onClick={() => {
+                    setPathOption("Path View");
+                  }}
+                  style={{
+                    background: pathOption === "Path View" ? "#F1F4F6" : "",
+                  }}
+                >
+                  Path View
+                </div>
+
+                <div
+                  className="each-path-opt"
+                  onClick={() => {
                     setPathOption("Map View");
                   }}
                   style={{
@@ -391,17 +407,7 @@ const PathComponent = () => {
                 >
                   Map View
                 </div>
-                <div
-                  className="each-path-opt"
-                  onClick={() => {
-                    setPathOption("Mentor View");
-                  }}
-                  style={{
-                    background: pathOption === "Mentor View" ? "#F1F4F6" : "",
-                  }}
-                >
-                  Mentor View
-                </div>
+
                 <div
                   className="each-path-opt"
                   onClick={() => {
@@ -431,9 +437,9 @@ const PathComponent = () => {
                   pathShowDirections={pathShowDirections}
                 />
               ) : pathOption === "List View" ? (
-                <Listview searchTerm={searchTerm} />
+                <Listview />
               ) : (
-                ""
+                <Pathview />
               )}
             </>
           </div>

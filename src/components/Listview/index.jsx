@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Skeleton from "react-loading-skeleton";
+import { useCoinContextData } from "../../context/CoinContext";
 import "./listview.scss";
 
-const Listview = ({ searchTerm }) => {
+const Listview = () => {
+  const { searchTerm } = useCoinContextData();
   const [loading, setLoading] = useState(false);
   const [leadSourceData, setLeadSourceData] = useState([]);
   const [showHiddenLinks, setShowHiddenLinks] = useState();

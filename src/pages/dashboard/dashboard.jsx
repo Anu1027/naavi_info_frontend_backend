@@ -43,6 +43,7 @@ import MapsPage from "../MapsPage";
 import PathComponent from "../../components/PathComponent";
 import JourneyPage from "../JourneyPage";
 import CurrentStep from "../CurrentStep";
+import { useCoinContextData } from "../../context/CoinContext";
 
 const accountantsData = [
   {
@@ -156,6 +157,7 @@ const Dashboard = () => {
     balanceToggle,
     setBalanceToggle,
   } = useStore();
+  const { searchTerm, setSearchterm } = useCoinContextData();
   const [search, setSearch] = useState("");
   const [searchservice, setSearchservice] = useState("");
   const [countriesChecked, setCountriesChecked] = useState([]);
@@ -1501,8 +1503,8 @@ const Dashboard = () => {
                         className="search-input"
                         type="text"
                         placeholder="Search For Paths..."
-                        // value={searchVault}
-                        // onChange={(e) => setSearchVault(e.target.value)}
+                        value={searchTerm}
+                        onChange={(e) => setSearchterm(e.target.value)}
                       />
                     </div>
                     <div
