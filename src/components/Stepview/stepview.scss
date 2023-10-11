@@ -1,14 +1,14 @@
-.pathviewPage {
+.stepViewPage {
   width: 100%;
   height: calc(100% - 3rem);
 
-  .pathviewNav {
+  .stepviewNav {
     width: 100%;
     height: 3.5rem;
     border-bottom: 0.5px solid #e5e5e5;
     display: flex;
 
-    .name-div {
+    .step-name-div {
       width: 30%;
       display: flex;
       align-items: end;
@@ -18,7 +18,7 @@
       font-size: 0.8rem;
     }
 
-    .description-div {
+    .step-description-div {
       width: 70%;
       display: flex;
       align-items: end;
@@ -29,31 +29,31 @@
     }
   }
 
-  .pathviewContent {
+  .stepviewContent {
     width: 100%;
     height: calc(100% - 3.5rem);
 
-    .each-pv-data {
+    .each-sv-data {
       width: 100%;
       border-bottom: 0.5px solid #e5e5e5;
       display: flex;
       font-size: 0.8rem;
-      cursor: pointer;
+      //   cursor: pointer;
       transition: all ease 0.2s;
 
-      .each-pv-name {
+      .each-sv-name {
         width: 30%;
         padding: 2rem 0 2rem 35px;
         line-height: 1.6;
       }
 
-      .each-pv-desc {
+      .each-sv-desc {
         width: 70%;
         padding: 2rem 0 2rem 0;
         font-weight: 300;
         padding-left: 35px;
         line-height: 1.6;
-        // text-transform: none;
+        text-transform: none;
         padding-right: 1rem;
       }
 

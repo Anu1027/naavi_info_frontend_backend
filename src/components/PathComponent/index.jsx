@@ -24,6 +24,7 @@ import close from "../../static/images/mapspage/close.svg";
 import hamIcon from "../../static/images/icons/hamIcon.svg";
 import axios from "axios";
 import Pathview from "../Pathview";
+import Stepview from "../Stepview";
 
 const libraries = ["places"];
 
@@ -33,7 +34,7 @@ const PathComponent = () => {
   const [containers, setContainers] = useState([
     { id: 1, inputValue1: "", inputValue2: "", removable: false },
   ]);
-  const [pathOption, setPathOption] = useState("Map View");
+  const [pathOption, setPathOption] = useState("Path View");
   // const [searchTerm, setSearchterm] = useState("");
   const [pathMap, setPathMap] = useState(/** @type google.maps.Map */ (null));
   const [pathCurrentLocation, setPathCurrentLocation] = useState(null);
@@ -364,7 +365,7 @@ const PathComponent = () => {
                             onChange={(e) => {
                               handleInputChange(e, container.id, 1);
                               setPathSelectedPlace(e.target.value);
-                              if (pathOption === "List View") {
+                              if (pathOption === "Steps") {
                                 setSearchterm(e.target.value);
                               }
                             }}
@@ -451,13 +452,13 @@ const PathComponent = () => {
                 <div
                   className="each-path-opt"
                   onClick={() => {
-                    setPathOption("List View");
+                    setPathOption("Steps");
                   }}
                   style={{
-                    background: pathOption === "List View" ? "#F1F4F6" : "",
+                    background: pathOption === "Steps" ? "#F1F4F6" : "",
                   }}
                 >
-                  List View
+                  Steps
                 </div>
               </div>
             </div>
@@ -476,8 +477,8 @@ const PathComponent = () => {
                   pathSelectedLocation={pathSelectedLocation}
                   pathShowDirections={pathShowDirections}
                 />
-              ) : pathOption === "List View" ? (
-                <Listview />
+              ) : pathOption === "Steps" ? (
+                <Stepview />
               ) : (
                 <Pathview />
               )}
