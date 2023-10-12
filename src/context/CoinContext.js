@@ -143,6 +143,8 @@ export const CoinContextProvider = ({ children }) => {
   const [pathItemSelected, setPathItemSelected] = useState(false);
   const [pathItemStep, setPathItemStep] = useState(1);
   const [selectedPathItem, setSelectedPathItem] = useState([]);
+  const [allSteps, setAllSteps] = useState([]);
+  const [stepsToggle, setStepsToggle] = useState(false);
 
   useEffect(() => {
     if (coinType == "bonds" || coinType == "moneyMarkets") {
@@ -388,6 +390,10 @@ export const CoinContextProvider = ({ children }) => {
         setPathItemStep,
         selectedPathItem,
         setSelectedPathItem,
+        allSteps,
+        setAllSteps,
+        stepsToggle,
+        setStepsToggle,
       }}
     >
       {children}

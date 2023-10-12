@@ -44,6 +44,8 @@ import { uploadImageFunc } from "../../utils/imageUpload";
 import Vaults from "../Vaults";
 import Toggle from "../../components/Toggle";
 import Tasks from "../Tasks";
+import arrow from "./arrow.svg";
+import { useCoinContextData } from "../../context/CoinContext";
 
 const AccDashboard = () => {
   const {
@@ -113,6 +115,9 @@ const AccDashboard = () => {
   const [gettingData, setGettingData] = useState(false);
 
   let navigate = useNavigate();
+
+  const { allSteps, setAllSteps, stepsToggle, setStepsToggle } =
+    useCoinContextData();
 
   //upload part starts here
 
@@ -684,6 +689,19 @@ const AccDashboard = () => {
 
   useState(() => {
     getWithCompPlan();
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get("https://careers.marketsverse.com/steps/get")
+      .then((response) => {
+        let result = response?.data?.data;
+        // console.log(result, "all steps fetched");
+        setAllSteps(result);
+      })
+      .catch((error) => {
+        console.log(error, "error in fetching all steps");
+      });
   }, []);
 
   return (
@@ -1586,7 +1604,7 @@ const AccDashboard = () => {
                     <EarningCalendar />
                   </div>
                 </>
-              ) : accsideNav === 'Vaults' ? (
+              ) : accsideNav === "Vaults" ? (
                 <>
                   <div className="dash-nav">
                     <div
@@ -1762,7 +1780,11 @@ const AccDashboard = () => {
           >
             <div className="acc-popular-top">
               <div className="acc-popular-head">
-                {pstep > 1 ? "New Service" : "Popular Actions"}
+                {pstep === 8
+                  ? "New Path"
+                  : pstep > 1 && pstep < 8
+                  ? "New Service"
+                  : "Popular Actions"}
               </div>
               <div
                 className="acc-popular-img-box"
@@ -1790,7 +1812,21 @@ const AccDashboard = () => {
                     >
                       Service
                     </div>
+
                     <div
+                      className="acc-step-box"
+                      onClick={() => {
+                        setselectNew("Path");
+                        setpstep(8);
+                      }}
+                      style={{
+                        background: selectNew === "Path" ? "#182542" : "",
+                        color: selectNew === "Path" ? "#FFF" : "",
+                      }}
+                    >
+                      Path
+                    </div>
+                    {/* <div
                       className="acc-step-box"
                       onClick={() => {
                         setselectNew("Task");
@@ -1828,7 +1864,7 @@ const AccDashboard = () => {
                       }}
                     >
                       Video
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               ) : pstep === 2 ? (
@@ -2219,6 +2255,117 @@ const AccDashboard = () => {
               ) : pstep === 7 ? (
                 <div className="success-box">
                   You Have Successfully Created A New Service
+                </div>
+              ) : pstep === 8 ? (
+                <div className="acc-addpath">
+                  <div className="each-acc-addpath-field">
+                    <div className="each-acc-addpath-field-name">
+                      What is the name of the path?
+                    </div>
+                    <div className="each-acc-addpath-field-input">
+                      <input type="text" placeholder="Name.." />
+                    </div>
+                  </div>
+
+                  <div className="each-acc-addpath-field">
+                    <div className="each-acc-addpath-field-name">
+                      How long will the path apx take?
+                    </div>
+                    <div className="each-acc-addpath-field-input">
+                      <input
+                        type="number"
+                        placeholder="0"
+                        style={{ width: "70%" }}
+                      />
+                      <div className="years-div">Years</div>
+                    </div>
+                  </div>
+
+                  <div className="each-acc-addpath-field">
+                    <div className="each-acc-addpath-field-name">
+                      Describe the path
+                    </div>
+                    <div className="each-acc-addpath-field-input">
+                      <textarea placeholder="Enter description.."></textarea>
+                    </div>
+                  </div>
+
+                  <div className="each-acc-addpath-field">
+                    <div className="each-acc-addpath-field-name">
+                      What type of path is it?
+                    </div>
+                    <div className="each-acc-addpath-field-flex">
+                      <div>Education</div>
+                      <div>Career</div>
+                      <div>Immigration</div>
+                    </div>
+                  </div>
+
+                  <div className="each-acc-addpath-field">
+                    <div className="each-acc-addpath-field-name">
+                      What is the destination of the path?
+                    </div>
+                    <div className="each-acc-addpath-field-input">
+                      <input type="text" placeholder="Name.." />
+                    </div>
+                  </div>
+
+                  <div className="each-acc-addpath-field">
+                    <div className="each-acc-addpath-field-name">Add steps</div>
+                    <div
+                      className="each-acc-addpath-field-input"
+                      style={{ flexDirection: "column" }}
+                    >
+                      <div
+                        style={{ width: "100%", display: "flex", cursor: 'pointer' }}
+                        onClick={() => {
+                          setStepsToggle(!stepsToggle);
+                        }}
+                      >
+                        <input
+                          type="text"
+                          placeholder="Click To Select"
+                          style={{ width: "85%", cursor: 'pointer' }}
+                        />
+                        <div className="arrow-box">
+                          <img
+                            src={arrow}
+                            alt=""
+                            style={{
+                              transform: stepsToggle ? "rotate(180deg)" : "",
+                            }}
+                          />
+                        </div>
+                      </div>
+                      <div
+                        className="hidden-steps"
+                        style={{ display: stepsToggle ? "flex" : "none" }}
+                      >
+                        {allSteps?.map((e, i) => {
+                          return (
+                            <div className="each-hidden-step" key={i}>
+                              <div className="stepp-textt">{e?.name}</div>
+                              <div className="stepp-textt1">
+                                {e?.description}
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="each-acc-addpath-field">
+                    <div className="submit-path-btn">Submit Path</div>
+                    <div
+                      className="go-back-btn"
+                      onClick={() => {
+                        setpstep(1);
+                      }}
+                    >
+                      Go Back
+                    </div>
+                  </div>
                 </div>
               ) : (
                 ""
