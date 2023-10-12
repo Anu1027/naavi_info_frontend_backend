@@ -31,17 +31,44 @@ const JourneyPage = () => {
       <div className="journey-top-area">
         <div>Your Selected Path:</div>
         <div className="bold-text">
-          Destination: Cornell | Law School | 2026
+          {journeyData[0]?.PathDetails[0]?.destination_institution}
         </div>
         <div className="journey-des">
-          Products that perform seamlessly during any kind of surge, so you
-          don’t have to worry about uptime and reliability. Products that
-          perform seamlessly during any kind of surge, so you don’t have to
-          worry about uptime and reliability.
+          {journeyData[0]?.PathDetails[0]?.description}
         </div>
       </div>
       <div className="journey-steps-area">
-        <div
+        {journeyData[0]?.PathDetails[0]?.StepDetails?.map((e, i) => {
+          return (
+            <div
+              className="each-j-step relative-div"
+              onClick={() => {
+                setsideNav("Current Step");
+              }}
+              key={i}
+            >
+              <div className="each-j-img">
+                <img src={e?.icon} alt="" />
+              </div>
+              <div className="each-j-step-text">{e?.name}</div>
+              <div className="each-j-step-text1">{e?.description}</div>
+              <div className="each-j-amount-div">
+                <div className="each-j-amount">{e?.cost}</div>
+                {/* <div
+                  className="each-j-amount"
+                  style={{ textDecorationLine: "underline" }}
+                >
+                  Current
+                </div> */}
+              </div>
+              {/* <div className="j-arr-div">
+                <img src={arrow} alt="" />
+              </div> */}
+            </div>
+          );
+        })}
+
+        {/* <div
           className="each-j-step relative-div"
           onClick={() => {
             setsideNav("Current Step");
@@ -171,7 +198,7 @@ const JourneyPage = () => {
           <div className="each-j-amount-div">
             <div className="each-j-amount">600 INR</div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
