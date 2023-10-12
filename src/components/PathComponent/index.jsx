@@ -49,8 +49,18 @@ const PathComponent = () => {
   const [pathDirections, setPathDirections] = useState(null);
   const [pathSelectedLocation, setPathSelectedLocation] = useState(null);
   const [pathShowDirections, setPathShowDirections] = useState(true);
-  const { searchTerm, setSearchterm, pathItemSelected, setPathItemSelected } =
-    useCoinContextData();
+  const {
+    searchTerm,
+    setSearchterm,
+    pathItemSelected,
+    setPathItemSelected,
+    pathItemStep,
+    setPathItemStep,
+    selectedPathItem,
+    setSelectedPathItem,
+  } = useCoinContextData();
+
+  let userDetails = JSON.parse(localStorage.getItem("user"));
 
   const handleAddContainer = () => {
     const lastContainer = containers[containers.length - 1];
@@ -191,6 +201,22 @@ const PathComponent = () => {
     />
   );
 
+  const pathSelection = () => {
+    let body = {
+      email: userDetails?.user?.email,
+      pathId: selectedPathItem?._id,
+    };
+    axios
+      .post(`https://careers.marketsverse.com/userpaths/add`, body)
+      .then((response) => {
+        let result = response?.data;
+        console.log(result, "pathSelection result");
+      })
+      .catch((error) => {
+        console.log(error, "pathSelection error");
+      });
+  };
+
   return (
     <div className="mapspage1">
       <LoadScript
@@ -287,7 +313,7 @@ const PathComponent = () => {
                 </div>
               </div>
             </div>
-            {pathItemSelected ? (
+            {pathItemSelected && pathItemStep === 1 ? (
               <div className="mid-area1" style={{ borderBottom: "none" }}>
                 <div
                   style={{
@@ -308,6 +334,9 @@ const PathComponent = () => {
                   <div
                     className="reset-btn1"
                     style={{ fontWeight: "400", textAlign: "left" }}
+                    onClick={() => {
+                      setPathItemStep(2);
+                    }}
                   >
                     Select Path
                   </div>
@@ -316,6 +345,39 @@ const PathComponent = () => {
                     style={{ fontWeight: "400", textAlign: "left" }}
                     onClick={() => {
                       setPathItemSelected(false);
+                      setSelectedPathItem("");
+                    }}
+                  >
+                    Go Back
+                  </div>
+                </div>
+              </div>
+            ) : pathItemSelected && pathItemStep === 2 ? (
+              <div className="mid-area1" style={{ borderBottom: "none" }}>
+                <div
+                  style={{
+                    fontWeight: "400",
+                    marginTop: "0.5rem",
+                    marginBottom: "0.5rem",
+                  }}
+                >
+                  Are you sure you want to select this path?
+                </div>
+                <div className="maps-btns-div1">
+                  <div
+                    className="reset-btn1"
+                    style={{ fontWeight: "400", textAlign: "left" }}
+                    onClick={() => {
+                      pathSelection();
+                    }}
+                  >
+                    Yes, Confirm
+                  </div>
+                  <div
+                    className="reset-btn1"
+                    style={{ fontWeight: "400", textAlign: "left" }}
+                    onClick={() => {
+                      setPathItemStep(1);
                     }}
                   >
                     Go Back

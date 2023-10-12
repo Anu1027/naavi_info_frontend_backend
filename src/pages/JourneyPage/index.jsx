@@ -1,12 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useStore } from "../../components/store/store.ts";
 import "./journey.scss";
 
 import dummy from "./dummy.svg";
 import arrow from "./arrow.svg";
+import axios from "axios";
 
 const JourneyPage = () => {
+  let userDetails = JSON.parse(localStorage.getItem("user"));
   const { sideNav, setsideNav } = useStore();
+  const [journeyData, setJourneyData] = useState([]);
+  const [] = useState(false);
+
+  useEffect(() => {
+    let email = userDetails?.user?.email;
+    axios
+      .get(`https://careers.marketsverse.com/userpaths/get?email=${email}`)
+      .then((response) => {
+        let result = response?.data?.data;
+        // console.log(result, "journey data");
+        setJourneyData(result);
+      })
+      .catch((error) => {
+        console.log(error, "error in journey data");
+      });
+  }, []);
 
   return (
     <div className="journeypage">
@@ -15,11 +33,20 @@ const JourneyPage = () => {
         <div className="bold-text">
           Destination: Cornell | Law School | 2026
         </div>
+        <div className="journey-des">
+          Products that perform seamlessly during any kind of surge, so you
+          don’t have to worry about uptime and reliability. Products that
+          perform seamlessly during any kind of surge, so you don’t have to
+          worry about uptime and reliability.
+        </div>
       </div>
       <div className="journey-steps-area">
-        <div className="each-j-step relative-div" onClick={() => {
-          setsideNav('Current Step')
-        }}>
+        <div
+          className="each-j-step relative-div"
+          onClick={() => {
+            setsideNav("Current Step");
+          }}
+        >
           <div className="each-j-img">
             <img src={dummy} alt="" />
           </div>
@@ -42,9 +69,12 @@ const JourneyPage = () => {
           </div>
         </div>
 
-        <div className="each-j-step relative-div" onClick={() => {
-          setsideNav('Current Step')
-        }}>
+        <div
+          className="each-j-step relative-div"
+          onClick={() => {
+            setsideNav("Current Step");
+          }}
+        >
           <div className="each-j-img">
             <img src={dummy} alt="" />
           </div>
@@ -61,9 +91,12 @@ const JourneyPage = () => {
           </div>
         </div>
 
-        <div className="each-j-step" onClick={() => {
-          setsideNav('Current Step')
-        }}>
+        <div
+          className="each-j-step"
+          onClick={() => {
+            setsideNav("Current Step");
+          }}
+        >
           <div className="each-j-img">
             <img src={dummy} alt="" />
           </div>
@@ -77,9 +110,12 @@ const JourneyPage = () => {
           </div>
         </div>
 
-        <div className="each-j-step relative-div" onClick={() => {
-          setsideNav('Current Step')
-        }}>
+        <div
+          className="each-j-step relative-div"
+          onClick={() => {
+            setsideNav("Current Step");
+          }}
+        >
           <div className="each-j-img">
             <img src={dummy} alt="" />
           </div>
@@ -96,9 +132,12 @@ const JourneyPage = () => {
           </div>
         </div>
 
-        <div className="each-j-step relative-div" onClick={() => {
-          setsideNav('Current Step')
-        }}>
+        <div
+          className="each-j-step relative-div"
+          onClick={() => {
+            setsideNav("Current Step");
+          }}
+        >
           <div className="each-j-img">
             <img src={dummy} alt="" />
           </div>
@@ -115,9 +154,12 @@ const JourneyPage = () => {
           </div>
         </div>
 
-        <div className="each-j-step" onClick={() => {
-          setsideNav('Current Step')
-        }}>
+        <div
+          className="each-j-step"
+          onClick={() => {
+            setsideNav("Current Step");
+          }}
+        >
           <div className="each-j-img">
             <img src={dummy} alt="" />
           </div>

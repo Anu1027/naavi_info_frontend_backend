@@ -5,8 +5,15 @@ import { useCoinContextData } from "../../context/CoinContext";
 import "./pathview.scss";
 
 const Pathview = () => {
-  const { searchTerm, pathItemSelected, setPathItemSelected } =
-    useCoinContextData();
+  const {
+    searchTerm,
+    pathItemSelected,
+    setPathItemSelected,
+    pathItemStep,
+    setPathItemStep,
+    selectedPathItem,
+    setSelectedPathItem,
+  } = useCoinContextData();
   const [loading, setLoading] = useState(false);
   const [pathViewData, setPathViewData] = useState([]);
 
@@ -58,6 +65,8 @@ const Pathview = () => {
                   key={i}
                   onClick={() => {
                     setPathItemSelected(true);
+                    setSelectedPathItem(e);
+                    // console.log(e?._id, 'selected path');
                   }}
                 >
                   <div className="each-pv-name">{e?.nameOfPath}</div>

@@ -66,7 +66,7 @@ export const useStore = create<Store>((set) => ({
   setmobsize: (mob) => set({ mobsize: mob }),
   scrollmenu: "Individuals",
   setscrollmenu: (smenu) => set({ scrollmenu: smenu }),
-  sideNav: "Partners",
+  sideNav: "Paths",
   setsideNav: (sidenav) => set({ sideNav: sidenav }),
   accsideNav: "CRM",
   setaccsideNav: (accsidenav) => set({ accsideNav: accsidenav }),
