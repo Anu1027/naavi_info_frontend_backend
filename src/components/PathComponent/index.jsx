@@ -13,6 +13,7 @@ import "./mapspage.scss";
 import DatePicker from "react-datepicker";
 import { useCoinContextData } from "../../context/CoinContext";
 import "react-datepicker/dist/react-datepicker.css";
+import { useStore } from "../../components/store/store.ts";
 
 //images
 import logo from "../../static/images/logo.svg";
@@ -30,6 +31,7 @@ const libraries = ["places"];
 
 const PathComponent = () => {
   const navigate = useNavigate();
+  const { sideNav, setsideNav } = useStore();
   const [option, setOption] = useState("Education");
   const [containers, setContainers] = useState([
     { id: 1, inputValue1: "", inputValue2: "", removable: false },
@@ -59,6 +61,7 @@ const PathComponent = () => {
     selectedPathItem,
     setSelectedPathItem,
   } = useCoinContextData();
+  const [loading, setLoading] = useState(false);
 
   let userDetails = JSON.parse(localStorage.getItem("user"));
 
@@ -201,7 +204,16 @@ const PathComponent = () => {
     />
   );
 
+  const myTimeout = () => {
+    setTimeout(reload, 3000);
+  };
+
+  function reload() {
+    setsideNav("My Journey");
+  }
+
   const pathSelection = () => {
+    setLoading(true);
     let body = {
       email: userDetails?.user?.email,
       pathId: selectedPathItem?._id,
@@ -210,7 +222,14 @@ const PathComponent = () => {
       .post(`https://careers.marketsverse.com/userpaths/add`, body)
       .then((response) => {
         let result = response?.data;
-        console.log(result, "pathSelection result");
+        // console.log(result, "pathSelection result");
+        if (result?.status) {
+          myTimeout();
+          setLoading(false);
+          setPathItemStep(3);
+        } else {
+          setLoading(false);
+        }
       })
       .catch((error) => {
         console.log(error, "pathSelection error");
@@ -225,7 +244,13 @@ const PathComponent = () => {
       >
         <div className="maps-container1">
           <div className="maps-sidebar1">
-            <div className="top-icons1">
+            <div
+              className="top-icons1"
+              style={{
+                display:
+                  pathItemSelected && pathItemStep === 3 ? "none" : "flex",
+              }}
+            >
               <div
                 className="each-icon1"
                 // onClick={() => {
@@ -366,12 +391,16 @@ const PathComponent = () => {
                 <div className="maps-btns-div1">
                   <div
                     className="reset-btn1"
-                    style={{ fontWeight: "400", textAlign: "left" }}
+                    style={{
+                      fontWeight: "400",
+                      textAlign: "left",
+                      opacity: loading ? "0.25" : "1",
+                    }}
                     onClick={() => {
                       pathSelection();
                     }}
                   >
-                    Yes, Confirm
+                    {loading ? "Loading..." : "Yes, Confirm"}
                   </div>
                   <div
                     className="reset-btn1"
@@ -382,6 +411,14 @@ const PathComponent = () => {
                   >
                     Go Back
                   </div>
+                </div>
+              </div>
+            ) : pathItemSelected && pathItemStep === 3 ? (
+              <div className="congrats-area">
+                <div className="congrats-textt">Congratulations</div>
+                <div className="congrats-textt1">
+                  You have successfully chosen {selectedPathItem?.nameOfPath}.
+                  You will be redirected to your journey page now.
                 </div>
               </div>
             ) : (
