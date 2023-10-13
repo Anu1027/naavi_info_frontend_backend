@@ -116,8 +116,24 @@ const AccDashboard = () => {
 
   let navigate = useNavigate();
 
-  const { allSteps, setAllSteps, stepsToggle, setStepsToggle } =
-    useCoinContextData();
+  const {
+    allSteps,
+    setAllSteps,
+    stepsToggle,
+    setStepsToggle,
+    pathName,
+    setPathName,
+    pathDuration,
+    setPathDuration,
+    pathDescription,
+    setPathDescription,
+    pathType,
+    setPathType,
+    pathDestination,
+    setPathDestination,
+    pathSteps,
+    setPathSteps,
+  } = useCoinContextData();
 
   //upload part starts here
 
@@ -289,6 +305,13 @@ const AccDashboard = () => {
     setthirdChargeAttempt("");
     setCoverImageS3url("");
     setImage(null);
+    setPathName("");
+    setPathDuration("");
+    setPathDescription("");
+    setPathType("");
+    setPathDestination("");
+    setPathType("");
+    setPathSteps([]);
   };
 
   const handleLogout = () => {
@@ -703,6 +726,27 @@ const AccDashboard = () => {
         console.log(error, "error in fetching all steps");
       });
   }, []);
+
+  const pathSubmission = () => {
+    let body = {
+      nameOfPath: pathName,
+      description: pathDescription,
+      length: pathDuration,
+      path_type: pathType,
+      step_ids: ["64c5185426fcec00eabbe8e0", "64cd05ec7bd6a7d3b42a07a8"],
+      destination_institution: pathDestination,
+    };
+
+    axios
+      .post(`https://careers.marketsverse.com/paths/add`, body)
+      .then((response) => {
+        let result = response?.data;
+        console.log(result, "pathSubmission result");
+      })
+      .catch((error) => {
+        console.log(error, "error in pathSubmission");
+      });
+  };
 
   return (
     <div style={{ overflow: "hidden" }}>
@@ -2263,7 +2307,14 @@ const AccDashboard = () => {
                       What is the name of the path?
                     </div>
                     <div className="each-acc-addpath-field-input">
-                      <input type="text" placeholder="Name.." />
+                      <input
+                        type="text"
+                        placeholder="Name.."
+                        value={pathName}
+                        onChange={(e) => {
+                          setPathName(e.target.value);
+                        }}
+                      />
                     </div>
                   </div>
 
@@ -2276,6 +2327,10 @@ const AccDashboard = () => {
                         type="number"
                         placeholder="0"
                         style={{ width: "70%" }}
+                        value={pathDuration}
+                        onChange={(e) => {
+                          setPathDuration(e.target.value);
+                        }}
                       />
                       <div className="years-div">Years</div>
                     </div>
@@ -2286,7 +2341,13 @@ const AccDashboard = () => {
                       Describe the path
                     </div>
                     <div className="each-acc-addpath-field-input">
-                      <textarea placeholder="Enter description.."></textarea>
+                      <textarea
+                        placeholder="Enter description.."
+                        value={pathDescription}
+                        onChange={(e) => {
+                          setPathDescription(e.target.value);
+                        }}
+                      ></textarea>
                     </div>
                   </div>
 
@@ -2295,9 +2356,48 @@ const AccDashboard = () => {
                       What type of path is it?
                     </div>
                     <div className="each-acc-addpath-field-flex">
-                      <div>Education</div>
-                      <div>Career</div>
-                      <div>Immigration</div>
+                      <div
+                        onClick={() => {
+                          setPathType("education");
+                        }}
+                        style={{
+                          background:
+                            pathType === "education"
+                              ? "linear-gradient(90deg, #47b4d5 0.02%, #29449d 119.26%)"
+                              : "",
+                          color: pathType === "education" ? "white" : "",
+                        }}
+                      >
+                        Education
+                      </div>
+                      <div
+                        onClick={() => {
+                          setPathType("career");
+                        }}
+                        style={{
+                          background:
+                            pathType === "career"
+                              ? "linear-gradient(90deg, #47b4d5 0.02%, #29449d 119.26%)"
+                              : "",
+                          color: pathType === "career" ? "white" : "",
+                        }}
+                      >
+                        Career
+                      </div>
+                      <div
+                        onClick={() => {
+                          setPathType("immigration");
+                        }}
+                        style={{
+                          background:
+                            pathType === "immigration"
+                              ? "linear-gradient(90deg, #47b4d5 0.02%, #29449d 119.26%)"
+                              : "",
+                          color: pathType === "immigration" ? "white" : "",
+                        }}
+                      >
+                        Immigration
+                      </div>
                     </div>
                   </div>
 
@@ -2306,7 +2406,20 @@ const AccDashboard = () => {
                       What is the destination of the path?
                     </div>
                     <div className="each-acc-addpath-field-input">
-                      <input type="text" placeholder="Name.." />
+                      <input
+                        type="text"
+                        placeholder="Name.."
+                        // value={pathDestination}
+                        onChange={(e) => {
+                          // setPathDestination(e.target.value);
+                          setPathSteps((prev) => {
+                            return {
+                              ...prev,
+                              destination_institution: e.target.value,
+                            };
+                          });
+                        }}
+                      />
                     </div>
                   </div>
 
@@ -2317,7 +2430,11 @@ const AccDashboard = () => {
                       style={{ flexDirection: "column" }}
                     >
                       <div
-                        style={{ width: "100%", display: "flex", cursor: 'pointer' }}
+                        style={{
+                          width: "100%",
+                          display: "flex",
+                          cursor: "pointer",
+                        }}
                         onClick={() => {
                           setStepsToggle(!stepsToggle);
                         }}
@@ -2325,7 +2442,7 @@ const AccDashboard = () => {
                         <input
                           type="text"
                           placeholder="Click To Select"
-                          style={{ width: "85%", cursor: 'pointer' }}
+                          style={{ width: "85%", cursor: "pointer" }}
                         />
                         <div className="arrow-box">
                           <img
@@ -2343,7 +2460,19 @@ const AccDashboard = () => {
                       >
                         {allSteps?.map((e, i) => {
                           return (
-                            <div className="each-hidden-step" key={i}>
+                            <div
+                              className="each-hidden-step"
+                              key={i}
+                              onClick={() => {
+                                // console.log(pathSteps, 'path stepsss')
+                                setPathSteps((prev) => {
+                                  return {
+                                    ...prev,
+                                    // step_ids: [...prev?.step_ids, e?._id],
+                                  };
+                                });
+                              }}
+                            >
                               <div className="stepp-textt">{e?.name}</div>
                               <div className="stepp-textt1">
                                 {e?.description}
@@ -2356,11 +2485,46 @@ const AccDashboard = () => {
                   </div>
 
                   <div className="each-acc-addpath-field">
-                    <div className="submit-path-btn">Submit Path</div>
+                    <div
+                      className="submit-path-btn"
+                      // style={{
+                      //   opacity:
+                      //     pathName &&
+                      //     pathDuration &&
+                      //     pathDescription &&
+                      //     pathType &&
+                      //     pathDestination &&
+                      //     pathSteps?.length > 0
+                      //       ? "1"
+                      //       : "0.5",
+                      // }}
+                      onClick={() => {
+                        // if (
+                        //   pathName &&
+                        //   pathDuration &&
+                        //   pathDescription &&
+                        //   pathType &&
+                        //   pathDestination &&
+                        //   pathSteps?.length > 0
+                        // ) {
+                        //   pathSubmission();
+                        // }
+                        console.log(pathSteps, 'pathsteps');
+                      }}
+                    >
+                      Submit Path
+                    </div>
                     <div
                       className="go-back-btn"
                       onClick={() => {
                         setpstep(1);
+                        setPathName("");
+                        setPathDuration("");
+                        setPathDescription("");
+                        setPathType("");
+                        setPathDestination("");
+                        setPathType("");
+                        setPathSteps([]);
                       }}
                     >
                       Go Back
