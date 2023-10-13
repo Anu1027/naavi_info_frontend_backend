@@ -147,11 +147,6 @@ export const CoinContextProvider = ({ children }) => {
   const [stepsToggle, setStepsToggle] = useState(false);
 
   //add path form
-  const [pathName, setPathName] = useState();
-  const [pathDuration, setPathDuration] = useState();
-  const [pathDescription, setPathDescription] = useState();
-  const [pathType, setPathType] = useState();
-  const [pathDestination, setPathDestination] = useState();
   const [pathSteps, setPathSteps] = useState({
     nameOfPath: "",
     description: "",
@@ -160,6 +155,7 @@ export const CoinContextProvider = ({ children }) => {
     step_ids: [],
     destination_institution: "",
   });
+  const [creatingPath, setCreatingPath] = useState(false);
 
   useEffect(() => {
     if (coinType == "bonds" || coinType == "moneyMarkets") {
@@ -411,18 +407,10 @@ export const CoinContextProvider = ({ children }) => {
         setStepsToggle,
 
         //add path form
-        pathName,
-        setPathName,
-        pathDuration,
-        setPathDuration,
-        pathDescription,
-        setPathDescription,
-        pathType,
-        setPathType,
-        pathDestination,
-        setPathDestination,
         pathSteps,
         setPathSteps,
+        creatingPath,
+        setCreatingPath,
       }}
     >
       {children}

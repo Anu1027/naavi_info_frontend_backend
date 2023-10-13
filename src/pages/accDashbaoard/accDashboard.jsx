@@ -121,18 +121,10 @@ const AccDashboard = () => {
     setAllSteps,
     stepsToggle,
     setStepsToggle,
-    pathName,
-    setPathName,
-    pathDuration,
-    setPathDuration,
-    pathDescription,
-    setPathDescription,
-    pathType,
-    setPathType,
-    pathDestination,
-    setPathDestination,
     pathSteps,
     setPathSteps,
+    creatingPath,
+    setCreatingPath,
   } = useCoinContextData();
 
   //upload part starts here
@@ -305,13 +297,14 @@ const AccDashboard = () => {
     setthirdChargeAttempt("");
     setCoverImageS3url("");
     setImage(null);
-    setPathName("");
-    setPathDuration("");
-    setPathDescription("");
-    setPathType("");
-    setPathDestination("");
-    setPathType("");
-    setPathSteps([]);
+    setPathSteps({
+      nameOfPath: "",
+      description: "",
+      length: "",
+      path_type: "",
+      step_ids: [],
+      destination_institution: "",
+    });
   };
 
   const handleLogout = () => {
@@ -728,20 +721,18 @@ const AccDashboard = () => {
   }, []);
 
   const pathSubmission = () => {
-    let body = {
-      nameOfPath: pathName,
-      description: pathDescription,
-      length: pathDuration,
-      path_type: pathType,
-      step_ids: ["64c5185426fcec00eabbe8e0", "64cd05ec7bd6a7d3b42a07a8"],
-      destination_institution: pathDestination,
-    };
-
+    // console.log(pathSteps, "api body");
+    setCreatingPath(true);
     axios
-      .post(`https://careers.marketsverse.com/paths/add`, body)
+      .post(`https://careers.marketsverse.com/paths/add`, pathSteps)
       .then((response) => {
         let result = response?.data;
         console.log(result, "pathSubmission result");
+        if (result?.status) {
+          setCreatingPath(false);
+        } else {
+          setCreatingPath(false);
+        }
       })
       .catch((error) => {
         console.log(error, "error in pathSubmission");
@@ -2310,9 +2301,14 @@ const AccDashboard = () => {
                       <input
                         type="text"
                         placeholder="Name.."
-                        value={pathName}
+                        value={pathSteps?.nameOfPath}
                         onChange={(e) => {
-                          setPathName(e.target.value);
+                          setPathSteps((prev) => {
+                            return {
+                              ...prev,
+                              nameOfPath: e.target.value,
+                            };
+                          });
                         }}
                       />
                     </div>
@@ -2327,9 +2323,14 @@ const AccDashboard = () => {
                         type="number"
                         placeholder="0"
                         style={{ width: "70%" }}
-                        value={pathDuration}
+                        value={pathSteps?.length}
                         onChange={(e) => {
-                          setPathDuration(e.target.value);
+                          setPathSteps((prev) => {
+                            return {
+                              ...prev,
+                              length: e.target.value,
+                            };
+                          });
                         }}
                       />
                       <div className="years-div">Years</div>
@@ -2343,9 +2344,14 @@ const AccDashboard = () => {
                     <div className="each-acc-addpath-field-input">
                       <textarea
                         placeholder="Enter description.."
-                        value={pathDescription}
+                        value={pathSteps?.description}
                         onChange={(e) => {
-                          setPathDescription(e.target.value);
+                          setPathSteps((prev) => {
+                            return {
+                              ...prev,
+                              description: e.target.value,
+                            };
+                          });
                         }}
                       ></textarea>
                     </div>
@@ -2358,42 +2364,62 @@ const AccDashboard = () => {
                     <div className="each-acc-addpath-field-flex">
                       <div
                         onClick={() => {
-                          setPathType("education");
+                          setPathSteps((prev) => {
+                            return {
+                              ...prev,
+                              path_type: "education",
+                            };
+                          });
                         }}
                         style={{
                           background:
-                            pathType === "education"
+                            pathSteps?.path_type === "education"
                               ? "linear-gradient(90deg, #47b4d5 0.02%, #29449d 119.26%)"
                               : "",
-                          color: pathType === "education" ? "white" : "",
+                          color:
+                            pathSteps?.path_type === "education" ? "white" : "",
                         }}
                       >
                         Education
                       </div>
                       <div
                         onClick={() => {
-                          setPathType("career");
+                          setPathSteps((prev) => {
+                            return {
+                              ...prev,
+                              path_type: "career",
+                            };
+                          });
                         }}
                         style={{
                           background:
-                            pathType === "career"
+                            pathSteps?.path_type === "career"
                               ? "linear-gradient(90deg, #47b4d5 0.02%, #29449d 119.26%)"
                               : "",
-                          color: pathType === "career" ? "white" : "",
+                          color:
+                            pathSteps?.path_type === "career" ? "white" : "",
                         }}
                       >
                         Career
                       </div>
                       <div
                         onClick={() => {
-                          setPathType("immigration");
+                          setPathSteps((prev) => {
+                            return {
+                              ...prev,
+                              path_type: "immigration",
+                            };
+                          });
                         }}
                         style={{
                           background:
-                            pathType === "immigration"
+                            pathSteps?.path_type === "immigration"
                               ? "linear-gradient(90deg, #47b4d5 0.02%, #29449d 119.26%)"
                               : "",
-                          color: pathType === "immigration" ? "white" : "",
+                          color:
+                            pathSteps?.path_type === "immigration"
+                              ? "white"
+                              : "",
                         }}
                       >
                         Immigration
@@ -2409,9 +2435,8 @@ const AccDashboard = () => {
                       <input
                         type="text"
                         placeholder="Name.."
-                        // value={pathDestination}
+                        value={pathSteps?.destination_institution}
                         onChange={(e) => {
-                          // setPathDestination(e.target.value);
                           setPathSteps((prev) => {
                             return {
                               ...prev,
@@ -2464,13 +2489,16 @@ const AccDashboard = () => {
                               className="each-hidden-step"
                               key={i}
                               onClick={() => {
-                                // console.log(pathSteps, 'path stepsss')
                                 setPathSteps((prev) => {
                                   return {
                                     ...prev,
-                                    // step_ids: [...prev?.step_ids, e?._id],
+                                    step_ids:
+                                      prev?.step_ids?.length > 0
+                                        ? [...prev?.step_ids, e?._id]
+                                        : [e?._id],
                                   };
                                 });
+                                setStepsToggle(false);
                               }}
                             >
                               <div className="stepp-textt">{e?.name}</div>
@@ -2484,47 +2512,71 @@ const AccDashboard = () => {
                     </div>
                   </div>
 
+                  <div className="selected-steps">
+                    {allSteps?.map((e, i) => {
+                      if (pathSteps?.step_ids?.includes(e?._id)) {
+                        return (
+                          <div className="each-selected-step">
+                            <div className="stepp-textt">{e?.name}</div>
+                            <div className="stepp-textt1">{e?.description}</div>
+                          </div>
+                        );
+                      }
+                    })}
+                  </div>
+
                   <div className="each-acc-addpath-field">
                     <div
                       className="submit-path-btn"
-                      // style={{
-                      //   opacity:
-                      //     pathName &&
-                      //     pathDuration &&
-                      //     pathDescription &&
-                      //     pathType &&
-                      //     pathDestination &&
-                      //     pathSteps?.length > 0
-                      //       ? "1"
-                      //       : "0.5",
-                      // }}
+                      style={{
+                        opacity: creatingPath
+                          ? "0.5"
+                          : pathSteps?.nameOfPath &&
+                            pathSteps?.description &&
+                            pathSteps?.length &&
+                            pathSteps?.path_type &&
+                            pathSteps?.step_ids?.length > 0 &&
+                            pathSteps?.destination_institution
+                          ? "1"
+                          : "0.5",
+                        cursor: creatingPath
+                          ? "not-allowed"
+                          : pathSteps?.nameOfPath &&
+                            pathSteps?.description &&
+                            pathSteps?.length &&
+                            pathSteps?.path_type &&
+                            pathSteps?.step_ids?.length > 0 &&
+                            pathSteps?.destination_institution
+                          ? "pointer"
+                          : "not-allowed",
+                      }}
                       onClick={() => {
-                        // if (
-                        //   pathName &&
-                        //   pathDuration &&
-                        //   pathDescription &&
-                        //   pathType &&
-                        //   pathDestination &&
-                        //   pathSteps?.length > 0
-                        // ) {
-                        //   pathSubmission();
-                        // }
-                        console.log(pathSteps, 'pathsteps');
+                        if (
+                          pathSteps?.nameOfPath &&
+                          pathSteps?.description &&
+                          pathSteps?.length &&
+                          pathSteps?.path_type &&
+                          pathSteps?.step_ids?.length > 0 &&
+                          pathSteps?.destination_institution
+                        ) {
+                          pathSubmission();
+                        }
                       }}
                     >
-                      Submit Path
+                      {creatingPath ? "Loading.." : "Submit Path"}
                     </div>
                     <div
                       className="go-back-btn"
                       onClick={() => {
                         setpstep(1);
-                        setPathName("");
-                        setPathDuration("");
-                        setPathDescription("");
-                        setPathType("");
-                        setPathDestination("");
-                        setPathType("");
-                        setPathSteps([]);
+                        setPathSteps({
+                          nameOfPath: "",
+                          description: "",
+                          length: "",
+                          path_type: "",
+                          step_ids: [],
+                          destination_institution: "",
+                        });
                       }}
                     >
                       Go Back
