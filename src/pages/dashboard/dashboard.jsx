@@ -1730,7 +1730,13 @@ const Dashboard = () => {
                 <img className="m-right-icon" src={sidearrow} alt="" />
               </div>
             </div> */}
-            <div className="m-each" style={{ opacity: "0.5" }}>
+            <div
+              className="m-each"
+              onClick={() => {
+                setsideNav("");
+                navigate("/dashboard/users/profile");
+              }}
+            >
               <div className="m-left">
                 <div className="m-left-icon-box">
                   <img className="m-left-icon" src={profilea} alt="" />

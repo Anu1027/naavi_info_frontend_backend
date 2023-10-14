@@ -16,6 +16,7 @@ import MallProduct from "./pages/dashboard/MallProduct/MallProduct";
 import FirstPage from "./pages/Registration/pages/FirstPage";
 import RegistrationHomePage from "./pages/Registration/pages/HomePage";
 import NodesPage from "./pages/NodesPage";
+import UserProfile from "./pages/UserProfile";
 
 function App() {
   const { loginData, selectedApp, setSelectedApp, globalMenu, MainMenu } =
@@ -100,6 +101,7 @@ function App() {
       <Route path="/dashboard/users" element={<Dashboard />} />
       <Route path="/dashboard/accountants" element={<AccDashboard />} />
       <Route path="/dashboard/accountants/profile" element={<AccProfile />} />
+      <Route path="/dashboard/users/profile" element={<UserProfile />} />
       <Route path="/directory/nodes" element={<NodesPage />} />
       <Route path="/directory/nodes/:id" element={<SingleDirectory />} />
       <Route path="/dashboard/users/:id" element={<MallProduct />} />
