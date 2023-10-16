@@ -3130,6 +3130,56 @@ export const InputDivsCheckFunctionality = ({
   );
 };
 
+export const InputDivsCheckFunctionality1 = ({
+  heading,
+  placeholderText,
+  setFunc,
+  funcValue,
+  userNameAvailable,
+}) => {
+  return (
+    <div className={classNames.inputDivs} style={{ marginTop: "3rem" }}>
+      <div className={classNames.heading}>{heading}</div>
+      <div className={classNames.inputHolder}>
+        <input
+          className={classNames.inputFields}
+          placeholder={placeholderText}
+          onChange={(event) => {
+            setFunc(event.target.value);
+          }}
+          value={funcValue ? funcValue : ""}
+          style={{ borderRadius: "35px" }}
+        />
+
+        <div
+          className={classNames.currencyDiv2}
+          style={{ background: userNameAvailable ? "#86D5BD" : "#1f304f" }}
+        >
+          {userNameAvailable ? "Available" : "Check"}
+        </div>
+      </div>
+      {/* {funcValue?.length > 0 && !userNameAvailable && (
+        <div
+          style={{
+            fontSize: "0.8rem",
+            zIndex: "2",
+            width: "95%",
+            display: "flex",
+            justifyContent: "center",
+            background: "rgba(241, 244, 246)",
+            padding: "5px",
+            borderBottomLeftRadius: "35px",
+            borderBottomRightRadius: "35px",
+            margin: "-16px auto",
+          }}
+        >
+          This username is not available. Please try again.
+        </div>
+      )} */}
+    </div>
+  );
+};
+
 export const ImageUploadDivProfilePic = ({ setFunc, funcValue }) => {
   const {
     planBAccountPicUploading,

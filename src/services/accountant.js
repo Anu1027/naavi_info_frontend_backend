@@ -278,3 +278,19 @@ export const addCompPlanFunction = async (body) => {
     console.error(err);
   }
 };
+
+
+// check status of naavi profile
+
+export const CheckStatusNaaviProfile = async (mailId) => {
+  // console.log(mailId, 'mailId')
+  try {
+    const response = await axios.get(
+      `https://careers.marketsverse.com/users/get?email=${mailId}`
+    );
+    return response;
+  } catch (error) {
+    console.log(error, "CheckStatusNaaviProfile error");
+    return error;
+  }
+};

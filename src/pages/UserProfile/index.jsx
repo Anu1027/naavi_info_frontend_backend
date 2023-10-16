@@ -9,29 +9,30 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import Dashsidebar from "../../components/dashsidebar/dashsidebar";
 import {
-    GetFollowersPerAccount,
-    GetCategoriesAcc,
-    GetAllCustomerLicenses,
-    GetLogServices,
-    GetAllCurrencies,
-    CreatePopularService,
-    CheckStatusAccountant,
+  GetFollowersPerAccount,
+  GetCategoriesAcc,
+  GetAllCustomerLicenses,
+  GetLogServices,
+  GetAllCurrencies,
+  CreatePopularService,
+  CheckStatusNaaviProfile,
 } from "../../services/accountant";
 import * as jose from "jose";
 import { LoadingAnimation1 } from "../../components/LoadingAnimation1";
 import {
-    InputDivsCheck,
-    InputDivsTextArea1,
-    InputDivsWithMT,
-    InputDivsWithColorCode,
+  InputDivsCheck,
+  InputDivsTextArea1,
+  InputDivsWithMT,
+  InputDivsWithColorCode,
 } from "../../components/createAccountant/CreatePlanB";
 import {
-    ImageUploadDivProfilePic1,
-    InputDivsCheckFunctionality,
-    ImageUploadDivCoverPic1,
-    ImageUploadProfilePic2,
-    ImageUploadDivProfilePic,
-    ImageUploadDivCoverPic,
+  ImageUploadDivProfilePic1,
+  InputDivsCheckFunctionality,
+  InputDivsCheckFunctionality1,
+  ImageUploadDivCoverPic1,
+  ImageUploadProfilePic2,
+  ImageUploadDivProfilePic,
+  ImageUploadDivCoverPic,
 } from "../accProfile/AccProfile";
 
 // images
@@ -92,21 +93,17 @@ const UserProfile = () => {
   const [profileData, setProfileData] = useState({});
   const [profileSpecalities, setprofileSpecalities] = useState([]);
 
-  // create brand profile
+  // create user profile level one
   const [createBrandProfile, setCreateBrandProfile] = useState(false);
   const [createBrandProfileStep, setCreateBrandProfileStep] = useState(1);
   const [profilePicture, setProfilePicture] = useState();
-  const [firstName, setFirstName] = useState();
-  const [lastName, setLastName] = useState();
+  const [fullName, setFullName] = useState();
+  const [phoneNo, setPhoneNo] = useState();
   const [userName, setUserName] = useState("");
-  const [coverPhoto1, setCoverPhoto1] = useState();
-  const [brandDisplayName, setBrandDisplayName] = useState();
-  const [brandUserName, setBrandUserName] = useState("");
-  const [brandDescription, setBrandDescription] = useState();
-  const [brandColorCode, setBrandColorCode] = useState();
-  const [headquarter, setHeadquarter] = useState();
-  const [brandAddress, setBrandAddress] = useState();
-  const [whiteProPic, setWhiteProPic] = useState();
+  const [country, setCountry] = useState();
+  const [selectState, setSelectState] = useState();
+  const [city, setCity] = useState();
+  const [postalCode, setPostalCode] = useState();
   const [isloading, setIsloading] = useState(false);
   const [accStatus, setAccStatus] = useState("");
   const [hidden, setHidden] = useState(false);
@@ -205,43 +202,6 @@ const UserProfile = () => {
 
   //upload end here
 
-  const handleFollowerPerAccountants = () => {
-    setIsLoading(true);
-    GetFollowersPerAccount()
-      .then((res) => {
-        let result = res.data;
-        if (result.status) {
-          setfollowCount(result.data.count);
-          setfollowData(result.data.followers);
-          setIsLoading(false);
-        }
-      })
-      .catch((err) => {
-        console.log(err, "jkjkk");
-        setIsLoading(false);
-        toast.error("Something Went Wrong!", {
-          position: toast.POSITION.TOP_RIGHT,
-        });
-      });
-  };
-
-  const handleAllCustomerLicenses = () => {
-    const userDetails = JSON.parse(localStorage.getItem("user"));
-    setIsPurchaseLoading(true);
-    GetAllCustomerLicenses(userDetails.user.email)
-      .then((res) => {
-        let result = res.data;
-        if (result.status) {
-          setPurchaseData(result.licenses);
-          setIsPurchaseLoading(false);
-        }
-      })
-      .catch((err) => {
-        // console.log(err)
-        setIsPurchaseLoading(false);
-      });
-  };
-
   const handleCategories = () => {
     setIsCatLoading(true);
     GetCategoriesAcc()
@@ -311,22 +271,6 @@ const UserProfile = () => {
   const handleLogout = () => {
     localStorage.clear();
     navigate("/login");
-  };
-
-  const handleServicesForLogged = () => {
-    setIsServicesAcc(true);
-    GetLogServices()
-      .then((res) => {
-        let result = res.data;
-        if (result.status) {
-          setservicesAcc(result.products);
-          setIsServicesAcc(false);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-        setIsServicesAcc(false);
-      });
   };
 
   const fileInputRef = useRef(null);
@@ -489,11 +433,7 @@ const UserProfile = () => {
   useEffect(() => {
     setsideNav("");
     resetpop();
-    handleAccountantData();
-    // const userDetails = JSON.parse(localStorage.getItem("user"));
-    // if (userDetails === null || userDetails === undefined) {
-    //   navigate("/login");
-    // }
+    handleProfileData();
   }, []);
 
   const myTimeout1 = () => {
@@ -504,27 +444,22 @@ const UserProfile = () => {
     setCreateBrandProfile(false);
     setCreateBrandProfileStep(1);
     setProfilePicture("");
-    setFirstName("");
-    setLastName("");
+    setFullName("");
     setUserName("");
-    setCoverPhoto1("");
-    setBrandDisplayName("");
-    setBrandUserName("");
-    setBrandDescription("");
-    setBrandColorCode("");
-    setHeadquarter("");
-    setBrandAddress("");
-    setWhiteProPic("");
-    handleAccountantData();
+    setSelectState("");
+    setCity("");
+    setPhoneNo("");
+    setPostalCode("");
+    handleProfileData();
   }
 
-  const handleAccountantData = () => {
+  const handleProfileData = () => {
     let mailId = userDetails?.user?.email;
-    CheckStatusAccountant(mailId)
+    CheckStatusNaaviProfile(mailId)
       .then((res) => {
         let result = res?.data;
         // console.log(result, 'resultttt')
-        if (result.message === "") {
+        if (result?.status) {
           // console.log(result?.data)
           setIsProfileData(true);
           setProfileData(result?.data[0]);
@@ -535,71 +470,39 @@ const UserProfile = () => {
         }
       })
       .catch((err) => {
-        console.log("err");
+        console.log(err, "error in handleProfileData");
       });
   };
 
-  const createLXProfile = () => {
-    let email = userDetails?.user?.email;
-    let token = userDetails?.idToken;
+  const levelOneProfile = () => {
+    setIsLoading(true);
+    let body = {
+      email: userDetails?.user?.email,
+      name: fullName,
+      country: country,
+      state: selectState,
+      city: city,
+      postalCode: postalCode,
+      profilePicture: profilePicture,
+      username: userName,
+      phoneNumber: `+91${phoneNo}`,
+    };
+
     axios
-      .post(
-        "https://teller2.apimachine.com/lxUser/register",
-        {
-          profilePicURL: profilePicture,
-          firstName: firstName,
-          lastName: lastName,
-          lxTag: userName,
-        },
-        { headers: { email, token } }
-      )
+      .post(`https://careers.marketsverse.com/users/add`, body)
       .then((response) => {
         let result = response?.data;
-        // console.log(result, 'createLXProfile result');
-        if (result?.message === "Email is Already Registered as LX User") {
+        console.log(result, "levelOneProfile result");
+        if (result?.status) {
+          setIsLoading(false);
           setCreateBrandProfileStep(2);
+          myTimeout1();
+        } else {
+          setIsLoading(false);
         }
       })
       .catch((error) => {
-        console.log(error, "error in createLXProfile");
-      });
-  };
-
-  const createBankerProfile = () => {
-    setIsloading(true);
-    let email = userDetails?.user?.email;
-    let token = userDetails?.idToken;
-    axios
-      .post(
-        "https://teller2.apimachine.com/lxUser/register/banker",
-        {
-          bankerTag: brandUserName,
-          colorCode: brandColorCode,
-          address: brandAddress,
-          coverPicURL: coverPhoto1,
-          displayName: brandDisplayName,
-          description: brandDescription,
-          partneringInstitutions: [],
-          country: headquarter,
-          profilePicURL: profilePicture,
-          profilePicPNG: profilePicture,
-          profilePicWhite: whiteProPic,
-          profilePicWhitePNG: whiteProPic,
-          autoDeposit: false,
-          sefcoin_cashback: false,
-          other_data: {},
-        },
-        { headers: { email, token } }
-      )
-      .then((response) => {
-        let result = response?.data;
-        // console.log(result, 'createBankerProfile result');
-        setIsloading(false);
-        setCreateBrandProfileStep(3);
-        myTimeout1();
-      })
-      .catch((error) => {
-        console.log(error, "error in createBankerProfile");
+        console.log(error, "levelOneProfile error");
       });
   };
 
@@ -653,53 +556,53 @@ const UserProfile = () => {
     }
   };
 
-  const debounce = (fn, delay) => {
-    let timerId;
-    return (...args) => {
-      clearTimeout(timerId);
-      timerId = setTimeout(() => {
-        fn(...args);
-      }, delay);
-    };
-  };
+  // const debounce = (fn, delay) => {
+  //   let timerId;
+  //   return (...args) => {
+  //     clearTimeout(timerId);
+  //     timerId = setTimeout(() => {
+  //       fn(...args);
+  //     }, delay);
+  //   };
+  // };
 
-  const fetchData = debounce(async () => {
-    const response = await fetch(
-      `https://teller2.apimachine.com/lxUser/checkLXTag?lxTag=${userName}`
-    );
-    const data = await response.json();
-    // console.log(data, "username data");
-    if (data?.data && data?.status && userName.length < 1) {
-      setUserNameAvailable(false);
-    } else if (!data?.data && data?.status && userName.length > 0) {
-      setUserNameAvailable(true);
-    } else {
-      setUserNameAvailable(false);
-    }
-  }, 200);
+  // const fetchData = debounce(async () => {
+  //   const response = await fetch(
+  //     `https://teller2.apimachine.com/lxUser/checkLXTag?lxTag=${userName}`
+  //   );
+  //   const data = await response.json();
+  //   // console.log(data, "username data");
+  //   if (data?.data && data?.status && userName.length < 1) {
+  //     setUserNameAvailable(false);
+  //   } else if (!data?.data && data?.status && userName.length > 0) {
+  //     setUserNameAvailable(true);
+  //   } else {
+  //     setUserNameAvailable(false);
+  //   }
+  // }, 200);
 
-  useEffect(() => {
-    fetchData();
-  }, [userName]);
+  // useEffect(() => {
+  //   fetchData();
+  // }, [userName]);
 
-  const fetchData1 = debounce(async () => {
-    const response = await fetch(
-      `https://teller2.apimachine.com/lxUser/checkBankerTag?bankerTag=${brandUserName}`
-    );
-    const data = await response.json();
-    // console.log(data, "username data");
-    if (data?.data && data?.status && brandUserName.length < 1) {
-      setUserNameAvailable1(false);
-    } else if (!data?.data && data?.status && brandUserName.length > 0) {
-      setUserNameAvailable1(true);
-    } else {
-      setUserNameAvailable1(false);
-    }
-  }, 200);
+  // const fetchData1 = debounce(async () => {
+  //   const response = await fetch(
+  //     `https://teller2.apimachine.com/lxUser/checkBankerTag?bankerTag=${brandUserName}`
+  //   );
+  //   const data = await response.json();
+  //   // console.log(data, "username data");
+  //   if (data?.data && data?.status && brandUserName.length < 1) {
+  //     setUserNameAvailable1(false);
+  //   } else if (!data?.data && data?.status && brandUserName.length > 0) {
+  //     setUserNameAvailable1(true);
+  //   } else {
+  //     setUserNameAvailable1(false);
+  //   }
+  // }, 200);
 
-  useEffect(() => {
-    fetchData1();
-  }, [brandUserName]);
+  // useEffect(() => {
+  //   fetchData1();
+  // }, [brandUserName]);
 
   const myTimeout = () => {
     setTimeout(reload, 2000);
@@ -745,7 +648,7 @@ const UserProfile = () => {
       setEditProfilePic(false);
       setNewProfilePic("");
     }
-    handleAccountantData();
+    handleProfileData();
   }
 
   const editData = async (field, value) => {
@@ -1849,14 +1752,17 @@ const UserProfile = () => {
             {createBrandProfileStep === 1 && (
               <>
                 <div className="head-txt" style={{ height: "4rem" }}>
-                  <div>Step 1</div>
+                  <div>Naavi Profile Level One</div>
                   <div
                     onClick={() => {
                       setCreateBrandProfile(false);
                       setUserName("");
-                      setLastName("");
-                      setFirstName("");
+                      setFullName("");
                       setProfilePicture("");
+                      setCountry("");
+                      setSelectState("");
+                      setCity("");
+                      setPostalCode("");
                     }}
                     className="close-div"
                   >
@@ -1881,55 +1787,95 @@ const UserProfile = () => {
                     funcValue={profilePicture}
                   />
                   <InputDivsWithMT
-                    heading="What is your first name?"
-                    placeholderText="First Name.."
-                    setFunc={setFirstName}
-                    funcValue={firstName}
+                    heading="What is your full name?"
+                    placeholderText="Name.."
+                    setFunc={setFullName}
+                    funcValue={fullName}
                   />
                   <InputDivsWithMT
-                    heading="What is your last name?"
-                    placeholderText="Last Name.."
-                    setFunc={setLastName}
-                    funcValue={lastName}
+                    heading="What is your phone number?"
+                    placeholderText="+91"
+                    setFunc={setPhoneNo}
+                    funcValue={phoneNo}
                   />
-                  <InputDivsCheckFunctionality
+                  <InputDivsCheckFunctionality1
                     heading="Select a username"
                     placeholderText="Username..."
                     setFunc={setUserName}
                     funcValue={userName}
-                    userNameAvailable={userNameAvailable}
+                    // userNameAvailable={userNameAvailable}
+                  />
+                  <InputDivsWithMT
+                    heading="What country are you from?"
+                    placeholderText="Click here to select"
+                    setFunc={setCountry}
+                    funcValue={country}
+                  />
+                  <InputDivsWithMT
+                    heading="What state are you from?"
+                    placeholderText="State..."
+                    setFunc={setSelectState}
+                    funcValue={selectState}
+                  />
+                  <InputDivsWithMT
+                    heading="What city are you from?"
+                    placeholderText="City..."
+                    setFunc={setCity}
+                    funcValue={city}
+                  />
+                  <InputDivsWithMT
+                    heading="Enter your postal code"
+                    placeholderText="Postal Code..."
+                    setFunc={setPostalCode}
+                    funcValue={postalCode}
                   />
                   <div className="stepBtns" style={{ marginTop: "3.5rem" }}>
                     <div
                       style={{
-                        opacity: "0.25",
-                        cursor: "not-allowed",
                         background: "#1F304F",
                         width: "48%",
-                        minHeight: "4rem",
-                        maxHeight: "4rem",
+                        minHeight: "3.5rem",
+                        maxHeight: "3.5rem",
+                      }}
+                      onClick={() => {
+                        setCreateBrandProfile(false);
+                        setUserName("");
+                        setFullName("");
+                        setProfilePicture("");
+                        setCountry("");
+                        setSelectState("");
+                        setCity("");
+                        setPostalCode("");
                       }}
                     >
                       Go Back
                     </div>
                     <div
                       style={{
-                        minHeight: "4rem",
-                        maxHeight: "4rem",
+                        minHeight: "3.5rem",
+                        maxHeight: "3.5rem",
                         opacity:
                           profilePicture &&
-                          firstName &&
-                          lastName &&
+                          fullName &&
                           userName.length > 0 &&
-                          userNameAvailable
+                          // && userNameAvailable
+                          country &&
+                          selectState &&
+                          city &&
+                          postalCode &&
+                          phoneNo
                             ? "1"
                             : "0.25",
                         cursor:
                           profilePicture &&
-                          firstName &&
-                          lastName &&
+                          fullName &&
                           userName.length > 0 &&
-                          userNameAvailable
+                          // && userNameAvailable
+                          country &&
+                          selectState &&
+                          city &&
+                          postalCode &&
+                          phoneNo
                             ? "pointer"
                             : "not-allowed",
                         background: "#59A2DD",
@@ -1938,12 +1884,16 @@ const UserProfile = () => {
                       onClick={() => {
                         if (
                           profilePicture &&
-                          firstName &&
-                          lastName &&
+                          fullName &&
                           userName.length > 0 &&
-                          userNameAvailable
+                          // && userNameAvailable
+                          country &&
+                          selectState &&
+                          city &&
+                          postalCode &&
+                          phoneNo
                         ) {
-                          createLXProfile();
+                          levelOneProfile();
                         }
                       }}
                     >
@@ -1951,10 +1901,25 @@ const UserProfile = () => {
                     </div>
                   </div>
                 </div>
+                {isloading && (
+                  <div
+                    className="loading-component"
+                    style={{
+                      top: "0",
+                      left: "0",
+                      width: "100%",
+                      height: "100%",
+                      position: "absolute",
+                      display: "flex",
+                    }}
+                  >
+                    <LoadingAnimation1 icon={lg1} width={200} />
+                  </div>
+                )}
               </>
             )}
 
-            {createBrandProfileStep === 2 && (
+            {/* {createBrandProfileStep === 2 && (
               <>
                 <div
                   className="head-txt"
@@ -1974,7 +1939,6 @@ const UserProfile = () => {
                       setBrandDisplayName("");
                       setUserName("");
                       setLastName("");
-                      setFirstName("");
                       setProfilePicture("");
                     }}
                     className="close-div"
@@ -2145,9 +2109,9 @@ const UserProfile = () => {
                   </div>
                 )}
               </>
-            )}
+            )} */}
 
-            {createBrandProfileStep === 3 && (
+            {createBrandProfileStep === 2 && (
               <div className="successMsg">
                 You Have Successfully Created Your Naavi Profile.
               </div>
