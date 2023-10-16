@@ -769,7 +769,7 @@ const UserProfile = () => {
                             color: "#1F304F",
                           }}
                         >
-                          Basic Profile Data
+                          Naavi Profile Level 1
                         </div>
                         <div
                           style={{ transform: hidden ? "rotate(180deg)" : "" }}
@@ -796,7 +796,7 @@ const UserProfile = () => {
                             height: "100px",
                           }}
                         >
-                          <div
+                          {/* <div
                             className="editIconDiv"
                             style={{ top: "-7px", right: "3px" }}
                             onClick={() => {
@@ -804,7 +804,7 @@ const UserProfile = () => {
                             }}
                           >
                             <img src={edit} alt="" />
-                          </div>
+                          </div> */}
                           <img
                             style={{
                               width: "100px",
@@ -812,7 +812,7 @@ const UserProfile = () => {
                               borderRadius: "50%",
                               border: "0.5px solid #e5e5e5",
                             }}
-                            src={profileData?.profilePicURL}
+                            src={profileData?.profilePicture}
                             alt=""
                           />
                         </div>
@@ -827,9 +827,23 @@ const UserProfile = () => {
                             </div>
                           </div>
                           <div className="pfl-boxr">
-                            <div className="pfl-box-label">Naavi Username</div>
+                            <div className="pfl-box-label">Name</div>
                             <div className="pfl-box-inp">
-                              {profileData?.bankerTag}
+                              {profileData?.name}
+                            </div>
+                          </div>
+                        </div>
+                        <div className="pfl-box">
+                          <div className="pfl-boxl">
+                            <div className="pfl-box-label">Username</div>
+                            <div className="pfl-box-inp">
+                              {profileData?.username}
+                            </div>
+                          </div>
+                          <div className="pfl-boxr">
+                            <div className="pfl-box-label">User Type</div>
+                            <div className="pfl-box-inp">
+                              {profileData?.userType}
                             </div>
                           </div>
                         </div>
@@ -837,70 +851,94 @@ const UserProfile = () => {
                           <div className="pfl-boxl">
                             <div className="pfl-box-label">Country</div>
                             <div className="pfl-box-inp">
-                              <div
+                              {/* <div
                                 className="editIconDiv"
                                 onClick={() => {
                                   setEditCountry(true);
                                 }}
                               >
                                 <img src={edit} alt="" />
-                              </div>
+                              </div> */}
                               {profileData?.country}
                             </div>
                           </div>
                           <div className="pfl-boxr">
-                            <div className="pfl-box-label">Address</div>
+                            <div className="pfl-box-label">State</div>
                             <div className="pfl-box-inp">
-                              <div
+                              {/* <div
                                 className="editIconDiv"
                                 onClick={() => {
                                   setEditAddress(true);
                                 }}
                               >
                                 <img src={edit} alt="" />
-                              </div>
-                              <span
-                                style={{
-                                  overflow: "hidden",
-                                  textOverflow: "ellipsis",
-                                }}
-                              >
-                                {profileData?.address}
-                              </span>
+                              </div> */}
+                              <span>{profileData?.state}</span>
                             </div>
                           </div>
                         </div>
                         <div className="pfl-box">
                           <div className="pfl-boxl">
-                            <div className="pfl-box-label">Display Name</div>
+                            <div className="pfl-box-label">City</div>
                             <div className="pfl-box-inp">
-                              <div
+                              {/* <div
                                 className="editIconDiv"
                                 onClick={() => {
-                                  setEditDisplayName(true);
+                                  setEditCountry(true);
                                 }}
                               >
                                 <img src={edit} alt="" />
-                              </div>
-                              {profileData?.displayName}
+                              </div> */}
+                              {profileData?.city}
                             </div>
                           </div>
                           <div className="pfl-boxr">
+                            <div className="pfl-box-label">Postal Code</div>
+                            <div className="pfl-box-inp">
+                              {/* <div
+                                className="editIconDiv"
+                                onClick={() => {
+                                  setEditAddress(true);
+                                }}
+                              >
+                                <img src={edit} alt="" />
+                              </div> */}
+                              <span>{profileData?.postalCode}</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="pfl-box">
+                          <div className="pfl-boxr">
                             <div className="pfl-box-label">Phone Number</div>
                             <div className="pfl-box-inp">
-                              <div
+                              {/* <div
                                 className="editIconDiv"
                                 onClick={() => {
                                   setEditPhoneNo(true);
                                 }}
                               >
                                 <img src={edit} alt="" />
-                              </div>
-                              {profileData?.phone}
+                              </div> */}
+                              {profileData?.phoneNumber}
+                            </div>
+                          </div>
+                          <div className="pfl-boxl">
+                            <div className="pfl-box-label">Status</div>
+                            <div className="pfl-box-inp">
+                              {/* <div
+                                className="editIconDiv"
+                                onClick={() => {
+                                  setEditDisplayName(true);
+                                }}
+                              >
+                                <img src={edit} alt="" />
+                              </div> */}
+                              {profileData?.status}
                             </div>
                           </div>
                         </div>
-                        <div className="pfl-box-full">
+
+                        {/* <div className="pfl-box-full">
                           <div className="pfl-box-label">Description</div>
                           <div
                             className="pfl-box-inp-full"
@@ -974,9 +1012,9 @@ const UserProfile = () => {
                               Partnering Institutions
                             </div>
                             <div className="pfl-box-inp">
-                              {/* <div className="editIconDiv">
+                              <div className="editIconDiv">
                                 <img src={edit} alt="" />
-                              </div> */}
+                              </div>
                               {profileData?.partneringInstitutions !==
                                 undefined &&
                               profileData?.partneringInstitutions.length > 0
@@ -989,18 +1027,18 @@ const UserProfile = () => {
                           <div className="pfl-boxl">
                             <div className="pfl-box-label">Category</div>
                             <div className="pfl-box-inp">
-                              {/* <div className="editIconDiv">
+                              <div className="editIconDiv">
                                 <img src={edit} alt="" />
-                              </div> */}
+                              </div>
                               {profileData?.category}
                             </div>
                           </div>
                           <div className="pfl-boxr">
                             <div className="pfl-box-label">Sub Category</div>
                             <div className="pfl-box-inp">
-                              {/* <div className="editIconDiv">
+                              <div className="editIconDiv">
                                 <img src={edit} alt="" />
-                              </div> */}
+                              </div>
                               {profileData?.subCategory}
                             </div>
                           </div>
@@ -1010,9 +1048,9 @@ const UserProfile = () => {
                             className="pfl-boxl"
                             style={{ position: "relative" }}
                           >
-                            {/* <div className="editIconDiv">
+                            <div className="editIconDiv">
                               <img src={edit} alt="" />
-                            </div> */}
+                            </div>
                             <div className="pfl-box-label">Specialties</div>
                             <>
                               {profileSpecalities?.length > 0 ? (
@@ -1028,7 +1066,7 @@ const UserProfile = () => {
                               )}
                             </>
                           </div>
-                        </div>
+                        </div> */}
                       </div>
 
                       <div
@@ -1150,6 +1188,7 @@ const UserProfile = () => {
                             minWidth: "calc(80vw - 56%)",
                             height: "calc(100% - 70px)",
                             position: "absolute",
+                            display: 'flex',
                           }}
                         >
                           <LoadingAnimation1 icon={lg1} width={200} />
