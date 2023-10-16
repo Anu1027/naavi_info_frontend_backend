@@ -20,10 +20,13 @@ const JourneyPage = () => {
     axios
       .get(`https://careers.marketsverse.com/userpaths/get?email=${email}`)
       .then((response) => {
-        let result = response?.data?.data;
-        // console.log(result, "journey data");
-        setJourneyData(result);
-        setLoading(false);
+        let data = response?.status;
+        if(data) {
+          let result = response?.data?.data;
+          // console.log(result, "journey data");
+          setJourneyData(result);
+          setLoading(false);
+        }
       })
       .catch((error) => {
         console.log(error, "error in journey data");
@@ -38,14 +41,16 @@ const JourneyPage = () => {
           <Skeleton width={150} height={30} />
         ) : (
           <div className="bold-text">
-            {journeyData[0]?.PathDetails[0]?.destination_institution}
+            {journeyData?.length > 0 ?
+              journeyData[0]?.PathDetails[0]?.destination_institution : ''}
           </div>
         )}
         {loading ? (
           <Skeleton width={500} height={20} />
         ) : (
           <div className="journey-des">
-            {journeyData[0]?.PathDetails[0]?.description}
+            {journeyData?.length > 0 ?
+              journeyData[0]?.PathDetails[0]?.description : ''}
           </div>
         )}
       </div>
@@ -73,7 +78,8 @@ const JourneyPage = () => {
                   </div>
                 );
               })
-          : journeyData[0]?.PathDetails[0]?.StepDetails?.map((e, i) => {
+          : journeyData?.length > 0 ?
+            journeyData[0]?.PathDetails[0]?.StepDetails?.map((e, i) => {
               return (
                 <div
                   className="each-j-step relative-div"
@@ -101,7 +107,7 @@ const JourneyPage = () => {
               </div> */}
                 </div>
               );
-            })}
+            }) : ''}
       </div>
     </div>
   );
