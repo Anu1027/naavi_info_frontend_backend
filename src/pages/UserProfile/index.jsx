@@ -1013,10 +1013,12 @@ const UserProfile = () => {
                           padding: "0 35px",
                         }}
                         onClick={() => {
-                          if (hidden1) {
-                            setHidden1(false);
+                          if (profileData?.user_level === 2) {
+                            if (hidden1) {
+                              setHidden1(false);
+                            }
+                            setHidden2(!hidden2);
                           }
-                          setHidden2(!hidden2);
                         }}
                       >
                         <div
@@ -1112,7 +1114,10 @@ const UserProfile = () => {
                         <div className="pfl-box">
                           <div className="pfl-boxl">
                             <div className="pfl-box-label">Linkedin</div>
-                            <div className="pfl-box-inp" style={{textTransform: 'lowercase'}}>
+                            <div
+                              className="pfl-box-inp"
+                              style={{ textTransform: "lowercase" }}
+                            >
                               {/* <div
                                 className="editIconDiv"
                                 onClick={() => {
