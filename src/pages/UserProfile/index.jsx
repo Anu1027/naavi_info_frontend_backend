@@ -703,7 +703,7 @@ const UserProfile = () => {
                   <input
                     className="search-input"
                     type="text"
-                    placeholder="Search ..."
+                    placeholder="Search..."
                     // value={search}
                     // onChange={(e) => setSearch(e.target.value)}
                   />
@@ -1088,12 +1088,13 @@ const UserProfile = () => {
                             color: "#1F304F",
                           }}
                         >
-                          Advanced Profile Data
+                          Naavi Profile Level 2
                         </div>
                         <div style={{ opacity: "0.25" }}>
                           <img src={downArrow} alt="" />
                         </div>
                       </div>
+
                       <div
                         style={{
                           display: !hidden ? "none" : "flex",
@@ -1113,7 +1114,7 @@ const UserProfile = () => {
                             color: "#1F304F",
                           }}
                         >
-                          Work History
+                          Naavi Profile Level 3
                         </div>
                         <div style={{ opacity: "0.25" }}>
                           <img src={downArrow} alt="" />
@@ -1124,44 +1125,58 @@ const UserProfile = () => {
                       className="pf-right"
                       style={{ minWidth: "30%", height: "100%" }}
                     >
-                      <div className="pfr-1">
-                        <div>
-                          <div className="pfr-head">Make Profile Public</div>
-                          <div className="pfr-desc">
-                            Making your profile public will allow you to be
-                            discovered on the Naavi directory.
+                      <div className="pfr-1" style={{ padding: "0" }}>
+                        <div
+                          style={{
+                            height: "50%",
+                            borderBottom: "0.5px solid #ebebeb",
+                            padding: "0 30px",
+                            display: "flex",
+                            flexDirection: "column",
+                            justifyContent: "space-evenly",
+                          }}
+                        >
+                          <div className="pfr-head">Complete Level 2</div>
+                          <div
+                            className="pfr-btn1"
+                            style={{
+                              marginTop: "0",
+                              color: "white",
+                              background: "#59A2DD",
+                              alignItems: "center",
+                              cursor: "pointer",
+                            }}
+                          >
+                            Start Now
                           </div>
                         </div>
-                        <div className="pfr-btn1">
+                        <div
+                          style={{
+                            height: "50%",
+                            padding: "0 30px",
+                            display: "flex",
+                            flexDirection: "column",
+                            justifyContent: "space-evenly",
+                          }}
+                        >
+                          <div className="pfr-head">Complete Level 3</div>
                           <div
+                            className="pfr-btn1"
                             style={{
-                              background:
-                                accStatus === "Private" ? "#F1F4F6" : "",
-                            }}
-                            onClick={() => {
-                              changeStatus("marketmakers");
+                              marginTop: "0",
+                              color: "white",
+                              background: "#59A2DD",
+                              alignItems: "center",
+                              cursor: "pointer",
                             }}
                           >
-                            Private
-                          </div>
-                          <div
-                            style={{
-                              background:
-                                accStatus === "Public" ? "#F1F4F6" : "",
-                            }}
-                            onClick={() => {
-                              changeStatus("accountants");
-                            }}
-                          >
-                            Public
+                            Start Now
                           </div>
                         </div>
                       </div>
                       <div className="pfr-1">
                         <div>
-                          <div className="pfr-head">
-                            Create An Vendor Profile
-                          </div>
+                          <div className="pfr-head">Change Password</div>
                           <div className="pfr-desc">
                             Click here to change your password. You will need to
                             verify your email again to reset your password.
@@ -1188,7 +1203,7 @@ const UserProfile = () => {
                             minWidth: "calc(80vw - 56%)",
                             height: "calc(100% - 70px)",
                             position: "absolute",
-                            display: 'flex',
+                            display: "flex",
                           }}
                         >
                           <LoadingAnimation1 icon={lg1} width={200} />
