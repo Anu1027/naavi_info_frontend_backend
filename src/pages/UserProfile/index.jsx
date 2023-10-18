@@ -107,7 +107,9 @@ const UserProfile = () => {
   const [postalCode, setPostalCode] = useState();
   const [isloading, setIsloading] = useState(false);
   const [accStatus, setAccStatus] = useState("");
-  const [hidden, setHidden] = useState(false);
+  const [hidden1, setHidden1] = useState(false);
+  const [hidden2, setHidden2] = useState(false);
+  const [hidden3, setHidden3] = useState(false);
   const [userNameAvailable, setUserNameAvailable] = useState(false);
   const [userNameAvailable1, setUserNameAvailable1] = useState(false);
   const [changing, setChanging] = useState(false);
@@ -486,7 +488,6 @@ const UserProfile = () => {
         let result = res?.data;
         // console.log(result, 'resultttt')
         if (result?.status) {
-          // console.log(result?.data)
           setIsProfileData(true);
           setProfileData(result?.data[0]);
           setProfileDataId(result?.data[0]?._id);
@@ -813,7 +814,10 @@ const UserProfile = () => {
                           padding: "0 35px",
                         }}
                         onClick={() => {
-                          setHidden(!hidden);
+                          setHidden1(!hidden1);
+                          if (hidden2) {
+                            setHidden2(false);
+                          }
                         }}
                       >
                         <div
@@ -826,20 +830,21 @@ const UserProfile = () => {
                           Naavi Profile Level 1
                         </div>
                         <div
-                          style={{ transform: hidden ? "rotate(180deg)" : "" }}
+                          style={{ transform: hidden1 ? "rotate(180deg)" : "" }}
                         >
-                          <img src={upArrow} alt="" />
+                          <img src={downArrow} alt="" />
                         </div>
                       </div>
 
                       <div
                         style={{
-                          display: hidden ? "none" : "flex",
+                          display: hidden1 ? "flex" : "none",
                           flexDirection: "column",
                           padding: "0 35px",
                           width: "100%",
-                          height: "calc(100% - 4rem)",
-                          overflowY: "scroll",
+                          // height: "calc(100% - 4rem)",
+                          // overflowY: "scroll",
+                          borderBottom: "0.5px solid #e5e5e5",
                         }}
                       >
                         <div
@@ -991,148 +996,27 @@ const UserProfile = () => {
                             </div>
                           </div>
                         </div>
-
-                        {/* <div className="pfl-box-full">
-                          <div className="pfl-box-label">Description</div>
-                          <div
-                            className="pfl-box-inp-full"
-                            style={{ borderRadius: "25px", minHeight: "10rem" }}
-                          >
-                            <div
-                              className="editIconDiv"
-                              onClick={() => {
-                                setEditDescription(true);
-                              }}
-                            >
-                              <img src={edit} alt="" />
-                            </div>
-                            {profileData?.description}
-                          </div>
-                        </div>
-                        <div className="pfl-box-full">
-                          <div className="pfl-box-label">Cover&nbsp;Photo</div>
-                          <div
-                            style={{
-                              borderRadius: "25px",
-                              border: "0.5px solid #e5e5e5",
-                              position: "relative",
-                            }}
-                          >
-                            <div
-                              className="editIconDiv"
-                              onClick={() => {
-                                setEditCoverPic(true);
-                              }}
-                            >
-                              <img src={edit} alt="" />
-                            </div>
-                            <img
-                              style={{ width: "100%", borderRadius: "25px" }}
-                              src={profileData?.coverPicURL}
-                              alt=""
-                            />
-                          </div>
-                        </div>
-                        <div className="pfl-box">
-                          <div className="pfl-boxl">
-                            <div className="pfl-box-label">Colour Code</div>
-                            <div
-                              style={{
-                                justifyContent: "space-between",
-                              }}
-                              className="pfl-box-inp"
-                            >
-                              <div
-                                className="editIconDiv"
-                                onClick={() => {
-                                  setEditColorCode(true);
-                                }}
-                              >
-                                <img src={edit} alt="" />
-                              </div>
-                              <div>{profileData?.colorCode}</div>
-                              <div
-                                style={{
-                                  background: `#${profileData?.colorCode}`,
-                                  height: "100%",
-                                  borderRadius: "35px",
-                                  width: "20%",
-                                }}
-                              ></div>
-                            </div>
-                          </div>
-                          <div className="pfl-boxr">
-                            <div className="pfl-box-label">
-                              Partnering Institutions
-                            </div>
-                            <div className="pfl-box-inp">
-                              <div className="editIconDiv">
-                                <img src={edit} alt="" />
-                              </div>
-                              {profileData?.partneringInstitutions !==
-                                undefined &&
-                              profileData?.partneringInstitutions.length > 0
-                                ? profileData?.partneringInstitutions[0]._id
-                                : ""}
-                            </div>
-                          </div>
-                        </div>
-                        <div className="pfl-box">
-                          <div className="pfl-boxl">
-                            <div className="pfl-box-label">Category</div>
-                            <div className="pfl-box-inp">
-                              <div className="editIconDiv">
-                                <img src={edit} alt="" />
-                              </div>
-                              {profileData?.category}
-                            </div>
-                          </div>
-                          <div className="pfl-boxr">
-                            <div className="pfl-box-label">Sub Category</div>
-                            <div className="pfl-box-inp">
-                              <div className="editIconDiv">
-                                <img src={edit} alt="" />
-                              </div>
-                              {profileData?.subCategory}
-                            </div>
-                          </div>
-                        </div>
-                        <div className="pfl-box">
-                          <div
-                            className="pfl-boxl"
-                            style={{ position: "relative" }}
-                          >
-                            <div className="editIconDiv">
-                              <img src={edit} alt="" />
-                            </div>
-                            <div className="pfl-box-label">Specialties</div>
-                            <>
-                              {profileSpecalities?.length > 0 ? (
-                                <>
-                                  {profileSpecalities?.map((each, i) => (
-                                    <div key={i} className="pfl-box-inp">
-                                      {each}
-                                    </div>
-                                  ))}
-                                </>
-                              ) : (
-                                ""
-                              )}
-                            </>
-                          </div>
-                        </div> */}
                       </div>
 
                       <div
                         style={{
-                          display: !hidden ? "none" : "flex",
+                          display: "flex",
                           alignItems: "center",
                           justifyContent: "space-between",
                           height: "4rem",
                           width: "100%",
-                          cursor: "not-allowed",
+                          cursor:
+                            profileData?.user_level === 2
+                              ? "pointer"
+                              : "not-allowed",
                           borderBottom: "0.5px solid #E5E5E5",
                           padding: "0 35px",
+                        }}
+                        onClick={() => {
+                          if (hidden1) {
+                            setHidden1(false);
+                          }
+                          setHidden2(!hidden2);
                         }}
                       >
                         <div
@@ -1144,14 +1028,108 @@ const UserProfile = () => {
                         >
                           Naavi Profile Level 2
                         </div>
-                        <div style={{ opacity: "0.25" }}>
+                        <div
+                          style={{
+                            opacity:
+                              profileData?.user_level === 2 ? "1" : "0.25",
+                          }}
+                        >
                           <img src={downArrow} alt="" />
                         </div>
                       </div>
 
                       <div
                         style={{
-                          display: !hidden ? "none" : "flex",
+                          display: hidden2 ? "flex" : "none",
+                          flexDirection: "column",
+                          padding: "0 35px",
+                          width: "100%",
+                          // height: "calc(100% - 4rem)",
+                          // overflowY: "scroll",
+                          borderBottom: "0.5px solid #e5e5e5",
+                        }}
+                      >
+                        <div className="pfl-box">
+                          <div className="pfl-boxl">
+                            <div className="pfl-box-label">Grade</div>
+                            <div className="pfl-box-inp">
+                              {profileData?.grade}
+                            </div>
+                          </div>
+                          <div className="pfl-boxr">
+                            <div className="pfl-box-label">School</div>
+                            <div className="pfl-box-inp">
+                              {profileData?.school}
+                            </div>
+                          </div>
+                        </div>
+                        <div className="pfl-box">
+                          <div className="pfl-boxl">
+                            <div className="pfl-box-label">Curriculum</div>
+                            <div className="pfl-box-inp">
+                              {profileData?.ciriculum}
+                            </div>
+                          </div>
+                          <div className="pfl-boxr">
+                            <div className="pfl-box-label">Stream</div>
+                            <div className="pfl-box-inp">
+                              {profileData?.stream}
+                            </div>
+                          </div>
+                        </div>
+                        <div className="pfl-box">
+                          <div className="pfl-boxl">
+                            <div className="pfl-box-label">
+                              Financial Position
+                            </div>
+                            <div className="pfl-box-inp">
+                              {/* <div
+                                className="editIconDiv"
+                                onClick={() => {
+                                  setEditCountry(true);
+                                }}
+                              >
+                                <img src={edit} alt="" />
+                              </div> */}
+                              {profileData?.financialSituation}
+                            </div>
+                          </div>
+                          <div className="pfl-boxr">
+                            <div className="pfl-box-label">Performance</div>
+                            <div className="pfl-box-inp">
+                              {/* <div
+                                className="editIconDiv"
+                                onClick={() => {
+                                  setEditAddress(true);
+                                }}
+                              >
+                                <img src={edit} alt="" />
+                              </div> */}
+                              <span>{profileData?.performance}</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="pfl-box">
+                          <div className="pfl-boxl">
+                            <div className="pfl-box-label">Linkedin</div>
+                            <div className="pfl-box-inp" style={{textTransform: 'lowercase'}}>
+                              {/* <div
+                                className="editIconDiv"
+                                onClick={() => {
+                                  setEditCountry(true);
+                                }}
+                              >
+                                <img src={edit} alt="" />
+                              </div> */}
+                              {profileData?.linkedin}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div
+                        style={{
+                          display: "flex",
                           alignItems: "center",
                           justifyContent: "space-between",
                           height: "4rem",
@@ -1175,7 +1153,7 @@ const UserProfile = () => {
                         </div>
                       </div>
                     </div>
-                    
+
                     <div
                       className="pf-right"
                       style={{ minWidth: "30%", height: "100%" }}
