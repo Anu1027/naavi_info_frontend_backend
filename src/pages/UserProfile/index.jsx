@@ -90,6 +90,7 @@ const UserProfile = () => {
   const [isServicesAcc, setIsServicesAcc] = useState(false);
   const [servicesAcc, setservicesAcc] = useState([]);
   const [isProfileData, setIsProfileData] = useState(false);
+  const [profileDataId, setProfileDataId] = useState();
   const [profileData, setProfileData] = useState({});
   const [profileSpecalities, setprofileSpecalities] = useState([]);
 
@@ -145,7 +146,7 @@ const UserProfile = () => {
   const [newCoverPic, setNewCoverPic] = useState(false);
   const [newProfilePic, setNewProfilePic] = useState();
 
-  // //upload part starts here
+  // upload part starts here
 
   const secret = "uyrw7826^&(896GYUFWE&*#GBjkbuaf"; // secret not to be disclosed anywhere.
   const emailDev = "rahulrajsb@outlook.com"; // email of the developer.
@@ -200,7 +201,21 @@ const UserProfile = () => {
     });
   }
 
-  //upload end here
+  // upload end here
+
+  // profile level 2
+  const [createlevelTwo, setCreateLevelTwo] = useState(false);
+  const [levelTwoStep, setLevelTwoStep] = useState(1);
+  const [levelTwoFields, setLevelTwoFields] = useState({
+    financialSituation: "",
+    school: "",
+    performance: "",
+    ciriculum: "",
+    stream: "",
+    grade: "",
+    linkedin: "",
+  });
+  const [levelTwoLoading, setLevelTwoLoading] = useState(false);
 
   const handleCategories = () => {
     setIsCatLoading(true);
@@ -451,6 +466,17 @@ const UserProfile = () => {
     setPhoneNo("");
     setPostalCode("");
     handleProfileData();
+    setCreateLevelTwo(false);
+    setLevelTwoStep(1);
+    setLevelTwoFields({
+      financialSituation: "",
+      school: "",
+      performance: "",
+      ciriculum: "",
+      stream: "",
+      grade: "",
+      linkedin: "",
+    });
   }
 
   const handleProfileData = () => {
@@ -463,6 +489,7 @@ const UserProfile = () => {
           // console.log(result?.data)
           setIsProfileData(true);
           setProfileData(result?.data[0]);
+          setProfileDataId(result?.data[0]?._id);
           setprofileSpecalities(result?.data?.specialities);
         } else {
           setIsProfileData(false);
@@ -678,6 +705,33 @@ const UserProfile = () => {
       }
     } catch (error) {
       console.log(error, "error in editData");
+    }
+  };
+
+  const levelTwoProfile = () => {
+    if (profileDataId) {
+      console.log(levelTwoFields, "body");
+      console.log(profileDataId, "profileDataIddddd");
+      setLevelTwoLoading(true);
+      axios
+        .put(
+          `https://careers.marketsverse.com/users/update/${profileDataId}`,
+          levelTwoFields
+        )
+        .then((response) => {
+          let result = response?.data;
+          // console.log(result, "levelTwoProfile result");
+          if (result?.status) {
+            setLevelTwoLoading(false);
+            setLevelTwoStep(7);
+            myTimeout1();
+          } else {
+            setLevelTwoLoading(false);
+          }
+        })
+        .catch((error) => {
+          console.log(error, "error in levelTwoProfile");
+        });
     }
   };
 
@@ -1145,6 +1199,10 @@ const UserProfile = () => {
                               background: "#59A2DD",
                               alignItems: "center",
                               cursor: "pointer",
+                            }}
+                            onClick={() => {
+                              // console.log(profileDataId, "profileDataId");
+                              setCreateLevelTwo(true);
                             }}
                           >
                             Start Now
@@ -1973,203 +2031,993 @@ const UserProfile = () => {
               </>
             )}
 
-            {/* {createBrandProfileStep === 2 && (
-              <>
-                <div
-                  className="head-txt"
-                  style={{ padding: "0 3rem", height: "4rem" }}
-                >
-                  <div>Step 2</div>
-                  <div
-                    onClick={() => {
-                      setCreateBrandProfile(false);
-                      setCreateBrandProfileStep(1);
-                      setWhiteProPic("");
-                      setBrandAddress("");
-                      setHeadquarter("");
-                      setBrandColorCode("");
-                      setBrandDescription("");
-                      setBrandUserName("");
-                      setBrandDisplayName("");
-                      setUserName("");
-                      setLastName("");
-                      setProfilePicture("");
-                    }}
-                    className="close-div"
-                  >
-                    <img src={close} alt="" />
-                  </div>
-                </div>
-                <div
-                  className="overall-div"
-                  style={{ height: "calc(100% - 4rem)" }}
-                >
-                  <div className="coverPic-container">
-                    <div className="coverPicDiv">
-                      <ImageUploadDivCoverPic1
-                        setFunc={setCoverPhoto1}
-                        funcValue={coverPhoto1}
-                      />
-                    </div>
-                    <div className="logoDiv">
-                      <img
-                        src={profilePicture}
-                        alt=""
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                          borderRadius: "50%",
-                          border: "none",
-                        }}
-                      />
-                    </div>
-                  </div>
-                  <div className="inputs-container">
-                    <InputDivsWithMT
-                      heading="Display Name"
-                      placeholderText="Display Name.."
-                      setFunc={setBrandDisplayName}
-                      funcValue={brandDisplayName}
-                    />
-                    <InputDivsCheckFunctionality
-                      heading="Naavi Username"
-                      placeholderText="Username.."
-                      setFunc={setBrandUserName}
-                      funcValue={brandUserName}
-                      userNameAvailable={userNameAvailable1}
-                    />
-                    <InputDivsTextArea1
-                      heading="Naavi Bio"
-                      placeholderText="Bio..."
-                      setFunc={setBrandDescription}
-                      funcValue={brandDescription}
-                    />
-                    <InputDivsWithColorCode
-                      heading="Colour Code"
-                      placeholderText="#000000"
-                      setFunc={setBrandColorCode}
-                      funcValue={brandColorCode}
-                      colorCode={brandColorCode}
-                    />
-                    <InputDivsWithMT
-                      heading="What country do you practice accounting in?"
-                      placeholderText="Click To Select"
-                      setFunc={setHeadquarter}
-                      funcValue={headquarter}
-                    />
-                    <InputDivsWithMT
-                      heading="What is your office address?"
-                      placeholderText="Enter address..."
-                      setFunc={setBrandAddress}
-                      funcValue={brandAddress}
-                    />
-                    <div
-                      style={{
-                        marginTop: "3rem",
-                        marginBottom: "0.5rem",
-                        fontSize: "1.1rem",
-                      }}
-                    >
-                      Upload white profile picture
-                    </div>
-                    <ImageUploadProfilePic2
-                      setFunc={setWhiteProPic}
-                      funcValue={whiteProPic}
-                    />
-                    <div className="stepBtns" style={{ marginTop: "3.5rem" }}>
-                      <div
-                        style={{
-                          cursor: "pointer",
-                          background: "#1F304F",
-                          width: "48%",
-                        }}
-                        onClick={() => {
-                          setWhiteProPic("");
-                          setBrandAddress("");
-                          setHeadquarter("");
-                          setBrandColorCode("");
-                          setBrandDescription("");
-                          setBrandUserName("");
-                          setBrandDisplayName("");
-                          setCoverPhoto1("");
-                          setCreateBrandProfileStep(1);
-                        }}
-                      >
-                        Go Back
-                      </div>
-                      <div
-                        style={{
-                          opacity:
-                            coverPhoto1 &&
-                            whiteProPic &&
-                            brandAddress &&
-                            headquarter &&
-                            brandColorCode &&
-                            brandDescription &&
-                            brandUserName.length > 0 &&
-                            brandDisplayName &&
-                            userNameAvailable1
-                              ? "1"
-                              : "0.25",
-                          cursor:
-                            coverPhoto1 &&
-                            whiteProPic &&
-                            brandAddress &&
-                            headquarter &&
-                            brandColorCode &&
-                            brandDescription &&
-                            brandUserName.length > 0 &&
-                            brandDisplayName &&
-                            userNameAvailable1
-                              ? "pointer"
-                              : "not-allowed",
-                          background: "#59A2DD",
-                          width: "48%",
-                        }}
-                        onClick={() => {
-                          if (
-                            coverPhoto1 &&
-                            whiteProPic &&
-                            brandAddress &&
-                            headquarter &&
-                            brandColorCode &&
-                            brandDescription &&
-                            brandUserName.length > 0 &&
-                            brandDisplayName &&
-                            userNameAvailable1
-                          ) {
-                            createBankerProfile();
-                          }
-                        }}
-                      >
-                        Complete
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {isloading && (
-                  <div
-                    className="loading-component"
-                    style={{
-                      top: "0",
-                      left: "0",
-                      width: "100%",
-                      height: "100%",
-                      position: "absolute",
-                      display: "flex",
-                    }}
-                  >
-                    <LoadingAnimation1 icon={lg1} width={200} />
-                  </div>
-                )}
-              </>
-            )} */}
-
             {createBrandProfileStep === 2 && (
               <div className="successMsg">
                 You Have Successfully Created Your Naavi Profile.
               </div>
             )}
+          </div>
+        )}
+      </>
+
+      <>
+        {createlevelTwo && (
+          <div className="popularS">
+            {levelTwoStep === 7 && (
+              <div className="successMsg">
+                You Have Successfully Created Your Naavi Profile Level 2.
+              </div>
+            )}
+            <div
+              className="head-txt"
+              style={{
+                height: "4rem",
+                display: levelTwoStep === 7 ? "none" : "",
+              }}
+            >
+              <div>Naavi Profile Level Two</div>
+              <div
+                onClick={() => {
+                  setCreateLevelTwo(false);
+                  setLevelTwoFields({
+                    financialSituation: "",
+                    school: "",
+                    performance: "",
+                    ciriculum: "",
+                    stream: "",
+                    grade: "",
+                    linkedin: "",
+                  });
+                }}
+                className="close-div"
+              >
+                <img src={close} alt="" />
+              </div>
+            </div>
+            <div
+              className="overall-div"
+              style={{
+                height: "calc(100% - 4rem)",
+                display: levelTwoStep === 7 ? "none" : "",
+              }}
+            >
+              {levelTwoStep === 1 && (
+                <>
+                  <div
+                    style={{
+                      marginBottom: "2rem",
+                      fontSize: "1rem",
+                      marginTop: "2rem",
+                    }}
+                  >
+                    What is your current financial situation?
+                  </div>
+                  <div className="btnss-div">
+                    <div
+                      className="eachh-btnn"
+                      onClick={() => {
+                        setLevelTwoFields((prev) => {
+                          return {
+                            ...prev,
+                            financialSituation: "0-25Lahks",
+                          };
+                        });
+                      }}
+                      style={{
+                        background:
+                          levelTwoFields?.financialSituation === "0-25Lahks"
+                            ? "linear-gradient(89deg,#47b4d5,#29449d)"
+                            : "",
+                        color:
+                          levelTwoFields?.financialSituation === "0-25Lahks"
+                            ? "white"
+                            : "",
+                        fontWeight:
+                          levelTwoFields?.financialSituation === "0-25Lahks"
+                            ? "600"
+                            : "",
+                      }}
+                    >
+                      0-25 Lahks
+                    </div>
+                    <div
+                      className="eachh-btnn"
+                      onClick={() => {
+                        setLevelTwoFields((prev) => {
+                          return {
+                            ...prev,
+                            financialSituation: "25-75Lahks",
+                          };
+                        });
+                      }}
+                      style={{
+                        background:
+                          levelTwoFields?.financialSituation === "25-75Lahks"
+                            ? "linear-gradient(89deg,#47b4d5,#29449d)"
+                            : "",
+                        color:
+                          levelTwoFields?.financialSituation === "25-75Lahks"
+                            ? "white"
+                            : "",
+                        fontWeight:
+                          levelTwoFields?.financialSituation === "25-75Lahks"
+                            ? "600"
+                            : "",
+                      }}
+                    >
+                      25 Lahks - 75 Lahks
+                    </div>
+                    <div
+                      className="eachh-btnn"
+                      onClick={() => {
+                        setLevelTwoFields((prev) => {
+                          return {
+                            ...prev,
+                            financialSituation: "75Lakhs-3CR",
+                          };
+                        });
+                      }}
+                      style={{
+                        background:
+                          levelTwoFields?.financialSituation === "75Lakhs-3CR"
+                            ? "linear-gradient(89deg,#47b4d5,#29449d)"
+                            : "",
+                        color:
+                          levelTwoFields?.financialSituation === "75Lakhs-3CR"
+                            ? "white"
+                            : "",
+                        fontWeight:
+                          levelTwoFields?.financialSituation === "75Lakhs-3CR"
+                            ? "600"
+                            : "",
+                      }}
+                    >
+                      75 Lahks - 3 CR
+                    </div>
+                    <div
+                      className="eachh-btnn"
+                      onClick={() => {
+                        setLevelTwoFields((prev) => {
+                          return {
+                            ...prev,
+                            financialSituation: "3CR+",
+                          };
+                        });
+                      }}
+                      style={{
+                        background:
+                          levelTwoFields?.financialSituation === "3CR+"
+                            ? "linear-gradient(89deg,#47b4d5,#29449d)"
+                            : "",
+                        color:
+                          levelTwoFields?.financialSituation === "3CR+"
+                            ? "white"
+                            : "",
+                        fontWeight:
+                          levelTwoFields?.financialSituation === "3CR+"
+                            ? "600"
+                            : "",
+                      }}
+                    >
+                      3 CR+{" "}
+                    </div>
+                  </div>
+                  <div className="stepBtns">
+                    <div
+                      style={{
+                        background: "#1F304F",
+                        width: "48%",
+                        height: "3.5rem",
+                        opacity: "0.5",
+                        cursor: "not-allowed",
+                      }}
+                    >
+                      Go Back
+                    </div>
+                    <div
+                      style={{
+                        height: "3.5rem",
+                        background: "#59A2DD",
+                        width: "48%",
+                        cursor: levelTwoFields?.financialSituation
+                          ? "pointer"
+                          : "not-allowed",
+                        opacity: levelTwoFields?.financialSituation
+                          ? "1"
+                          : "0.5",
+                      }}
+                      onClick={() => {
+                        if (levelTwoFields?.financialSituation) {
+                          setLevelTwoStep(2);
+                        }
+                      }}
+                    >
+                      Next Step
+                    </div>
+                  </div>
+                </>
+              )}
+
+              {levelTwoStep === 2 && (
+                <>
+                  <div className="leveltwo-steps">
+                    <div
+                      className="each-leveltwo-field"
+                      style={{ marginTop: "2rem" }}
+                    >
+                      <div
+                        style={{
+                          fontSize: "1rem",
+                        }}
+                      >
+                        What school do you currently attend?
+                      </div>
+                      <div className="input-boxx">
+                        <input
+                          type="text"
+                          placeholder="Enter name.."
+                          value={levelTwoFields?.school}
+                          onChange={(e) => {
+                            setLevelTwoFields((prev) => {
+                              return {
+                                ...prev,
+                                school: e.target.value,
+                              };
+                            });
+                          }}
+                        />
+                      </div>
+                    </div>
+                    <div className="each-leveltwo-field">
+                      <div
+                        style={{
+                          fontSize: "1rem",
+                        }}
+                      >
+                        What grade are you in?
+                      </div>
+                      <div className="input-boxxes">
+                        <div
+                          onClick={() => {
+                            setLevelTwoFields((prev) => {
+                              return {
+                                ...prev,
+                                grade: "9",
+                              };
+                            });
+                          }}
+                          style={{
+                            background:
+                              levelTwoFields?.grade === "9"
+                                ? "linear-gradient(89deg,#47b4d5,#29449d)"
+                                : "",
+                            color: levelTwoFields?.grade === "9" ? "white" : "",
+                            fontWeight:
+                              levelTwoFields?.grade === "9" ? "600" : "",
+                          }}
+                        >
+                          9
+                        </div>
+                        <div
+                          onClick={() => {
+                            setLevelTwoFields((prev) => {
+                              return {
+                                ...prev,
+                                grade: "10",
+                              };
+                            });
+                          }}
+                          style={{
+                            background:
+                              levelTwoFields?.grade === "10"
+                                ? "linear-gradient(89deg,#47b4d5,#29449d)"
+                                : "",
+                            color:
+                              levelTwoFields?.grade === "10" ? "white" : "",
+                            fontWeight:
+                              levelTwoFields?.grade === "10" ? "600" : "",
+                          }}
+                        >
+                          10
+                        </div>
+                        <div
+                          onClick={() => {
+                            setLevelTwoFields((prev) => {
+                              return {
+                                ...prev,
+                                grade: "11",
+                              };
+                            });
+                          }}
+                          style={{
+                            background:
+                              levelTwoFields?.grade === "11"
+                                ? "linear-gradient(89deg,#47b4d5,#29449d)"
+                                : "",
+                            color:
+                              levelTwoFields?.grade === "11" ? "white" : "",
+                            fontWeight:
+                              levelTwoFields?.grade === "11" ? "600" : "",
+                          }}
+                        >
+                          11
+                        </div>
+                        <div
+                          onClick={() => {
+                            setLevelTwoFields((prev) => {
+                              return {
+                                ...prev,
+                                grade: "12",
+                              };
+                            });
+                          }}
+                          style={{
+                            background:
+                              levelTwoFields?.grade === "12"
+                                ? "linear-gradient(89deg,#47b4d5,#29449d)"
+                                : "",
+                            color:
+                              levelTwoFields?.grade === "12" ? "white" : "",
+                            fontWeight:
+                              levelTwoFields?.grade === "12" ? "600" : "",
+                          }}
+                        >
+                          12
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="stepBtns">
+                    <div
+                      style={{
+                        background: "#1F304F",
+                        width: "48%",
+                        height: "3.5rem",
+                      }}
+                      onClick={() => {
+                        setLevelTwoStep(1);
+                        setLevelTwoFields({ school: "", grade: "" });
+                      }}
+                    >
+                      Go Back
+                    </div>
+                    <div
+                      style={{
+                        height: "3.5rem",
+                        background: "#59A2DD",
+                        width: "48%",
+                        cursor:
+                          levelTwoFields?.school && levelTwoFields?.grade
+                            ? "pointer"
+                            : "not-allowed",
+                        opacity:
+                          levelTwoFields?.school && levelTwoFields?.grade
+                            ? "1"
+                            : "0.5",
+                      }}
+                      onClick={() => {
+                        if (levelTwoFields?.school && levelTwoFields?.grade) {
+                          setLevelTwoStep(3);
+                        }
+                      }}
+                    >
+                      Next Step
+                    </div>
+                  </div>
+                </>
+              )}
+
+              {levelTwoStep === 3 && (
+                <>
+                  <div
+                    style={{
+                      marginBottom: "2rem",
+                      fontSize: "1rem",
+                      marginTop: "2rem",
+                    }}
+                  >
+                    What is your current grade point average?
+                  </div>
+                  <div className="btnss-div">
+                    <div
+                      className="eachh-btnn"
+                      onClick={() => {
+                        setLevelTwoFields((prev) => {
+                          return {
+                            ...prev,
+                            performance: "0%-35%",
+                          };
+                        });
+                      }}
+                      style={{
+                        background:
+                          levelTwoFields?.performance === "0%-35%"
+                            ? "linear-gradient(89deg,#47b4d5,#29449d)"
+                            : "",
+                        color:
+                          levelTwoFields?.performance === "0%-35%"
+                            ? "white"
+                            : "",
+                        fontWeight:
+                          levelTwoFields?.performance === "0%-35%" ? "600" : "",
+                      }}
+                    >
+                      0% - 35%
+                    </div>
+                    <div
+                      className="eachh-btnn"
+                      onClick={() => {
+                        setLevelTwoFields((prev) => {
+                          return {
+                            ...prev,
+                            performance: "36%-60%",
+                          };
+                        });
+                      }}
+                      style={{
+                        background:
+                          levelTwoFields?.performance === "36%-60%"
+                            ? "linear-gradient(89deg,#47b4d5,#29449d)"
+                            : "",
+                        color:
+                          levelTwoFields?.performance === "36%-60%"
+                            ? "white"
+                            : "",
+                        fontWeight:
+                          levelTwoFields?.performance === "36%-60%"
+                            ? "600"
+                            : "",
+                      }}
+                    >
+                      36% - 60%
+                    </div>
+                    <div
+                      className="eachh-btnn"
+                      onClick={() => {
+                        setLevelTwoFields((prev) => {
+                          return {
+                            ...prev,
+                            performance: "61%-75%",
+                          };
+                        });
+                      }}
+                      style={{
+                        background:
+                          levelTwoFields?.performance === "61%-75%"
+                            ? "linear-gradient(89deg,#47b4d5,#29449d)"
+                            : "",
+                        color:
+                          levelTwoFields?.performance === "61%-75%"
+                            ? "white"
+                            : "",
+                        fontWeight:
+                          levelTwoFields?.performance === "61%-75%"
+                            ? "600"
+                            : "",
+                      }}
+                    >
+                      61% - 75%
+                    </div>
+                    <div
+                      className="eachh-btnn"
+                      onClick={() => {
+                        setLevelTwoFields((prev) => {
+                          return {
+                            ...prev,
+                            performance: "76%-85%",
+                          };
+                        });
+                      }}
+                      style={{
+                        background:
+                          levelTwoFields?.performance === "76%-85%"
+                            ? "linear-gradient(89deg,#47b4d5,#29449d)"
+                            : "",
+                        color:
+                          levelTwoFields?.performance === "76%-85%"
+                            ? "white"
+                            : "",
+                        fontWeight:
+                          levelTwoFields?.performance === "76%-85%"
+                            ? "600"
+                            : "",
+                      }}
+                    >
+                      76% - 85%
+                    </div>
+                    <div
+                      className="eachh-btnn"
+                      onClick={() => {
+                        setLevelTwoFields((prev) => {
+                          return {
+                            ...prev,
+                            performance: "86%-95%",
+                          };
+                        });
+                      }}
+                      style={{
+                        background:
+                          levelTwoFields?.performance === "86%-95%"
+                            ? "linear-gradient(89deg,#47b4d5,#29449d)"
+                            : "",
+                        color:
+                          levelTwoFields?.performance === "86%-95%"
+                            ? "white"
+                            : "",
+                        fontWeight:
+                          levelTwoFields?.performance === "86%-95%"
+                            ? "600"
+                            : "",
+                      }}
+                    >
+                      86% - 95%
+                    </div>
+                    <div
+                      className="eachh-btnn"
+                      onClick={() => {
+                        setLevelTwoFields((prev) => {
+                          return {
+                            ...prev,
+                            performance: "96%-100%",
+                          };
+                        });
+                      }}
+                      style={{
+                        background:
+                          levelTwoFields?.performance === "96%-100%"
+                            ? "linear-gradient(89deg,#47b4d5,#29449d)"
+                            : "",
+                        color:
+                          levelTwoFields?.performance === "96%-100%"
+                            ? "white"
+                            : "",
+                        fontWeight:
+                          levelTwoFields?.performance === "96%-100%"
+                            ? "600"
+                            : "",
+                      }}
+                    >
+                      96% - 100%
+                    </div>
+                  </div>
+                  <div className="stepBtns">
+                    <div
+                      style={{
+                        background: "#1F304F",
+                        width: "48%",
+                        height: "3.5rem",
+                      }}
+                      onClick={() => {
+                        setLevelTwoStep(2);
+                        setLevelTwoFields({ performance: "" });
+                      }}
+                    >
+                      Go Back
+                    </div>
+                    <div
+                      style={{
+                        height: "3.5rem",
+                        background: "#59A2DD",
+                        width: "48%",
+                        cursor: levelTwoFields?.performance
+                          ? "pointer"
+                          : "not-allowed",
+                        opacity: levelTwoFields?.performance ? "1" : "0.5",
+                      }}
+                      onClick={() => {
+                        if (levelTwoFields?.performance) {
+                          setLevelTwoStep(4);
+                        }
+                      }}
+                    >
+                      Next Step
+                    </div>
+                  </div>
+                </>
+              )}
+
+              {levelTwoStep === 4 && (
+                <>
+                  <div
+                    style={{
+                      marginBottom: "2rem",
+                      fontSize: "1rem",
+                      marginTop: "2rem",
+                    }}
+                  >
+                    What curriculum are you pursuing?
+                  </div>
+                  <div className="btnss-div">
+                    <div
+                      className="eachh-btnn"
+                      onClick={() => {
+                        setLevelTwoFields((prev) => {
+                          return {
+                            ...prev,
+                            ciriculum: "IB",
+                          };
+                        });
+                      }}
+                      style={{
+                        background:
+                          levelTwoFields?.ciriculum === "IB"
+                            ? "linear-gradient(89deg,#47b4d5,#29449d)"
+                            : "",
+                        color:
+                          levelTwoFields?.ciriculum === "IB" ? "white" : "",
+                        fontWeight:
+                          levelTwoFields?.ciriculum === "IB" ? "600" : "",
+                      }}
+                    >
+                      IB
+                    </div>
+                    <div
+                      className="eachh-btnn"
+                      onClick={() => {
+                        setLevelTwoFields((prev) => {
+                          return {
+                            ...prev,
+                            ciriculum: "IGCSE",
+                          };
+                        });
+                      }}
+                      style={{
+                        background:
+                          levelTwoFields?.ciriculum === "IGCSE"
+                            ? "linear-gradient(89deg,#47b4d5,#29449d)"
+                            : "",
+                        color:
+                          levelTwoFields?.ciriculum === "IGCSE" ? "white" : "",
+                        fontWeight:
+                          levelTwoFields?.ciriculum === "IGCSE" ? "600" : "",
+                      }}
+                    >
+                      IGCSE
+                    </div>
+                    <div
+                      className="eachh-btnn"
+                      onClick={() => {
+                        setLevelTwoFields((prev) => {
+                          return {
+                            ...prev,
+                            ciriculum: "CBSE",
+                          };
+                        });
+                      }}
+                      style={{
+                        background:
+                          levelTwoFields?.ciriculum === "CBSE"
+                            ? "linear-gradient(89deg,#47b4d5,#29449d)"
+                            : "",
+                        color:
+                          levelTwoFields?.ciriculum === "CBSE" ? "white" : "",
+                        fontWeight:
+                          levelTwoFields?.ciriculum === "CBSE" ? "600" : "",
+                      }}
+                    >
+                      CBSE
+                    </div>
+                    <div
+                      className="eachh-btnn"
+                      onClick={() => {
+                        setLevelTwoFields((prev) => {
+                          return {
+                            ...prev,
+                            ciriculum: "ICSE",
+                          };
+                        });
+                      }}
+                      style={{
+                        background:
+                          levelTwoFields?.ciriculum === "ICSE"
+                            ? "linear-gradient(89deg,#47b4d5,#29449d)"
+                            : "",
+                        color:
+                          levelTwoFields?.ciriculum === "ICSE" ? "white" : "",
+                        fontWeight:
+                          levelTwoFields?.ciriculum === "ICSE" ? "600" : "",
+                      }}
+                    >
+                      ICSE
+                    </div>
+                    <div
+                      className="eachh-btnn"
+                      onClick={() => {
+                        setLevelTwoFields((prev) => {
+                          return {
+                            ...prev,
+                            ciriculum: "Nordic",
+                          };
+                        });
+                      }}
+                      style={{
+                        background:
+                          levelTwoFields?.ciriculum === "Nordic"
+                            ? "linear-gradient(89deg,#47b4d5,#29449d)"
+                            : "",
+                        color:
+                          levelTwoFields?.ciriculum === "Nordic" ? "white" : "",
+                        fontWeight:
+                          levelTwoFields?.ciriculum === "Nordic" ? "600" : "",
+                      }}
+                    >
+                      Nordic
+                    </div>
+                  </div>
+                  <div className="stepBtns">
+                    <div
+                      style={{
+                        background: "#1F304F",
+                        width: "48%",
+                        height: "3.5rem",
+                      }}
+                      onClick={() => {
+                        setLevelTwoStep(3);
+                        setLevelTwoFields({ ciriculum: "" });
+                      }}
+                    >
+                      Go Back
+                    </div>
+                    <div
+                      style={{
+                        height: "3.5rem",
+                        background: "#59A2DD",
+                        width: "48%",
+                        cursor: levelTwoFields?.ciriculum
+                          ? "pointer"
+                          : "not-allowed",
+                        opacity: levelTwoFields?.ciriculum ? "1" : "0.5",
+                      }}
+                      onClick={() => {
+                        if (levelTwoFields?.ciriculum) {
+                          setLevelTwoStep(5);
+                        }
+                      }}
+                    >
+                      Next Step
+                    </div>
+                  </div>
+                </>
+              )}
+
+              {levelTwoStep === 5 && (
+                <>
+                  <div
+                    style={{
+                      marginBottom: "2rem",
+                      fontSize: "1rem",
+                      marginTop: "2rem",
+                    }}
+                  >
+                    What stream are you pursuing?
+                  </div>
+                  <div className="btnss-div">
+                    <div
+                      className="eachh-btnn"
+                      onClick={() => {
+                        setLevelTwoFields((prev) => {
+                          return {
+                            ...prev,
+                            stream: "MPC",
+                          };
+                        });
+                      }}
+                      style={{
+                        background:
+                          levelTwoFields?.stream === "MPC"
+                            ? "linear-gradient(89deg,#47b4d5,#29449d)"
+                            : "",
+                        color: levelTwoFields?.stream === "MPC" ? "white" : "",
+                        fontWeight:
+                          levelTwoFields?.stream === "MPC" ? "600" : "",
+                      }}
+                    >
+                      MPC
+                    </div>
+                    <div
+                      className="eachh-btnn"
+                      onClick={() => {
+                        setLevelTwoFields((prev) => {
+                          return {
+                            ...prev,
+                            stream: "BIPC",
+                          };
+                        });
+                      }}
+                      style={{
+                        background:
+                          levelTwoFields?.stream === "BIPC"
+                            ? "linear-gradient(89deg,#47b4d5,#29449d)"
+                            : "",
+                        color: levelTwoFields?.stream === "BIPC" ? "white" : "",
+                        fontWeight:
+                          levelTwoFields?.stream === "BIPC" ? "600" : "",
+                      }}
+                    >
+                      BIPC
+                    </div>
+                    <div
+                      className="eachh-btnn"
+                      onClick={() => {
+                        setLevelTwoFields((prev) => {
+                          return {
+                            ...prev,
+                            stream: "CEC",
+                          };
+                        });
+                      }}
+                      style={{
+                        background:
+                          levelTwoFields?.stream === "CEC"
+                            ? "linear-gradient(89deg,#47b4d5,#29449d)"
+                            : "",
+                        color: levelTwoFields?.stream === "CEC" ? "white" : "",
+                        fontWeight:
+                          levelTwoFields?.stream === "CEC" ? "600" : "",
+                      }}
+                    >
+                      CEC
+                    </div>
+                    <div
+                      className="eachh-btnn"
+                      onClick={() => {
+                        setLevelTwoFields((prev) => {
+                          return {
+                            ...prev,
+                            stream: "MEC",
+                          };
+                        });
+                      }}
+                      style={{
+                        background:
+                          levelTwoFields?.stream === "MEC"
+                            ? "linear-gradient(89deg,#47b4d5,#29449d)"
+                            : "",
+                        color: levelTwoFields?.stream === "MEC" ? "white" : "",
+                        fontWeight:
+                          levelTwoFields?.stream === "MEC" ? "600" : "",
+                      }}
+                    >
+                      MEC
+                    </div>
+                    <div
+                      className="eachh-btnn"
+                      onClick={() => {
+                        setLevelTwoFields((prev) => {
+                          return {
+                            ...prev,
+                            stream: "HEC",
+                          };
+                        });
+                      }}
+                      style={{
+                        background:
+                          levelTwoFields?.stream === "HEC"
+                            ? "linear-gradient(89deg,#47b4d5,#29449d)"
+                            : "",
+                        color: levelTwoFields?.stream === "HEC" ? "white" : "",
+                        fontWeight:
+                          levelTwoFields?.stream === "HEC" ? "600" : "",
+                      }}
+                    >
+                      HEC
+                    </div>
+                  </div>
+                  <div className="stepBtns">
+                    <div
+                      style={{
+                        background: "#1F304F",
+                        width: "48%",
+                        height: "3.5rem",
+                      }}
+                      onClick={() => {
+                        setLevelTwoStep(4);
+                        setLevelTwoFields({ stream: "" });
+                      }}
+                    >
+                      Go Back
+                    </div>
+                    <div
+                      style={{
+                        height: "3.5rem",
+                        background: "#59A2DD",
+                        width: "48%",
+                        cursor: levelTwoFields?.stream
+                          ? "pointer"
+                          : "not-allowed",
+                        opacity: levelTwoFields?.stream ? "1" : "0.5",
+                      }}
+                      onClick={() => {
+                        if (levelTwoFields?.stream) {
+                          setLevelTwoStep(6);
+                        }
+                      }}
+                    >
+                      Next Step
+                    </div>
+                  </div>
+                </>
+              )}
+
+              {levelTwoStep === 6 && (
+                <>
+                  <div className="leveltwo-steps">
+                    <div
+                      className="each-leveltwo-field"
+                      style={{ marginTop: "2rem" }}
+                    >
+                      <div
+                        style={{
+                          fontSize: "1rem",
+                        }}
+                      >
+                        What is your Linkedin?
+                      </div>
+                      <div className="input-boxx">
+                        <input
+                          type="text"
+                          placeholder="Enter link.."
+                          value={levelTwoFields?.linkedin}
+                          onChange={(e) => {
+                            setLevelTwoFields((prev) => {
+                              return {
+                                ...prev,
+                                linkedin: e.target.value,
+                              };
+                            });
+                          }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="stepBtns">
+                    <div
+                      style={{
+                        background: "#1F304F",
+                        width: "48%",
+                        height: "3.5rem",
+                      }}
+                      onClick={() => {
+                        setLevelTwoStep(5);
+                        setLevelTwoFields({ linkedin: "" });
+                      }}
+                    >
+                      Go Back
+                    </div>
+                    <div
+                      style={{
+                        height: "3.5rem",
+                        background: "#59A2DD",
+                        width: "48%",
+                      }}
+                      onClick={() => {
+                        if (levelTwoFields?.linkedin) {
+                          levelTwoProfile();
+                        }
+                      }}
+                    >
+                      Submit
+                    </div>
+                  </div>
+                </>
+              )}
+
+              {levelTwoLoading && (
+                <div
+                  className="loading-component"
+                  style={{
+                    top: "0",
+                    left: "0",
+                    width: "100%",
+                    height: "100%",
+                    position: "absolute",
+                    display: "flex",
+                  }}
+                >
+                  <LoadingAnimation1 icon={lg1} width={200} />
+                </div>
+              )}
+            </div>
           </div>
         )}
       </>
