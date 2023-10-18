@@ -1175,6 +1175,7 @@ const UserProfile = () => {
                         </div>
                       </div>
                     </div>
+                    
                     <div
                       className="pf-right"
                       style={{ minWidth: "30%", height: "100%" }}
@@ -1196,16 +1197,26 @@ const UserProfile = () => {
                             style={{
                               marginTop: "0",
                               color: "white",
-                              background: "#59A2DD",
+                              background:
+                                profileData?.user_level === 1
+                                  ? "#59A2DD"
+                                  : "#8ED8C6",
                               alignItems: "center",
-                              cursor: "pointer",
+                              cursor:
+                                profileData?.user_level === 1
+                                  ? "pointer"
+                                  : "not-allowed",
                             }}
                             onClick={() => {
                               // console.log(profileDataId, "profileDataId");
-                              setCreateLevelTwo(true);
+                              if (profileData?.user_level === 1) {
+                                setCreateLevelTwo(true);
+                              }
                             }}
                           >
-                            Start Now
+                            {profileData?.user_level === 2
+                              ? "Completed"
+                              : "Start Now"}
                           </div>
                         </div>
                         <div
