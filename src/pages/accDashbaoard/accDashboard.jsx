@@ -46,6 +46,7 @@ import Toggle from "../../components/Toggle";
 import Tasks from "../Tasks";
 import arrow from "./arrow.svg";
 import { useCoinContextData } from "../../context/CoinContext";
+import NewStep from "../../globalComponents/GlobalDrawer/NewStep";
 
 const AccDashboard = () => {
   const {
@@ -113,6 +114,11 @@ const AccDashboard = () => {
   //with compPlan
   const [withCompPlanData, setWithCompPlanData] = useState([]);
   const [gettingData, setGettingData] = useState(false);
+
+  // new step
+  const [mainMenu, setMainMenu] = useState("");
+  const [step, setStep] = useState("");
+  const [loading, setLoading] = useState(false);
 
   let navigate = useNavigate();
 
@@ -1861,6 +1867,20 @@ const AccDashboard = () => {
                     >
                       Path
                     </div>
+
+                    <div
+                      className="acc-step-box"
+                      onClick={() => {
+                        setselectNew("Step");
+                        setpstep(9);
+                      }}
+                      style={{
+                        background: selectNew === "Step" ? "#182542" : "",
+                        color: selectNew === "Step" ? "#FFF" : "",
+                      }}
+                    >
+                      Step
+                    </div>
                     {/* <div
                       className="acc-step-box"
                       onClick={() => {
@@ -2583,6 +2603,14 @@ const AccDashboard = () => {
                     </div>
                   </div>
                 </div>
+              ) : pstep === 9 ? (
+                <NewStep
+                  step={step}
+                  setStep={setStep}
+                  setMainMenu={setMainMenu}
+                  loading={loading}
+                  setLoading={setLoading}
+                />
               ) : (
                 ""
               )}
