@@ -62,6 +62,7 @@ const PathComponent = () => {
     setSelectedPathItem,
   } = useCoinContextData();
   const [loading, setLoading] = useState(false);
+  const [levelTwoData, setLevelTwoData] = useState([]);
 
   let userDetails = JSON.parse(localStorage.getItem("user"));
 
@@ -235,6 +236,22 @@ const PathComponent = () => {
         console.log(error, "pathSelection error");
       });
   };
+
+  useEffect(() => {
+    let email = userDetails?.user?.email;
+    axios
+      .get(`https://careers.marketsverse.com/users/get?email=${email}`)
+      .then((response) => {
+        let result = response?.data?.data[0];
+        // console.log(result, "user profile level 2");
+        if (result?.user_level === 2) {
+          setLevelTwoData(result);
+        }
+      })
+      .catch((error) => {
+        console.log(error, "error in user profile level 2");
+      });
+  }, []);
 
   return (
     <div className="mapspage1">
@@ -423,12 +440,44 @@ const PathComponent = () => {
               </div>
             ) : (
               <div className="mid-area1">
-                <div className="input-div-1">
-                  <input
-                    type="text"
-                    placeholder="Choose Starting Coordinates.."
-                  />
-                </div>
+                {pathOption === "Path View" ? (
+                  <div className="current-coord-container">
+                    <div className="current-text">Current Coordinates</div>
+                    <div className="each-coo-field">
+                      <div className="field-name">Grade</div>
+                      <div className="field-value">
+                        {levelTwoData ? levelTwoData?.grade : ''}
+                      </div>
+                    </div>
+                    <div className="each-coo-field">
+                      <div className="field-name">School</div>
+                      <div className="field-value">{levelTwoData ? levelTwoData?.school : ''}</div>
+                    </div>
+                    <div className="each-coo-field">
+                      <div className="field-name">Curriculum</div>
+                      <div className="field-value">{levelTwoData ? levelTwoData?.ciriculum : ''}</div>
+                    </div>
+                    <div className="each-coo-field">
+                      <div className="field-name">Stream</div>
+                      <div className="field-value">{levelTwoData ? levelTwoData?.stream : ''}</div>
+                    </div>
+                    <div className="each-coo-field">
+                      <div className="field-name">Performance</div>
+                      <div className="field-value">{levelTwoData ? levelTwoData?.performance : ''}</div>
+                    </div>
+                    <div className="each-coo-field">
+                      <div className="field-name">Financial</div>
+                      <div className="field-value">{levelTwoData ? levelTwoData?.financialSituation : ''}</div>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="input-div-1">
+                    <input
+                      type="text"
+                      placeholder="Choose Starting Coordinates.."
+                    />
+                  </div>
+                )}
                 {containers.map((container, index) => (
                   <div className="destination-container1" key={container.id}>
                     <div className="dest-txt1">
