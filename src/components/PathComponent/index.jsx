@@ -370,6 +370,9 @@ const PathComponent = () => {
                   <div
                     className="reset-btn1"
                     style={{ fontWeight: "400", textAlign: "left" }}
+                    onClick={() => {
+                      setsideNav("My Journey");
+                    }}
                   >
                     Explore Path
                   </div>
@@ -446,28 +449,38 @@ const PathComponent = () => {
                     <div className="each-coo-field">
                       <div className="field-name">Grade</div>
                       <div className="field-value">
-                        {levelTwoData ? levelTwoData?.grade : ''}
+                        {levelTwoData ? levelTwoData?.grade : ""}
                       </div>
                     </div>
                     <div className="each-coo-field">
                       <div className="field-name">School</div>
-                      <div className="field-value">{levelTwoData ? levelTwoData?.school : ''}</div>
+                      <div className="field-value">
+                        {levelTwoData ? levelTwoData?.school : ""}
+                      </div>
                     </div>
                     <div className="each-coo-field">
                       <div className="field-name">Curriculum</div>
-                      <div className="field-value">{levelTwoData ? levelTwoData?.ciriculum : ''}</div>
+                      <div className="field-value">
+                        {levelTwoData ? levelTwoData?.ciriculum : ""}
+                      </div>
                     </div>
                     <div className="each-coo-field">
                       <div className="field-name">Stream</div>
-                      <div className="field-value">{levelTwoData ? levelTwoData?.stream : ''}</div>
+                      <div className="field-value">
+                        {levelTwoData ? levelTwoData?.stream : ""}
+                      </div>
                     </div>
                     <div className="each-coo-field">
                       <div className="field-name">Performance</div>
-                      <div className="field-value">{levelTwoData ? levelTwoData?.performance : ''}</div>
+                      <div className="field-value">
+                        {levelTwoData ? levelTwoData?.performance : ""}
+                      </div>
                     </div>
                     <div className="each-coo-field">
                       <div className="field-name">Financial</div>
-                      <div className="field-value">{levelTwoData ? levelTwoData?.financialSituation : ''}</div>
+                      <div className="field-value">
+                        {levelTwoData ? levelTwoData?.financialSituation : ""}
+                      </div>
                     </div>
                   </div>
                 ) : (

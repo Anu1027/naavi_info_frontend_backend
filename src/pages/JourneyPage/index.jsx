@@ -3,12 +3,13 @@ import { useStore } from "../../components/store/store.ts";
 import "./journey.scss";
 import Skeleton from "react-loading-skeleton";
 import axios from "axios";
+import { useCoinContextData } from "../../context/CoinContext";
 
 // images
-import dummy from "./dummy.svg";
 import arrow from "./arrow.svg";
 
 const JourneyPage = () => {
+  const { selectedPathItem, setSelectedPathItem } = useCoinContextData();
   let userDetails = JSON.parse(localStorage.getItem("user"));
   const { sideNav, setsideNav } = useStore();
   const [journeyData, setJourneyData] = useState([]);
@@ -16,21 +17,12 @@ const JourneyPage = () => {
 
   useEffect(() => {
     setLoading(true);
-    let email = userDetails?.user?.email;
-    axios
-      .get(`https://careers.marketsverse.com/userpaths/get?email=${email}`)
-      .then((response) => {
-        let data = response?.status;
-        if(data) {
-          let result = response?.data?.data;
-          // console.log(result, "journey data");
-          setJourneyData(result);
-          setLoading(false);
-        }
-      })
-      .catch((error) => {
-        console.log(error, "error in journey data");
-      });
+    let selectedPathData = JSON.parse(localStorage.getItem("selectedPath"));
+    if (selectedPathData) {
+      // console.log(selectedPathData?.StepDetails, 'selectedPathData');
+      setSelectedPathItem(selectedPathData);
+      setLoading(false);
+    }
   }, []);
 
   return (
@@ -41,18 +33,27 @@ const JourneyPage = () => {
           <Skeleton width={150} height={30} />
         ) : (
           <div className="bold-text">
-            {journeyData?.length > 0 ?
-              journeyData[0]?.PathDetails[0]?.destination_institution : ''}
+            {selectedPathItem?.length > 0
+              ? selectedPathItem?.destination_institution
+              : ""}
           </div>
         )}
         {loading ? (
           <Skeleton width={500} height={20} />
         ) : (
           <div className="journey-des">
-            {journeyData?.length > 0 ?
-              journeyData[0]?.PathDetails[0]?.description : ''}
+            {selectedPathItem?.length > 0 ? selectedPathItem?.description : ""}
           </div>
         )}
+        <div
+          className="goBack-div"
+          onClick={() => {
+            setsideNav("Paths");
+            localStorage.removeItem("selectedPath");
+          }}
+        >
+          Go Back
+        </div>
       </div>
       <div className="journey-steps-area">
         {loading
@@ -78,8 +79,8 @@ const JourneyPage = () => {
                   </div>
                 );
               })
-          : journeyData?.length > 0 ?
-            journeyData[0]?.PathDetails[0]?.StepDetails?.map((e, i) => {
+          : selectedPathItem?.length > 0
+          ? selectedPathItem?.StepDetails?.map((e, i) => {
               return (
                 <div
                   className="each-j-step relative-div"
@@ -107,7 +108,8 @@ const JourneyPage = () => {
               </div> */}
                 </div>
               );
-            }) : ''}
+            })
+          : ""}
       </div>
     </div>
   );
