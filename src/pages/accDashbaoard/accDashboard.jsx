@@ -121,6 +121,23 @@ const AccDashboard = () => {
   const [step, setStep] = useState("");
   const [loading, setLoading] = useState(false);
 
+  // new path
+  const [grade, setGrade] = useState([]);
+  const [gradeAvg, setGradeAvg] = useState([]);
+  const [curriculum, setCurriculum] = useState([]);
+  const [stream, setStream] = useState([]);
+  const streamList = ["MPC", "BIPC", "CEC", "MEC", "HEC"];
+  const curriculumList = ["IB", "IGCSE", "CBSE", "ICSE", "Nordic"];
+  const gradeList = ["9", "10", "11", "12"];
+  const gradePointAvg = [
+    "0% - 35%",
+    "36% - 60%",
+    "61% - 75%",
+    "76% - 85%",
+    "86% - 95%",
+    "96% - 100%",
+  ];
+
   let navigate = useNavigate();
 
   const {
@@ -141,6 +158,45 @@ const AccDashboard = () => {
   const secret = "uyrw7826^&(896GYUFWE&*#GBjkbuaf"; // secret not to be disclosed anywhere.
   const emailDev = "rahulrajsb@outlook.com"; // email of the developer.
   const userDetails = JSON.parse(localStorage.getItem("user"));
+
+  const handleGrade = (item) => {
+    if (grade.includes(item)) {
+      // If the grade is already selected, remove it
+      setGrade(grade.filter((o) => o !== item));
+    } else {
+      // If the grade is not selected, add it
+      setGrade([...grade, item]);
+    }
+  };
+  const handleGradeAvg = (item) => {
+    if (gradeAvg.includes(item)) {
+      // If the gradeAvg is already selected, remove it
+      setGradeAvg(gradeAvg.filter((o) => o !== item));
+    } else {
+      // If the gradeAvg is not selected, add it
+      setGradeAvg([...gradeAvg, item]);
+    }
+  };
+
+  const handleCurriculum = (item) => {
+    if (curriculum.includes(item)) {
+      // If the curriculum is already selected, remove it
+      setCurriculum(curriculum.filter((o) => o !== item));
+    } else {
+      // If the curriculum is not selected, add it
+      setCurriculum([...curriculum, item]);
+    }
+  };
+
+  const handleStream = (item) => {
+    if (stream.includes(item)) {
+      // If the stream is already selected, remove it
+      setStream(stream.filter((o) => o !== item));
+    } else {
+      // If the stream is not selected, add it
+      setStream([...stream, item]);
+    }
+  };
 
   useEffect(() => {
     if (userDetails) {
@@ -746,7 +802,13 @@ const AccDashboard = () => {
     // console.log(pathSteps, "api body");
     setCreatingPath(true);
     axios
-      .post(`https://careers.marketsverse.com/paths/add`, pathSteps)
+      .post(`https://careers.marketsverse.com/paths/add`, {
+        ...pathSteps,
+        performance: gradeAvg,
+        curriculum: curriculum,
+        grade: grade,
+        stream: stream,
+      })
       .then((response) => {
         let result = response?.data;
         console.log(result, "pathSubmission result");
@@ -1376,7 +1438,8 @@ const AccDashboard = () => {
                                                   allCurrencies?.filter(
                                                     (item) =>
                                                       item?.coinSymbol ===
-                                                      each?.billing_cycle?.monthly?.coin
+                                                      each?.billing_cycle
+                                                        ?.monthly?.coin
                                                   )[0]?.symbol
                                                 }{" "}
                                                 {
@@ -1401,11 +1464,13 @@ const AccDashboard = () => {
                                                   allCurrencies?.filter(
                                                     (item) =>
                                                       item?.coinSymbol ===
-                                                      each?.billing_cycle?.lifetime?.coin
+                                                      each?.billing_cycle
+                                                        ?.lifetime?.coin
                                                   )[0]?.symbol
                                                 }{" "}
                                                 {
-                                                  each?.billing_cycle?.lifetime?.price
+                                                  each?.billing_cycle?.lifetime
+                                                    ?.price
                                                 }{" "}
                                                 /{" "}
                                                 <span
@@ -2632,12 +2697,14 @@ const AccDashboard = () => {
                             width: "85%",
                             cursor: "pointer",
                             padding: "1.5rem",
-                            borderRadius: '15px',
-                            opacity: '0.25',
-                            fontSize: '1rem',
-                            fontWeight: '500'
+                            borderRadius: "15px",
+                            opacity: "0.25",
+                            fontSize: "1rem",
+                            fontWeight: "500",
                           }}
-                        >Click To Select</div>
+                        >
+                          Click To Select
+                        </div>
                         <div className="arrow-box">
                           <img
                             src={arrow}
@@ -2695,6 +2762,83 @@ const AccDashboard = () => {
                   </div>
 
                   <div className="each-acc-addpath-field">
+                    <div className="each-acc-addpath-field-name">
+                      What grade are you in?
+                    </div>
+                    <div className="optioncardWrapper">
+                      {gradeList.map((item) => (
+                        <div
+                          className={
+                            grade.includes(item)
+                              ? "optionCardSmallSelected"
+                              : "optionCardSmall"
+                          }
+                          onClick={(e) => handleGrade(item)}
+                        >
+                          {item}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="each-acc-addpath-field">
+                    <div className="each-acc-addpath-field-name">
+                      What is your current grade point average?
+                    </div>
+                    <div className="optionCardFullWrapper">
+                      {gradePointAvg.map((item) => (
+                        <div
+                          className={
+                            gradeAvg.includes(item)
+                              ? "optionCardFullSelected"
+                              : "optionCardFull"
+                          }
+                          onClick={(e) => handleGradeAvg(item)}
+                        >
+                          {item}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="each-acc-addpath-field">
+                    <div className="each-acc-addpath-field-name">
+                      What curriculum are you pursuing?
+                    </div>
+                    <div className="optionCardFullWrapper">
+                      {curriculumList.map((item) => (
+                        <div
+                          className={
+                            curriculum.includes(item)
+                              ? "optionCardFullSelected"
+                              : "optionCardFull"
+                          }
+                          onClick={(e) => handleCurriculum(item)}
+                        >
+                          {item}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="each-acc-addpath-field">
+                    <div className="each-acc-addpath-field-name">
+                      What stream are you pursuing?
+                    </div>
+                    <div className="optionCardFullWrapper">
+                      {streamList.map((item) => (
+                        <div
+                          className={
+                            stream.includes(item)
+                              ? "optionCardFullSelected"
+                              : "optionCardFull"
+                          }
+                          onClick={(e) => handleStream(item)}
+                        >
+                          {item}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="each-acc-addpath-field">
                     <div
                       className="submit-path-btn"
                       style={{
@@ -2705,7 +2849,11 @@ const AccDashboard = () => {
                             pathSteps?.length &&
                             pathSteps?.path_type &&
                             pathSteps?.step_ids?.length > 0 &&
-                            pathSteps?.destination_institution
+                            pathSteps?.destination_institution &&
+                            grade.length > 0 &&
+                            gradeAvg.length > 0 &&
+                            curriculum.length > 0 &&
+                            stream.length > 0
                           ? "1"
                           : "0.5",
                         cursor: creatingPath
@@ -2715,7 +2863,11 @@ const AccDashboard = () => {
                             pathSteps?.length &&
                             pathSteps?.path_type &&
                             pathSteps?.step_ids?.length > 0 &&
-                            pathSteps?.destination_institution
+                            pathSteps?.destination_institution &&
+                            grade.length > 0 &&
+                            gradeAvg.length > 0 &&
+                            curriculum.length > 0 &&
+                            stream.length > 0
                           ? "pointer"
                           : "not-allowed",
                       }}
@@ -2726,7 +2878,11 @@ const AccDashboard = () => {
                           pathSteps?.length &&
                           pathSteps?.path_type &&
                           pathSteps?.step_ids?.length > 0 &&
-                          pathSteps?.destination_institution
+                          pathSteps?.destination_institution &&
+                          grade.length > 0 &&
+                          gradeAvg.length > 0 &&
+                          curriculum.length > 0 &&
+                          stream.length > 0
                         ) {
                           pathSubmission();
                         }

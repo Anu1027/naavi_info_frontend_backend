@@ -2035,3 +2035,76 @@ input[type="file"] {
     color: #1f304f;
   }
 }
+
+
+// added by chiranjeeb
+
+.optioncardWrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.optionCardSmall{
+  border-radius: 15px;
+  border: 0.5px solid #E7E7E7;
+  background: #FFF;
+  width: 83.52px;
+  height: 55.991px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  &:hover{
+    font-weight: 700;
+  }
+}
+.optionCardSmallSelected{
+  border-radius: 15px;
+  border: 0.5px solid #E7E7E7;
+  background: linear-gradient(90deg, #47b4d5 0.02%, #29449d 119.26%);
+  width: 83.52px;
+  height: 55.991px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 700;
+  color: #FFF;
+}
+.optionCardFullWrapper{
+  // display: flex;
+  // justify-content: space-between;
+  // align-items: center;
+  // margin-top: 1rem;
+}
+.optionCardFull{
+  border-radius: 35px;
+  border: 0.5px solid #E7E7E7;
+  background: #FFF;
+  width: 100%;
+  height: 55.991px;
+  display: flex;
+  // justify-content: center;
+  padding-left: 20px;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  &:hover{
+    font-weight: 700;
+  }
+}
+.optionCardFullSelected{
+  border-radius: 35px;
+  border: 0.5px solid #E7E7E7;
+  background: linear-gradient(90deg, #47b4d5 0.02%, #29449d 119.26%);
+  width: 100%;
+  height: 55.991px;
+  display: flex;
+  // justify-content: center;
+  padding-left: 20px;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 700;
+  color: #FFF;
+  margin-bottom: 1rem;
+}

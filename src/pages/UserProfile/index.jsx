@@ -212,7 +212,7 @@ const UserProfile = () => {
     financialSituation: "",
     school: "",
     performance: "",
-    ciriculum: "",
+    curriculum: "",
     stream: "",
     grade: "",
     linkedin: "",
@@ -474,7 +474,7 @@ const UserProfile = () => {
       financialSituation: "",
       school: "",
       performance: "",
-      ciriculum: "",
+      curriculum: "",
       stream: "",
       grade: "",
       linkedin: "",
@@ -1069,7 +1069,7 @@ const UserProfile = () => {
                           <div className="pfl-boxl">
                             <div className="pfl-box-label">Curriculum</div>
                             <div className="pfl-box-inp">
-                              {profileData?.ciriculum}
+                              {profileData?.curriculum}
                             </div>
                           </div>
                           <div className="pfl-boxr">
@@ -2057,7 +2057,7 @@ const UserProfile = () => {
                     financialSituation: "",
                     school: "",
                     performance: "",
-                    ciriculum: "",
+                    curriculum: "",
                     stream: "",
                     grade: "",
                     linkedin: "",
@@ -2628,19 +2628,19 @@ const UserProfile = () => {
                         setLevelTwoFields((prev) => {
                           return {
                             ...prev,
-                            ciriculum: "IB",
+                            curriculum: "IB",
                           };
                         });
                       }}
                       style={{
                         background:
-                          levelTwoFields?.ciriculum === "IB"
+                          levelTwoFields?.curriculum === "IB"
                             ? "linear-gradient(89deg,#47b4d5,#29449d)"
                             : "",
                         color:
-                          levelTwoFields?.ciriculum === "IB" ? "white" : "",
+                          levelTwoFields?.curriculum === "IB" ? "white" : "",
                         fontWeight:
-                          levelTwoFields?.ciriculum === "IB" ? "600" : "",
+                          levelTwoFields?.curriculum === "IB" ? "600" : "",
                       }}
                     >
                       IB
@@ -2651,19 +2651,19 @@ const UserProfile = () => {
                         setLevelTwoFields((prev) => {
                           return {
                             ...prev,
-                            ciriculum: "IGCSE",
+                            curriculum: "IGCSE",
                           };
                         });
                       }}
                       style={{
                         background:
-                          levelTwoFields?.ciriculum === "IGCSE"
+                          levelTwoFields?.curriculum === "IGCSE"
                             ? "linear-gradient(89deg,#47b4d5,#29449d)"
                             : "",
                         color:
-                          levelTwoFields?.ciriculum === "IGCSE" ? "white" : "",
+                          levelTwoFields?.curriculum === "IGCSE" ? "white" : "",
                         fontWeight:
-                          levelTwoFields?.ciriculum === "IGCSE" ? "600" : "",
+                          levelTwoFields?.curriculum === "IGCSE" ? "600" : "",
                       }}
                     >
                       IGCSE
@@ -2674,19 +2674,19 @@ const UserProfile = () => {
                         setLevelTwoFields((prev) => {
                           return {
                             ...prev,
-                            ciriculum: "CBSE",
+                            curriculum: "CBSE",
                           };
                         });
                       }}
                       style={{
                         background:
-                          levelTwoFields?.ciriculum === "CBSE"
+                          levelTwoFields?.curriculum === "CBSE"
                             ? "linear-gradient(89deg,#47b4d5,#29449d)"
                             : "",
                         color:
-                          levelTwoFields?.ciriculum === "CBSE" ? "white" : "",
+                          levelTwoFields?.curriculum === "CBSE" ? "white" : "",
                         fontWeight:
-                          levelTwoFields?.ciriculum === "CBSE" ? "600" : "",
+                          levelTwoFields?.curriculum === "CBSE" ? "600" : "",
                       }}
                     >
                       CBSE
@@ -2697,19 +2697,19 @@ const UserProfile = () => {
                         setLevelTwoFields((prev) => {
                           return {
                             ...prev,
-                            ciriculum: "ICSE",
+                            curriculum: "ICSE",
                           };
                         });
                       }}
                       style={{
                         background:
-                          levelTwoFields?.ciriculum === "ICSE"
+                          levelTwoFields?.curriculum === "ICSE"
                             ? "linear-gradient(89deg,#47b4d5,#29449d)"
                             : "",
                         color:
-                          levelTwoFields?.ciriculum === "ICSE" ? "white" : "",
+                          levelTwoFields?.curriculum === "ICSE" ? "white" : "",
                         fontWeight:
-                          levelTwoFields?.ciriculum === "ICSE" ? "600" : "",
+                          levelTwoFields?.curriculum === "ICSE" ? "600" : "",
                       }}
                     >
                       ICSE
@@ -2720,19 +2720,21 @@ const UserProfile = () => {
                         setLevelTwoFields((prev) => {
                           return {
                             ...prev,
-                            ciriculum: "Nordic",
+                            curriculum: "Nordic",
                           };
                         });
                       }}
                       style={{
                         background:
-                          levelTwoFields?.ciriculum === "Nordic"
+                          levelTwoFields?.curriculum === "Nordic"
                             ? "linear-gradient(89deg,#47b4d5,#29449d)"
                             : "",
                         color:
-                          levelTwoFields?.ciriculum === "Nordic" ? "white" : "",
+                          levelTwoFields?.curriculum === "Nordic"
+                            ? "white"
+                            : "",
                         fontWeight:
-                          levelTwoFields?.ciriculum === "Nordic" ? "600" : "",
+                          levelTwoFields?.curriculum === "Nordic" ? "600" : "",
                       }}
                     >
                       Nordic
@@ -2747,7 +2749,7 @@ const UserProfile = () => {
                       }}
                       onClick={() => {
                         setLevelTwoStep(3);
-                        setLevelTwoFields({ ciriculum: "" });
+                        setLevelTwoFields({ curriculum: "" });
                       }}
                     >
                       Go Back
@@ -2757,13 +2759,13 @@ const UserProfile = () => {
                         height: "3.5rem",
                         background: "#59A2DD",
                         width: "48%",
-                        cursor: levelTwoFields?.ciriculum
+                        cursor: levelTwoFields?.curriculum
                           ? "pointer"
                           : "not-allowed",
-                        opacity: levelTwoFields?.ciriculum ? "1" : "0.5",
+                        opacity: levelTwoFields?.curriculum ? "1" : "0.5",
                       }}
                       onClick={() => {
-                        if (levelTwoFields?.ciriculum) {
+                        if (levelTwoFields?.curriculum) {
                           setLevelTwoStep(5);
                         }
                       }}

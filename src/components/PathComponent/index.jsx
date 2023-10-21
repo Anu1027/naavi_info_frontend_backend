@@ -461,7 +461,7 @@ const PathComponent = () => {
                     <div className="each-coo-field">
                       <div className="field-name">Curriculum</div>
                       <div className="field-value">
-                        {levelTwoData ? levelTwoData?.ciriculum : ""}
+                        {levelTwoData ? levelTwoData?.curriculum : ""}
                       </div>
                     </div>
                     <div className="each-coo-field">
