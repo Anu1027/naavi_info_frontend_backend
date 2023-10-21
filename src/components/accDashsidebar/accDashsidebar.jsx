@@ -18,8 +18,8 @@ const sidebarMenu1 = [
   },
   {
     id: 2,
-    title: "Content",
-    click: false,
+    title: "My Paths",
+    click: true,
   },
 ];
 
@@ -31,13 +31,18 @@ const sidebarMenu2 = [
   },
   {
     id: 1,
-    title: "Calendar",
+    title: "Outsource",
     click: true,
   },
   {
     id: 2,
-    title: "Outsource",
-    click: false,
+    title: "Calendar",
+    click: true,
+  },
+  {
+    id: 3,
+    title: "Cabinet",
+    click: true,
   },
 ];
 
@@ -49,8 +54,8 @@ const sidebarMenu3 = [
   },
   {
     id: 1,
-    title: "TaxGPT",
-    click: false,
+    title: "Naavi GPT",
+    click: true,
   },
 ];
 
@@ -75,7 +80,7 @@ const AccDashsidebar = ({ isNotOnMainPage }) => {
           className="dashboard-logo"
           src={logo}
           alt=""
-          style={{ width: "85%" }}
+          style={{ width: "50%" }}
         />
       </div>
       <div
@@ -88,7 +93,6 @@ const AccDashsidebar = ({ isNotOnMainPage }) => {
       >
         <div
           style={{
-            marginLeft: "15px",
             fontWeight: "600",
             fontSize: "18px",
             marginBottom: "1.5rem",
@@ -105,12 +109,12 @@ const AccDashsidebar = ({ isNotOnMainPage }) => {
                 style={{
                   background: accsideNav === each.title ? "#FFFFFF" : "",
                   color: accsideNav === each.title ? "#100F0D" : "",
-                  // paddingLeft: accsideNav === each.title ? '20px' : '',
+                  paddingLeft: accsideNav === each.title ? '20px' : '',
                   // boxShadow:
                   //   accsideNav === each.title
                   //     ? "0px 2px 2px rgba(0, 0, 0, 0.25)"
                   //     : "",
-                  fontWeight: accsideNav === each.title ? "700" : "500",
+                  // fontWeight: accsideNav === each.title ? "700" : "500",
                   borderRadius: accsideNav === each.title ? "35px" : "",
                   opacity: each.click ? "1" : "0.25",
                   cursor: each.click ? "pointer" : "not-allowed",
@@ -129,10 +133,9 @@ const AccDashsidebar = ({ isNotOnMainPage }) => {
             );
           })}
         </div>
-        {/* <div className="sidebar-line"></div> */}
+        <div className="sidebar-line"></div>
         <div
           style={{
-            marginLeft: "15px",
             fontWeight: "600",
             fontSize: "18px",
             marginBottom: "1.5rem",
@@ -157,7 +160,7 @@ const AccDashsidebar = ({ isNotOnMainPage }) => {
                   borderRadius: accsideNav === ele.title ? "35px" : "",
                   opacity: ele.click ? "1" : "0.25",
                   cursor: ele.click ? "pointer" : "not-allowed",
-                  fontWeight: accsideNav === ele.title ? "700" : "500",
+                  // fontWeight: accsideNav === ele.title ? "700" : "500",
                 }}
                 key={j}
                 onClick={() => {
@@ -173,10 +176,9 @@ const AccDashsidebar = ({ isNotOnMainPage }) => {
             );
           })}
         </div>
-        {/* <div className="sidebar-line"></div> */}
+        <div className="sidebar-line"></div>
         <div
           style={{
-            marginLeft: "15px",
             fontWeight: "600",
             fontSize: "18px",
             marginBottom: "1.5rem",
@@ -201,7 +203,7 @@ const AccDashsidebar = ({ isNotOnMainPage }) => {
                   borderRadius: accsideNav === ele.title ? "35px" : "",
                   opacity: ele.click ? "1" : "0.25",
                   cursor: ele.click ? "pointer" : "not-allowed",
-                  fontWeight: accsideNav === ele.title ? "700" : "500",
+                  // fontWeight: accsideNav === ele.title ? "700" : "500",
                 }}
                 key={j}
                 onClick={() => {

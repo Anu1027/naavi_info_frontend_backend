@@ -148,6 +148,7 @@ export const CoinContextProvider = ({ children }) => {
 
   //add path form
   const [pathSteps, setPathSteps] = useState({
+    email: "",
     nameOfPath: "",
     description: "",
     length: "",
@@ -156,6 +157,7 @@ export const CoinContextProvider = ({ children }) => {
     destination_institution: "",
   });
   const [creatingPath, setCreatingPath] = useState(false);
+  const [mypathsMenu, setMypathsMenu] = useState("Paths");
 
   useEffect(() => {
     if (coinType == "bonds" || coinType == "moneyMarkets") {
@@ -411,6 +413,8 @@ export const CoinContextProvider = ({ children }) => {
         setPathSteps,
         creatingPath,
         setCreatingPath,
+        mypathsMenu,
+        setMypathsMenu,
       }}
     >
       {children}

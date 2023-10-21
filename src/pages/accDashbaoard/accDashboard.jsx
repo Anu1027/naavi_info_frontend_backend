@@ -47,6 +47,7 @@ import Tasks from "../Tasks";
 import arrow from "./arrow.svg";
 import { useCoinContextData } from "../../context/CoinContext";
 import NewStep from "../../globalComponents/GlobalDrawer/NewStep";
+import MyPaths from "../MyPaths";
 
 const AccDashboard = () => {
   const {
@@ -131,6 +132,8 @@ const AccDashboard = () => {
     setPathSteps,
     creatingPath,
     setCreatingPath,
+    mypathsMenu,
+    setMypathsMenu,
   } = useCoinContextData();
 
   //upload part starts here
@@ -138,6 +141,17 @@ const AccDashboard = () => {
   const secret = "uyrw7826^&(896GYUFWE&*#GBjkbuaf"; // secret not to be disclosed anywhere.
   const emailDev = "rahulrajsb@outlook.com"; // email of the developer.
   const userDetails = JSON.parse(localStorage.getItem("user"));
+
+  useEffect(() => {
+    if (userDetails) {
+      setPathSteps((prev) => {
+        return {
+          ...prev,
+          email: userDetails?.user?.email,
+        };
+      });
+    }
+  }, []);
 
   useEffect(() => {
     handleFollowerPerAccountants();
@@ -304,6 +318,7 @@ const AccDashboard = () => {
     setCoverImageS3url("");
     setImage(null);
     setPathSteps({
+      email: userDetails?.user?.email,
       nameOfPath: "",
       description: "",
       length: "",
@@ -709,7 +724,7 @@ const AccDashboard = () => {
       });
   };
 
-  useState(() => {
+  useEffect(() => {
     getWithCompPlan();
   }, []);
 
@@ -1750,7 +1765,7 @@ const AccDashboard = () => {
                     <Vaults searchedValue={search} />
                   </div>
                 </>
-              ) : (
+              ) : accsideNav === "Tasks" ? (
                 <>
                   <div className="dash-nav">
                     <div
@@ -1805,6 +1820,136 @@ const AccDashboard = () => {
                     onClick={() => setShowDrop(false)}
                   >
                     <Tasks />
+                  </div>
+                </>
+              ) : accsideNav === "My Paths" ? (
+                <>
+                  <div className="dash-nav">
+                    <div
+                      className="search-input-box"
+                      onClick={() => setShowDrop(false)}
+                    >
+                      <input
+                        className="search-input"
+                        type="text"
+                        placeholder={
+                          mypathsMenu === "Paths"
+                            ? "Search For Paths..."
+                            : "Search For Steps..."
+                        }
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                      />
+                    </div>
+                    <div
+                      className="search-box"
+                      onClick={() => setShowDrop(false)}
+                    >
+                      <img className="search-icon" src={searchic} alt="" />
+                    </div>
+                    <div
+                      className="full-user"
+                      onClick={() => setShowDrop(!showDrop)}
+                    >
+                      <div className="user-box">
+                        <img
+                          className="user-icon"
+                          src={
+                            JSON.parse(localStorage.getItem("user"))?.user
+                              ?.profile_img !== undefined
+                              ? JSON.parse(localStorage.getItem("user"))?.user
+                                  ?.profile_img
+                              : profile
+                          }
+                          alt=""
+                        />
+                      </div>
+                      <div
+                        className="arrow-box"
+                        style={{
+                          transform: showDrop ? "rotate(180deg)" : "",
+                          cursor: "pointer",
+                        }}
+                      >
+                        <img className="arrow-icon" src={downarrow} alt="" />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className="services-main"
+                    style={{ height: "calc(100% - 70px)" }}
+                    onClick={() => setShowDrop(false)}
+                  >
+                    <MyPaths />
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="dash-nav">
+                    <div
+                      className="search-input-box"
+                      onClick={() => setShowDrop(false)}
+                    >
+                      <input
+                        className="search-input"
+                        type="text"
+                        placeholder="Search..."
+                        value={search}
+                        // onChange={(e) => setSearch(e.target.value)}
+                      />
+                    </div>
+                    <div
+                      className="search-box"
+                      onClick={() => setShowDrop(false)}
+                    >
+                      <img className="search-icon" src={searchic} alt="" />
+                    </div>
+                    <div
+                      className="full-user"
+                      onClick={() => setShowDrop(!showDrop)}
+                    >
+                      <div className="user-box">
+                        <img
+                          className="user-icon"
+                          src={
+                            JSON.parse(localStorage.getItem("user"))?.user
+                              ?.profile_img !== undefined
+                              ? JSON.parse(localStorage.getItem("user"))?.user
+                                  ?.profile_img
+                              : profile
+                          }
+                          alt=""
+                        />
+                      </div>
+                      <div
+                        className="arrow-box"
+                        style={{
+                          transform: showDrop ? "rotate(180deg)" : "",
+                          cursor: "pointer",
+                        }}
+                      >
+                        <img className="arrow-icon" src={downarrow} alt="" />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className="services-main"
+                    style={{ height: "calc(100% - 70px)" }}
+                    onClick={() => setShowDrop(false)}
+                  >
+                    <div
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        fontWeight: "600",
+                        fontSize: "1.5rem",
+                      }}
+                    >
+                      Coming Soon
+                    </div>
                   </div>
                 </>
               )}
