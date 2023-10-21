@@ -1748,7 +1748,7 @@ const Dashboard = () => {
               </div>
             </div>
             <div className="m-each-line"> </div>
-            <div className="m-each" style={{ opacity: "0.5" }}>
+            {/* <div className="m-each" style={{ opacity: "0.5" }}>
               <div className="m-left">
                 <div className="m-left-icon-box">
                   <img className="m-left-icon" src={support} alt="" />
@@ -1769,7 +1769,7 @@ const Dashboard = () => {
               <div className="m-right-icon-box">
                 <img className="m-right-icon" src={sidearrow} alt="" />
               </div>
-            </div>
+            </div> */}
             <div className="m-each" onClick={() => handleLogout()}>
               <div className="m-left">
                 <div className="m-left-icon-box">

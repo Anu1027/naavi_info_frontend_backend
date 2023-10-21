@@ -1,12 +1,58 @@
 import React, { useState, useEffect } from "react";
 import { useCoinContextData } from "../../context/CoinContext";
+import Skeleton from "react-loading-skeleton";
 import "./mypaths.scss";
 
 // images
 import dummy from "./dummy.svg";
+import axios from "axios";
 
-const MyPaths = () => {
+const MyPaths = ({ search }) => {
+  let userDetails = JSON.parse(localStorage.getItem("user"));
   const { mypathsMenu, setMypathsMenu } = useCoinContextData();
+  const [partnerPathData, setPartnerPathData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [partnerStepsData, setPartnerStepsData] = useState([]);
+
+  useEffect(() => {
+    setLoading(true);
+    let email = userDetails?.user?.email;
+    axios
+      .get(`https://careers.marketsverse.com/paths/get?email=${email}`)
+      .then((response) => {
+        let result = response?.data?.data;
+        // console.log(result, "partnerPathData result");
+        setPartnerPathData(result);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log(error, "error in partnerPathData");
+      });
+  }, []);
+
+  useEffect(() => {
+    setLoading(true);
+    let email = userDetails?.user?.email;
+    axios
+      .get(`https://careers.marketsverse.com/steps/get?email=${email}`)
+      .then((response) => {
+        let result = response?.data?.data;
+        // console.log(result, "partnerStepsData result");
+        setPartnerStepsData(result);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log(error, "error in partnerPathData");
+      });
+  }, []);
+
+  const filteredPartnerPathData = partnerPathData?.filter((entry) =>
+    entry?.nameOfPath?.toLowerCase()?.includes(search?.toLowerCase())
+  );
+
+  const filteredPartnerStepsData = partnerStepsData?.filter((entry) =>
+    entry?.name?.toLowerCase()?.includes(search?.toLowerCase())
+  );
 
   return (
     <div className="mypaths">
@@ -46,60 +92,31 @@ const MyPaths = () => {
               <div className="mypaths-description-div">Description</div>
             </div>
             <div className="mypathsScroll-div">
-              {/* {loading
-            ? Array(10)
-                .fill("")
-                .map((e, i) => {
-                  return (
-                    <div className="each-pv-data" key={i}>
-                      <div className="each-pv-name">
-                        <Skeleton width={100} height={30} />
+              {loading
+                ? Array(10)
+                    .fill("")
+                    .map((e, i) => {
+                      return (
+                        <div className="each-mypaths-data" key={i}>
+                          <div className="each-mypaths-name">
+                            <Skeleton width={100} height={30} />
+                          </div>
+                          <div className="each-mypaths-desc">
+                            <Skeleton width={"100%"} height={30} />
+                          </div>
+                        </div>
+                      );
+                    })
+                : filteredPartnerPathData?.map((e, i) => {
+                    return (
+                      <div className="each-mypaths-data" key={i}>
+                        <div className="each-mypaths-name">{e?.nameOfPath}</div>
+                        <div className="each-mypaths-desc">
+                          {e?.description}
+                        </div>
                       </div>
-                      <div className="each-pv-desc">
-                        <Skeleton width={100} height={30} />
-                      </div>
-                    </div>
-                  );
-                })
-            : filteredPathViewData?.map((e, i) => {
-                return (
-                  <div
-                    className="each-pv-data"
-                    key={i}
-                    onClick={() => {
-                      setPathItemSelected(true);
-                      setSelectedPathItem(e);
-                      localStorage.setItem("selectedPath", JSON.stringify(e));
-                      // console.log(e?._id, 'selected path');
-                    }}
-                  >
-                    <div className="each-pv-name">{e?.nameOfPath}</div>
-                    <div className="each-pv-desc">{e?.description}</div>
-                  </div>
-                );
-              })} */}
-              <div className="each-mypaths-data">
-                <div className="each-mypaths-name">Harvard University</div>
-                <div className="each-mypaths-desc">
-                  Cornell is considered the "easiest" Ivy League to get into
-                  because it has the highest Ivy League acceptance rate. While
-                  it's easier, statistically speaking, to get into Cornell, it's
-                  still challenging. It's also important to remember that
-                  students apply directly to one of Cornell's eight
-                  undergraduate colleges.
-                </div>
-              </div>
-              <div className="each-mypaths-data">
-                <div className="each-mypaths-name">Harvard University</div>
-                <div className="each-mypaths-desc">
-                  Cornell is considered the "easiest" Ivy League to get into
-                  because it has the highest Ivy League acceptance rate. While
-                  it's easier, statistically speaking, to get into Cornell, it's
-                  still challenging. It's also important to remember that
-                  students apply directly to one of Cornell's eight
-                  undergraduate colleges.
-                </div>
-              </div>
+                    );
+                  })}
             </div>
           </>
         ) : (
@@ -114,36 +131,95 @@ const MyPaths = () => {
               <div className="mypathsMicrosteps">Micro Steps</div>
             </div>
             <div className="mypathsScroll-div">
-              <div className="each-mypaths-data1">
-                <div className="each-mypaths-detail">
-                  <div className="each-mypathsName">
-                    <div>
-                      <img src={dummy} alt="" />
-                    </div>
-                    <div>
-                      <div>Step name</div>
-                      <div style={{ fontSize: "0.8rem", fontWeight: "300" }}>
-                        Step id
+              {loading
+                ? Array(10)
+                    .fill("")
+                    ?.map((e, i) => {
+                      return (
+                        <div className="each-mypaths-data1" key={i}>
+                          <div className="each-mypaths-detail">
+                            <div className="each-mypathsName">
+                              <Skeleton width={100} height={30} />
+                            </div>
+                            <div className="each-mypathsCountry">
+                              <Skeleton width={100} height={30} />
+                            </div>
+                            <div className="each-mypathsCountry">
+                              <Skeleton width={100} height={30} />
+                            </div>
+                            <div className="each-mypathsCountry">
+                              <Skeleton width={100} height={30} />
+                            </div>
+                            <div className="each-mypathsVendors">
+                              <Skeleton width={100} height={30} />
+                            </div>
+                            <div className="each-mypathsVendors">
+                              <Skeleton width={100} height={30} />
+                            </div>
+                            <div className="each-mypathsMicrosteps">
+                              <Skeleton width={100} height={30} />
+                            </div>
+                          </div>
+                          <div className="each-mypaths-desc">
+                            <div className="each-mypaths-desc-txt">
+                              <Skeleton width={100} height={30} />
+                            </div>
+                            <div className="each-mypaths-desc-txt1">
+                              <Skeleton width={"100%"} height={30} />
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })
+                : filteredPartnerStepsData?.map((e, i) => {
+                    return (
+                      <div className="each-mypaths-data1" key={i}>
+                        <div className="each-mypaths-detail">
+                          <div className="each-mypathsName">
+                            <div>
+                              <img src={e?.icon} alt="" />
+                            </div>
+                            <div>
+                              <div>{e?.name}</div>
+                              <div
+                                style={{
+                                  fontSize: "0.8rem",
+                                  fontWeight: "300",
+                                }}
+                              >
+                                {e?._id}
+                              </div>
+                            </div>
+                          </div>
+                          <div className="each-mypathsCountry">
+                            {e?.country}
+                          </div>
+                          <div className="each-mypathsCountry">{e?.type}</div>
+                          <div className="each-mypathsCountry">{e?.cost}</div>
+                          <div className="each-mypathsVendors">
+                            {e?.vendors?.length}
+                          </div>
+                          <div className="each-mypathsVendors">
+                            {e?.Mentors?.length}
+                          </div>
+                          <div className="each-mypathsMicrosteps">
+                            {e?.microsteps?.length}
+                          </div>
+                        </div>
+                        <div className="each-mypaths-desc">
+                          <div className="each-mypaths-desc-txt">
+                            Description
+                          </div>
+                          <div className="each-mypaths-desc-txt1">
+                            There are certain transactions that happen in every
+                            app regardless of the business. The revenue from
+                            these transactions are captured by us and we want to
+                            share it with you.{" "}
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                  <div className="each-mypathsCountry">India</div>
-                  <div className="each-mypathsCountry">Education</div>
-                  <div className="each-mypathsCountry">Free</div>
-                  <div className="each-mypathsVendors">3</div>
-                  <div className="each-mypathsVendors">5</div>
-                  <div className="each-mypathsMicrosteps">5</div>
-                </div>
-                <div className="each-mypaths-desc">
-                  <div className="each-mypaths-desc-txt">Description</div>
-                  <div className="each-mypaths-desc-txt1">
-                    There are certain transactions that happen in every app
-                    regardless of the business. The revenue from these
-                    transactions are captured by us and we want to share it with
-                    you.{" "}
-                  </div>
-                </div>
-              </div>
+                    );
+                  })}
             </div>
           </>
         )}

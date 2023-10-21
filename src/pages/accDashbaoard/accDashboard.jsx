@@ -276,9 +276,9 @@ const AccDashboard = () => {
     setIsCurrencies(true);
     GetAllCurrencies()
       .then((res) => {
-        let result = res.data;
-        if (result.status) {
-          setallCurrencies(result.coins);
+        let result = res?.data;
+        if (result?.status) {
+          setallCurrencies(result?.coins);
           setIsCurrencies(false);
         }
       })
@@ -729,8 +729,9 @@ const AccDashboard = () => {
   }, []);
 
   useEffect(() => {
+    let email = userDetails?.user?.email;
     axios
-      .get("https://careers.marketsverse.com/steps/get")
+      .get(`https://careers.marketsverse.com/steps/get?email=${email}`)
       .then((response) => {
         let result = response?.data?.data;
         // console.log(result, "all steps fetched");
@@ -1372,12 +1373,11 @@ const AccDashboard = () => {
                                             )[0] === "monthly" ? (
                                               <div className="serv-price">
                                                 {
-                                                  allCurrencies.filter(
+                                                  allCurrencies?.filter(
                                                     (item) =>
-                                                      item.coinSymbol ===
-                                                      each.billing_cycle.monthly
-                                                        .coin
-                                                  )[0].symbol
+                                                      item?.coinSymbol ===
+                                                      each?.billing_cycle?.monthly?.coin
+                                                  )[0]?.symbol
                                                 }{" "}
                                                 {
                                                   each.billing_cycle.monthly
@@ -1398,16 +1398,14 @@ const AccDashboard = () => {
                                               )[0] === "lifetime" ? (
                                               <div className="serv-price">
                                                 {
-                                                  allCurrencies.filter(
+                                                  allCurrencies?.filter(
                                                     (item) =>
-                                                      item.coinSymbol ===
-                                                      each.billing_cycle
-                                                        .lifetime.coin
-                                                  )[0].symbol
+                                                      item?.coinSymbol ===
+                                                      each?.billing_cycle?.lifetime?.coin
+                                                  )[0]?.symbol
                                                 }{" "}
                                                 {
-                                                  each.billing_cycle.lifetime
-                                                    .price
+                                                  each?.billing_cycle?.lifetime?.price
                                                 }{" "}
                                                 /{" "}
                                                 <span
@@ -1880,7 +1878,7 @@ const AccDashboard = () => {
                     style={{ height: "calc(100% - 70px)" }}
                     onClick={() => setShowDrop(false)}
                   >
-                    <MyPaths />
+                    <MyPaths search={search} />
                   </div>
                 </>
               ) : (
@@ -2629,11 +2627,17 @@ const AccDashboard = () => {
                           setStepsToggle(!stepsToggle);
                         }}
                       >
-                        <input
-                          type="text"
-                          placeholder="Click To Select"
-                          style={{ width: "85%", cursor: "pointer" }}
-                        />
+                        <div
+                          style={{
+                            width: "85%",
+                            cursor: "pointer",
+                            padding: "1.5rem",
+                            borderRadius: '15px',
+                            opacity: '0.25',
+                            fontSize: '1rem',
+                            fontWeight: '500'
+                          }}
+                        >Click To Select</div>
                         <div className="arrow-box">
                           <img
                             src={arrow}
@@ -2808,7 +2812,7 @@ const AccDashboard = () => {
               </div>
             </div>
             <div className="m-each-line"> </div>
-            <div className="m-each" style={{ opacity: "0.25" }}>
+            {/* <div className="m-each" style={{ opacity: "0.25" }}>
               <div className="m-left">
                 <div className="m-left-icon-box">
                   <img className="m-left-icon" src={support} alt="" />
@@ -2818,8 +2822,8 @@ const AccDashboard = () => {
               <div className="m-right-icon-box">
                 <img className="m-right-icon" src={sidearrow} alt="" />
               </div>
-            </div>
-            <div className="m-each" style={{ opacity: "0.25" }}>
+            </div> */}
+            {/* <div className="m-each" style={{ opacity: "0.25" }}>
               <div className="m-left">
                 <div className="m-left-icon-box">
                   <img className="m-left-icon" src={settings} alt="" />
@@ -2829,7 +2833,7 @@ const AccDashboard = () => {
               <div className="m-right-icon-box">
                 <img className="m-right-icon" src={sidearrow} alt="" />
               </div>
-            </div>
+            </div> */}
             <div className="m-each" onClick={() => handleLogout()}>
               <div className="m-left">
                 <div className="m-left-icon-box">
