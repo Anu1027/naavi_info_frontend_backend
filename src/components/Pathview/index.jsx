@@ -42,7 +42,7 @@ const Pathview = () => {
           curriculum: curriculumToggle,
           stream: streamToggle,
           performance: performanceToggle,
-          // financial: financialToggle,
+          financialsituation: financialToggle,
         },
       })
       .then((response) => {
