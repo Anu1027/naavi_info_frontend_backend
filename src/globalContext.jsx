@@ -6,7 +6,7 @@ import { ReactComponent as Collapse1_img } from "./static/images/collapse1.svg";
 import axios from "axios";
 import Lock from "./static/images/lock.svg";
 import pubAdminIcon from "./static/images/pubAdminIcon.svg";
-import NaaviMainImg from "./static/images/sidebarIcons/NaaviMainImg.svg"
+import NaaviMainImg from "./static/images/sidebarIcons/NaaviMainImg.svg";
 
 export const GlobalContex = createContext();
 
@@ -40,12 +40,10 @@ export const GlobalContexProvider = ({ children }) => {
   const [globalMenuAdd, setGlobalMenuAdd] = useState(true);
   const [refetchAuthors, setRefetchAuthors] = useState(false);
   const [refetchRequest, setRefetchRequest] = useState(false);
-  const [selectedFilterRequest, setSelectedFilterRequest] = useState("pending")
+  const [selectedFilterRequest, setSelectedFilterRequest] = useState("pending");
   const [slider, setSlider] = useState(false);
   const [selectedAuthor, setSelectedAuthor] = useState("");
   const [refetchCourses, setRefetchCourses] = useState(false);
-
-
 
   const [showDraw, setShowDraw] = useState(false);
   const [selectedMenu, setSelectedMenu] = useState(null);
@@ -62,7 +60,6 @@ export const GlobalContexProvider = ({ children }) => {
   const [refetchNavbar, setRefetchNavbar] = useState(false);
   const [refetchVideos, setRefetchVideos] = useState(false);
   const [updatedSuccessful, setupdatedSuccessful] = useState(false);
-
 
   const [selectedMcbDashboardApp, setSelectedMcbDashboardApp] = useState(null);
   const [showSubDraw, setShowSubDraw] = useState(false);
@@ -114,10 +111,19 @@ export const GlobalContexProvider = ({ children }) => {
   const [affiliateDrawer, setAffiliateDrawer] = useState(false);
   // const [contentTabSelected, setContentTabSelected] = useState("");
   const [refetchData, setRefetchData] = useState(false);
-  const [refechProfile, setRefechProfile] = useState(false)
+  const [refechProfile, setRefechProfile] = useState(false);
   const [coinList, setCoinList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [filterDrawer, setFilterDrawer] = useState(false);
+
+  const [gradeToggle, setGradeToggle] = useState(false);
+  const [schoolToggle, setSchoolToggle] = useState(false);
+  const [curriculumToggle, setCurriculumToggle] = useState(false);
+  const [streamToggle, setStreamToggle] = useState(false);
+  const [performanceToggle, setPerformanceToggle] = useState(false);
+  const [financialToggle, setFinancialToggle] = useState(false);
+  const [refetchPaths, setRefetchPaths] = useState(false);
+
   const [coinSelect, setCoinSelect] = useState({
     coinImage:
       "https://apimachine-s3.s3.us-east-2.amazonaws.com/coinImages/dollar.png",
@@ -145,9 +151,9 @@ export const GlobalContexProvider = ({ children }) => {
 
   useEffect(() => {
     if (tabSelected !== "Requests") {
-      setFilterDrawer(false)
+      setFilterDrawer(false);
     }
-  }, [tabSelected])
+  }, [tabSelected]);
 
   useEffect(() => {
     setCoinLoading(true);
@@ -200,8 +206,8 @@ export const GlobalContexProvider = ({ children }) => {
       appColor: "#4B9DDC",
       appTextColor: "#212529",
       appData: "Don’t Have A/Publications/Account?",
-      DispName: "For Admins"
-    }
+      DispName: "For Admins",
+    },
   ];
 
   const globalMenu = [
@@ -234,9 +240,8 @@ export const GlobalContexProvider = ({ children }) => {
       menuName: "CRM",
       menuIcon: pubAdminIcon,
       enabled: true,
-    }
+    },
   ];
-
 
   const web3Menu = [
     {
@@ -258,14 +263,8 @@ export const GlobalContexProvider = ({ children }) => {
       menuName: "Hire",
       menuIcon: pubAdminIcon,
       enabled: true,
-    }
+    },
   ];
-
-
-
-
-
-
 
   const [selectedCoinSplash, setSelectedCoinSplash] = useState({
     coinName: "US Dollar",
@@ -291,32 +290,51 @@ export const GlobalContexProvider = ({ children }) => {
 
   const getOrdinalSuffix = (day) => {
     if (day >= 11 && day <= 13) {
-      return 'th';
+      return "th";
     }
 
     switch (day % 10) {
-      case 1: return 'st';
-      case 2: return 'nd';
-      case 3: return 'rd';
-      default: return 'th';
+      case 1:
+        return "st";
+      case 2:
+        return "nd";
+      case 3:
+        return "rd";
+      default:
+        return "th";
     }
-  }
+  };
 
   const getDisplayDate = (date) => {
     const dateObj = new Date(date);
     const day = dateObj.getDate();
     const suffix = getOrdinalSuffix(day);
-    const formattedDate = dateObj.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+    const formattedDate = dateObj.toLocaleDateString("en-US", {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    });
     return formattedDate.replace(/\d+/, `${day}${suffix}`);
-  }
+  };
 
   const NumberToText = (number) => {
-    console.log(number + " number")
+    console.log(number + " number");
     // if (!Number.isInteger(number) || number < 0) {
     //   throw new Error("Input must be a positive integer");
     // }
 
-    const suffixes = ["th", "st", "nd", "rd", "th", "th", "th", "th", "th", "th"];
+    const suffixes = [
+      "th",
+      "st",
+      "nd",
+      "rd",
+      "th",
+      "th",
+      "th",
+      "th",
+      "th",
+      "th",
+    ];
     const specialCases = [11, 12, 13];
 
     let suffix;
@@ -327,7 +345,7 @@ export const GlobalContexProvider = ({ children }) => {
     }
 
     return <span>{number + suffix}</span>;
-  }
+  };
 
   // useEffect(() => {
   //   setSelectedApp(globalMenu[0]);
@@ -393,10 +411,9 @@ export const GlobalContexProvider = ({ children }) => {
     }
   }, [bankerEmail]);
 
-  useEffect(() => { }, []);
+  useEffect(() => {}, []);
 
   useEffect(() => {
-
     if (localStorage.getItem("selectedApp") && selectedApp === null) {
       setSelectedApp(JSON.parse(localStorage.getItem("selectedApp")));
     } else if (localStorage.getItem("selectedApp")) {
@@ -790,8 +807,22 @@ export const GlobalContexProvider = ({ children }) => {
     setRefetchCourses,
     adminMenu,
 
-    getDisplayDate
+    getDisplayDate,
 
+    gradeToggle,
+    setGradeToggle,
+    schoolToggle,
+    setSchoolToggle,
+    curriculumToggle,
+    setCurriculumToggle,
+    streamToggle,
+    setStreamToggle,
+    performanceToggle,
+    setPerformanceToggle,
+    financialToggle,
+    setFinancialToggle,
+    refetchPaths,
+    setRefetchPaths,
   };
 
   return (

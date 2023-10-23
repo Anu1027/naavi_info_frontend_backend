@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Skeleton from "react-loading-skeleton";
 import axios from "axios";
 import { useCoinContextData } from "../../context/CoinContext";
 import "./pathview.scss";
+import { GlobalContex } from "../../globalContext";
 
 const Pathview = () => {
   const {
@@ -14,13 +15,36 @@ const Pathview = () => {
     selectedPathItem,
     setSelectedPathItem,
   } = useCoinContextData();
+  const {
+    refetchPaths,
+    gradeToggle,
+    schoolToggle,
+    setSchoolToggle,
+    curriculumToggle,
+    setCurriculumToggle,
+    streamToggle,
+    setStreamToggle,
+    performanceToggle,
+    setPerformanceToggle,
+    financialToggle,
+    setFinancialToggle,
+  } = useContext(GlobalContex);
   const [loading, setLoading] = useState(false);
   const [pathViewData, setPathViewData] = useState([]);
 
   useEffect(() => {
     setLoading(true);
     axios
-      .get("https://careers.marketsverse.com/paths/get")
+      .get(`https://careers.marketsverse.com/paths/get/specific`, {
+        params: {
+          email: JSON.parse(localStorage.getItem("user"))?.user?.email,
+          grade: gradeToggle,
+          curriculum: curriculumToggle,
+          stream: streamToggle,
+          performance: performanceToggle,
+          // financial: financialToggle,
+        },
+      })
       .then((response) => {
         let result = response?.data?.data;
         // console.log(result, "path view result");
@@ -30,7 +54,7 @@ const Pathview = () => {
       .catch((error) => {
         console.log(error, "error in getting path view result");
       });
-  }, []);
+  }, [refetchPaths]);
 
   const filteredPathViewData = pathViewData?.filter((entry) =>
     entry?.nameOfPath?.toLowerCase()?.includes(searchTerm?.toLowerCase())
@@ -66,7 +90,7 @@ const Pathview = () => {
                   onClick={() => {
                     setPathItemSelected(true);
                     setSelectedPathItem(e);
-                    localStorage.setItem('selectedPath', JSON.stringify(e));
+                    localStorage.setItem("selectedPath", JSON.stringify(e));
                     // console.log(e?._id, 'selected path');
                   }}
                 >

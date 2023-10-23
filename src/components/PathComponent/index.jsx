@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import MapComponent from "./MapComponent";
 import Listview from "../Listview";
@@ -26,6 +26,7 @@ import hamIcon from "../../static/images/icons/hamIcon.svg";
 import axios from "axios";
 import Pathview from "../Pathview";
 import Stepview from "../Stepview";
+import { GlobalContex } from "../../globalContext";
 
 const libraries = ["places"];
 
@@ -61,6 +62,22 @@ const PathComponent = () => {
     selectedPathItem,
     setSelectedPathItem,
   } = useCoinContextData();
+  const {
+    gradeToggle,
+    setGradeToggle,
+    schoolToggle,
+    setSchoolToggle,
+    curriculumToggle,
+    setCurriculumToggle,
+    streamToggle,
+    setStreamToggle,
+    performanceToggle,
+    setPerformanceToggle,
+    financialToggle,
+    setFinancialToggle,
+    refetchPaths,
+    setRefetchPaths,
+  } = useContext(GlobalContex);
   const [loading, setLoading] = useState(false);
   const [levelTwoData, setLevelTwoData] = useState([]);
 
@@ -448,38 +465,125 @@ const PathComponent = () => {
                     <div className="current-text">Current Coordinates</div>
                     <div className="each-coo-field">
                       <div className="field-name">Grade</div>
+
+                      <div
+                        className="toggleContainer"
+                        onClick={(e) => setGradeToggle(!gradeToggle)}
+                      >
+                        <div
+                          className="toggle"
+                          style={{
+                            transform: !gradeToggle
+                              ? "translateX(0px)"
+                              : "translateX(20px)",
+                          }}
+                        >
+                          &nbsp;
+                        </div>
+                      </div>
+
                       <div className="field-value">
                         {levelTwoData ? levelTwoData?.grade : ""}
                       </div>
                     </div>
-                    <div className="each-coo-field">
-                      <div className="field-name">School</div>
-                      <div className="field-value">
-                        {levelTwoData ? levelTwoData?.school : ""}
-                      </div>
-                    </div>
+
                     <div className="each-coo-field">
                       <div className="field-name">Curriculum</div>
+                      <div
+                        className="toggleContainer"
+                        onClick={(e) => setCurriculumToggle(!curriculumToggle)}
+                      >
+                        <div
+                          className="toggle"
+                          style={{
+                            transform: !curriculumToggle
+                              ? "translateX(0px)"
+                              : "translateX(20px)",
+                          }}
+                        >
+                          &nbsp;
+                        </div>
+                      </div>
                       <div className="field-value">
                         {levelTwoData ? levelTwoData?.curriculum : ""}
                       </div>
                     </div>
                     <div className="each-coo-field">
                       <div className="field-name">Stream</div>
+                      <div
+                        className="toggleContainer"
+                        onClick={(e) => setStreamToggle(!streamToggle)}
+                      >
+                        <div
+                          className="toggle"
+                          style={{
+                            transform: !streamToggle
+                              ? "translateX(0px)"
+                              : "translateX(20px)",
+                          }}
+                        >
+                          &nbsp;
+                        </div>
+                      </div>
                       <div className="field-value">
                         {levelTwoData ? levelTwoData?.stream : ""}
                       </div>
                     </div>
                     <div className="each-coo-field">
                       <div className="field-name">Performance</div>
+                      <div
+                        className="toggleContainer"
+                        onClick={(e) =>
+                          setPerformanceToggle(!performanceToggle)
+                        }
+                      >
+                        <div
+                          className="toggle"
+                          style={{
+                            transform: !performanceToggle
+                              ? "translateX(0px)"
+                              : "translateX(20px)",
+                          }}
+                        >
+                          &nbsp;
+                        </div>
+                      </div>
                       <div className="field-value">
                         {levelTwoData ? levelTwoData?.performance : ""}
                       </div>
                     </div>
                     <div className="each-coo-field">
                       <div className="field-name">Financial</div>
+                      <div
+                        className="toggleContainer"
+                        onClick={(e) => setFinancialToggle(!financialToggle)}
+                      >
+                        <div
+                          className="toggle"
+                          style={{
+                            transform: !financialToggle
+                              ? "translateX(0px)"
+                              : "translateX(20px)",
+                          }}
+                        >
+                          &nbsp;
+                        </div>
+                      </div>
                       <div className="field-value">
                         {levelTwoData ? levelTwoData?.financialSituation : ""}
+                      </div>
+                    </div>
+                    <div className="each-coo-field">
+                      <div className="field-name">School</div>
+                      <div
+                        className="toggleContainer"
+                        style={{ border: "0px" }}
+                      ></div>
+                      <div
+                        className="field-value"
+                        style={{ borderLeft: "0px" }}
+                      >
+                        {levelTwoData ? levelTwoData?.school : ""}
                       </div>
                     </div>
                   </div>
@@ -494,7 +598,10 @@ const PathComponent = () => {
                 {containers.map((container, index) => (
                   <div className="destination-container1" key={container.id}>
                     <div className="dest-txt1">
-                      <div>Destination {container.id}</div>
+                      <div>
+                        Destination
+                        {/* {container.id} */}
+                      </div>
                       {container.removable && (
                         <div
                           onClick={() => handleRemoveContainer(container.id)}
@@ -552,13 +659,13 @@ const PathComponent = () => {
                       )}
                     </div>
                     <div className="input-div-2">
-                      {/* <input
-                      type="text"
-                      value={container.inputValue2}
-                      placeholder="By When?"
-                      onChange={(e) => handleInputChange(e, container.id, 2)}
-                    /> */}
-                      <DatePicker
+                      <input
+                        type="text"
+                        value={container.inputValue2}
+                        placeholder="By When?"
+                        onChange={(e) => handleInputChange(e, container.id, 2)}
+                      />
+                      {/* <DatePicker
                         selected={pathSelectedDate}
                         onChange={handleDateChange}
                         dateFormat="MM/dd/yyyy"
@@ -566,19 +673,24 @@ const PathComponent = () => {
                         showYearDropdown
                         dropdownMode="select"
                         customInput={<CustomInput />}
-                      />
+                      /> */}
                     </div>
                   </div>
                 ))}
-                <div className="add-div1" onClick={handleAddContainer}>
+                {/* <div className="add-div1" onClick={handleAddContainer}>
                   <img src={plus} alt="" />
                   Add Destination
-                </div>
+                </div> */}
                 <div className="maps-btns-div1">
-                  <div className="gs-Btn-maps1">Get Started</div>
-                  <div className="reset-btn1" onClick={handleResetContainer}>
-                    Reset
+                  <div
+                    className="gs-Btn-maps1"
+                    onClick={(e) => setRefetchPaths(!refetchPaths)}
+                  >
+                    Find Paths
                   </div>
+                  {/* <div className="reset-btn1" onClick={handleResetContainer}>
+                    Reset
+                  </div> */}
                 </div>
               </div>
             )}
