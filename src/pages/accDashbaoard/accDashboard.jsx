@@ -126,6 +126,7 @@ const AccDashboard = () => {
   const [gradeAvg, setGradeAvg] = useState([]);
   const [curriculum, setCurriculum] = useState([]);
   const [stream, setStream] = useState([]);
+  const [finance, setFinance] = useState([]);
   const streamList = ["MPC", "BIPC", "CEC", "MEC", "HEC"];
   const curriculumList = ["IB", "IGCSE", "CBSE", "ICSE", "Nordic"];
   const gradeList = ["9", "10", "11", "12"];
@@ -137,6 +138,7 @@ const AccDashboard = () => {
     "86% - 95%",
     "96% - 100%",
   ];
+  const financeList = ["0-25L", "25L-75L", "75L-3CR", "3CR+", "Other"];
 
   let navigate = useNavigate();
 
@@ -195,6 +197,16 @@ const AccDashboard = () => {
     } else {
       // If the stream is not selected, add it
       setStream([...stream, item]);
+    }
+  };
+
+  const handleFinance = (item) => {
+    if (finance.includes(item)) {
+      // If the finance is already selected, remove it
+      setFinance(finance.filter((o) => o !== item));
+    } else {
+      // If the finance is not selected, add it
+      setFinance([...finance, item]);
     }
   };
 
@@ -808,12 +820,14 @@ const AccDashboard = () => {
         curriculum: curriculum,
         grade: grade,
         stream: stream,
+        financialSituation: finance,
       })
       .then((response) => {
         let result = response?.data;
         console.log(result, "pathSubmission result");
         if (result?.status) {
           setCreatingPath(false);
+          window.location.reload();
         } else {
           setCreatingPath(false);
         }
@@ -2837,6 +2851,25 @@ const AccDashboard = () => {
                       ))}
                     </div>
                   </div>
+                  <div className="each-acc-addpath-field">
+                    <div className="each-acc-addpath-field-name">
+                      Financial situations?
+                    </div>
+                    <div className="optionCardFullWrapper">
+                      {financeList.map((item) => (
+                        <div
+                          className={
+                            finance.includes(item)
+                              ? "optionCardFullSelected"
+                              : "optionCardFull"
+                          }
+                          onClick={(e) => handleFinance(item)}
+                        >
+                          {item}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
 
                   <div className="each-acc-addpath-field">
                     <div
@@ -2853,7 +2886,8 @@ const AccDashboard = () => {
                             grade.length > 0 &&
                             gradeAvg.length > 0 &&
                             curriculum.length > 0 &&
-                            stream.length > 0
+                            stream.length > 0 &&
+                            finance.length > 0
                           ? "1"
                           : "0.5",
                         cursor: creatingPath
@@ -2867,7 +2901,8 @@ const AccDashboard = () => {
                             grade.length > 0 &&
                             gradeAvg.length > 0 &&
                             curriculum.length > 0 &&
-                            stream.length > 0
+                            stream.length > 0 &&
+                            finance.length > 0
                           ? "pointer"
                           : "not-allowed",
                       }}
@@ -2882,7 +2917,8 @@ const AccDashboard = () => {
                           grade.length > 0 &&
                           gradeAvg.length > 0 &&
                           curriculum.length > 0 &&
-                          stream.length > 0
+                          stream.length > 0 &&
+                          finance.length > 0
                         ) {
                           pathSubmission();
                         }
