@@ -46,8 +46,8 @@ import Toggle from "../../components/Toggle";
 import Tasks from "../Tasks";
 import arrow from "./arrow.svg";
 import { useCoinContextData } from "../../context/CoinContext";
-import NewStep from "../../globalComponents/GlobalDrawer/NewStep";
 import MyPaths from "../MyPaths";
+import NewStep1 from "../../globalComponents/GlobalDrawer/NewStep1";
 
 const AccDashboard = () => {
   const {
@@ -2945,7 +2945,7 @@ const AccDashboard = () => {
                   </div>
                 </div>
               ) : pstep === 9 ? (
-                <NewStep
+                <NewStep1
                   step={step}
                   setStep={setStep}
                   setMainMenu={setMainMenu}
