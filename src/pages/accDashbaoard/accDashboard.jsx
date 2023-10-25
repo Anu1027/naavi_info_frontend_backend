@@ -45,6 +45,7 @@ import Vaults from "../Vaults";
 import Toggle from "../../components/Toggle";
 import Tasks from "../Tasks";
 import arrow from "./arrow.svg";
+import trash from "./trash.svg";
 import { useCoinContextData } from "../../context/CoinContext";
 import MyPaths from "../MyPaths";
 import NewStep1 from "../../globalComponents/GlobalDrawer/NewStep1";
@@ -835,6 +836,14 @@ const AccDashboard = () => {
       .catch((error) => {
         console.log(error, "error in pathSubmission");
       });
+  };
+
+  const removeStep = (stepId) => {
+    const updatedStepIds = pathSteps?.step_ids?.filter((id) => id !== stepId);
+    setPathSteps({
+      ...pathSteps,
+      step_ids: updatedStepIds,
+    });
   };
 
   return (
@@ -2766,12 +2775,19 @@ const AccDashboard = () => {
                     {allSteps?.map((e, i) => {
                       if (pathSteps?.step_ids?.includes(e?._id)) {
                         return (
-                          <div className="each-selected-step">
+                          <div className="each-selected-step" key={e?._id}>
                             <div className="stepp-textt">{e?.name}</div>
                             <div className="stepp-textt1">{e?.description}</div>
+                            <div
+                              className="trash-icon-div"
+                              onClick={() => removeStep(e._id)}
+                            >
+                              <img src={trash} alt="" />
+                            </div>
                           </div>
                         );
                       }
+                      return null; // Add this line to prevent rendering if step is not included
                     })}
                   </div>
 
@@ -2854,7 +2870,7 @@ const AccDashboard = () => {
                       ))}
                     </div>
                   </div>
-                  
+
                   <div className="each-acc-addpath-field">
                     <div className="each-acc-addpath-field-name">
                       Financial situations?
@@ -2949,9 +2965,7 @@ const AccDashboard = () => {
                   </div>
                 </div>
               ) : pstep === 9 ? (
-                <NewStep1
-                  setpstep={setpstep}
-                />
+                <NewStep1 setpstep={setpstep} />
               ) : (
                 ""
               )}
