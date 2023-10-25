@@ -2794,6 +2794,7 @@ const AccDashboard = () => {
                       ))}
                     </div>
                   </div>
+
                   <div className="each-acc-addpath-field">
                     <div className="each-acc-addpath-field-name">
                       What is your current grade point average?
@@ -2813,6 +2814,7 @@ const AccDashboard = () => {
                       ))}
                     </div>
                   </div>
+
                   <div className="each-acc-addpath-field">
                     <div className="each-acc-addpath-field-name">
                       What curriculum are you pursuing?
@@ -2832,6 +2834,7 @@ const AccDashboard = () => {
                       ))}
                     </div>
                   </div>
+
                   <div className="each-acc-addpath-field">
                     <div className="each-acc-addpath-field-name">
                       What stream are you pursuing?
@@ -2851,6 +2854,7 @@ const AccDashboard = () => {
                       ))}
                     </div>
                   </div>
+                  
                   <div className="each-acc-addpath-field">
                     <div className="each-acc-addpath-field-name">
                       Financial situations?
@@ -2946,11 +2950,7 @@ const AccDashboard = () => {
                 </div>
               ) : pstep === 9 ? (
                 <NewStep1
-                  step={step}
-                  setStep={setStep}
-                  setMainMenu={setMainMenu}
-                  loading={loading}
-                  setLoading={setLoading}
+                  setpstep={setpstep}
                 />
               ) : (
                 ""
