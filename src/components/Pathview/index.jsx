@@ -84,7 +84,7 @@ const Pathview = () => {
                 </div>
               );
             })
-        ) : filteredPathViewData.length > 1 ? (
+        ) : filteredPathViewData.length > 0 ? (
           filteredPathViewData?.map((e, i) => {
             return (
               <div
