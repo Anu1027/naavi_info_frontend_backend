@@ -53,6 +53,8 @@ const Pathview = () => {
       })
       .catch((error) => {
         console.log(error, "error in getting path view result");
+        setPathViewData([]);
+        setLoading(false);
       });
   }, [refetchPaths]);
 
@@ -67,38 +69,52 @@ const Pathview = () => {
         <div className="description-div">Description</div>
       </div>
       <div className="pathviewContent">
-        {loading
-          ? Array(10)
-              .fill("")
-              .map((e, i) => {
-                return (
-                  <div className="each-pv-data" key={i}>
-                    <div className="each-pv-name">
-                      <Skeleton width={100} height={30} />
-                    </div>
-                    <div className="each-pv-desc">
-                      <Skeleton width={100} height={30} />
-                    </div>
-                  </div>
-                );
-              })
-          : filteredPathViewData?.map((e, i) => {
+        {loading ? (
+          Array(10)
+            .fill("")
+            .map((e, i) => {
               return (
-                <div
-                  className="each-pv-data"
-                  key={i}
-                  onClick={() => {
-                    setPathItemSelected(true);
-                    setSelectedPathItem(e);
-                    localStorage.setItem("selectedPath", JSON.stringify(e));
-                    // console.log(e?._id, 'selected path');
-                  }}
-                >
-                  <div className="each-pv-name">{e?.nameOfPath}</div>
-                  <div className="each-pv-desc">{e?.description}</div>
+                <div className="each-pv-data" key={i}>
+                  <div className="each-pv-name">
+                    <Skeleton width={100} height={30} />
+                  </div>
+                  <div className="each-pv-desc">
+                    <Skeleton width={100} height={30} />
+                  </div>
                 </div>
               );
-            })}
+            })
+        ) : filteredPathViewData.length > 1 ? (
+          filteredPathViewData?.map((e, i) => {
+            return (
+              <div
+                className="each-pv-data"
+                key={i}
+                onClick={() => {
+                  setPathItemSelected(true);
+                  setSelectedPathItem(e);
+                  localStorage.setItem("selectedPath", JSON.stringify(e));
+                  // console.log(e?._id, 'selected path');
+                }}
+              >
+                <div className="each-pv-name">{e?.nameOfPath}</div>
+                <div className="each-pv-desc">{e?.description}</div>
+              </div>
+            );
+          })
+        ) : (
+          <div
+            style={{
+              width: "100%",
+              height: "20vh",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            No Path Found
+          </div>
+        )}
       </div>
     </div>
   );
