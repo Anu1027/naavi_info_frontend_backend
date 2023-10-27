@@ -92,8 +92,8 @@ const Pathview = () => {
                 key={i}
                 onClick={() => {
                   setPathItemSelected(true);
-                  setSelectedPathItem(e);
-                  localStorage.setItem("selectedPath", JSON.stringify(e));
+                  setSelectedPathItem(e?.nameOfPath);
+                  localStorage.setItem("selectedPath", JSON.stringify(e?.nameOfPath));
                   // console.log(e?._id, 'selected path');
                 }}
               >

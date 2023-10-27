@@ -10,18 +10,28 @@ import arrow from "./arrow.svg";
 
 const JourneyPage = () => {
   const { selectedPathItem, setSelectedPathItem } = useCoinContextData();
-  let userDetails = JSON.parse(localStorage.getItem("user"));
+  // let userDetails = JSON.parse(localStorage.getItem("user"));
   const { sideNav, setsideNav } = useStore();
-  const [journeyData, setJourneyData] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
     let selectedPathData = JSON.parse(localStorage.getItem("selectedPath"));
     if (selectedPathData) {
-      // console.log(selectedPathData?.StepDetails, 'selectedPathData');
-      setSelectedPathItem(selectedPathData);
-      setLoading(false);
+      // console.log(selectedPathData, "selected path name");
+      axios
+        .get(
+          `https://careers.marketsverse.com/paths/get?nameOfPath=${selectedPathData}`
+        )
+        .then((response) => {
+          let result = response?.data?.data[0];
+          // console.log(result, "selectedPathData result");
+          setLoading(false);
+          setSelectedPathItem(result);
+        })
+        .catch((error) => {
+          console.log(error, "error in journey page");
+        });
     }
   }, []);
 
@@ -97,15 +107,15 @@ const JourneyPage = () => {
                   <div className="each-j-amount-div">
                     <div className="each-j-amount">{e?.cost}</div>
                     {/* <div
-                  className="each-j-amount"
-                  style={{ textDecorationLine: "underline" }}
-                >
-                  Current
-                </div> */}
+                          className="each-j-amount"
+                          style={{ textDecorationLine: "underline" }}
+                        >
+                          Current
+                        </div> */}
                   </div>
                   {/* <div className="j-arr-div">
-                <img src={arrow} alt="" />
-              </div> */}
+                        <img src={arrow} alt="" />
+                      </div> */}
                 </div>
               );
             })
