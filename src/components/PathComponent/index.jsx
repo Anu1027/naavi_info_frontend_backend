@@ -407,7 +407,7 @@ const PathComponent = () => {
                     style={{ fontWeight: "400", textAlign: "left" }}
                     onClick={() => {
                       setPathItemSelected(false);
-                      setSelectedPathItem("");
+                      setSelectedPathItem([]);
                     }}
                   >
                     Go Back

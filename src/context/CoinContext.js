@@ -142,7 +142,7 @@ export const CoinContextProvider = ({ children }) => {
   const [searchTerm, setSearchterm] = useState("");
   const [pathItemSelected, setPathItemSelected] = useState(false);
   const [pathItemStep, setPathItemStep] = useState(1);
-  const [selectedPathItem, setSelectedPathItem] = useState('');
+  const [selectedPathItem, setSelectedPathItem] = useState([]);
   const [allSteps, setAllSteps] = useState([]);
   const [stepsToggle, setStepsToggle] = useState(false);
 

@@ -92,9 +92,8 @@ const Pathview = () => {
                 key={i}
                 onClick={() => {
                   setPathItemSelected(true);
-                  setSelectedPathItem(e?.nameOfPath);
                   localStorage.setItem("selectedPath", JSON.stringify(e?.nameOfPath));
-                  // console.log(e?._id, 'selected path');
+                  // console.log(e?.nameOfPath, 'selected path');
                 }}
               >
                 <div className="each-pv-name">{e?.nameOfPath}</div>
