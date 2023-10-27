@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./currentstep.scss";
+import { useCoinContextData } from "../../context/CoinContext";
+import { useStore } from "../../components/store/store.ts";
 
 import dummy from "../JourneyPage/dummy.svg";
 import edutech from "./edutech.svg";
@@ -7,6 +9,8 @@ import resory from "./resory.svg";
 import lek from "./lek.svg";
 
 const CurrentStep = () => {
+  const { currentStepData, setCurrentStepData } = useCoinContextData();
+  const { sideNav, setsideNav } = useStore();
   const [showNewDiv, setShowNewDiv] = useState(null);
   const [position1, setPosition1] = useState(1);
   const [position2, setPosition2] = useState(2);
@@ -41,8 +45,22 @@ const CurrentStep = () => {
   return (
     <div className="currentstep">
       <div className="cs-top-area">
-        <div>Your Current Step</div>
-        <div className="bold-text">Complete The Visa Application</div>
+        <div className="cs-text1">
+          <div>Your Current Step</div>
+          <div
+            className="back-Btn"
+            onClick={() => {
+              setCurrentStepData([]);
+              setsideNav("My Journey");
+            }}
+          >
+            Back To Path
+          </div>
+        </div>
+        <div className="bold-text">
+          <div>{currentStepData?.name}</div>
+          <div>Apx Takes {currentStepData?.length} Days</div>
+        </div>
       </div>
       <div className="cs-content">
         <div className="overall-cs-content">
@@ -52,16 +70,9 @@ const CurrentStep = () => {
               <div className="macro-image-div">
                 <img src={dummy} alt="" />
               </div>
-              <div className="step-text">
-                Choose the right <br /> curriculum
-              </div>
+              <div className="step-text">{currentStepData?.name}</div>
               <div className="macro-text-div">
-                Choosing the right curriculum is an important decision, whether
-                it's for yourself, your child, or a group of students. The
-                choice of curriculum depends on several factors, including your
-                educational goals, learning objectives, student needs, and
-                teaching philosophy. Here are some steps to help you choose the
-                right curriculum:
+                {currentStepData?.description}
               </div>
             </div>
           </div>
@@ -72,25 +83,46 @@ const CurrentStep = () => {
                 <img src={dummy} alt="" />
               </div>
               <div className="step-text">
-                Choose The Right Curriculum <br /> For You
+                <span style={{ fontStyle: "italic" }}>
+                  {currentStepData?.name}
+                </span>{" "}
+                For You
               </div>
               <div className="micro-text-div-container">
                 <div className="micro-text-div">
-                  <div className="bold-text">Current Stream: MPC</div>
+                  <div className="bold-text">Based On You’re Grade</div>
                   <div className="sub-text">
-                    Related Profile Consideration 1
+                    <div className="overflow-text">You should consider choosing enginee</div>
+                    <div className="unlock-Btn">Unlock</div>
                   </div>
                 </div>
                 <div className="micro-text-div">
-                  <div className="bold-text">Current Stream: MPC</div>
+                  <div className="bold-text">Based On You’re Stream</div>
                   <div className="sub-text">
-                    Related Profile Consideration 1
+                    <div className="overflow-text">You should consider choosing enginee</div>
+                    <div className="unlock-Btn">Unlock</div>
                   </div>
                 </div>
-                <div className="based-text">
+                <div className="micro-text-div">
+                  <div className="bold-text">Based On You’re Curriculum</div>
+                  <div className="sub-text">
+                    <div className="overflow-text">You should consider choosing enginee</div>
+                    <div className="unlock-Btn">Unlock</div>
+                  </div>
+                </div>
+                <div className="micro-text-div">
+                  <div className="bold-text">
+                    Based On You’re Grade Point Avg
+                  </div>
+                  <div className="sub-text">
+                    <div className="overflow-text">You should consider choosing enginee</div>
+                    <div className="unlock-Btn">Unlock</div>
+                  </div>
+                </div>
+                {/* <div className="based-text">
                   Based on the 2 profile considerations, the correct curriculum
                   for you is <span>Cambridge</span>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
@@ -101,8 +133,10 @@ const CurrentStep = () => {
                 <img src={dummy} alt="" />
               </div>
               <div className="step-text">
-                Get A Naavi Certified Vendor To Assist You In Choosing The Right
-                Curriculum
+                Get A Naavi Certified Vendor To Assist You{" "}
+                <span style={{ fontStyle: "italic" }}>
+                  {currentStepData?.name}
+                </span>
               </div>
               <div className="nano-overall-div">
                 {/* <div

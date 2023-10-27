@@ -6,15 +6,10 @@ import axios from "axios";
 import { useCoinContextData } from "../../context/CoinContext";
 
 // images
-import arrow from "./arrow.svg";
+// import arrow from "./arrow.svg";
 
 const JourneyPage = () => {
-  const {
-    selectedPathItem,
-    setSelectedPathItem,
-    currentStepData,
-    setCurrentStepData,
-  } = useCoinContextData();
+  const { selectedPathItem, setSelectedPathItem } = useCoinContextData();
   let userDetails = JSON.parse(localStorage.getItem("user"));
   const { sideNav, setsideNav } = useStore();
   const [loading, setLoading] = useState(false);
@@ -121,9 +116,9 @@ const JourneyPage = () => {
               return (
                 <div
                   className="each-j-step relative-div"
-                  // onClick={() => {
-                  //   setsideNav("Current Step");
-                  // }}
+                  onClick={() => {
+                    setsideNav("Current Step");
+                  }}
                   key={i}
                 >
                   <div className="each-j-img">
@@ -153,7 +148,6 @@ const JourneyPage = () => {
                   className="each-j-step relative-div"
                   onClick={() => {
                     setsideNav("Current Step");
-                    setCurrentStepData(e);
                   }}
                   key={i}
                 >
