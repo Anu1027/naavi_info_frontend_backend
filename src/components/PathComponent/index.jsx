@@ -709,41 +709,30 @@ const PathComponent = () => {
             <div className="maps-content-area1">
               <div className="path-options-div">
                 <div className="path-options">
+                  <div className="each-path-opt">Path View</div>
                   <div
-                    className="each-path-opt"
+                    className="toggleContainer1"
                     onClick={() => {
-                      setPathOption("Path View");
-                    }}
-                    style={{
-                      background: pathOption === "Path View" ? "#F1F4F6" : "",
+                      if (pathOption === "Path View") {
+                        setPathOption("Map View");
+                      } else {
+                        setPathOption("Path View");
+                      }
                     }}
                   >
-                    Path View
+                    <div
+                      className="toggle1"
+                      style={{
+                        transform:
+                          pathOption === "Path View"
+                            ? "translateX(0px)"
+                            : "translateX(20px)",
+                      }}
+                    >
+                      &nbsp;
+                    </div>
                   </div>
-
-                  <div
-                    className="each-path-opt"
-                    onClick={() => {
-                      setPathOption("Map View");
-                    }}
-                    style={{
-                      background: pathOption === "Map View" ? "#F1F4F6" : "",
-                    }}
-                  >
-                    Map View
-                  </div>
-
-                  <div
-                    className="each-path-opt"
-                    onClick={() => {
-                      setPathOption("Steps");
-                    }}
-                    style={{
-                      background: pathOption === "Steps" ? "#F1F4F6" : "",
-                    }}
-                  >
-                    Steps
-                  </div>
+                  <div className="each-path-opt">Map View</div>
                 </div>
               </div>
               <>
