@@ -9,12 +9,11 @@ import { useCoinContextData } from "../../context/CoinContext";
 // import arrow from "./arrow.svg";
 
 const JourneyPage = () => {
-  const { selectedPathItem, setSelectedPathItem } = useCoinContextData();
-  let userDetails = JSON.parse(localStorage.getItem("user"));
-  const { sideNav, setsideNav } = useStore();
-  const [loading, setLoading] = useState(false);
-  const [journeyPageData, setJourneyPageData] = useState([]);
-  const email = userDetails?.user?.email;
+  const { selectedPathItem, setSelectedPathItem, setShowPathDetails } =
+    useCoinContextData();
+    const [loading, setLoading] = useState(false);
+  // let userDetails = JSON.parse(localStorage.getItem("user"));
+  // const email = userDetails?.user?.email;
 
   useEffect(() => {
     setLoading(true);
@@ -32,19 +31,7 @@ const JourneyPage = () => {
           setLoading(false);
         })
         .catch((error) => {
-          console.log(error, "error in journey page");
-        });
-    } else {
-      axios
-        .get(`https://careers.marketsverse.com/userpaths/get?email=${email}`)
-        .then((response) => {
-          let result = response?.data?.data[0];
-          // console.log(result, "journeyPageData result");
-          setJourneyPageData(result);
-          setLoading(false);
-        })
-        .catch((error) => {
-          console.log(error, "error in fetching journeyPageData");
+          console.log(error, "error in fetching selectedPathData result");
         });
     }
   }, []);
@@ -59,8 +46,6 @@ const JourneyPage = () => {
           <div className="bold-text">
             {selectedPathItem?.length > 0
               ? selectedPathItem?.destination_institution
-              : journeyPageData?.PathDetails?.length > 0
-              ? journeyPageData?.PathDetails?.[0]?.nameOfPath
               : ""}
           </div>
         )}
@@ -68,21 +53,16 @@ const JourneyPage = () => {
           <Skeleton width={500} height={20} />
         ) : (
           <div className="journey-des">
-            {selectedPathItem?.length > 0
-              ? selectedPathItem?.description
-              : journeyPageData?.PathDetails?.length > 0
-              ? journeyPageData?.PathDetails?.[0]?.description
-              : ""}
+            {selectedPathItem?.length > 0 ? selectedPathItem?.description : ""}
           </div>
         )}
         <div
           className="goBack-div"
           onClick={() => {
-            setsideNav("Paths");
+            setShowPathDetails(false);
             localStorage.removeItem("selectedPath");
             setSelectedPathItem([]);
           }}
-          style={{ display: selectedPathItem?.length > 0 ? "flex" : "none" }}
         >
           Go Back
         </div>
@@ -114,13 +94,7 @@ const JourneyPage = () => {
           : selectedPathItem?.length > 0
           ? selectedPathItem?.StepDetails?.map((e, i) => {
               return (
-                <div
-                  className="each-j-step relative-div"
-                  onClick={() => {
-                    setsideNav("Current Step");
-                  }}
-                  key={i}
-                >
+                <div className="each-j-step relative-div" key={i}>
                   <div className="each-j-img">
                     <img src={e?.icon} alt="" />
                   </div>
@@ -138,36 +112,6 @@ const JourneyPage = () => {
                   {/* <div className="j-arr-div">
                         <img src={arrow} alt="" />
                       </div> */}
-                </div>
-              );
-            })
-          : journeyPageData?.PathDetails?.length > 0
-          ? journeyPageData?.PathDetails?.[0]?.StepDetails?.map((e, i) => {
-              return (
-                <div
-                  className="each-j-step relative-div"
-                  onClick={() => {
-                    setsideNav("Current Step");
-                  }}
-                  key={i}
-                >
-                  <div className="each-j-img">
-                    <img src={e?.icon} alt="" />
-                  </div>
-                  <div className="each-j-step-text">{e?.name}</div>
-                  <div className="each-j-step-text1">{e?.description}</div>
-                  <div className="each-j-amount-div">
-                    <div className="each-j-amount">{e?.cost}</div>
-                    {/* <div
-                      className="each-j-amount"
-                      style={{ textDecorationLine: "underline" }}
-                    >
-                      Current
-                    </div> */}
-                  </div>
-                  {/* <div className="j-arr-div">
-                    <img src={arrow} alt="" />
-                  </div> */}
                 </div>
               );
             })

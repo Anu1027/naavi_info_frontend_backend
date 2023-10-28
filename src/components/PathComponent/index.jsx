@@ -27,6 +27,7 @@ import axios from "axios";
 import Pathview from "../Pathview";
 import Stepview from "../Stepview";
 import { GlobalContex } from "../../globalContext";
+import JourneyPage from "../Pathview/JourneyPage";
 
 const libraries = ["places"];
 
@@ -61,6 +62,8 @@ const PathComponent = () => {
     setPathItemStep,
     selectedPathItem,
     setSelectedPathItem,
+    showPathDetails,
+    setShowPathDetails,
   } = useCoinContextData();
   const {
     gradeToggle,
@@ -272,353 +275,380 @@ const PathComponent = () => {
 
   return (
     <div className="mapspage1">
-      <LoadScript
-        googleMapsApiKey="AIzaSyB5MJ2jMHzl_ghkbxOsyPmeBmYw_sUsIRQ"
-        libraries={libraries}
-      >
-        <div className="maps-container1">
-          <div className="maps-sidebar1">
-            <div
-              className="top-icons1"
-              style={{
-                display:
-                  pathItemSelected && pathItemStep === 3 ? "none" : "flex",
-              }}
-            >
+      {showPathDetails ? (
+        <JourneyPage />
+      ) : (
+        <LoadScript
+          googleMapsApiKey="AIzaSyB5MJ2jMHzl_ghkbxOsyPmeBmYw_sUsIRQ"
+          libraries={libraries}
+        >
+          <div className="maps-container1">
+            <div className="maps-sidebar1">
               <div
-                className="each-icon1"
-                // onClick={() => {
-                //   setOption("Career");
-                // }}
+                className="top-icons1"
                 style={{
-                  cursor: "not-allowed",
-                  opacity: 0.5,
+                  display:
+                    pathItemSelected && pathItemStep === 3 ? "none" : "flex",
                 }}
               >
                 <div
-                  className="border-div1"
+                  className="each-icon1"
+                  // onClick={() => {
+                  //   setOption("Career");
+                  // }}
                   style={{
-                    border:
-                      option === "Career"
-                        ? "1px solid #100F0D"
-                        : "1px solid #e7e7e7",
+                    cursor: "not-allowed",
+                    opacity: 0.5,
                   }}
                 >
-                  <img src={careerIcon} alt="" />
-                </div>
-                <div
-                  className="icon-name-txt1"
-                  style={{
-                    fontWeight: option === "Career" ? "600" : "",
-                  }}
-                >
-                  Career
-                </div>
-              </div>
-              <div
-                className="each-icon1"
-                onClick={() => {
-                  setOption("Education");
-                }}
-              >
-                <div
-                  className="border-div1"
-                  style={{
-                    border:
-                      option === "Education"
-                        ? "1px solid #100F0D"
-                        : "1px solid #e7e7e7",
-                  }}
-                >
-                  <img src={educationIcon} alt="" />
-                </div>
-                <div
-                  className="icon-name-txt1"
-                  style={{
-                    fontWeight: option === "Education" ? "600" : "",
-                  }}
-                >
-                  Education
-                </div>
-              </div>
-              <div
-                className="each-icon1"
-                // onClick={() => {
-                //   setOption("Immigration");
-                // }}
-                style={{
-                  cursor: "not-allowed",
-                  opacity: 0.5,
-                }}
-              >
-                <div
-                  className="border-div1"
-                  style={{
-                    border:
-                      option === "Immigration"
-                        ? "1px solid #100F0D"
-                        : "1px solid #e7e7e7",
-                  }}
-                >
-                  <img src={immigrationIcon} alt="" />
-                </div>
-                <div
-                  className="icon-name-txt1"
-                  style={{
-                    fontWeight: option === "Immigration" ? "600" : "",
-                  }}
-                >
-                  Immigration
-                </div>
-              </div>
-            </div>
-            {pathItemSelected && pathItemStep === 1 ? (
-              <div className="mid-area1" style={{ borderBottom: "none" }}>
-                <div
-                  style={{
-                    fontWeight: "400",
-                    marginTop: "0.5rem",
-                    marginBottom: "0.5rem",
-                  }}
-                >
-                  What do you want to do with this path?
-                </div>
-                <div className="maps-btns-div1">
                   <div
-                    className="reset-btn1"
-                    style={{ fontWeight: "400", textAlign: "left" }}
-                    onClick={() => {
-                      setsideNav("My Journey");
+                    className="border-div1"
+                    style={{
+                      border:
+                        option === "Career"
+                          ? "1px solid #100F0D"
+                          : "1px solid #e7e7e7",
                     }}
                   >
-                    Explore Path
+                    <img src={careerIcon} alt="" />
                   </div>
                   <div
-                    className="reset-btn1"
-                    style={{ fontWeight: "400", textAlign: "left" }}
-                    onClick={() => {
-                      setPathItemStep(2);
+                    className="icon-name-txt1"
+                    style={{
+                      fontWeight: option === "Career" ? "600" : "",
                     }}
                   >
-                    Select Path
+                    Career
+                  </div>
+                </div>
+                <div
+                  className="each-icon1"
+                  onClick={() => {
+                    setOption("Education");
+                  }}
+                >
+                  <div
+                    className="border-div1"
+                    style={{
+                      border:
+                        option === "Education"
+                          ? "1px solid #100F0D"
+                          : "1px solid #e7e7e7",
+                    }}
+                  >
+                    <img src={educationIcon} alt="" />
                   </div>
                   <div
-                    className="reset-btn1"
-                    style={{ fontWeight: "400", textAlign: "left" }}
-                    onClick={() => {
-                      setPathItemSelected(false);
-                      setSelectedPathItem([]);
+                    className="icon-name-txt1"
+                    style={{
+                      fontWeight: option === "Education" ? "600" : "",
                     }}
                   >
-                    Go Back
+                    Education
+                  </div>
+                </div>
+                <div
+                  className="each-icon1"
+                  // onClick={() => {
+                  //   setOption("Immigration");
+                  // }}
+                  style={{
+                    cursor: "not-allowed",
+                    opacity: 0.5,
+                  }}
+                >
+                  <div
+                    className="border-div1"
+                    style={{
+                      border:
+                        option === "Immigration"
+                          ? "1px solid #100F0D"
+                          : "1px solid #e7e7e7",
+                    }}
+                  >
+                    <img src={immigrationIcon} alt="" />
+                  </div>
+                  <div
+                    className="icon-name-txt1"
+                    style={{
+                      fontWeight: option === "Immigration" ? "600" : "",
+                    }}
+                  >
+                    Immigration
                   </div>
                 </div>
               </div>
-            ) : pathItemSelected && pathItemStep === 2 ? (
-              <div className="mid-area1" style={{ borderBottom: "none" }}>
-                <div
-                  style={{
-                    fontWeight: "400",
-                    marginTop: "0.5rem",
-                    marginBottom: "0.5rem",
-                  }}
-                >
-                  Are you sure you want to select this path?
-                </div>
-                <div className="maps-btns-div1">
+              {pathItemSelected && pathItemStep === 1 ? (
+                <div className="mid-area1" style={{ borderBottom: "none" }}>
                   <div
-                    className="reset-btn1"
                     style={{
                       fontWeight: "400",
-                      textAlign: "left",
-                      opacity: loading ? "0.25" : "1",
-                    }}
-                    onClick={() => {
-                      pathSelection();
+                      marginTop: "0.5rem",
+                      marginBottom: "0.5rem",
                     }}
                   >
-                    {loading ? "Loading..." : "Yes, Confirm"}
+                    What do you want to do with this path?
                   </div>
+                  <div className="maps-btns-div1">
+                    <div
+                      className="reset-btn1"
+                      style={{ fontWeight: "400", textAlign: "left" }}
+                      onClick={() => {
+                        // setsideNav("My Journey");
+                        setShowPathDetails(true);
+                      }}
+                    >
+                      Explore Path
+                    </div>
+                    <div
+                      className="reset-btn1"
+                      style={{ fontWeight: "400", textAlign: "left" }}
+                      onClick={() => {
+                        setPathItemStep(2);
+                      }}
+                    >
+                      Select Path
+                    </div>
+                    <div
+                      className="reset-btn1"
+                      style={{ fontWeight: "400", textAlign: "left" }}
+                      onClick={() => {
+                        setPathItemSelected(false);
+                        setSelectedPathItem([]);
+                      }}
+                    >
+                      Go Back
+                    </div>
+                  </div>
+                </div>
+              ) : pathItemSelected && pathItemStep === 2 ? (
+                <div className="mid-area1" style={{ borderBottom: "none" }}>
                   <div
-                    className="reset-btn1"
-                    style={{ fontWeight: "400", textAlign: "left" }}
-                    onClick={() => {
-                      setPathItemStep(1);
+                    style={{
+                      fontWeight: "400",
+                      marginTop: "0.5rem",
+                      marginBottom: "0.5rem",
                     }}
                   >
-                    Go Back
+                    Are you sure you want to select this path?
+                  </div>
+                  <div className="maps-btns-div1">
+                    <div
+                      className="reset-btn1"
+                      style={{
+                        fontWeight: "400",
+                        textAlign: "left",
+                        opacity: loading ? "0.25" : "1",
+                      }}
+                      onClick={() => {
+                        pathSelection();
+                      }}
+                    >
+                      {loading ? "Loading..." : "Yes, Confirm"}
+                    </div>
+                    <div
+                      className="reset-btn1"
+                      style={{ fontWeight: "400", textAlign: "left" }}
+                      onClick={() => {
+                        setPathItemStep(1);
+                      }}
+                    >
+                      Go Back
+                    </div>
                   </div>
                 </div>
-              </div>
-            ) : pathItemSelected && pathItemStep === 3 ? (
-              <div className="congrats-area">
-                <div className="congrats-textt">Congratulations</div>
-                <div className="congrats-textt1">
-                  You have successfully chosen {selectedPathItem?.nameOfPath}.
-                  You will be redirected to your journey page now.
+              ) : pathItemSelected && pathItemStep === 3 ? (
+                <div className="congrats-area">
+                  <div className="congrats-textt">Congratulations</div>
+                  <div className="congrats-textt1">
+                    You have successfully chosen {selectedPathItem?.nameOfPath}.
+                    You will be redirected to your journey page now.
+                  </div>
                 </div>
-              </div>
-            ) : (
-              <div className="mid-area1">
-                {pathOption === "Path View" ? (
-                  <div className="current-coord-container">
-                    <div className="current-text">Current Coordinates</div>
-                    <div className="each-coo-field">
-                      <div className="field-name">Grade</div>
+              ) : (
+                <div className="mid-area1">
+                  {pathOption === "Path View" ? (
+                    <div className="current-coord-container">
+                      <div className="current-text">Current Coordinates</div>
+                      <div className="each-coo-field">
+                        <div className="field-name">Grade</div>
 
-                      <div
-                        className="toggleContainer"
-                        onClick={(e) => setGradeToggle(!gradeToggle)}
-                      >
                         <div
-                          className="toggle"
-                          style={{
-                            transform: !gradeToggle
-                              ? "translateX(0px)"
-                              : "translateX(20px)",
-                          }}
+                          className="toggleContainer"
+                          onClick={(e) => setGradeToggle(!gradeToggle)}
                         >
-                          &nbsp;
+                          <div
+                            className="toggle"
+                            style={{
+                              transform: !gradeToggle
+                                ? "translateX(0px)"
+                                : "translateX(20px)",
+                            }}
+                          >
+                            &nbsp;
+                          </div>
+                        </div>
+
+                        <div className="field-value">
+                          {levelTwoData ? levelTwoData?.grade : ""}
                         </div>
                       </div>
 
-                      <div className="field-value">
-                        {levelTwoData ? levelTwoData?.grade : ""}
-                      </div>
-                    </div>
-
-                    <div className="each-coo-field">
-                      <div className="field-name">Curriculum</div>
-                      <div
-                        className="toggleContainer"
-                        onClick={(e) => setCurriculumToggle(!curriculumToggle)}
-                      >
+                      <div className="each-coo-field">
+                        <div className="field-name">Curriculum</div>
                         <div
-                          className="toggle"
-                          style={{
-                            transform: !curriculumToggle
-                              ? "translateX(0px)"
-                              : "translateX(20px)",
-                          }}
+                          className="toggleContainer"
+                          onClick={(e) =>
+                            setCurriculumToggle(!curriculumToggle)
+                          }
                         >
-                          &nbsp;
+                          <div
+                            className="toggle"
+                            style={{
+                              transform: !curriculumToggle
+                                ? "translateX(0px)"
+                                : "translateX(20px)",
+                            }}
+                          >
+                            &nbsp;
+                          </div>
+                        </div>
+                        <div className="field-value">
+                          {levelTwoData ? levelTwoData?.curriculum : ""}
                         </div>
                       </div>
-                      <div className="field-value">
-                        {levelTwoData ? levelTwoData?.curriculum : ""}
-                      </div>
-                    </div>
-                    <div className="each-coo-field">
-                      <div className="field-name">Stream</div>
-                      <div
-                        className="toggleContainer"
-                        onClick={(e) => setStreamToggle(!streamToggle)}
-                      >
+                      <div className="each-coo-field">
+                        <div className="field-name">Stream</div>
                         <div
-                          className="toggle"
-                          style={{
-                            transform: !streamToggle
-                              ? "translateX(0px)"
-                              : "translateX(20px)",
-                          }}
+                          className="toggleContainer"
+                          onClick={(e) => setStreamToggle(!streamToggle)}
                         >
-                          &nbsp;
+                          <div
+                            className="toggle"
+                            style={{
+                              transform: !streamToggle
+                                ? "translateX(0px)"
+                                : "translateX(20px)",
+                            }}
+                          >
+                            &nbsp;
+                          </div>
+                        </div>
+                        <div className="field-value">
+                          {levelTwoData ? levelTwoData?.stream : ""}
                         </div>
                       </div>
-                      <div className="field-value">
-                        {levelTwoData ? levelTwoData?.stream : ""}
-                      </div>
-                    </div>
-                    <div className="each-coo-field">
-                      <div className="field-name">Performance</div>
-                      <div
-                        className="toggleContainer"
-                        onClick={(e) =>
-                          setPerformanceToggle(!performanceToggle)
-                        }
-                      >
+                      <div className="each-coo-field">
+                        <div className="field-name">Performance</div>
                         <div
-                          className="toggle"
-                          style={{
-                            transform: !performanceToggle
-                              ? "translateX(0px)"
-                              : "translateX(20px)",
-                          }}
+                          className="toggleContainer"
+                          onClick={(e) =>
+                            setPerformanceToggle(!performanceToggle)
+                          }
                         >
-                          &nbsp;
+                          <div
+                            className="toggle"
+                            style={{
+                              transform: !performanceToggle
+                                ? "translateX(0px)"
+                                : "translateX(20px)",
+                            }}
+                          >
+                            &nbsp;
+                          </div>
+                        </div>
+                        <div className="field-value">
+                          {levelTwoData ? levelTwoData?.performance : ""}
                         </div>
                       </div>
-                      <div className="field-value">
-                        {levelTwoData ? levelTwoData?.performance : ""}
-                      </div>
-                    </div>
-                    <div className="each-coo-field">
-                      <div className="field-name">Financial</div>
-                      <div
-                        className="toggleContainer"
-                        onClick={(e) => setFinancialToggle(!financialToggle)}
-                      >
+                      <div className="each-coo-field">
+                        <div className="field-name">Financial</div>
                         <div
-                          className="toggle"
-                          style={{
-                            transform: !financialToggle
-                              ? "translateX(0px)"
-                              : "translateX(20px)",
-                          }}
+                          className="toggleContainer"
+                          onClick={(e) => setFinancialToggle(!financialToggle)}
                         >
-                          &nbsp;
+                          <div
+                            className="toggle"
+                            style={{
+                              transform: !financialToggle
+                                ? "translateX(0px)"
+                                : "translateX(20px)",
+                            }}
+                          >
+                            &nbsp;
+                          </div>
+                        </div>
+                        <div className="field-value">
+                          {levelTwoData ? levelTwoData?.financialSituation : ""}
                         </div>
                       </div>
-                      <div className="field-value">
-                        {levelTwoData ? levelTwoData?.financialSituation : ""}
-                      </div>
-                    </div>
-                    <div className="each-coo-field">
-                      <div className="field-name">School</div>
-                      <div
-                        className="toggleContainer"
-                        style={{ border: "0px" }}
-                      ></div>
-                      <div
-                        className="field-value"
-                        style={{ borderLeft: "0px" }}
-                      >
-                        {levelTwoData ? levelTwoData?.school : ""}
-                      </div>
-                    </div>
-                  </div>
-                ) : (
-                  <div className="input-div-1">
-                    <input
-                      type="text"
-                      placeholder="Choose Starting Coordinates.."
-                    />
-                  </div>
-                )}
-                {containers.map((container, index) => (
-                  <div className="destination-container1" key={container.id}>
-                    <div className="dest-txt1">
-                      <div>
-                        Destination
-                        {/* {container.id} */}
-                      </div>
-                      {container.removable && (
+                      <div className="each-coo-field">
+                        <div className="field-name">School</div>
                         <div
-                          onClick={() => handleRemoveContainer(container.id)}
+                          className="toggleContainer"
+                          style={{ border: "0px" }}
+                        ></div>
+                        <div
+                          className="field-value"
+                          style={{ borderLeft: "0px" }}
                         >
-                          <img src={close} alt="" />
+                          {levelTwoData ? levelTwoData?.school : ""}
                         </div>
-                      )}
+                      </div>
                     </div>
-                    <div className="input-div-2">
-                      {pathOption === "Map View" ? (
-                        <Autocomplete
-                          onLoad={(autocomplete) => {
-                            autocompleteRef.current = autocomplete;
-                            autocomplete?.setBounds(pathMap?.getBounds());
-                          }}
-                          onPlaceChanged={handlePlaceSelect}
-                        >
+                  ) : (
+                    <div className="input-div-1">
+                      <input
+                        type="text"
+                        placeholder="Choose Starting Coordinates.."
+                      />
+                    </div>
+                  )}
+                  {containers.map((container, index) => (
+                    <div className="destination-container1" key={container.id}>
+                      <div className="dest-txt1">
+                        <div>
+                          Destination
+                          {/* {container.id} */}
+                        </div>
+                        {container.removable && (
+                          <div
+                            onClick={() => handleRemoveContainer(container.id)}
+                          >
+                            <img src={close} alt="" />
+                          </div>
+                        )}
+                      </div>
+                      <div className="input-div-2">
+                        {pathOption === "Map View" ? (
+                          <Autocomplete
+                            onLoad={(autocomplete) => {
+                              autocompleteRef.current = autocomplete;
+                              autocomplete?.setBounds(pathMap?.getBounds());
+                            }}
+                            onPlaceChanged={handlePlaceSelect}
+                          >
+                            <input
+                              type="text"
+                              placeholder="Where Do You Want To Go?"
+                              // value={container.inputValue1}
+                              // onChange={(e) => {
+                              //   handleInputChange(e, container.id, 1);
+                              //   if (pathOption === "List View") {
+                              //     setSearchterm(e.target.value);
+                              //   }
+                              // }}
+                              value={pathSelectedPlace || ""}
+                              onChange={(e) => {
+                                handleInputChange(e, container.id, 1);
+                                setPathSelectedPlace(e.target.value);
+                                if (pathOption === "Steps") {
+                                  setSearchterm(e.target.value);
+                                }
+                              }}
+                            />
+                          </Autocomplete>
+                        ) : (
                           <input
                             type="text"
                             placeholder="Where Do You Want To Go?"
@@ -629,43 +659,24 @@ const PathComponent = () => {
                             //     setSearchterm(e.target.value);
                             //   }
                             // }}
-                            value={pathSelectedPlace || ""}
+                            value={searchTerm}
                             onChange={(e) => {
                               handleInputChange(e, container.id, 1);
-                              setPathSelectedPlace(e.target.value);
-                              if (pathOption === "Steps") {
-                                setSearchterm(e.target.value);
-                              }
+                              setSearchterm(e.target.value);
                             }}
                           />
-                        </Autocomplete>
-                      ) : (
+                        )}
+                      </div>
+                      <div className="input-div-2">
                         <input
                           type="text"
-                          placeholder="Where Do You Want To Go?"
-                          // value={container.inputValue1}
-                          // onChange={(e) => {
-                          //   handleInputChange(e, container.id, 1);
-                          //   if (pathOption === "List View") {
-                          //     setSearchterm(e.target.value);
-                          //   }
-                          // }}
-                          value={searchTerm}
-                          onChange={(e) => {
-                            handleInputChange(e, container.id, 1);
-                            setSearchterm(e.target.value);
-                          }}
+                          value={container.inputValue2}
+                          placeholder="By When?"
+                          onChange={(e) =>
+                            handleInputChange(e, container.id, 2)
+                          }
                         />
-                      )}
-                    </div>
-                    <div className="input-div-2">
-                      <input
-                        type="text"
-                        value={container.inputValue2}
-                        placeholder="By When?"
-                        onChange={(e) => handleInputChange(e, container.id, 2)}
-                      />
-                      {/* <DatePicker
+                        {/* <DatePicker
                         selected={pathSelectedDate}
                         onChange={handleDateChange}
                         dateFormat="MM/dd/yyyy"
@@ -674,91 +685,92 @@ const PathComponent = () => {
                         dropdownMode="select"
                         customInput={<CustomInput />}
                       /> */}
+                      </div>
                     </div>
-                  </div>
-                ))}
-                {/* <div className="add-div1" onClick={handleAddContainer}>
+                  ))}
+                  {/* <div className="add-div1" onClick={handleAddContainer}>
                   <img src={plus} alt="" />
                   Add Destination
                 </div> */}
-                <div className="maps-btns-div1">
-                  <div
-                    className="gs-Btn-maps1"
-                    onClick={(e) => setRefetchPaths(!refetchPaths)}
-                  >
-                    Find Paths
-                  </div>
-                  {/* <div className="reset-btn1" onClick={handleResetContainer}>
+                  <div className="maps-btns-div1">
+                    <div
+                      className="gs-Btn-maps1"
+                      onClick={(e) => setRefetchPaths(!refetchPaths)}
+                    >
+                      Find Paths
+                    </div>
+                    {/* <div className="reset-btn1" onClick={handleResetContainer}>
                     Reset
                   </div> */}
+                  </div>
                 </div>
-              </div>
-            )}
-          </div>
-          <div className="maps-content-area1">
-            <div className="path-options-div">
-              <div className="path-options">
-                <div
-                  className="each-path-opt"
-                  onClick={() => {
-                    setPathOption("Path View");
-                  }}
-                  style={{
-                    background: pathOption === "Path View" ? "#F1F4F6" : "",
-                  }}
-                >
-                  Path View
-                </div>
-
-                <div
-                  className="each-path-opt"
-                  onClick={() => {
-                    setPathOption("Map View");
-                  }}
-                  style={{
-                    background: pathOption === "Map View" ? "#F1F4F6" : "",
-                  }}
-                >
-                  Map View
-                </div>
-
-                <div
-                  className="each-path-opt"
-                  onClick={() => {
-                    setPathOption("Steps");
-                  }}
-                  style={{
-                    background: pathOption === "Steps" ? "#F1F4F6" : "",
-                  }}
-                >
-                  Steps
-                </div>
-              </div>
-            </div>
-            <>
-              {pathOption === "Map View" ? (
-                <MapComponent
-                  pathMap={pathMap}
-                  setPathMap={setPathMap}
-                  pathSearchTerm={pathSearchTerm}
-                  pathCurrentLocation={pathCurrentLocation}
-                  setPathCurrentLocation={setPathCurrentLocation}
-                  pathPlaceInfo={pathPlaceInfo}
-                  pathSelectedPlace={pathSelectedPlace}
-                  pathDirections={pathDirections}
-                  setPathDirections={setPathDirections}
-                  pathSelectedLocation={pathSelectedLocation}
-                  pathShowDirections={pathShowDirections}
-                />
-              ) : pathOption === "Steps" ? (
-                <Stepview />
-              ) : (
-                <Pathview />
               )}
-            </>
+            </div>
+            <div className="maps-content-area1">
+              <div className="path-options-div">
+                <div className="path-options">
+                  <div
+                    className="each-path-opt"
+                    onClick={() => {
+                      setPathOption("Path View");
+                    }}
+                    style={{
+                      background: pathOption === "Path View" ? "#F1F4F6" : "",
+                    }}
+                  >
+                    Path View
+                  </div>
+
+                  <div
+                    className="each-path-opt"
+                    onClick={() => {
+                      setPathOption("Map View");
+                    }}
+                    style={{
+                      background: pathOption === "Map View" ? "#F1F4F6" : "",
+                    }}
+                  >
+                    Map View
+                  </div>
+
+                  <div
+                    className="each-path-opt"
+                    onClick={() => {
+                      setPathOption("Steps");
+                    }}
+                    style={{
+                      background: pathOption === "Steps" ? "#F1F4F6" : "",
+                    }}
+                  >
+                    Steps
+                  </div>
+                </div>
+              </div>
+              <>
+                {pathOption === "Map View" ? (
+                  <MapComponent
+                    pathMap={pathMap}
+                    setPathMap={setPathMap}
+                    pathSearchTerm={pathSearchTerm}
+                    pathCurrentLocation={pathCurrentLocation}
+                    setPathCurrentLocation={setPathCurrentLocation}
+                    pathPlaceInfo={pathPlaceInfo}
+                    pathSelectedPlace={pathSelectedPlace}
+                    pathDirections={pathDirections}
+                    setPathDirections={setPathDirections}
+                    pathSelectedLocation={pathSelectedLocation}
+                    pathShowDirections={pathShowDirections}
+                  />
+                ) : pathOption === "Steps" ? (
+                  <Stepview />
+                ) : (
+                  <Pathview />
+                )}
+              </>
+            </div>
           </div>
-        </div>
-      </LoadScript>
+        </LoadScript>
+      )}
     </div>
   );
 };

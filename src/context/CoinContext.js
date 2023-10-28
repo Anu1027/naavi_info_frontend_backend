@@ -159,6 +159,7 @@ export const CoinContextProvider = ({ children }) => {
   const [creatingPath, setCreatingPath] = useState(false);
   const [mypathsMenu, setMypathsMenu] = useState("Paths");
   const [currentStepData, setCurrentStepData] = useState([]);
+  const [showPathDetails, setShowPathDetails] = useState(false);
 
   useEffect(() => {
     if (coinType == "bonds" || coinType == "moneyMarkets") {
@@ -418,6 +419,8 @@ export const CoinContextProvider = ({ children }) => {
         setMypathsMenu,
         currentStepData,
         setCurrentStepData,
+        showPathDetails,
+        setShowPathDetails,
       }}
     >
       {children}
