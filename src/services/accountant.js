@@ -23,7 +23,7 @@ export const GetAllSpecialties = () => {
 export const GetAllAccountants = async (userEmail) => {
   try {
     const response = await axios.get(
-      `https://teller2.apimachine.com/admin/allBankers?followerEmail=${userEmail}&category=accountants`
+      `https://teller2.apimachine.com/admin/allBankers?followerEmail=${userEmail}&category=naavi partners`
       // {
       //   params: {
       //       category:"accountants"
@@ -247,7 +247,7 @@ export const UnfollowBrand = async (object, data) => {
 export const GetAllAccountantsWithoutFollowers = async () => {
   try {
     const response = await axios.get(
-      `https://teller2.apimachine.com/admin/allBankers?category=accountants`
+      `https://teller2.apimachine.com/admin/allBankers?category=naavi partners`
     );
     return response;
   } catch (error) {
