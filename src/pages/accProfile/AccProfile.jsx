@@ -657,7 +657,7 @@ const AccProfile = () => {
         // console.log(result, "accountantStatus result");
         if (result === "marketmakers") {
           setAccStatus("Private");
-        } else if (result === "accountants") {
+        } else if (result === "naavi partners") {
           setAccStatus("Public");
         }
       });
@@ -1288,6 +1288,7 @@ const AccProfile = () => {
                             minWidth: "calc(80vw - 56%)",
                             height: "calc(100% - 70px)",
                             position: "absolute",
+                            display: "flex",
                           }}
                         >
                           <LoadingAnimation1 icon={lg1} width={200} />
