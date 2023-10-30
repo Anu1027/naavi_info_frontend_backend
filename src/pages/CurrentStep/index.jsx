@@ -67,9 +67,9 @@ const CurrentStep = () => {
           <div className="macro-view-box">
             <div className="macro-text">Macro View:</div>
             <div className="macro-content">
-              <div className="macro-image-div">
+              {/* <div className="macro-image-div">
                 <img src={dummy} alt="" />
-              </div>
+              </div> */}
               <div className="step-text">{currentStepData?.name}</div>
               <div className="macro-text-div">
                 {currentStepData?.description}
@@ -79,9 +79,9 @@ const CurrentStep = () => {
           <div className="micro-view-box">
             <div className="micro-text">Micro View:</div>
             <div className="micro-content">
-              <div className="micro-image-div">
+              {/* <div className="micro-image-div">
                 <img src={dummy} alt="" />
-              </div>
+              </div> */}
               <div className="step-text">
                 <span style={{ fontStyle: "italic" }}>
                   {currentStepData?.name}
@@ -129,9 +129,9 @@ const CurrentStep = () => {
           <div className="nano-view-box">
             <div className="nano-text">Nano View:</div>
             <div className="nano-content">
-              <div className="nano-image-div">
+              {/* <div className="nano-image-div">
                 <img src={dummy} alt="" />
-              </div>
+              </div> */}
               <div className="step-text">
                 Get A Naavi Certified Vendor To Assist You{" "}
                 <span style={{ fontStyle: "italic" }}>
