@@ -1250,7 +1250,7 @@ const AccProfile = () => {
                                 accStatus === "Public" ? "#F1F4F6" : "",
                             }}
                             onClick={() => {
-                              changeStatus("accountants");
+                              changeStatus("naavi partners");
                             }}
                           >
                             Public
