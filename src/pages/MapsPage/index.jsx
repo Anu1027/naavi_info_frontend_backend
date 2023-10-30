@@ -21,6 +21,7 @@ import immigrationIcon from "../../static/images/mapspage/immigrationIcon.svg";
 import plus from "../../static/images/mapspage/plus.svg";
 import close from "../../static/images/mapspage/close.svg";
 import hamIcon from "../../static/images/icons/hamIcon.svg";
+import Pathview from "./PathView";
 
 const libraries = ["places"];
 
@@ -51,6 +52,7 @@ const MapsPage = () => {
   const [directions, setDirections] = useState(null);
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [showDirections, setShowDirections] = useState(true);
+  const [pathOption, setPathOption] = useState("Path View");
 
   const handleAddContainer = () => {
     const lastContainer = containers[containers.length - 1];
@@ -393,19 +395,51 @@ const MapsPage = () => {
             </div>
           </div>
           <div className="maps-content-area">
-            <GoogleMapComponent
-              map={map}
-              setMap={setMap}
-              searchTerm={searchTerm}
-              currentLocation={currentLocation}
-              setCurrentLocation={setCurrentLocation}
-              placeInfo={placeInfo}
-              selectedPlace={selectedPlace}
-              directions={directions}
-              setDirections={setDirections}
-              selectedLocation={selectedLocation}
-              showDirections={showDirections}
-            />
+            <div className="path-options-div1">
+              <div className="path-options1">
+                <div className="each-path-opt1">Path View</div>
+                <div
+                  className="toggleContainer2"
+                  onClick={() => {
+                    if (pathOption === "Path View") {
+                      setPathOption("Map View");
+                    } else {
+                      setPathOption("Path View");
+                    }
+                  }}
+                >
+                  <div
+                    className="toggle2"
+                    style={{
+                      transform:
+                        pathOption === "Path View"
+                          ? "translateX(0px)"
+                          : "translateX(20px)",
+                    }}
+                  >
+                    &nbsp;
+                  </div>
+                </div>
+                <div className="each-path-opt1">Map View</div>
+              </div>
+            </div>
+            {pathOption === "Map View" ? (
+              <GoogleMapComponent
+                map={map}
+                setMap={setMap}
+                searchTerm={searchTerm}
+                currentLocation={currentLocation}
+                setCurrentLocation={setCurrentLocation}
+                placeInfo={placeInfo}
+                selectedPlace={selectedPlace}
+                directions={directions}
+                setDirections={setDirections}
+                selectedLocation={selectedLocation}
+                showDirections={showDirections}
+              />
+            ) : (
+              <Pathview />
+            )}
           </div>
         </div>
       </LoadScript>

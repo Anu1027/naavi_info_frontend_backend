@@ -103,6 +103,7 @@
         padding: 1rem;
         border-bottom: 1px solid #e5e5e5;
         gap: 2rem;
+        height: 6.5rem;
 
         .each-icon {
           display: flex;
@@ -271,6 +272,55 @@
     .maps-content-area {
       width: 75%;
       height: 100%;
+
+      .path-options-div1 {
+        width: 100%;
+        height: 3rem;
+        display: flex;
+        justify-content: center;
+
+        .path-options1 {
+          width: fit-content;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          padding: 1rem 2rem;
+          border: 0.5px solid #e5e5e5;
+          border-bottom-left-radius: 45px;
+          border-bottom-right-radius: 45px;
+          border-top: none;
+
+          .each-path-opt1 {
+            font-size: 0.8rem;
+            padding: 5px 1.5rem;
+            border-radius: 25px;
+          }
+
+          .toggleContainer2 {
+            width: 2.5rem;
+            border: 1px solid #d9d9d9;
+            border-radius: 35px;
+            margin-left: 10px;
+            margin-right: 10px;
+            cursor: pointer;
+
+            .toggle2 {
+              margin: 2px;
+              width: 14px;
+              height: 14px;
+              background: linear-gradient(
+                90deg,
+                #47b4d5 0.02%,
+                #29449d 119.26%
+              );
+              border-radius: 50%;
+              transition: all 0.5s ease;
+              cursor: pointer;
+            }
+          }
+        }
+      }
     }
   }
 }
