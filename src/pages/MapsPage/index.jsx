@@ -218,8 +218,12 @@ const MapsPage = () => {
             <div>
               <p>Resources</p>
             </div>
-            <div>
-              <p>Vendors</p>
+            <div
+              onClick={() => {
+                navigate("/directory/nodes");
+              }}
+            >
+              <p>Partners</p>
             </div>
           </div>
           <div className="btns-div">
