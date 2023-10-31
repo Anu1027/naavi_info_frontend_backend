@@ -53,6 +53,8 @@ const MapsPage = () => {
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [showDirections, setShowDirections] = useState(true);
   const [pathOption, setPathOption] = useState("Path View");
+  const [switchToStep, setSwitchToStep] = useState(false);
+  const [switchStepsDetails, setSwitchStepsDetails] = useState([]);
 
   const handleAddContainer = () => {
     const lastContainer = containers[containers.length - 1];
@@ -409,6 +411,8 @@ const MapsPage = () => {
                       setPathOption("Map View");
                     } else {
                       setPathOption("Path View");
+                      setSwitchToStep(false);
+                      setSwitchStepsDetails([]);
                     }
                   }}
                 >
@@ -442,7 +446,12 @@ const MapsPage = () => {
                 showDirections={showDirections}
               />
             ) : (
-              <Pathview />
+              <Pathview
+                switchToStep={switchToStep}
+                setSwitchToStep={setSwitchToStep}
+                switchStepsDetails={switchStepsDetails}
+                setSwitchStepsDetails={setSwitchStepsDetails}
+              />
             )}
           </div>
         </div>
