@@ -1,14 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import GoogleMapComponent from "./GoogleMapComponent";
 import "./mapspage.scss";
-import {
-  useJsApiLoader,
-  GoogleMap,
-  Marker,
-  Autocomplete,
-} from "@react-google-maps/api";
-import { LoadScript } from "@react-google-maps/api";
+// import {
+//   useJsApiLoader,
+//   GoogleMap,
+//   Marker,
+//   Autocomplete,
+// } from "@react-google-maps/api";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useCoinContextData } from "../../context/CoinContext";
@@ -22,6 +20,7 @@ import plus from "../../static/images/mapspage/plus.svg";
 import close from "../../static/images/mapspage/close.svg";
 import hamIcon from "../../static/images/icons/hamIcon.svg";
 import Pathview from "./PathView";
+import MapComponent from "./MapComponent";
 
 const libraries = ["places"];
 
@@ -191,6 +190,259 @@ const MapsPage = () => {
 
   return (
     <div className="mapspage">
+      <div className="maps-navbar">
+        <div className="hamMenu">
+          <img src={hamIcon} alt="" />
+        </div>
+        <div
+          className="logo"
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          <img src={logo} alt="logo" />
+        </div>
+        <div className="menu-items">
+          <div>
+            <p>Paths</p>
+          </div>
+          <div>
+            <p>Explore</p>
+          </div>
+          <div>
+            <p>Products</p>
+          </div>
+          <div>
+            <p>Resources</p>
+          </div>
+          <div
+            onClick={() => {
+              navigate("/directory/nodes");
+            }}
+          >
+            <p>Partners</p>
+          </div>
+        </div>
+        <div className="btns-div">
+          <div
+            className="gs-Btn"
+            onClick={() => {
+              navigate("/login");
+            }}
+          >
+            Get Started
+          </div>
+        </div>
+      </div>
+      <div className="maps-color-box"></div>
+      <div className="maps-container">
+        <div className="maps-sidebar">
+          <div className="top-icons">
+            <div
+              className="each-icon"
+              onClick={() => {
+                setOption("Career");
+              }}
+            >
+              <div
+                className="border-div"
+                style={{
+                  border:
+                    option === "Career"
+                      ? "1px solid #100F0D"
+                      : "1px solid #e7e7e7",
+                }}
+              >
+                <img src={careerIcon} alt="" />
+              </div>
+              <div
+                className="icon-name-txt"
+                style={{
+                  fontWeight: option === "Career" ? "600" : "",
+                }}
+              >
+                Career
+              </div>
+            </div>
+            <div
+              className="each-icon"
+              onClick={() => {
+                setOption("Education");
+              }}
+            >
+              <div
+                className="border-div"
+                style={{
+                  border:
+                    option === "Education"
+                      ? "1px solid #100F0D"
+                      : "1px solid #e7e7e7",
+                }}
+              >
+                <img src={educationIcon} alt="" />
+              </div>
+              <div
+                className="icon-name-txt"
+                style={{
+                  fontWeight: option === "Education" ? "600" : "",
+                }}
+              >
+                Education
+              </div>
+            </div>
+            <div
+              className="each-icon"
+              onClick={() => {
+                setOption("Immigration");
+              }}
+            >
+              <div
+                className="border-div"
+                style={{
+                  border:
+                    option === "Immigration"
+                      ? "1px solid #100F0D"
+                      : "1px solid #e7e7e7",
+                }}
+              >
+                <img src={immigrationIcon} alt="" />
+              </div>
+              <div
+                className="icon-name-txt"
+                style={{
+                  fontWeight: option === "Immigration" ? "600" : "",
+                }}
+              >
+                Immigration
+              </div>
+            </div>
+          </div>
+          <div className="mid-area">
+            <div className="input-div1">
+              <input type="text" placeholder="Choose Starting Coordinates.." />
+            </div>
+            {containers.map((container, index) => (
+              <div className="destination-container" key={container.id}>
+                <div className="dest-txt">
+                  <div>Destination {container.id}</div>
+                  {container.removable && (
+                    <div onClick={() => handleRemoveContainer(container.id)}>
+                      <img src={close} alt="" />
+                    </div>
+                  )}
+                </div>
+                <div className="input-div2">
+                  {/* <Autocomplete
+                    onLoad={(autocomplete) => {
+                      autocompleteRef.current = autocomplete;
+                      autocomplete?.setBounds(map?.getBounds());
+                    }}
+                    onPlaceChanged={handlePlaceSelect}
+                  > */}
+                    <input
+                      type="text"
+                      placeholder="Where Do You Want To Go?"
+                      // value={container.inputValue1}
+                      // onChange={(e) => {
+                      //   handleInputChange(e, container.id, 1);
+                      //   setSearchTerm(e.target.value);
+                      // }}
+                      value={selectedPlace || ""}
+                      onChange={(e) => {
+                        handleInputChange(e, container.id, 1);
+                        setSelectedPlace(e.target.value);
+                      }}
+                    />
+                  {/* </Autocomplete> */}
+                </div>
+                <div className="input-div2">
+                  {/* <input
+                      type="text"
+                      placeholder="By When?"
+                      // value={container.inputValue2}
+                      // onChange={(e) => handleInputChange(e, container.id, 2)}
+                      // onFocus={() => setShowDatePicker(true)}
+                      // onBlur={() => setShowDatePicker(false)}
+                      onFocus={(e) => e.target.blur()}
+                      value={
+                        selectedDate ? selectedDate.toLocaleDateString() : ""
+                      }
+                    /> */}
+                  <DatePicker
+                    selected={selectedDate}
+                    onChange={handleDateChange}
+                    dateFormat="MM/dd/yyyy"
+                    showMonthDropdown
+                    showYearDropdown
+                    dropdownMode="select"
+                    customInput={<CustomInput />}
+                  />
+                </div>
+              </div>
+            ))}
+            <div className="add-div" onClick={handleAddContainer}>
+              <img src={plus} alt="" />
+              Add Destination
+            </div>
+            <div className="maps-btns-div">
+              <div className="gs-Btn-maps">Get Started</div>
+              <div className="reset-btn" onClick={handleResetContainer}>
+                Reset
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="maps-content-area">
+          <div className="path-options-div1">
+            <div className="path-options1">
+              <div className="each-path-opt1">Path View</div>
+              <div
+                className="toggleContainer2"
+                onClick={() => {
+                  if (pathOption === "Path View") {
+                    setPathOption("Map View");
+                  } else {
+                    setPathOption("Path View");
+                    setSwitchToStep(false);
+                    setSwitchStepsDetails([]);
+                  }
+                }}
+              >
+                <div
+                  className="toggle2"
+                  style={{
+                    transform:
+                      pathOption === "Path View"
+                        ? "translateX(0px)"
+                        : "translateX(20px)",
+                  }}
+                >
+                  &nbsp;
+                </div>
+              </div>
+              <div className="each-path-opt1">Map View</div>
+            </div>
+          </div>
+          {pathOption === "Map View" ? (
+            <MapComponent />
+          ) : (
+            <Pathview
+              switchToStep={switchToStep}
+              setSwitchToStep={setSwitchToStep}
+              switchStepsDetails={switchStepsDetails}
+              setSwitchStepsDetails={setSwitchStepsDetails}
+            />
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default MapsPage;
+
+{
+  /* <div className="mapspage">
       <LoadScript
         googleMapsApiKey="AIzaSyB5MJ2jMHzl_ghkbxOsyPmeBmYw_sUsIRQ"
         libraries={libraries}
@@ -364,18 +616,18 @@ const MapsPage = () => {
                     </Autocomplete>
                   </div>
                   <div className="input-div2">
-                    {/* <input
-                      type="text"
-                      placeholder="By When?"
-                      // value={container.inputValue2}
-                      // onChange={(e) => handleInputChange(e, container.id, 2)}
-                      // onFocus={() => setShowDatePicker(true)}
-                      // onBlur={() => setShowDatePicker(false)}
-                      onFocus={(e) => e.target.blur()}
-                      value={
-                        selectedDate ? selectedDate.toLocaleDateString() : ""
-                      }
-                    /> */}
+                    // <input
+                    //   type="text"
+                    //   placeholder="By When?"
+                    //   // value={container.inputValue2}
+                    //   // onChange={(e) => handleInputChange(e, container.id, 2)}
+                    //   // onFocus={() => setShowDatePicker(true)}
+                    //   // onBlur={() => setShowDatePicker(false)}
+                    //   onFocus={(e) => e.target.blur()}
+                    //   value={
+                    //     selectedDate ? selectedDate.toLocaleDateString() : ""
+                    //   }
+                    // /> 
                     <DatePicker
                       selected={selectedDate}
                       onChange={handleDateChange}
@@ -456,8 +708,5 @@ const MapsPage = () => {
           </div>
         </div>
       </LoadScript>
-    </div>
-  );
-};
-
-export default MapsPage;
+    </div> */
+}
