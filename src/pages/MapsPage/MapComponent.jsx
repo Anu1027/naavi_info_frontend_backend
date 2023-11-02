@@ -74,7 +74,6 @@ const MapComponent = () => {
                     geo.properties.name.toLowerCase()
                 );
                 // console.log(countryData, "countryData");
-                // const [x, y] = geo.properties.centroid;
                 // Calculate the approximate center using the coordinates
                 const coordinates = geo.geometry.coordinates;
                 const [minX, minY, maxX, maxY] = getBoundingBox(coordinates);
