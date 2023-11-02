@@ -1,12 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "./mapspage.scss";
-// import {
-//   useJsApiLoader,
-//   GoogleMap,
-//   Marker,
-//   Autocomplete,
-// } from "@react-google-maps/api";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useCoinContextData } from "../../context/CoinContext";
