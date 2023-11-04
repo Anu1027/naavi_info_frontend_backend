@@ -18,7 +18,7 @@ const Pathview = ({
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`https://careers.marketsverse.com/paths/get`)
+      .post(`https://careers.marketsverse.com/paths/get`)
       .then((response) => {
         let result = response?.data?.data;
         // console.log(result, "path view result");
@@ -149,7 +149,8 @@ const Pathview = ({
       ) : (
         <>
           <div className="pathviewNav1">
-            <div className="name-div1">Name</div>
+            <div className="name-div1">School</div>
+            <div className="name-div1">Program</div>
             <div className="description-div1">Description</div>
           </div>
           <div className="pathviewContent1">
@@ -179,7 +180,8 @@ const Pathview = ({
                       setSwitchToStep(true);
                     }}
                   >
-                    <div className="each-pv-name1">{e?.nameOfPath}</div>
+                    <div className="each-pv-name1">{e?.destination_institution}</div>
+                    <div className="each-pv-name1">{e?.program}</div>
                     <div className="each-pv-desc1">{e?.description}</div>
                   </div>
                 );
