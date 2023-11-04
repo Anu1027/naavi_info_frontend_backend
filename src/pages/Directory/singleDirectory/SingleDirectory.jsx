@@ -12,6 +12,7 @@ import { GetAllAccountantsWithoutFollowers } from "../../../services/accountant"
 import { useLocation } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import { useNavigate } from "react-router-dom";
+import { useCoinContextData } from "../../../context/CoinContext";
 
 //images
 import logo from "../../../static/images/logo.svg";
@@ -29,6 +30,7 @@ const SingleDirectory = () => {
   const [loading, setLoading] = useState(true);
   const [selectedProduct, setSelectedProduct] = useState([]);
   const [showProductInfo, setShowProductInfo] = useState(false);
+  const { preLoginMenu, setPreLoginMenu } = useCoinContextData();
 
   useEffect(() => {
     // console.log(pathname.slice(pathname.lastIndexOf("/")), "pathname");
@@ -128,37 +130,32 @@ const SingleDirectory = () => {
           <div
             onClick={() => {
               navigate("/");
+              setPreLoginMenu("About Us");
             }}
           >
-            <p>Paths</p>
+            <p style={{ fontWeight: preLoginMenu === "About Us" ? "600" : "" }}>
+              About Us
+            </p>
           </div>
           <div
             onClick={() => {
-              navigate("/");
+              navigate("/maps");
+              setPreLoginMenu("Paths");
             }}
           >
-            <p>Explore</p>
-          </div>
-          <div
-            onClick={() => {
-              navigate("/");
-            }}
-          >
-            <p>Products</p>
-          </div>
-          <div
-            onClick={() => {
-              navigate("/");
-            }}
-          >
-            <p>Resources</p>
+            <p style={{ fontWeight: preLoginMenu === "Paths" ? "600" : "" }}>
+              Paths
+            </p>
           </div>
           <div
             onClick={() => {
               navigate("/directory/nodes");
+              setPreLoginMenu("Partners");
             }}
           >
-            <p>Partners</p>
+            <p style={{ fontWeight: preLoginMenu === "Partners" ? "600" : "" }}>
+              Partners
+            </p>
           </div>
         </div>
         <div className="nodes-btns-div">

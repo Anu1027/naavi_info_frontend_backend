@@ -28,7 +28,8 @@ const MapsPage = () => {
   //   showDirections,
   //   setShowDirections,
   // } = useCoinContextData();
-  const [option, setOption] = useState("Career");
+  const { preLoginMenu, setPreLoginMenu } = useCoinContextData();
+  const [option, setOption] = useState("Education");
   const [containers, setContainers] = useState([
     { id: 1, inputValue1: "", inputValue2: "", removable: false },
   ]);
@@ -197,24 +198,35 @@ const MapsPage = () => {
           <img src={logo} alt="logo" />
         </div>
         <div className="menu-items">
-          <div>
-            <p>Paths</p>
+          <div
+            onClick={() => {
+              navigate("/");
+              setPreLoginMenu("About Us");
+            }}
+          >
+            <p style={{ fontWeight: preLoginMenu === "About Us" ? "600" : "" }}>
+              About Us
+            </p>
           </div>
-          <div>
-            <p>Explore</p>
-          </div>
-          <div>
-            <p>Products</p>
-          </div>
-          <div>
-            <p>Resources</p>
+          <div
+            onClick={() => {
+              navigate("/maps");
+              setPreLoginMenu("Paths");
+            }}
+          >
+            <p style={{ fontWeight: preLoginMenu === "Paths" ? "600" : "" }}>
+              Paths
+            </p>
           </div>
           <div
             onClick={() => {
               navigate("/directory/nodes");
+              setPreLoginMenu("Partners");
             }}
           >
-            <p>Partners</p>
+            <p style={{ fontWeight: preLoginMenu === "Partners" ? "600" : "" }}>
+              Partners
+            </p>
           </div>
         </div>
         <div className="btns-div">
@@ -234,8 +246,12 @@ const MapsPage = () => {
           <div className="top-icons">
             <div
               className="each-icon"
-              onClick={() => {
-                setOption("Career");
+              // onClick={() => {
+              //   setOption("Career");
+              // }}
+              style={{
+                opacity: 0.5,
+                cursor: "not-allowed",
               }}
             >
               <div
@@ -286,8 +302,12 @@ const MapsPage = () => {
             </div>
             <div
               className="each-icon"
-              onClick={() => {
-                setOption("Immigration");
+              // onClick={() => {
+              //   setOption("Immigration");
+              // }}
+              style={{
+                opacity: 0.5,
+                cursor: "not-allowed",
               }}
             >
               <div
@@ -333,20 +353,20 @@ const MapsPage = () => {
                     }}
                     onPlaceChanged={handlePlaceSelect}
                   > */}
-                    <input
-                      type="text"
-                      placeholder="Where Do You Want To Go?"
-                      // value={container.inputValue1}
-                      // onChange={(e) => {
-                      //   handleInputChange(e, container.id, 1);
-                      //   setSearchTerm(e.target.value);
-                      // }}
-                      value={selectedPlace || ""}
-                      onChange={(e) => {
-                        handleInputChange(e, container.id, 1);
-                        setSelectedPlace(e.target.value);
-                      }}
-                    />
+                  <input
+                    type="text"
+                    placeholder="Where Do You Want To Go?"
+                    // value={container.inputValue1}
+                    // onChange={(e) => {
+                    //   handleInputChange(e, container.id, 1);
+                    //   setSearchTerm(e.target.value);
+                    // }}
+                    value={selectedPlace || ""}
+                    onChange={(e) => {
+                      handleInputChange(e, container.id, 1);
+                      setSelectedPlace(e.target.value);
+                    }}
+                  />
                   {/* </Autocomplete> */}
                 </div>
                 <div className="input-div2">

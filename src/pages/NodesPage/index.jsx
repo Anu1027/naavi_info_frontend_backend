@@ -9,6 +9,7 @@ import useWindowDimensions from "../../utils/WindowSize";
 import { useStore } from "../../components/store/store.ts";
 import MobMenu from "../../components/mobMenu/mobMenu";
 import Skeleton from "react-loading-skeleton";
+import { useCoinContextData } from "../../context/CoinContext";
 
 //images
 import logo from "../../static/images/logo.svg";
@@ -22,6 +23,7 @@ const NodesPage = () => {
   const [filteredAccountantsData, setFilteredAccountantsData] = useState([]);
   // const [backgroundColor, setBackgroundColor] = useState("white");
   const [loading, setLoading] = useState(false);
+  const { preLoginMenu, setPreLoginMenu } = useCoinContextData();
 
   // useEffect(() => {
   //   let scrollDIv =
@@ -105,37 +107,32 @@ const NodesPage = () => {
           <div
             onClick={() => {
               navigate("/");
+              setPreLoginMenu("About Us");
             }}
           >
-            <p>Paths</p>
+            <p style={{ fontWeight: preLoginMenu === "About Us" ? "600" : "" }}>
+              About Us
+            </p>
           </div>
           <div
             onClick={() => {
-              navigate("/");
+              navigate("/maps");
+              setPreLoginMenu("Paths");
             }}
           >
-            <p>Explore</p>
-          </div>
-          <div
-            onClick={() => {
-              navigate("/");
-            }}
-          >
-            <p>Products</p>
-          </div>
-          <div
-            onClick={() => {
-              navigate("/");
-            }}
-          >
-            <p>Resources</p>
+            <p style={{ fontWeight: preLoginMenu === "Paths" ? "600" : "" }}>
+              Paths
+            </p>
           </div>
           <div
             onClick={() => {
               navigate("/directory/nodes");
+              setPreLoginMenu("Partners");
             }}
           >
-            <p>Partners</p>
+            <p style={{ fontWeight: preLoginMenu === "Partners" ? "600" : "" }}>
+              Partners
+            </p>
           </div>
         </div>
         <div className="nodes-btns-div">
