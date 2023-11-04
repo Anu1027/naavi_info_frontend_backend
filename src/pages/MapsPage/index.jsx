@@ -29,7 +29,16 @@ const MapsPage = () => {
   //   showDirections,
   //   setShowDirections,
   // } = useCoinContextData();
-  const { preLoginMenu, setPreLoginMenu } = useCoinContextData();
+  const {
+    preLoginMenu,
+    setPreLoginMenu,
+    schoolSearch,
+    setSchoolSearch,
+    programSearch,
+    setProgramSearch,
+    showDdown,
+    setShowDdown,
+  } = useCoinContextData();
   const [option, setOption] = useState("Education");
   const [containers, setContainers] = useState([
     { id: 1, inputValue1: "", inputValue2: "", removable: false },
@@ -50,6 +59,23 @@ const MapsPage = () => {
   const [pathOption, setPathOption] = useState("Path View");
   const [switchToStep, setSwitchToStep] = useState(false);
   const [switchStepsDetails, setSwitchStepsDetails] = useState([]);
+  const [grade, setGrade] = useState([]);
+  const [gradeAvg, setGradeAvg] = useState([]);
+  const [curriculum, setCurriculum] = useState([]);
+  const [stream, setStream] = useState([]);
+  const [finance, setFinance] = useState([]);
+  const streamList = ["MPC", "BIPC", "CEC", "MEC", "HEC"];
+  const curriculumList = ["IB", "IGCSE", "CBSE", "ICSE", "Nordic"];
+  const gradeList = ["9", "10", "11", "12"];
+  const gradePointAvg = [
+    "0% - 35%",
+    "36% - 60%",
+    "61% - 75%",
+    "76% - 85%",
+    "86% - 95%",
+    "96% - 100%",
+  ];
+  const financeList = ["0-25L", "25L-75L", "75L-3CR", "3CR+", "Other"];
 
   const handleAddContainer = () => {
     const lastContainer = containers[containers.length - 1];
@@ -183,6 +209,56 @@ const MapsPage = () => {
       onBlur={() => setShowDatePicker(false)}
     />
   );
+
+  const handleGrade = (item) => {
+    if (grade.includes(item)) {
+      // If the grade is already selected, remove it
+      setGrade(grade.filter((o) => o !== item));
+    } else {
+      // If the grade is not selected, add it
+      setGrade([...grade, item]);
+    }
+  };
+
+  const handleGradeAvg = (item) => {
+    if (gradeAvg.includes(item)) {
+      // If the gradeAvg is already selected, remove it
+      setGradeAvg(gradeAvg.filter((o) => o !== item));
+    } else {
+      // If the gradeAvg is not selected, add it
+      setGradeAvg([...gradeAvg, item]);
+    }
+  };
+
+  const handleCurriculum = (item) => {
+    if (curriculum.includes(item)) {
+      // If the curriculum is already selected, remove it
+      setCurriculum(curriculum.filter((o) => o !== item));
+    } else {
+      // If the curriculum is not selected, add it
+      setCurriculum([...curriculum, item]);
+    }
+  };
+
+  const handleStream = (item) => {
+    if (stream.includes(item)) {
+      // If the stream is already selected, remove it
+      setStream(stream.filter((o) => o !== item));
+    } else {
+      // If the stream is not selected, add it
+      setStream([...stream, item]);
+    }
+  };
+
+  const handleFinance = (item) => {
+    if (finance.includes(item)) {
+      // If the finance is already selected, remove it
+      setFinance(finance.filter((o) => o !== item));
+    } else {
+      // If the finance is not selected, add it
+      setFinance([...finance, item]);
+    }
+  };
 
   return (
     <div className="mapspage">
@@ -343,42 +419,228 @@ const MapsPage = () => {
               </div>
             </div>
             <div className="each-filter-div">
-              <div className="visible-div">
+              <div
+                className="visible-div"
+                onClick={() => {
+                  if (showDdown === "Grade") {
+                    setShowDdown("");
+                  } else {
+                    setShowDdown("Grade");
+                  }
+                }}
+              >
                 <div>You’re Current Grade</div>
                 <div>
-                  <img src={arrow} alt="" />
+                  <img
+                    src={arrow}
+                    alt=""
+                    style={{
+                      transform: showDdown === "Grade" ? "rotate(180deg)" : "",
+                    }}
+                  />
+                </div>
+              </div>
+              <div
+                className="hidden-div"
+                style={{
+                  display: showDdown === "Grade" ? "flex" : "none",
+                }}
+              >
+                <div
+                  className="optioncardWrapper"
+                  style={{ width: "100%", flexWrap: "wrap", gap: "1rem" }}
+                >
+                  {gradeList.map((item) => (
+                    <div
+                      className={
+                        grade.includes(item)
+                          ? "optionCardSmallSelected"
+                          : "optionCardSmall"
+                      }
+                      onClick={(e) => handleGrade(item)}
+                    >
+                      {item}
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
             <div className="each-filter-div">
-              <div className="visible-div">
+              <div
+                className="visible-div"
+                onClick={() => {
+                  if (showDdown === "Grade Point") {
+                    setShowDdown("");
+                  } else {
+                    setShowDdown("Grade Point");
+                  }
+                }}
+              >
                 <div>You’re Current Grade Point Avg</div>
                 <div>
-                  <img src={arrow} alt="" />
+                  <img
+                    src={arrow}
+                    alt=""
+                    style={{
+                      transform:
+                        showDdown === "Grade Point" ? "rotate(180deg)" : "",
+                    }}
+                  />
+                </div>
+              </div>
+              <div
+                className="hidden-div1"
+                style={{
+                  display: showDdown === "Grade Point" ? "flex" : "none",
+                }}
+              >
+                <div className="optionCardFullWrapper">
+                  {gradePointAvg.map((item) => (
+                    <div
+                      className={
+                        gradeAvg.includes(item)
+                          ? "optionCardFullSelected"
+                          : "optionCardFull"
+                      }
+                      onClick={(e) => handleGradeAvg(item)}
+                    >
+                      {item}
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
             <div className="each-filter-div">
-              <div className="visible-div">
+              <div
+                className="visible-div"
+                onClick={() => {
+                  if (showDdown === "Stream") {
+                    setShowDdown("");
+                  } else {
+                    setShowDdown("Stream");
+                  }
+                }}
+              >
                 <div>You’re Current Stream</div>
                 <div>
-                  <img src={arrow} alt="" />
+                  <img
+                    src={arrow}
+                    alt=""
+                    style={{
+                      transform: showDdown === "Stream" ? "rotate(180deg)" : "",
+                    }}
+                  />
+                </div>
+              </div>
+              <div
+                className="hidden-div1"
+                style={{
+                  display: showDdown === "Stream" ? "flex" : "none",
+                }}
+              >
+                <div className="optionCardFullWrapper">
+                  {streamList.map((item) => (
+                    <div
+                      className={
+                        stream.includes(item)
+                          ? "optionCardFullSelected"
+                          : "optionCardFull"
+                      }
+                      onClick={(e) => handleStream(item)}
+                    >
+                      {item}
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
             <div className="each-filter-div">
-              <div className="visible-div">
+              <div
+                className="visible-div"
+                onClick={() => {
+                  if (showDdown === "Curriculum") {
+                    setShowDdown("");
+                  } else {
+                    setShowDdown("Curriculum");
+                  }
+                }}
+              >
                 <div>You’re Current Curriculum</div>
                 <div>
-                  <img src={arrow} alt="" />
+                  <img
+                    src={arrow}
+                    alt=""
+                    style={{
+                      transform:
+                        showDdown === "Curriculum" ? "rotate(180deg)" : "",
+                    }}
+                  />
+                </div>
+              </div>
+              <div
+                className="hidden-div1"
+                style={{
+                  display: showDdown === "Curriculum" ? "flex" : "none",
+                }}
+              >
+                <div className="optionCardFullWrapper">
+                  {curriculumList.map((item) => (
+                    <div
+                      className={
+                        curriculum.includes(item)
+                          ? "optionCardFullSelected"
+                          : "optionCardFull"
+                      }
+                      onClick={(e) => handleCurriculum(item)}
+                    >
+                      {item}
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
             <div className="each-filter-div">
-              <div className="visible-div">
+              <div
+                className="visible-div"
+                onClick={() => {
+                  if (showDdown === "Financial") {
+                    setShowDdown("");
+                  } else {
+                    setShowDdown("Financial");
+                  }
+                }}
+              >
                 <div>You’re Current Financial Position</div>
                 <div>
-                  <img src={arrow} alt="" />
+                  <img
+                    src={arrow}
+                    alt=""
+                    style={{
+                      transform:
+                        showDdown === "Financial" ? "rotate(180deg)" : "",
+                    }}
+                  />
+                </div>
+              </div>
+              <div
+                className="hidden-div1"
+                style={{
+                  display: showDdown === "Financial" ? "flex" : "none",
+                }}
+              >
+                <div className="optionCardFullWrapper">
+                  {financeList.map((item) => (
+                    <div
+                      className={
+                        finance.includes(item)
+                          ? "optionCardFullSelected"
+                          : "optionCardFull"
+                      }
+                      onClick={(e) => handleFinance(item)}
+                    >
+                      {item}
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>

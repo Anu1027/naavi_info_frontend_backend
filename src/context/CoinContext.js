@@ -161,6 +161,9 @@ export const CoinContextProvider = ({ children }) => {
   const [currentStepData, setCurrentStepData] = useState([]);
   const [showPathDetails, setShowPathDetails] = useState(false);
   const [preLoginMenu, setPreLoginMenu] = useState("About Us");
+  const [schoolSearch, setSchoolSearch] = useState("");
+  const [programSearch, setProgramSearch] = useState("");
+  const [showDdown, setShowDdown] = useState("");
 
   useEffect(() => {
     if (coinType == "bonds" || coinType == "moneyMarkets") {
@@ -424,6 +427,12 @@ export const CoinContextProvider = ({ children }) => {
         setShowPathDetails,
         preLoginMenu,
         setPreLoginMenu,
+        schoolSearch,
+        setSchoolSearch,
+        programSearch,
+        setProgramSearch,
+        showDdown,
+        setShowDdown,
       }}
     >
       {children}

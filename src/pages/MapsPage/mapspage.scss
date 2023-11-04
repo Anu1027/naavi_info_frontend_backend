@@ -179,7 +179,6 @@
           display: flex;
           flex-direction: column;
           width: 100%;
-          padding: 2rem 1rem;
           border-bottom: 1px solid #e5e5e5;
 
           .visible-div {
@@ -187,6 +186,27 @@
             width: 100%;
             align-items: center;
             justify-content: space-between;
+            padding: 2rem 1rem;
+            cursor: pointer;
+            transition: all ease 0.2s;
+
+            &:hover {
+              background: rgba(237, 237, 237, 0.368627451);
+            }
+          }
+
+          .hidden-div {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 2rem 1rem;
+          }
+
+          .hidden-div1 {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem 1rem;
           }
         }
 

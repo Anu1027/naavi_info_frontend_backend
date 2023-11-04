@@ -11,6 +11,14 @@ const Pathview = ({
   switchStepsDetails,
   setSwitchStepsDetails,
 }) => {
+  const {
+    schoolSearch,
+    setSchoolSearch,
+    programSearch,
+    setProgramSearch,
+    showDdown,
+    setShowDdown,
+  } = useCoinContextData();
   const [loading, setLoading] = useState(false);
   const [preLoginPathViewData, setPreLoginPathViewData] = useState([]);
   const [isloading, setIsloading] = useState(false);
@@ -180,7 +188,9 @@ const Pathview = ({
                       setSwitchToStep(true);
                     }}
                   >
-                    <div className="each-pv-name1">{e?.destination_institution}</div>
+                    <div className="each-pv-name1">
+                      {e?.destination_institution}
+                    </div>
                     <div className="each-pv-name1">{e?.program}</div>
                     <div className="each-pv-desc1">{e?.description}</div>
                   </div>
