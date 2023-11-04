@@ -6,6 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useCoinContextData } from "../../context/CoinContext";
 import Pathview from "./PathView";
 import MapComponent from "./MapComponent";
+import axios from "axios";
 
 //images
 import logo from "../../static/images/logo.svg";
@@ -21,14 +22,6 @@ const libraries = ["places"];
 
 const MapsPage = () => {
   const navigate = useNavigate();
-  // const {
-  //   directions,
-  //   setDirections,
-  //   selectedLocation,
-  //   setSelectedLocation,
-  //   showDirections,
-  //   setShowDirections,
-  // } = useCoinContextData();
   const {
     preLoginMenu,
     setPreLoginMenu,
@@ -38,6 +31,8 @@ const MapsPage = () => {
     setProgramSearch,
     showDdown,
     setShowDdown,
+    preLoginPathViewData,
+    setPreLoginPathViewData,
   } = useCoinContextData();
   const [option, setOption] = useState("Education");
   const [containers, setContainers] = useState([
@@ -76,6 +71,7 @@ const MapsPage = () => {
     "96% - 100%",
   ];
   const financeList = ["0-25L", "25L-75L", "75L-3CR", "3CR+", "Other"];
+  const [loading1, setLoading1] = useState(false);
 
   const handleAddContainer = () => {
     const lastContainer = containers[containers.length - 1];
@@ -210,6 +206,23 @@ const MapsPage = () => {
     />
   );
 
+  useEffect(() => {
+    setLoading1(true);
+    axios
+      .post(`https://careers.marketsverse.com/paths/get`)
+      .then((response) => {
+        let result = response?.data?.data;
+        // console.log(result, "path view result");
+        setPreLoginPathViewData(result);
+        setLoading1(false);
+      })
+      .catch((error) => {
+        console.log(error, "error in getting pre-login path view result");
+        setPreLoginPathViewData([]);
+        setLoading1(false);
+      });
+  }, []);
+
   const handleGrade = (item) => {
     if (grade.includes(item)) {
       // If the grade is already selected, remove it
@@ -258,6 +271,30 @@ const MapsPage = () => {
       // If the finance is not selected, add it
       setFinance([...finance, item]);
     }
+  };
+
+  const handleFilter = () => {
+    console.log("working..");
+    let obj = {
+      financialSituation: finance,
+      performance: gradeAvg,
+      curriculum: curriculum,
+      grade: grade,
+      stream: stream,
+    };
+    setLoading1(true);
+    axios
+      .post(`https://careers.marketsverse.com/paths/get`, obj)
+      .then((response) => {
+        let result = response?.data?.data;
+        setPreLoginPathViewData(result);
+        setLoading1(false);
+      })
+      .catch((error) => {
+        console.log(error, "error in getting filtered path view result");
+        setPreLoginPathViewData([]);
+        setLoading1(false);
+      });
   };
 
   return (
@@ -645,7 +682,14 @@ const MapsPage = () => {
               </div>
             </div>
             <div className="maps-btns-div">
-              <div className="gs-Btn-maps">Find Paths</div>
+              <div
+                className="gs-Btn-maps"
+                onClick={() => {
+                  handleFilter();
+                }}
+              >
+                Find Paths
+              </div>
             </div>
           </div>
         </div>
@@ -688,6 +732,8 @@ const MapsPage = () => {
               setSwitchToStep={setSwitchToStep}
               switchStepsDetails={switchStepsDetails}
               setSwitchStepsDetails={setSwitchStepsDetails}
+              loading1={loading1}
+              setLoading1={setLoading1}
             />
           )}
         </div>

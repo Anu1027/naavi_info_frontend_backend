@@ -10,6 +10,8 @@ const Pathview = ({
   setSwitchToStep,
   switchStepsDetails,
   setSwitchStepsDetails,
+  loading1,
+  setLoading1
 }) => {
   const {
     schoolSearch,
@@ -18,27 +20,11 @@ const Pathview = ({
     setProgramSearch,
     showDdown,
     setShowDdown,
+    preLoginPathViewData
   } = useCoinContextData();
-  const [loading, setLoading] = useState(false);
-  const [preLoginPathViewData, setPreLoginPathViewData] = useState([]);
+
   const [isloading, setIsloading] = useState(false);
 
-  useEffect(() => {
-    setLoading(true);
-    axios
-      .post(`https://careers.marketsverse.com/paths/get`)
-      .then((response) => {
-        let result = response?.data?.data;
-        // console.log(result, "path view result");
-        setPreLoginPathViewData(result);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.log(error, "error in getting pre-login path view result");
-        setPreLoginPathViewData([]);
-        setLoading(false);
-      });
-  }, []);
 
   const getStepsForSelectedPath = (selectedPath) => {
     setIsloading(true);
@@ -162,7 +148,7 @@ const Pathview = ({
             <div className="description-div1">Description</div>
           </div>
           <div className="pathviewContent1">
-            {loading ? (
+            {loading1 ? (
               Array(10)
                 .fill("")
                 .map((e, i) => {
