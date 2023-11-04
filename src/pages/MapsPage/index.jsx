@@ -4,6 +4,8 @@ import "./mapspage.scss";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useCoinContextData } from "../../context/CoinContext";
+import Pathview from "./PathView";
+import MapComponent from "./MapComponent";
 
 //images
 import logo from "../../static/images/logo.svg";
@@ -13,8 +15,7 @@ import immigrationIcon from "../../static/images/mapspage/immigrationIcon.svg";
 import plus from "../../static/images/mapspage/plus.svg";
 import close from "../../static/images/mapspage/close.svg";
 import hamIcon from "../../static/images/icons/hamIcon.svg";
-import Pathview from "./PathView";
-import MapComponent from "./MapComponent";
+import arrow from "./darrow.svg";
 
 const libraries = ["places"];
 
@@ -332,77 +333,57 @@ const MapsPage = () => {
             </div>
           </div>
           <div className="mid-area">
-            <div className="input-div1">
-              <input type="text" placeholder="Choose Starting Coordinates.." />
+            <div className="s-destination-div">
+              <div>Search Destination</div>
+              <div className="input-div1">
+                <input type="text" placeholder="What school?" />
+              </div>
+              <div className="input-div1">
+                <input type="text" placeholder="What program?" />
+              </div>
             </div>
-            {containers.map((container, index) => (
-              <div className="destination-container" key={container.id}>
-                <div className="dest-txt">
-                  <div>Destination {container.id}</div>
-                  {container.removable && (
-                    <div onClick={() => handleRemoveContainer(container.id)}>
-                      <img src={close} alt="" />
-                    </div>
-                  )}
-                </div>
-                <div className="input-div2">
-                  {/* <Autocomplete
-                    onLoad={(autocomplete) => {
-                      autocompleteRef.current = autocomplete;
-                      autocomplete?.setBounds(map?.getBounds());
-                    }}
-                    onPlaceChanged={handlePlaceSelect}
-                  > */}
-                  <input
-                    type="text"
-                    placeholder="Where Do You Want To Go?"
-                    // value={container.inputValue1}
-                    // onChange={(e) => {
-                    //   handleInputChange(e, container.id, 1);
-                    //   setSearchTerm(e.target.value);
-                    // }}
-                    value={selectedPlace || ""}
-                    onChange={(e) => {
-                      handleInputChange(e, container.id, 1);
-                      setSelectedPlace(e.target.value);
-                    }}
-                  />
-                  {/* </Autocomplete> */}
-                </div>
-                <div className="input-div2">
-                  {/* <input
-                      type="text"
-                      placeholder="By When?"
-                      // value={container.inputValue2}
-                      // onChange={(e) => handleInputChange(e, container.id, 2)}
-                      // onFocus={() => setShowDatePicker(true)}
-                      // onBlur={() => setShowDatePicker(false)}
-                      onFocus={(e) => e.target.blur()}
-                      value={
-                        selectedDate ? selectedDate.toLocaleDateString() : ""
-                      }
-                    /> */}
-                  <DatePicker
-                    selected={selectedDate}
-                    onChange={handleDateChange}
-                    dateFormat="MM/dd/yyyy"
-                    showMonthDropdown
-                    showYearDropdown
-                    dropdownMode="select"
-                    customInput={<CustomInput />}
-                  />
+            <div className="each-filter-div">
+              <div className="visible-div">
+                <div>You’re Current Grade</div>
+                <div>
+                  <img src={arrow} alt="" />
                 </div>
               </div>
-            ))}
-            <div className="add-div" onClick={handleAddContainer}>
-              <img src={plus} alt="" />
-              Add Destination
+            </div>
+            <div className="each-filter-div">
+              <div className="visible-div">
+                <div>You’re Current Grade Point Avg</div>
+                <div>
+                  <img src={arrow} alt="" />
+                </div>
+              </div>
+            </div>
+            <div className="each-filter-div">
+              <div className="visible-div">
+                <div>You’re Current Stream</div>
+                <div>
+                  <img src={arrow} alt="" />
+                </div>
+              </div>
+            </div>
+            <div className="each-filter-div">
+              <div className="visible-div">
+                <div>You’re Current Curriculum</div>
+                <div>
+                  <img src={arrow} alt="" />
+                </div>
+              </div>
+            </div>
+            <div className="each-filter-div">
+              <div className="visible-div">
+                <div>You’re Current Financial Position</div>
+                <div>
+                  <img src={arrow} alt="" />
+                </div>
+              </div>
             </div>
             <div className="maps-btns-div">
-              <div className="gs-Btn-maps">Get Started</div>
-              <div className="reset-btn" onClick={handleResetContainer}>
-                Reset
-              </div>
+              <div className="gs-Btn-maps">Find Paths</div>
             </div>
           </div>
         </div>

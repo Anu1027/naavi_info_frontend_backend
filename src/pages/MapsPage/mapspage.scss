@@ -146,26 +146,47 @@
 
       .mid-area {
         width: 100%;
-        padding: 2rem 1rem;
-        border-bottom: 1px solid #e5e5e5;
         display: flex;
         flex-direction: column;
-        gap: 2rem;
 
-        .input-div1 {
+        .s-destination-div {
+          display: flex;
+          flex-direction: column;
           width: 100%;
-          border: 1px solid #e5e5e5;
-          border-radius: 45px;
+          gap: 1rem;
+          padding: 2rem 1rem;
+          border-bottom: 1px solid #e5e5e5;
 
-          input {
+          .input-div1 {
             width: 100%;
-            border: none;
-            padding: 1rem;
+            border: 1px solid #e5e5e5;
             border-radius: 45px;
 
-            &::placeholder {
-              opacity: 0.5;
+            input {
+              width: 100%;
+              border: none;
+              padding: 1rem;
+              border-radius: 45px;
+
+              &::placeholder {
+                opacity: 0.5;
+              }
             }
+          }
+        }
+
+        .each-filter-div {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          padding: 2rem 1rem;
+          border-bottom: 1px solid #e5e5e5;
+
+          .visible-div {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: space-between;
           }
         }
 
@@ -231,17 +252,16 @@
         .maps-btns-div {
           width: 100%;
           display: flex;
-          flex-direction: column;
-          gap: 1rem;
+          padding: 2rem 1rem;
 
           .gs-Btn-maps {
+            width: 100%;
             color: white;
             font-weight: 500;
             border-radius: 35px;
             text-align: center;
             background: linear-gradient(89deg, #47b4d5 0%, #29449d 100%);
             padding: 0.9rem 1.5rem;
-            font-size: 0.8rem;
             cursor: pointer;
             transition: all ease 0.2s;
 
