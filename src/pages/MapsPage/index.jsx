@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./mapspage.scss";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -22,6 +22,7 @@ const libraries = ["places"];
 
 const MapsPage = () => {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
   const {
     preLoginMenu,
     setPreLoginMenu,
@@ -221,6 +222,12 @@ const MapsPage = () => {
         setPreLoginPathViewData([]);
         setLoading1(false);
       });
+  }, []);
+
+  useEffect(() => {
+    if (pathname.includes("/maps")) {
+      setPreLoginMenu("Paths");
+    }
   }, []);
 
   const handleGrade = (item) => {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import NavBar from "../../components/Layouts/Navbar/navbar";
 import "./nodespage.scss";
 import search from "../../images/search.svg";
@@ -18,6 +18,7 @@ import hamIcon from "../../static/images/icons/hamIcon.svg";
 const NodesPage = () => {
   const { setSingleDirectory, mobMenuOpen } = useStore();
   let navigate = useNavigate();
+  const { pathname } = useLocation();
   const { width } = useWindowDimensions();
   const [accountantsData, setAccountantsData] = useState([]);
   const [filteredAccountantsData, setFilteredAccountantsData] = useState([]);
@@ -89,6 +90,13 @@ const NodesPage = () => {
 
     return capitalizedSentence;
   }
+
+  useEffect(() => {
+    if (pathname.includes("/directory/nodes")) {
+      setPreLoginMenu("Partners");
+    }
+  }, []);
+
   return (
     <div className="nodesPage">
       <div className="nodes-navbar">

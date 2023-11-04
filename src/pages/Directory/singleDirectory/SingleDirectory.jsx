@@ -111,6 +111,12 @@ const SingleDirectory = () => {
     }
   };
 
+  useEffect(() => {
+    if (pathname.includes("/directory/nodes")) {
+      setPreLoginMenu("Partners");
+    }
+  }, []);
+  
   return (
     <div className="single-directory-page">
       {/* <NavBar /> */}
