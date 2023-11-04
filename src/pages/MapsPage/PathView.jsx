@@ -11,7 +11,7 @@ const Pathview = ({
   switchStepsDetails,
   setSwitchStepsDetails,
   loading1,
-  setLoading1
+  setLoading1,
 }) => {
   const {
     schoolSearch,
@@ -20,11 +20,10 @@ const Pathview = ({
     setProgramSearch,
     showDdown,
     setShowDdown,
-    preLoginPathViewData
+    preLoginPathViewData,
   } = useCoinContextData();
 
   const [isloading, setIsloading] = useState(false);
-
 
   const getStepsForSelectedPath = (selectedPath) => {
     setIsloading(true);
@@ -164,24 +163,38 @@ const Pathview = ({
                   );
                 })
             ) : preLoginPathViewData?.length > 0 ? (
-              preLoginPathViewData?.map((e, i) => {
-                return (
-                  <div
-                    className="each-pv-data1"
-                    key={i}
-                    onClick={() => {
-                      getStepsForSelectedPath(e?.nameOfPath);
-                      setSwitchToStep(true);
-                    }}
-                  >
-                    <div className="each-pv-name1">
-                      {e?.destination_institution}
+              preLoginPathViewData
+                ?.filter((item) => {
+                  if (schoolSearch) {
+                    return item?.destination_institution
+                      ?.toLowerCase()
+                      .includes(schoolSearch?.toLowerCase());
+                  } else if (programSearch) {
+                    return item?.program
+                      ?.toLowerCase()
+                      .includes(programSearch?.toLowerCase());
+                  } else {
+                    return "nil";
+                  }
+                })
+                .map((e, i) => {
+                  return (
+                    <div
+                      className="each-pv-data1"
+                      key={i}
+                      onClick={() => {
+                        getStepsForSelectedPath(e?.nameOfPath);
+                        setSwitchToStep(true);
+                      }}
+                    >
+                      <div className="each-pv-name1">
+                        {e?.destination_institution}
+                      </div>
+                      <div className="each-pv-name1">{e?.program}</div>
+                      <div className="each-pv-desc1">{e?.description}</div>
                     </div>
-                    <div className="each-pv-name1">{e?.program}</div>
-                    <div className="each-pv-desc1">{e?.description}</div>
-                  </div>
-                );
-              })
+                  );
+                })
             ) : (
               <div
                 style={{

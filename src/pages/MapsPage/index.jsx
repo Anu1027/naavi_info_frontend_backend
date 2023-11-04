@@ -274,7 +274,6 @@ const MapsPage = () => {
   };
 
   const handleFilter = () => {
-    console.log("working..");
     let obj = {
       financialSituation: finance,
       performance: gradeAvg,
@@ -449,10 +448,26 @@ const MapsPage = () => {
             <div className="s-destination-div">
               <div>Search Destination</div>
               <div className="input-div1">
-                <input type="text" placeholder="What school?" />
+                <input
+                  type="text"
+                  placeholder="What school?"
+                  onChange={(e) => {
+                    setSchoolSearch(e.target.value);
+                    setProgramSearch("");
+                  }}
+                  value={schoolSearch}
+                />
               </div>
               <div className="input-div1">
-                <input type="text" placeholder="What program?" />
+                <input
+                  type="text"
+                  placeholder="What program?"
+                  onChange={(e) => {
+                    setProgramSearch(e.target.value);
+                    setSchoolSearch("");
+                  }}
+                  value={programSearch}
+                />
               </div>
             </div>
             <div className="each-filter-div">
