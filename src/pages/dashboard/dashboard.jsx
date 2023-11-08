@@ -261,7 +261,7 @@ const Dashboard = () => {
 
   const handleAccountantSpecalities = (each) => {
     let obj = {
-      category: "accountants",
+      category: "naavi partners",
       subCategory: each.subCategory,
     };
     GetAllAccountantsForOneSpecialty(obj).then((res) => {
@@ -273,7 +273,7 @@ const Dashboard = () => {
 
   const handleFollowBrand = (each) => {
     let obj = {
-      appCode: "TaxChains",
+      appCode: "naavi",
       bankerEmail: each?.email,
     };
     let userDetails = JSON.parse(localStorage.getItem("user"));
@@ -298,7 +298,7 @@ const Dashboard = () => {
 
   const handleUnFollowBrand = (each) => {
     let obj = {
-      appCode: "TaxChains",
+      appCode: "naavi",
       bankerEmail: each?.email,
     };
     let userDetails = JSON.parse(localStorage.getItem("user"));
@@ -1273,7 +1273,7 @@ const Dashboard = () => {
                     <EarningCalendar />
                   </div>
                 </>
-              ) : sideNav === "Vaults" ? (
+              ) : sideNav === "Wallet" ? (
                 <>
                   <div className="dash-nav">
                     <div
@@ -1606,7 +1606,7 @@ const Dashboard = () => {
                     <JourneyPage />
                   </div>
                 </>
-              ) : sideNav === "Current Step" ? (
+              ) : sideNav === "Next Step" ? (
                 <>
                   <div className="dash-nav">
                     <div

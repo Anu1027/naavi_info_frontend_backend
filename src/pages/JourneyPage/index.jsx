@@ -86,7 +86,7 @@ const JourneyPage = () => {
                 <div
                   className="each-j-step relative-div"
                   onClick={() => {
-                    setsideNav("Current Step");
+                    setsideNav("Next Step");
                     setCurrentStepData(e);
                   }}
                   key={i}

@@ -14,10 +14,10 @@ const sidebarMenu1 = [
     id: 1,
     title: "Partners",
   },
-  {
-    id: 2,
-    title: "Services",
-  },
+  // {
+  //   id: 2,
+  //   title: "Services",
+  // },
 ];
 
 const sidebarMenu2 = [
@@ -27,20 +27,20 @@ const sidebarMenu2 = [
   },
   {
     id: 1,
-    title: "Current Step",
+    title: "Next Step",
   },
   {
     id: 2,
-    title: "Calendar",
+    title: "Wallet",
   },
-  {
-    id: 3,
-    title: "Cabinet",
-  },
-  {
-    id: 4,
-    title: "Task Manager",
-  },
+  // {
+  //   id: 3,
+  //   title: "Cabinet",
+  // },
+  // {
+  //   id: 4,
+  //   title: "Task Manager",
+  // },
 ];
 
 const sidebarMenu3 = [
@@ -152,7 +152,7 @@ const Dashsidebar = ({ isNotOnMainPage }) => {
             );
           })}
         </div>
-        <div className="sidebar-line"></div>
+        {/* <div className="sidebar-line"></div>
         <div
           style={{
             // marginLeft: "15px",
@@ -186,7 +186,7 @@ const Dashsidebar = ({ isNotOnMainPage }) => {
               </div>
             );
           })}
-        </div>
+        </div> */}
       </div>
       {/* <div
         className="side-btn"
