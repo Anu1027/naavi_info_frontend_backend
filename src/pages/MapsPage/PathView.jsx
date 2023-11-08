@@ -4,6 +4,7 @@ import axios from "axios";
 import "./pathview.scss";
 import { GlobalContex } from "../../globalContext";
 import { useCoinContextData } from "../../context/CoinContext";
+import { useNavigate } from "react-router-dom";
 
 const Pathview = ({
   switchToStep,
@@ -24,6 +25,7 @@ const Pathview = ({
   } = useCoinContextData();
 
   const [isloading, setIsloading] = useState(false);
+  const navigate = useNavigate();
 
   const getStepsForSelectedPath = (selectedPath) => {
     setIsloading(true);
@@ -109,6 +111,9 @@ const Pathview = ({
                     <div
                       className="pathviewPage1-each-j-step pathviewPage1-relative-div"
                       key={i}
+                      onClick={() => {
+                        navigate("/login");
+                      }}
                     >
                       <div className="pathviewPage1-each-j-img">
                         <img src={e?.icon} alt="" />
