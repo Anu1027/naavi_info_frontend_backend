@@ -2793,7 +2793,7 @@ const AccDashboard = () => {
 
                   <div className="each-acc-addpath-field">
                     <div className="each-acc-addpath-field-name">
-                      What grade are you in?
+                      Select ideal grade for participant
                     </div>
                     <div className="optioncardWrapper">
                       {gradeList.map((item) => (
@@ -2813,7 +2813,7 @@ const AccDashboard = () => {
 
                   <div className="each-acc-addpath-field">
                     <div className="each-acc-addpath-field-name">
-                      What is your current grade point average?
+                      Select ideal grade point average for participant
                     </div>
                     <div className="optionCardFullWrapper">
                       {gradePointAvg.map((item) => (
@@ -2833,7 +2833,7 @@ const AccDashboard = () => {
 
                   <div className="each-acc-addpath-field">
                     <div className="each-acc-addpath-field-name">
-                      What curriculum are you pursuing?
+                      Select ideal curriculum for participant
                     </div>
                     <div className="optionCardFullWrapper">
                       {curriculumList.map((item) => (
@@ -2853,7 +2853,7 @@ const AccDashboard = () => {
 
                   <div className="each-acc-addpath-field">
                     <div className="each-acc-addpath-field-name">
-                      What stream are you pursuing?
+                      Select ideal stream for participant
                     </div>
                     <div className="optionCardFullWrapper">
                       {streamList.map((item) => (
@@ -2873,7 +2873,7 @@ const AccDashboard = () => {
 
                   <div className="each-acc-addpath-field">
                     <div className="each-acc-addpath-field-name">
-                      Financial situations?
+                      Select ideal financial situation for participant
                     </div>
                     <div className="optionCardFullWrapper">
                       {financeList.map((item) => (
@@ -2892,6 +2892,69 @@ const AccDashboard = () => {
                   </div>
 
                   <div className="each-acc-addpath-field">
+                    <div className="each-acc-addpath-field-name">
+                      What program will they be studying?
+                    </div>
+                    <div className="each-acc-addpath-field-input">
+                      <input
+                        type="text"
+                        placeholder="Name.."
+                        value={pathSteps?.program}
+                        onChange={(e) => {
+                          setPathSteps((prev) => {
+                            return {
+                              ...prev,
+                              program: e.target.value,
+                            };
+                          });
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="each-acc-addpath-field">
+                    <div className="each-acc-addpath-field-name">
+                      What city is the university in?
+                    </div>
+                    <div className="each-acc-addpath-field-input">
+                      <input
+                        type="text"
+                        placeholder="City.."
+                        value={pathSteps?.city}
+                        onChange={(e) => {
+                          setPathSteps((prev) => {
+                            return {
+                              ...prev,
+                              city: e.target.value,
+                            };
+                          });
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="each-acc-addpath-field">
+                    <div className="each-acc-addpath-field-name">
+                      What country is the university in?
+                    </div>
+                    <div className="each-acc-addpath-field-input">
+                      <input
+                        type="text"
+                        placeholder="Country.."
+                        value={pathSteps?.country}
+                        onChange={(e) => {
+                          setPathSteps((prev) => {
+                            return {
+                              ...prev,
+                              country: e.target.value,
+                            };
+                          });
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="each-acc-addpath-field">
                     <div
                       className="submit-path-btn"
                       style={{
@@ -2903,6 +2966,9 @@ const AccDashboard = () => {
                             pathSteps?.path_type &&
                             pathSteps?.step_ids?.length > 0 &&
                             pathSteps?.destination_institution &&
+                            pathSteps?.program &&
+                            pathSteps?.city &&
+                            pathSteps?.country &&
                             grade.length > 0 &&
                             gradeAvg.length > 0 &&
                             curriculum.length > 0 &&
@@ -2918,6 +2984,9 @@ const AccDashboard = () => {
                             pathSteps?.path_type &&
                             pathSteps?.step_ids?.length > 0 &&
                             pathSteps?.destination_institution &&
+                            pathSteps?.program &&
+                            pathSteps?.city &&
+                            pathSteps?.country &&
                             grade.length > 0 &&
                             gradeAvg.length > 0 &&
                             curriculum.length > 0 &&
@@ -2934,6 +3003,9 @@ const AccDashboard = () => {
                           pathSteps?.path_type &&
                           pathSteps?.step_ids?.length > 0 &&
                           pathSteps?.destination_institution &&
+                          pathSteps?.program &&
+                          pathSteps?.city &&
+                          pathSteps?.country &&
                           grade.length > 0 &&
                           gradeAvg.length > 0 &&
                           curriculum.length > 0 &&
