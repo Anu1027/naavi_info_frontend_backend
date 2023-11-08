@@ -281,13 +281,28 @@ const MapsPage = () => {
   };
 
   const handleFilter = () => {
-    let obj = {
-      financialSituation: finance,
-      performance: gradeAvg,
-      curriculum: curriculum,
-      grade: grade,
-      stream: stream,
-    };
+    let obj = {};
+
+    if (grade.length > 0) {
+      obj.grade = grade;
+    }
+
+    if (stream.length > 0) {
+      obj.stream = stream;
+    }
+
+    if (curriculum.length > 0) {
+      obj.curriculum = curriculum;
+    }
+
+    if (gradeAvg.length > 0) {
+      obj.performance = gradeAvg;
+    }
+
+    if (finance.length > 0) {
+      obj.financialSituation = finance;
+    }
+
     setLoading1(true);
     axios
       .post(`https://careers.marketsverse.com/paths/get`, obj)
