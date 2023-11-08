@@ -18,7 +18,7 @@ const sidebarMenu1 = [
   },
   {
     id: 2,
-    title: "My Paths",
+    title: "Paths",
     click: true,
   },
 ];
@@ -49,14 +49,14 @@ const sidebarMenu2 = [
 const sidebarMenu3 = [
   {
     id: 0,
-    title: "Vaults",
+    title: "Wallet",
     click: true,
   },
-  {
-    id: 1,
-    title: "Naavi GPT",
-    click: true,
-  },
+  // {
+  //   id: 1,
+  //   title: "Naavi GPT",
+  //   click: true,
+  // },
 ];
 
 const AccDashsidebar = ({ isNotOnMainPage }) => {
@@ -133,7 +133,7 @@ const AccDashsidebar = ({ isNotOnMainPage }) => {
             );
           })}
         </div>
-        <div className="sidebar-line"></div>
+        {/* <div className="sidebar-line"></div>
         <div
           style={{
             fontWeight: "600",
@@ -175,7 +175,7 @@ const AccDashsidebar = ({ isNotOnMainPage }) => {
               </div>
             );
           })}
-        </div>
+        </div> */}
         <div className="sidebar-line"></div>
         <div
           style={{

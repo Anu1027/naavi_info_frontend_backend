@@ -1746,7 +1746,7 @@ const AccDashboard = () => {
                     <EarningCalendar />
                   </div>
                 </>
-              ) : accsideNav === "Vaults" ? (
+              ) : accsideNav === "Wallet" ? (
                 <>
                   <div className="dash-nav">
                     <div
@@ -1756,7 +1756,7 @@ const AccDashboard = () => {
                       <input
                         className="search-input"
                         type="text"
-                        placeholder="Search Vaults..."
+                        placeholder="Search Wallet..."
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
                       />
@@ -1908,7 +1908,7 @@ const AccDashboard = () => {
                     <Tasks />
                   </div>
                 </>
-              ) : accsideNav === "My Paths" ? (
+              ) : accsideNav === "Paths" ? (
                 <>
                   <div className="dash-nav">
                     <div
