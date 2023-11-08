@@ -72,7 +72,7 @@ const Loginpage = () => {
         setiserror(false);
         setIsLoading(false);
         if (loginType === "Users") {
-          navigate("/dashboard/users");
+          navigate("/dashboard/users/profile");
         } else {
           navigate("/dashboard/accountants/profile");
         }
