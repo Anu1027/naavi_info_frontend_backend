@@ -48,7 +48,7 @@ const Loginpage = () => {
       if (result.status) {
         let obj = {
           email,
-          app_code: "TaxChains",
+          app_code: "naavi",
           fromAppCreation: true,
         };
         RegisterOnApp(obj).then((response) => {
@@ -74,7 +74,7 @@ const Loginpage = () => {
         if (loginType === "Users") {
           navigate("/dashboard/users");
         } else {
-          navigate("/dashboard/accountants");
+          navigate("/dashboard/accountants/profile");
         }
       } else {
         setiserror(true);
