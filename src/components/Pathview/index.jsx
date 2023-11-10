@@ -94,6 +94,7 @@ const Pathview = () => {
                   setPathItemSelected(true);
                   localStorage.setItem("selectedPath", JSON.stringify(e?.nameOfPath));
                   // console.log(e?.nameOfPath, 'selected path');
+                  setSelectedPathItem(e);
                 }}
               >
                 <div className="each-pv-name">{e?.nameOfPath}</div>
