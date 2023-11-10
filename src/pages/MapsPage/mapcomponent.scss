@@ -1,10 +1,11 @@
 .map-component {
-  width: 100%;
-  height: calc(100% - 3rem);
+  width: 50%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
+  border-left: 1px solid #e5e5e5;
 
   svg {
     width: 100%;

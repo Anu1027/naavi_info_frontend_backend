@@ -25,14 +25,14 @@ const GoogleMapComponent = ({
   selectedLocation,
   showDirections,
 }) => {
-  // const {
-  //   directions,
-  //   setDirections,
-  //   selectedLocation,
-  //   setSelectedLocation,
-  //   showDirections,
-  //   setShowDirections,
-  // } = useCoinContextData();
+  const {
+    // directions,
+    // setDirections,
+    // selectedLocation,
+    setSelectedLocation,
+    // showDirections,
+    setShowDirections,
+  } = useCoinContextData();
 
   const shortenWebsiteUrl = (url) => {
     const parsedUrl = new URL(url);

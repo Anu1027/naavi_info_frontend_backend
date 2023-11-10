@@ -7,6 +7,7 @@ import { useCoinContextData } from "../../context/CoinContext";
 import Pathview from "./PathView";
 import MapComponent from "./MapComponent";
 import axios from "axios";
+import Skeleton from "react-loading-skeleton";
 
 //images
 import logo from "../../static/images/logo.svg";
@@ -17,6 +18,8 @@ import plus from "../../static/images/mapspage/plus.svg";
 import close from "../../static/images/mapspage/close.svg";
 import hamIcon from "../../static/images/icons/hamIcon.svg";
 import arrow from "./darrow.svg";
+import GoogleMapComponent from "./GoogleMapComponent";
+import GoogleMaps from "./GoogleMaps";
 
 const libraries = ["places"];
 
@@ -73,6 +76,7 @@ const MapsPage = () => {
   ];
   const financeList = ["0-25L", "25L-75L", "75L-3CR", "3CR+", "Other"];
   const [loading1, setLoading1] = useState(false);
+  const [isloading, setIsloading] = useState(false);
 
   const handleAddContainer = () => {
     const lastContainer = containers[containers.length - 1];
@@ -731,47 +735,129 @@ const MapsPage = () => {
           </div>
         </div>
         <div className="maps-content-area">
-          <div className="path-options-div1">
-            <div className="path-options1">
-              <div className="each-path-opt1">Path View</div>
-              <div
-                className="toggleContainer2"
-                onClick={() => {
-                  if (pathOption === "Path View") {
-                    setPathOption("Map View");
-                  } else {
-                    setPathOption("Path View");
+          {switchToStep ? (
+            <div className="pathviewPage1-step-details">
+              <div className="pathviewPage1-journey-top-area">
+                <div>Your Selected Path:</div>
+                {isloading ? (
+                  <Skeleton width={150} height={30} />
+                ) : (
+                  <div className="pathviewPage1-bold-text">
+                    {switchStepsDetails?.length > 0
+                      ? switchStepsDetails?.destination_institution
+                      : ""}
+                  </div>
+                )}
+                {isloading ? (
+                  <Skeleton width={500} height={20} />
+                ) : (
+                  <div className="pathviewPage1-journey-des">
+                    {switchStepsDetails?.length > 0
+                      ? switchStepsDetails?.description
+                      : ""}
+                  </div>
+                )}
+                <div
+                  className="pathviewPage1-goBack-div"
+                  onClick={() => {
                     setSwitchToStep(false);
                     setSwitchStepsDetails([]);
-                  }
-                }}
-              >
-                <div
-                  className="toggle2"
-                  style={{
-                    transform:
-                      pathOption === "Path View"
-                        ? "translateX(0px)"
-                        : "translateX(20px)",
                   }}
                 >
-                  &nbsp;
+                  Go Back
                 </div>
               </div>
-              <div className="each-path-opt1">Map View</div>
+              <div className="pathviewPage1-journey-steps-area">
+                {isloading
+                  ? Array(6)
+                      .fill("")
+                      .map((e, i) => {
+                        return (
+                          <div
+                            className="pathviewPage1-each-j-step pathviewPage1-relative-div"
+                            key={i}
+                          >
+                            <div className="pathviewPage1-each-j-img">
+                              <Skeleton width={75} height={75} />
+                            </div>
+                            <div className="pathviewPage1-each-j-step-text">
+                              <Skeleton width={200} height={30} />
+                            </div>
+                            <div className="pathviewPage1-each-j-step-text1">
+                              <Skeleton width={250} height={25} />
+                            </div>
+                            <div className="pathviewPage1-each-j-amount-div">
+                              <div className="pathviewPage1-each-j-amount">
+                                <Skeleton width={100} height={30} />
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      })
+                  : switchStepsDetails?.length > 0
+                  ? switchStepsDetails?.StepDetails?.map((e, i) => {
+                      return (
+                        <div
+                          className="pathviewPage1-each-j-step pathviewPage1-relative-div"
+                          key={i}
+                          onClick={() => {
+                            navigate("/login");
+                          }}
+                        >
+                          <div className="pathviewPage1-each-j-img">
+                            <img src={e?.icon} alt="" />
+                          </div>
+                          <div className="pathviewPage1-each-j-step-text">
+                            {e?.name}
+                          </div>
+                          <div className="pathviewPage1-each-j-step-text1">
+                            {e?.description}
+                          </div>
+                          <div className="pathviewPage1-each-j-amount-div">
+                            <div className="pathviewPage1-each-j-amount">
+                              {e?.cost}
+                            </div>
+                            {/* <div
+                                className="each-j-amount"
+                                style={{ textDecorationLine: "underline" }}
+                              >
+                                Current
+                              </div> */}
+                          </div>
+                          {/* <div className="j-arr-div">
+                              <img src={arrow} alt="" />
+                            </div> */}
+                        </div>
+                      );
+                    })
+                  : ""}
+              </div>
             </div>
-          </div>
-          {pathOption === "Map View" ? (
-            <MapComponent />
           ) : (
-            <Pathview
-              switchToStep={switchToStep}
-              setSwitchToStep={setSwitchToStep}
-              switchStepsDetails={switchStepsDetails}
-              setSwitchStepsDetails={setSwitchStepsDetails}
-              loading1={loading1}
-              setLoading1={setLoading1}
-            />
+            <div className="maps-page-seperator">
+              <Pathview
+                switchToStep={switchToStep}
+                setSwitchToStep={setSwitchToStep}
+                switchStepsDetails={switchStepsDetails}
+                setSwitchStepsDetails={setSwitchStepsDetails}
+                loading1={loading1}
+                setLoading1={setLoading1}
+              />
+              {/* <MapComponent /> */}
+              <GoogleMaps
+                map={map}
+                setMap={setMap}
+                searchTerm={searchTerm}
+                currentLocation={currentLocation}
+                setCurrentLocation={setCurrentLocation}
+                placeInfo={placeInfo}
+                selectedPlace={selectedPlace}
+                directions={directions}
+                setDirections={setDirections}
+                selectedLocation={selectedLocation}
+                showDirections={showDirections}
+              />
+            </div>
           )}
         </div>
       </div>
@@ -787,133 +873,7 @@ export default MapsPage;
         googleMapsApiKey="AIzaSyB5MJ2jMHzl_ghkbxOsyPmeBmYw_sUsIRQ"
         libraries={libraries}
       >
-        <div className="maps-navbar">
-          <div className="hamMenu">
-            <img src={hamIcon} alt="" />
-          </div>
-          <div
-            className="logo"
-            onClick={() => {
-              navigate("/");
-            }}
-          >
-            <img src={logo} alt="logo" />
-          </div>
-          <div className="menu-items">
-            <div>
-              <p>Paths</p>
-            </div>
-            <div>
-              <p>Explore</p>
-            </div>
-            <div>
-              <p>Products</p>
-            </div>
-            <div>
-              <p>Resources</p>
-            </div>
-            <div
-              onClick={() => {
-                navigate("/directory/nodes");
-              }}
-            >
-              <p>Partners</p>
-            </div>
-          </div>
-          <div className="btns-div">
-            <div
-              className="gs-Btn"
-              onClick={() => {
-                navigate("/login");
-              }}
-            >
-              Get Started
-            </div>
-          </div>
-        </div>
-        <div className="maps-color-box"></div>
         <div className="maps-container">
-          <div className="maps-sidebar">
-            <div className="top-icons">
-              <div
-                className="each-icon"
-                onClick={() => {
-                  setOption("Career");
-                }}
-              >
-                <div
-                  className="border-div"
-                  style={{
-                    border:
-                      option === "Career"
-                        ? "1px solid #100F0D"
-                        : "1px solid #e7e7e7",
-                  }}
-                >
-                  <img src={careerIcon} alt="" />
-                </div>
-                <div
-                  className="icon-name-txt"
-                  style={{
-                    fontWeight: option === "Career" ? "600" : "",
-                  }}
-                >
-                  Career
-                </div>
-              </div>
-              <div
-                className="each-icon"
-                onClick={() => {
-                  setOption("Education");
-                }}
-              >
-                <div
-                  className="border-div"
-                  style={{
-                    border:
-                      option === "Education"
-                        ? "1px solid #100F0D"
-                        : "1px solid #e7e7e7",
-                  }}
-                >
-                  <img src={educationIcon} alt="" />
-                </div>
-                <div
-                  className="icon-name-txt"
-                  style={{
-                    fontWeight: option === "Education" ? "600" : "",
-                  }}
-                >
-                  Education
-                </div>
-              </div>
-              <div
-                className="each-icon"
-                onClick={() => {
-                  setOption("Immigration");
-                }}
-              >
-                <div
-                  className="border-div"
-                  style={{
-                    border:
-                      option === "Immigration"
-                        ? "1px solid #100F0D"
-                        : "1px solid #e7e7e7",
-                  }}
-                >
-                  <img src={immigrationIcon} alt="" />
-                </div>
-                <div
-                  className="icon-name-txt"
-                  style={{
-                    fontWeight: option === "Immigration" ? "600" : "",
-                  }}
-                >
-                  Immigration
-                </div>
-              </div>
-            </div>
             <div className="mid-area">
               <div className="input-div1">
                 <input
