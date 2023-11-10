@@ -232,6 +232,8 @@ const PathComponent = () => {
   function reload() {
     setsideNav("My Journey");
     setSelectedPathItem([]);
+    setPathItemSelected(false);
+    setPathItemStep(1);
   }
 
   const pathSelection = () => {
