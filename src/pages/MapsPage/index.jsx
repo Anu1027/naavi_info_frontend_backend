@@ -79,6 +79,9 @@ const MapsPage = () => {
   const financeList = ["0-25L", "25L-75L", "75L-3CR", "3CR+", "Other"];
   const [loading1, setLoading1] = useState(false);
   const [isloading, setIsloading] = useState(false);
+  const [preLoginEmail, setPreloginEmail] = useState();
+  const [preLoginPathId, setPreLoginPathId] = useState();
+  const [isStoring, setIsStoring] = useState(false);
 
   const handleAddContainer = () => {
     const lastContainer = containers[containers.length - 1];
@@ -321,6 +324,65 @@ const MapsPage = () => {
         console.log(error, "error in getting filtered path view result");
         setPreLoginPathViewData([]);
         setLoading1(false);
+      });
+  };
+
+  const myTimeout = () => {
+    setTimeout(reload, 2000);
+  };
+
+  function reload() {
+    setPreloginEmail("");
+    setPreLoginPathId("");
+    setShowPreLoginModal(false);
+    setGrade([]);
+    setGradeAvg([]);
+    setCurriculum([]);
+    setStream([]);
+    setFinance([]);
+    setShowDdown("");
+  }
+
+  const storePreLoginData = () => {
+    setIsStoring(true);
+    let obj = {
+      email: preLoginEmail,
+      pathId: preLoginPathId,
+    };
+
+    if (grade.length > 0) {
+      obj.grade = grade;
+    }
+
+    if (stream.length > 0) {
+      obj.stream = stream;
+    }
+
+    if (curriculum.length > 0) {
+      obj.curriculum = curriculum;
+    }
+
+    if (finance.length > 0) {
+      obj.financialPosition = finance;
+    }
+
+    if (gradeAvg.length > 0) {
+      obj.gradePointAvg = gradeAvg;
+    }
+
+    axios
+      .post(`https://careers.marketsverse.com/pre_login/store`, obj)
+      .then((response) => {
+        let result = response?.data;
+        // console.log(result, "storePreLoginData result");
+        if (result?.status) {
+          setIsStoring(false);
+          navigate("/register");
+          myTimeout();
+        }
+      })
+      .catch((error) => {
+        console.log(error, "error in storePreLoginData");
       });
   };
 
@@ -847,6 +909,7 @@ const MapsPage = () => {
                 loading1={loading1}
                 setLoading1={setLoading1}
                 setSelectedLocation={setSelectedLocation}
+                setPreLoginPathId={setPreLoginPathId}
               />
               {/* <MapComponent /> */}
               <GoogleMaps
@@ -872,6 +935,7 @@ const MapsPage = () => {
           className="maps-overlay"
           onClick={() => {
             setShowPreLoginModal(false);
+            setPreloginEmail("");
           }}
         >
           <div
@@ -886,16 +950,33 @@ const MapsPage = () => {
             <div className="save-div">
               <div>Save you’re current path results and coordinates</div>
               <div className="save-input-div">
-                <input type="text" placeholder="Enter you’re email" />
+                <input
+                  type="text"
+                  placeholder="Enter you’re email"
+                  onChange={(e) => {
+                    setPreloginEmail(e.target.value);
+                  }}
+                  value={preLoginEmail}
+                />
               </div>
             </div>
             <div
+              style={{
+                opacity: isStoring ? "0.25" : preLoginEmail ? "1" : "0.25",
+                cursor: isStoring
+                  ? "not-allowed"
+                  : preLoginEmail
+                  ? "pointer"
+                  : "not-allowed",
+              }}
               className="cont-Btn"
               onClick={() => {
-                navigate("/register");
+                if (preLoginEmail) {
+                  storePreLoginData();
+                }
               }}
             >
-              Continue To Registration
+              {isStoring ? "Loading.." : "Continue To Registration"}
             </div>
           </div>
         </div>

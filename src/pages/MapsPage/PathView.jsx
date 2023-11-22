@@ -20,6 +20,7 @@ const Pathview = ({
   loading1,
   setLoading1,
   setSelectedLocation,
+  setPreLoginPathId,
 }) => {
   const {
     schoolSearch,
@@ -117,6 +118,7 @@ const Pathview = ({
                   className="each-pv-data1"
                   key={i}
                   onClick={() => {
+                    // console.log(e, 'selected path');
                     toggleButtonVisibility(i);
                     setSelectedLocation(e?.destination_institution);
                   }}
@@ -136,6 +138,7 @@ const Pathview = ({
                       event.stopPropagation();
                       getStepsForSelectedPath(e?.nameOfPath);
                       setSwitchToStep(true);
+                      setPreLoginPathId(e?._id)
                     }}
                   >
                     See Steps
