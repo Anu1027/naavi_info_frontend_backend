@@ -165,6 +165,7 @@ export const CoinContextProvider = ({ children }) => {
   const [programSearch, setProgramSearch] = useState("");
   const [showDdown, setShowDdown] = useState("");
   const [preLoginPathViewData, setPreLoginPathViewData] = useState([]);
+  const [showPreLoginModal, setShowPreLoginModal] = useState(false);
 
   useEffect(() => {
     if (coinType == "bonds" || coinType == "moneyMarkets") {
@@ -436,6 +437,8 @@ export const CoinContextProvider = ({ children }) => {
         setShowDdown,
         preLoginPathViewData,
         setPreLoginPathViewData,
+        showPreLoginModal,
+        setShowPreLoginModal,
       }}
     >
       {children}

@@ -37,6 +37,8 @@ const MapsPage = () => {
     setShowDdown,
     preLoginPathViewData,
     setPreLoginPathViewData,
+    showPreLoginModal,
+    setShowPreLoginModal,
   } = useCoinContextData();
   const [option, setOption] = useState("Education");
   const [containers, setContainers] = useState([
@@ -803,7 +805,7 @@ const MapsPage = () => {
                           className="pathviewPage1-each-j-step pathviewPage1-relative-div"
                           key={i}
                           onClick={() => {
-                            navigate("/login");
+                            setShowPreLoginModal(true);
                           }}
                         >
                           <div className="pathviewPage1-each-j-img">
@@ -864,152 +866,42 @@ const MapsPage = () => {
           )}
         </div>
       </div>
+
+      {showPreLoginModal && (
+        <div
+          className="maps-overlay"
+          onClick={() => {
+            setShowPreLoginModal(false);
+          }}
+        >
+          <div
+            className="modal-container"
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
+          >
+            <div>
+              <img src={logo} alt="" />
+            </div>
+            <div className="save-div">
+              <div>Save you’re current path results and coordinates</div>
+              <div className="save-input-div">
+                <input type="text" placeholder="Enter you’re email" />
+              </div>
+            </div>
+            <div
+              className="cont-Btn"
+              onClick={() => {
+                navigate("/register");
+              }}
+            >
+              Continue To Registration
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
 export default MapsPage;
-
-{
-  /* <div className="mapspage">
-      <LoadScript
-        googleMapsApiKey="AIzaSyB5MJ2jMHzl_ghkbxOsyPmeBmYw_sUsIRQ"
-        libraries={libraries}
-      >
-        <div className="maps-container">
-            <div className="mid-area">
-              <div className="input-div1">
-                <input
-                  type="text"
-                  placeholder="Choose Starting Coordinates.."
-                />
-              </div>
-              {containers.map((container, index) => (
-                <div className="destination-container" key={container.id}>
-                  <div className="dest-txt">
-                    <div>Destination {container.id}</div>
-                    {container.removable && (
-                      <div onClick={() => handleRemoveContainer(container.id)}>
-                        <img src={close} alt="" />
-                      </div>
-                    )}
-                  </div>
-                  <div className="input-div2">
-                    <Autocomplete
-                      onLoad={(autocomplete) => {
-                        autocompleteRef.current = autocomplete;
-                        autocomplete?.setBounds(map?.getBounds());
-                      }}
-                      onPlaceChanged={handlePlaceSelect}
-                    >
-                      <input
-                        type="text"
-                        placeholder="Where Do You Want To Go?"
-                        // value={container.inputValue1}
-                        // onChange={(e) => {
-                        //   handleInputChange(e, container.id, 1);
-                        //   setSearchTerm(e.target.value);
-                        // }}
-                        value={selectedPlace || ""}
-                        onChange={(e) => {
-                          handleInputChange(e, container.id, 1);
-                          setSelectedPlace(e.target.value);
-                        }}
-                      />
-                    </Autocomplete>
-                  </div>
-                  <div className="input-div2">
-                    // <input
-                    //   type="text"
-                    //   placeholder="By When?"
-                    //   // value={container.inputValue2}
-                    //   // onChange={(e) => handleInputChange(e, container.id, 2)}
-                    //   // onFocus={() => setShowDatePicker(true)}
-                    //   // onBlur={() => setShowDatePicker(false)}
-                    //   onFocus={(e) => e.target.blur()}
-                    //   value={
-                    //     selectedDate ? selectedDate.toLocaleDateString() : ""
-                    //   }
-                    // /> 
-                    <DatePicker
-                      selected={selectedDate}
-                      onChange={handleDateChange}
-                      dateFormat="MM/dd/yyyy"
-                      showMonthDropdown
-                      showYearDropdown
-                      dropdownMode="select"
-                      customInput={<CustomInput />}
-                    />
-                  </div>
-                </div>
-              ))}
-              <div className="add-div" onClick={handleAddContainer}>
-                <img src={plus} alt="" />
-                Add Destination
-              </div>
-              <div className="maps-btns-div">
-                <div className="gs-Btn-maps">Get Started</div>
-                <div className="reset-btn" onClick={handleResetContainer}>
-                  Reset
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="maps-content-area">
-            <div className="path-options-div1">
-              <div className="path-options1">
-                <div className="each-path-opt1">Path View</div>
-                <div
-                  className="toggleContainer2"
-                  onClick={() => {
-                    if (pathOption === "Path View") {
-                      setPathOption("Map View");
-                    } else {
-                      setPathOption("Path View");
-                      setSwitchToStep(false);
-                      setSwitchStepsDetails([]);
-                    }
-                  }}
-                >
-                  <div
-                    className="toggle2"
-                    style={{
-                      transform:
-                        pathOption === "Path View"
-                          ? "translateX(0px)"
-                          : "translateX(20px)",
-                    }}
-                  >
-                    &nbsp;
-                  </div>
-                </div>
-                <div className="each-path-opt1">Map View</div>
-              </div>
-            </div>
-            {pathOption === "Map View" ? (
-              <GoogleMapComponent
-                map={map}
-                setMap={setMap}
-                searchTerm={searchTerm}
-                currentLocation={currentLocation}
-                setCurrentLocation={setCurrentLocation}
-                placeInfo={placeInfo}
-                selectedPlace={selectedPlace}
-                directions={directions}
-                setDirections={setDirections}
-                selectedLocation={selectedLocation}
-                showDirections={showDirections}
-              />
-            ) : (
-              <Pathview
-                switchToStep={switchToStep}
-                setSwitchToStep={setSwitchToStep}
-                switchStepsDetails={switchStepsDetails}
-                setSwitchStepsDetails={setSwitchStepsDetails}
-              />
-            )}
-          </div>
-        </div>
-      </LoadScript>
-    </div> */
-}

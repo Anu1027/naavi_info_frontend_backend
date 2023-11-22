@@ -1,6 +1,7 @@
 .mapspage {
   width: 100%;
   height: 100%;
+  position: relative;
 
   .maps-navbar {
     width: 100%;
@@ -472,6 +473,72 @@
               cursor: pointer;
             }
           }
+        }
+      }
+    }
+  }
+
+  .maps-overlay {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .modal-container {
+      background: white;
+      min-width: 25%;
+      padding: 2rem 1.5rem;
+      border-radius: 25px;
+      border: 1px solid #e5e5e5;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      align-items: center;
+      z-index: 8;
+
+      .save-div {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+
+        .save-input-div {
+          width: 100%;
+          height: 3.5rem;
+          border-radius: 45px;
+          border: 1px solid #e5e5e5;
+
+          input {
+            width: 100%;
+            height: 100%;
+            padding: 0 1rem;
+            border: none;
+            outline: none;
+            border-radius: 45px;
+            font-size: 1rem;
+          }
+        }
+      }
+
+      .cont-Btn {
+        color: white;
+        width: 100%;
+        border-radius: 35px;
+        background: linear-gradient(90deg, #47b4d5 0.02%, #29449d 119.26%);
+        padding: 1.1rem 0;
+        text-align: center;
+        font-size: 0.85rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all ease 0.2s;
+
+        &:hover {
+          transform: scale(1.05);
         }
       }
     }

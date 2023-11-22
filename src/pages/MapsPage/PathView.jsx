@@ -29,6 +29,8 @@ const Pathview = ({
     showDdown,
     setShowDdown,
     preLoginPathViewData,
+    showPreLoginModal,
+    setShowPreLoginModal,
   } = useCoinContextData();
 
   const [isloading, setIsloading] = useState(false);
