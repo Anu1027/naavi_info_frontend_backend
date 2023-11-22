@@ -5,6 +5,12 @@ import "./pathview.scss";
 import { GlobalContex } from "../../globalContext";
 import { useCoinContextData } from "../../context/CoinContext";
 import { useNavigate } from "react-router-dom";
+import {
+  useJsApiLoader,
+  GoogleMap,
+  Marker,
+  Autocomplete,
+} from "@react-google-maps/api";
 
 const Pathview = ({
   switchToStep,
@@ -13,6 +19,7 @@ const Pathview = ({
   setSwitchStepsDetails,
   loading1,
   setLoading1,
+  setSelectedLocation,
 }) => {
   const {
     schoolSearch,
@@ -26,6 +33,26 @@ const Pathview = ({
 
   const [isloading, setIsloading] = useState(false);
   const navigate = useNavigate();
+  const [visibleButtons, setVisibleButtons] = useState(
+    Array(preLoginPathViewData?.length)?.fill(false)
+  );
+  const [visibleButtonIndex, setVisibleButtonIndex] = useState(null);
+
+  const toggleButtonVisibility = (index) => {
+    // Toggle visibility for the clicked item
+    const newVisibility = [...visibleButtons];
+    newVisibility[index] = !newVisibility[index];
+    setVisibleButtons(newVisibility);
+
+    // If clicking a different item, hide the previously clicked item
+    if (visibleButtonIndex !== null && visibleButtonIndex !== index) {
+      newVisibility[visibleButtonIndex] = false;
+      setVisibleButtons(newVisibility);
+    }
+
+    // Update the visible button index
+    setVisibleButtonIndex(newVisibility[index] ? index : null);
+  };
 
   const getStepsForSelectedPath = (selectedPath) => {
     setIsloading(true);
@@ -88,8 +115,8 @@ const Pathview = ({
                   className="each-pv-data1"
                   key={i}
                   onClick={() => {
-                    getStepsForSelectedPath(e?.nameOfPath);
-                    setSwitchToStep(true);
+                    toggleButtonVisibility(i);
+                    setSelectedLocation(e?.destination_institution);
                   }}
                 >
                   <div className="each-pv-name1-div">
@@ -99,6 +126,18 @@ const Pathview = ({
                     <div className="each-pv-name1">{e?.program}</div>
                   </div>
                   <div className="each-pv-desc1">{e?.description}</div>
+                  <div
+                    className={`see-steps-btn ${
+                      visibleButtons[i] ? "visible" : "hidden"
+                    }`}
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      getStepsForSelectedPath(e?.nameOfPath);
+                      setSwitchToStep(true);
+                    }}
+                  >
+                    See Steps
+                  </div>
                 </div>
               );
             })

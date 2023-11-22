@@ -8,6 +8,8 @@ import Pathview from "./PathView";
 import MapComponent from "./MapComponent";
 import axios from "axios";
 import Skeleton from "react-loading-skeleton";
+import GoogleMapComponent from "./GoogleMapComponent";
+import GoogleMaps from "./GoogleMaps";
 
 //images
 import logo from "../../static/images/logo.svg";
@@ -18,8 +20,6 @@ import plus from "../../static/images/mapspage/plus.svg";
 import close from "../../static/images/mapspage/close.svg";
 import hamIcon from "../../static/images/icons/hamIcon.svg";
 import arrow from "./darrow.svg";
-import GoogleMapComponent from "./GoogleMapComponent";
-import GoogleMaps from "./GoogleMaps";
 
 const libraries = ["places"];
 
@@ -760,8 +760,10 @@ const MapsPage = () => {
                 <div
                   className="pathviewPage1-goBack-div"
                   onClick={() => {
-                    setSwitchToStep(false);
-                    setSwitchStepsDetails([]);
+                    // setSwitchToStep(false);
+                    // setSwitchStepsDetails([]);
+                    // setSelectedLocation(null);
+                    window.location.reload();
                   }}
                 >
                   Go Back
@@ -842,6 +844,7 @@ const MapsPage = () => {
                 setSwitchStepsDetails={setSwitchStepsDetails}
                 loading1={loading1}
                 setLoading1={setLoading1}
+                setSelectedLocation={setSelectedLocation}
               />
               {/* <MapComponent /> */}
               <GoogleMaps

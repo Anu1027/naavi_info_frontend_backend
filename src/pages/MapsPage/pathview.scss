@@ -63,6 +63,22 @@
         line-height: 1.6;
       }
 
+      .see-steps-btn {
+        width: fit-content;
+        padding: 10px 2rem;
+        border-radius: 45px;
+        border: 1px solid #e5e5e5;
+        display: none;
+      }
+
+      .see-steps-btn.visible {
+        display: block; 
+      }
+
+      .see-steps-btn.hidden {
+        display: none; 
+      }
+
       &:hover {
         background: rgba(237, 237, 237, 0.368627451);
       }
