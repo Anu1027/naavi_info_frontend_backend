@@ -922,6 +922,20 @@ const AccProfile = () => {
     navigate("/dashboard/accountants");
   };
 
+  useEffect(() => {
+    let email = userDetails?.user?.email;
+    axios
+      .get(`https://careers.marketsverse.com/steps/get?email=${email}`)
+      .then((response) => {
+        let result = response?.data?.data;
+        // console.log(result, "all steps fetched");
+        setAllSteps(result);
+      })
+      .catch((error) => {
+        console.log(error, "error in fetching all steps");
+      });
+  }, []);
+
   const pathSubmission = () => {
     // console.log(personality, "api body");
     setCreatingPath(true);
