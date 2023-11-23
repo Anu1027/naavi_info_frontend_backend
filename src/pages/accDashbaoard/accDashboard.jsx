@@ -142,12 +142,12 @@ const AccDashboard = () => {
   ];
   const financeList = ["0-25L", "25L-75L", "75L-3CR", "3CR+", "Other"];
   const personalityList = [
-    "Realistic",
-    "Investigative",
-    "Artistic",
-    "Social",
-    "Enterprising",
-    "Conventional",
+    "realistic",
+    "investigative",
+    "artistic",
+    "social",
+    "enterprising",
+    "conventional",
   ];
 
   let navigate = useNavigate();

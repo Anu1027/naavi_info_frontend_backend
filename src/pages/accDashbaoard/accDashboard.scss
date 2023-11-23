@@ -2101,6 +2101,7 @@ input[type="file"] {
   align-items: center;
   cursor: pointer;
   margin-bottom: 1rem;
+  text-transform: capitalize;
   &:hover {
     font-weight: 700;
   }
@@ -2119,4 +2120,5 @@ input[type="file"] {
   font-weight: 700;
   color: #fff;
   margin-bottom: 1rem;
+  text-transform: capitalize;
 }

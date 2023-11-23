@@ -156,12 +156,12 @@ const AccProfile = () => {
   ];
   const financeList = ["0-25L", "25L-75L", "75L-3CR", "3CR+", "Other"];
   const personalityList = [
-    "Realistic",
-    "Investigative",
-    "Artistic",
-    "Social",
-    "Enterprising",
-    "Conventional",
+    "realistic",
+    "investigative",
+    "artistic",
+    "social",
+    "enterprising",
+    "conventional",
   ];
 
   const {
@@ -923,7 +923,7 @@ const AccProfile = () => {
   };
 
   const pathSubmission = () => {
-    // console.log(pathSteps, "api body");
+    // console.log(personality, "api body");
     setCreatingPath(true);
     axios
       .post(`https://careers.marketsverse.com/paths/add`, {
@@ -933,10 +933,11 @@ const AccProfile = () => {
         grade: grade,
         stream: stream,
         financialSituation: finance,
+        personality: personality,
       })
       .then((response) => {
         let result = response?.data;
-        console.log(result, "pathSubmission result");
+        // console.log(result, "pathSubmission result");
         if (result?.status) {
           setCreatingPath(false);
           window.location.reload();
