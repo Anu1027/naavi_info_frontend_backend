@@ -45,20 +45,14 @@
   .sidebar-line {
     padding-right: 2vw;
     margin: 30px 0px;
-    // background: #d9d9d9;
     height: 1px;
     width: 100%;
     margin-left: -20px;
   }
 
   .history-div {
-    display: none;
-    position: fixed;
-    width: 20vw;
-    left: 0;
-    bottom: 0;
-    // border: 1px solid red;
-    padding: 0.5rem;
+    width: 100%;
+    padding: 1rem 1rem 2rem;
 
     .history-box {
       width: 100%;
@@ -68,14 +62,14 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 1rem;
-      gap: 1.5rem;
+      padding: 2rem 1rem 1rem;
+      gap: 2rem;
 
       .history-details {
         width: 100%;
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 1rem;
         align-items: center;
 
         .font1 {
@@ -89,6 +83,7 @@
       }
 
       .open-btn {
+        margin-top: 1rem;
         width: 100%;
         padding: 0.75rem 0;
         text-align: center;

@@ -44,6 +44,7 @@ import PathComponent from "../../components/PathComponent";
 import JourneyPage from "../JourneyPage";
 import CurrentStep from "../CurrentStep";
 import { useCoinContextData } from "../../context/CoinContext";
+import axios from "axios";
 
 const accountantsData = [
   {
@@ -157,7 +158,14 @@ const Dashboard = () => {
     balanceToggle,
     setBalanceToggle,
   } = useStore();
-  const { searchTerm, setSearchterm } = useCoinContextData();
+  const {
+    searchTerm,
+    setSearchterm,
+    checkForHistory,
+    setCheckForHistory,
+    preLoginHistoryData,
+    setPreLoginHistoryData,
+  } = useCoinContextData();
   const [search, setSearch] = useState("");
   const [searchservice, setSearchservice] = useState("");
   const [countriesChecked, setCountriesChecked] = useState([]);
@@ -375,6 +383,41 @@ const Dashboard = () => {
     localStorage.clear();
     navigate("/login");
   };
+
+  const getPathDetails = (id) => {
+    axios
+      .get(`https://careers.marketsverse.com/paths/get?path_id=${id}`)
+      .then((response) => {
+        let result = response?.data?.data[0];
+        // console.log(result, "preLoginHistoryData result");
+        setPreLoginHistoryData(result);
+      })
+      .catch((error) => {
+        console.log(error, "error in preLoginHistoryData");
+      });
+  };
+
+  //Check if logged in user has a outstanding path to view
+  useEffect(() => {
+    let userEmail = userDetails?.user?.email;
+    axios
+      .get(
+        `https://careers.marketsverse.com/pre_login/get_path?email=${userEmail}`
+      )
+      .then((response) => {
+        let result = response?.data;
+        // console.log(result, "check for preLogin result");
+        if (result?.status) {
+          setCheckForHistory(true);
+          getPathDetails(result?.data[0]?.pathId);
+        } else {
+          setCheckForHistory(false);
+        }
+      })
+      .catch((error) => {
+        console.log(error, "error in check for preLogin result");
+      });
+  }, []);
 
   return (
     <div>
