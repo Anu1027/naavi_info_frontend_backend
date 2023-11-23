@@ -3,7 +3,6 @@
 
 .dashboard-sidebar1 {
   height: 100vh;
-  // padding: 30px 2vw 0px 2vw;
   overflow-y: scroll;
   width: 20vw;
   background: #ededed5e;
@@ -22,7 +21,6 @@
       width: 100%;
     }
   }
-
 
   .each-sidenav {
     border-radius: 5px;
@@ -51,6 +49,58 @@
     height: 1px;
     width: 100%;
     margin-left: -20px;
+  }
+
+  .history-div {
+    display: none;
+    position: fixed;
+    width: 20vw;
+    left: 0;
+    bottom: 0;
+    // border: 1px solid red;
+    padding: 0.5rem;
+
+    .history-box {
+      width: 100%;
+      background: white;
+      border-radius: 15px;
+      color: #100f0d;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem;
+      gap: 1.5rem;
+
+      .history-details {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+
+        .font1 {
+          font-size: 0.85rem;
+        }
+
+        .pathId-text {
+          font-size: 0.8rem;
+          text-transform: none;
+        }
+      }
+
+      .open-btn {
+        width: 100%;
+        padding: 0.75rem 0;
+        text-align: center;
+        color: white;
+        border-radius: 35px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        background: linear-gradient(90deg, #47b4d5 0.02%, #29449d 119.26%);
+        cursor: pointer;
+        @include btn-animate(#fff);
+      }
+    }
   }
 }
 

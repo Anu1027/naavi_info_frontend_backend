@@ -59,7 +59,7 @@ const sidebarMenu3 = [
   // },
 ];
 
-const AccDashsidebar = ({ isNotOnMainPage }) => {
+const AccDashsidebar = ({ isNotOnMainPage, handleChangeAccDashsidebar }) => {
   const { accsideNav, setaccsideNav, setispopular } = useStore();
   const navigate = useNavigate();
   return (
@@ -74,6 +74,12 @@ const AccDashsidebar = ({ isNotOnMainPage }) => {
           height: "70px",
           borderBottom: "0.5px solid #e5e5e5",
           display: "flex",
+        }}
+        onClick={() => {
+          if (handleChangeAccDashsidebar) {
+            handleChangeAccDashsidebar();
+            setaccsideNav("CRM");
+          }
         }}
       >
         <img
@@ -121,7 +127,10 @@ const AccDashsidebar = ({ isNotOnMainPage }) => {
                 }}
                 key={i}
                 onClick={() => {
-                  if (each.click && isNotOnMainPage) {
+                  if (handleChangeAccDashsidebar) {
+                    handleChangeAccDashsidebar();
+                    setaccsideNav(each.title);
+                  } else if (each.click && isNotOnMainPage) {
                     navigate("/dashboard/accountants");
                   } else if (each.click) {
                     setaccsideNav(each.title);
@@ -207,7 +216,10 @@ const AccDashsidebar = ({ isNotOnMainPage }) => {
                 }}
                 key={j}
                 onClick={() => {
-                  if (ele.click && isNotOnMainPage) {
+                  if (handleChangeAccDashsidebar) {
+                    handleChangeAccDashsidebar();
+                    setaccsideNav(ele.title);
+                  } else if (ele.click && isNotOnMainPage) {
                     navigate("/dashboard/accountants");
                   } else if (ele.click) {
                     setaccsideNav(ele.title);

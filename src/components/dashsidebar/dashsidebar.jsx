@@ -4,6 +4,7 @@ import "./dashsidebar.scss";
 import { useStore } from "../store/store.ts";
 import { useNavigate } from "react-router-dom";
 import logo from "./logo.svg";
+import history from './history.svg';
 
 const sidebarMenu1 = [
   {
@@ -54,13 +55,21 @@ const sidebarMenu3 = [
   },
 ];
 
-const Dashsidebar = ({ isNotOnMainPage }) => {
+const Dashsidebar = ({ isNotOnMainPage, handleChange }) => {
   const { sideNav, setsideNav, setBuy } = useStore();
   const navigate = useNavigate();
   return (
     <div className="dashboard-sidebar1" style={{ overflow: "hidden" }}>
       <div className="logo-border">
-        <div className="dashboard-left">
+        <div
+          className="dashboard-left"
+          onClick={() => {
+            if (handleChange) {
+              handleChange();
+              setsideNav("Paths");
+            }
+          }}
+        >
           <img
             className="dashboard-logo"
             src={logo}
@@ -105,10 +114,15 @@ const Dashsidebar = ({ isNotOnMainPage }) => {
                 }}
                 key={i}
                 onClick={() => {
-                  setsideNav(each.title);
-                  if (isNotOnMainPage) {
+                  if (handleChange) {
+                    handleChange();
+                    setsideNav(each.title);
+                  } else if (isNotOnMainPage) {
                     navigate("/dashboard/users/");
                     setBuy("step1");
+                    setsideNav(each.title);
+                  } else {
+                    setsideNav(each.title);
                   }
                 }}
               >
@@ -145,7 +159,13 @@ const Dashsidebar = ({ isNotOnMainPage }) => {
                   borderRadius: sideNav === ele.title ? "35px" : "",
                 }}
                 key={j}
-                onClick={() => setsideNav(ele.title)}
+                onClick={() => {
+                  if (handleChange) {
+                    handleChange();
+                  } else {
+                    setsideNav(ele.title);
+                  }
+                }}
               >
                 {ele.title}
               </div>
@@ -188,22 +208,21 @@ const Dashsidebar = ({ isNotOnMainPage }) => {
           })}
         </div> */}
       </div>
-      {/* <div
-        className="side-btn"
-        style={{
-          background: "#59A2DD",
-          borderRadius: "35px",
-          padding: "15px 0px",
-          color: "#FFF",
-          width: "15vw",
-          textAlign: "center",
-          position: "fixed",
-          bottom: "20px",
-          cursor: "pointer",
-        }}
-      >
-        Upgrade To Plus
-      </div> */}
+      
+      <div className="history-div">
+        <div className="history-box">
+          <div>
+            <img src={history} alt="" />
+          </div>
+          <div style={{fontSize: '0.8rem'}}>You viewed the following path:</div>
+          <div className="history-details">
+            <div className="font1" style={{fontWeight: '500'}}>University Of California</div>
+            <div className="font1">Computer Science</div>
+            <div className="pathId-text"><span style={{fontWeight: '600'}}>pathid:</span> 134123434313</div>
+          </div>
+          <div className="open-btn">Open</div>
+        </div>
+      </div>
     </div>
   );
 };

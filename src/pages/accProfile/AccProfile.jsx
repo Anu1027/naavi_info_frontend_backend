@@ -37,6 +37,8 @@ import {
 import { formatDate } from "../../utils/time";
 import * as jose from "jose";
 import { LoadingAnimation1 } from "../../components/LoadingAnimation1";
+import { useCoinContextData } from "../../context/CoinContext";
+import NewStep1 from "../../globalComponents/GlobalDrawer/NewStep1";
 
 import cover from "../../images/cover.svg";
 import uploadGrey from "../../images/uploadGrey.svg";
@@ -55,6 +57,7 @@ import {
 } from "../../components/createAccountant/CreatePlanB";
 import { uploadImageFunc } from "../../utils/imageUpload";
 import classNames from "../../components/createAccountant/components.module.scss";
+import trash from "../accDashbaoard/trash.svg";
 
 const AccProfile = () => {
   const { accsideNav, setaccsideNav, ispopular, setispopular } = useStore();
@@ -133,28 +136,37 @@ const AccProfile = () => {
   const [changing, setChanging] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  // create distributor profile
-  // const [createDistributorProfile, setCreateDistributorProfile] = useState(false);
-  // const [createDistributorProfileStep, setCreateDistributorProfileStep] = useState(1);
-  // const [distributorProfilePicture, setDistributorProfilePicture] = useState();
-  // const [distributorFirstName, setDistributorFirstName] = useState();
-  // const [distributorLastName, setDistributorLastName] = useState();
-  // const [distributorUserName, setDistributorUserName] = useState("");
-  // const [distributorCoverPhoto1, setDistributorCoverPhoto1] = useState();
-  // const [distributorDisplayName, setDistributorDisplayName] = useState();
-  // const [distributorUserName1, setDistributorUserName1] = useState("");
-  // const [distributorDescription, setDistributorDescription] = useState();
-  // const [distributorColorCode, setDistributorColorCode] = useState();
-  // const [distributorHeadquarter, setDistributorHeadquarter] = useState();
-  // const [distributorAddress, setDistributorAddress] = useState();
-  // const [distributorWhiteProPic, setDistributorWhiteProPic] = useState();
-  // const [isloading1, setIsloading1] = useState(false);
-  // const [distributorStatus, setDistributorStatus] = useState("");
-  // const [distributorHidden, setDistributorHidden] = useState(false);
-  // const [distributorUserNameAvailable, setDistributorUserNameAvailable] = useState(false);
-  // const [distributorUserNameAvailable1, setDistributorUserNameAvailable1] = useState(false);
-  // const [distributorChanging, setDistributorChanging] = useState(false);
-  // const [loading1, setLoading1] = useState(false);
+  // new path
+  const [grade, setGrade] = useState([]);
+  const [gradeAvg, setGradeAvg] = useState([]);
+  const [curriculum, setCurriculum] = useState([]);
+  const [stream, setStream] = useState([]);
+  const [finance, setFinance] = useState([]);
+  const streamList = ["MPC", "BIPC", "CEC", "MEC", "HEC"];
+  const curriculumList = ["IB", "IGCSE", "CBSE", "ICSE", "Nordic"];
+  const gradeList = ["9", "10", "11", "12"];
+  const gradePointAvg = [
+    "0% - 35%",
+    "36% - 60%",
+    "61% - 75%",
+    "76% - 85%",
+    "86% - 95%",
+    "96% - 100%",
+  ];
+  const financeList = ["0-25L", "25L-75L", "75L-3CR", "3CR+", "Other"];
+
+  const {
+    allSteps,
+    setAllSteps,
+    stepsToggle,
+    setStepsToggle,
+    pathSteps,
+    setPathSteps,
+    creatingPath,
+    setCreatingPath,
+    mypathsMenu,
+    setMypathsMenu,
+  } = useCoinContextData();
 
   let navigate = useNavigate();
 
@@ -245,6 +257,56 @@ const AccProfile = () => {
   }
 
   //upload end here
+
+  const handleGrade = (item) => {
+    if (grade.includes(item)) {
+      // If the grade is already selected, remove it
+      setGrade(grade.filter((o) => o !== item));
+    } else {
+      // If the grade is not selected, add it
+      setGrade([...grade, item]);
+    }
+  };
+  
+  const handleGradeAvg = (item) => {
+    if (gradeAvg.includes(item)) {
+      // If the gradeAvg is already selected, remove it
+      setGradeAvg(gradeAvg.filter((o) => o !== item));
+    } else {
+      // If the gradeAvg is not selected, add it
+      setGradeAvg([...gradeAvg, item]);
+    }
+  };
+
+  const handleCurriculum = (item) => {
+    if (curriculum.includes(item)) {
+      // If the curriculum is already selected, remove it
+      setCurriculum(curriculum.filter((o) => o !== item));
+    } else {
+      // If the curriculum is not selected, add it
+      setCurriculum([...curriculum, item]);
+    }
+  };
+
+  const handleStream = (item) => {
+    if (stream.includes(item)) {
+      // If the stream is already selected, remove it
+      setStream(stream.filter((o) => o !== item));
+    } else {
+      // If the stream is not selected, add it
+      setStream([...stream, item]);
+    }
+  };
+
+  const handleFinance = (item) => {
+    if (finance.includes(item)) {
+      // If the finance is already selected, remove it
+      setFinance(finance.filter((o) => o !== item));
+    } else {
+      // If the finance is not selected, add it
+      setFinance([...finance, item]);
+    }
+  };
 
   const handleFollowerPerAccountants = () => {
     setIsLoading(true);
@@ -347,6 +409,15 @@ const AccProfile = () => {
     setthirdChargeAttempt("");
     setCoverImageS3url("");
     setImage(null);
+    setPathSteps({
+      email: userDetails?.user?.email,
+      nameOfPath: "",
+      description: "",
+      length: "",
+      path_type: "",
+      step_ids: [],
+      destination_institution: "",
+    });
   };
 
   const handleLogout = () => {
@@ -819,17 +890,56 @@ const AccProfile = () => {
     }
   };
 
+  const handleChangeAccDashsidebar = () => {
+    if (showDrop) {
+      setShowDrop(false);
+    }
+    navigate("/dashboard/accountants");
+  };
+
+  const pathSubmission = () => {
+    // console.log(pathSteps, "api body");
+    setCreatingPath(true);
+    axios
+      .post(`https://careers.marketsverse.com/paths/add`, {
+        ...pathSteps,
+        performance: gradeAvg,
+        curriculum: curriculum,
+        grade: grade,
+        stream: stream,
+        financialSituation: finance,
+      })
+      .then((response) => {
+        let result = response?.data;
+        console.log(result, "pathSubmission result");
+        if (result?.status) {
+          setCreatingPath(false);
+          window.location.reload();
+        } else {
+          setCreatingPath(false);
+        }
+      })
+      .catch((error) => {
+        console.log(error, "error in pathSubmission");
+      });
+  };
+
+  const removeStep = (stepId) => {
+    const updatedStepIds = pathSteps?.step_ids?.filter((id) => id !== stepId);
+    setPathSteps({
+      ...pathSteps,
+      step_ids: updatedStepIds,
+    });
+  };
+
   return (
     <div style={{ overflow: "hidden" }}>
       <div className="dashboard-main">
         <div className="dashboard-body">
-          <div
-            onClick={() => {
-              setShowDrop(false);
-              navigate("/dashboard/accountants");
-            }}
-          >
-            <AccDashsidebar />
+          <div>
+            <AccDashsidebar
+              handleChangeAccDashsidebar={handleChangeAccDashsidebar}
+            />
           </div>
           <div className="dashboard-screens" onClick={() => resetpop()}>
             <div style={{ height: "100%" }}>
@@ -1343,8 +1453,9 @@ const AccProfile = () => {
           </div>
         </div>
       </div>
+
       <>
-        {ispopular ? (
+      {ispopular ? (
           <div
             className="acc-popular"
             onClick={() => setShowDrop(false)}
@@ -1352,7 +1463,11 @@ const AccProfile = () => {
           >
             <div className="acc-popular-top">
               <div className="acc-popular-head">
-                {pstep > 1 ? "New Service" : "Popular Actions"}
+                {pstep === 8
+                  ? "New Path"
+                  : pstep > 1 && pstep < 8
+                  ? "New Service"
+                  : "Popular Actions"}
               </div>
               <div
                 className="acc-popular-img-box"
@@ -1380,7 +1495,35 @@ const AccProfile = () => {
                     >
                       Service
                     </div>
+
                     <div
+                      className="acc-step-box"
+                      onClick={() => {
+                        setselectNew("Path");
+                        setpstep(8);
+                      }}
+                      style={{
+                        background: selectNew === "Path" ? "#182542" : "",
+                        color: selectNew === "Path" ? "#FFF" : "",
+                      }}
+                    >
+                      Path
+                    </div>
+
+                    <div
+                      className="acc-step-box"
+                      onClick={() => {
+                        setselectNew("Step");
+                        setpstep(9);
+                      }}
+                      style={{
+                        background: selectNew === "Step" ? "#182542" : "",
+                        color: selectNew === "Step" ? "#FFF" : "",
+                      }}
+                    >
+                      Step
+                    </div>
+                    {/* <div
                       className="acc-step-box"
                       onClick={() => {
                         setselectNew("Task");
@@ -1418,7 +1561,7 @@ const AccProfile = () => {
                       }}
                     >
                       Video
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               ) : pstep === 2 ? (
@@ -1810,6 +1953,502 @@ const AccProfile = () => {
                 <div className="success-box">
                   You Have Successfully Created A New Service
                 </div>
+              ) : pstep === 8 ? (
+                <div className="acc-addpath">
+                  <div className="each-acc-addpath-field">
+                    <div className="each-acc-addpath-field-name">
+                      What is the name of the path?
+                    </div>
+                    <div className="each-acc-addpath-field-input">
+                      <input
+                        type="text"
+                        placeholder="Name.."
+                        value={pathSteps?.nameOfPath}
+                        onChange={(e) => {
+                          setPathSteps((prev) => {
+                            return {
+                              ...prev,
+                              nameOfPath: e.target.value,
+                            };
+                          });
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="each-acc-addpath-field">
+                    <div className="each-acc-addpath-field-name">
+                      How long will the path apx take?
+                    </div>
+                    <div className="each-acc-addpath-field-input">
+                      <input
+                        type="number"
+                        placeholder="0"
+                        style={{ width: "70%" }}
+                        value={pathSteps?.length}
+                        onChange={(e) => {
+                          setPathSteps((prev) => {
+                            return {
+                              ...prev,
+                              length: e.target.value,
+                            };
+                          });
+                        }}
+                      />
+                      <div className="years-div">Years</div>
+                    </div>
+                  </div>
+
+                  <div className="each-acc-addpath-field">
+                    <div className="each-acc-addpath-field-name">
+                      Describe the path
+                    </div>
+                    <div className="each-acc-addpath-field-input">
+                      <textarea
+                        placeholder="Enter description.."
+                        value={pathSteps?.description}
+                        onChange={(e) => {
+                          setPathSteps((prev) => {
+                            return {
+                              ...prev,
+                              description: e.target.value,
+                            };
+                          });
+                        }}
+                      ></textarea>
+                    </div>
+                  </div>
+
+                  <div className="each-acc-addpath-field">
+                    <div className="each-acc-addpath-field-name">
+                      What type of path is it?
+                    </div>
+                    <div className="each-acc-addpath-field-flex">
+                      <div
+                        onClick={() => {
+                          setPathSteps((prev) => {
+                            return {
+                              ...prev,
+                              path_type: "education",
+                            };
+                          });
+                        }}
+                        style={{
+                          background:
+                            pathSteps?.path_type === "education"
+                              ? "linear-gradient(90deg, #47b4d5 0.02%, #29449d 119.26%)"
+                              : "",
+                          color:
+                            pathSteps?.path_type === "education" ? "white" : "",
+                        }}
+                      >
+                        Education
+                      </div>
+                      <div
+                        onClick={() => {
+                          setPathSteps((prev) => {
+                            return {
+                              ...prev,
+                              path_type: "career",
+                            };
+                          });
+                        }}
+                        style={{
+                          background:
+                            pathSteps?.path_type === "career"
+                              ? "linear-gradient(90deg, #47b4d5 0.02%, #29449d 119.26%)"
+                              : "",
+                          color:
+                            pathSteps?.path_type === "career" ? "white" : "",
+                        }}
+                      >
+                        Career
+                      </div>
+                      <div
+                        onClick={() => {
+                          setPathSteps((prev) => {
+                            return {
+                              ...prev,
+                              path_type: "immigration",
+                            };
+                          });
+                        }}
+                        style={{
+                          background:
+                            pathSteps?.path_type === "immigration"
+                              ? "linear-gradient(90deg, #47b4d5 0.02%, #29449d 119.26%)"
+                              : "",
+                          color:
+                            pathSteps?.path_type === "immigration"
+                              ? "white"
+                              : "",
+                        }}
+                      >
+                        Immigration
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="each-acc-addpath-field">
+                    <div className="each-acc-addpath-field-name">
+                      What is the destination of the path?
+                    </div>
+                    <div className="each-acc-addpath-field-input">
+                      <input
+                        type="text"
+                        placeholder="Name.."
+                        value={pathSteps?.destination_institution}
+                        onChange={(e) => {
+                          setPathSteps((prev) => {
+                            return {
+                              ...prev,
+                              destination_institution: e.target.value,
+                            };
+                          });
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="each-acc-addpath-field">
+                    <div className="each-acc-addpath-field-name">Add steps</div>
+                    <div
+                      className="each-acc-addpath-field-input"
+                      style={{ flexDirection: "column" }}
+                    >
+                      <div
+                        style={{
+                          width: "100%",
+                          display: "flex",
+                          cursor: "pointer",
+                        }}
+                        onClick={() => {
+                          setStepsToggle(!stepsToggle);
+                        }}
+                      >
+                        <div
+                          style={{
+                            width: "85%",
+                            cursor: "pointer",
+                            padding: "1.5rem",
+                            borderRadius: "15px",
+                            opacity: "0.25",
+                            fontSize: "1rem",
+                            fontWeight: "500",
+                          }}
+                        >
+                          Click To Select
+                        </div>
+                        <div className="arrow-box">
+                          <img
+                            src={arrow}
+                            alt=""
+                            style={{
+                              transform: stepsToggle ? "rotate(180deg)" : "",
+                            }}
+                          />
+                        </div>
+                      </div>
+                      <div
+                        className="hidden-steps"
+                        style={{ display: stepsToggle ? "flex" : "none" }}
+                      >
+                        {allSteps?.map((e, i) => {
+                          return (
+                            <div
+                              className="each-hidden-step"
+                              key={i}
+                              onClick={() => {
+                                setPathSteps((prev) => {
+                                  return {
+                                    ...prev,
+                                    step_ids:
+                                      prev?.step_ids?.length > 0
+                                        ? [...prev?.step_ids, e?._id]
+                                        : [e?._id],
+                                  };
+                                });
+                                setStepsToggle(false);
+                              }}
+                            >
+                              <div className="stepp-textt">{e?.name}</div>
+                              <div className="stepp-textt1">
+                                {e?.description}
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="selected-steps">
+                    {allSteps?.map((e, i) => {
+                      if (pathSteps?.step_ids?.includes(e?._id)) {
+                        return (
+                          <div className="each-selected-step" key={e?._id}>
+                            <div className="stepp-textt">{e?.name}</div>
+                            <div className="stepp-textt1">{e?.description}</div>
+                            <div
+                              className="trash-icon-div"
+                              onClick={() => removeStep(e._id)}
+                            >
+                              <img src={trash} alt="" />
+                            </div>
+                          </div>
+                        );
+                      }
+                      return null; // Add this line to prevent rendering if step is not included
+                    })}
+                  </div>
+
+                  <div className="each-acc-addpath-field">
+                    <div className="each-acc-addpath-field-name">
+                      Select ideal grade for participant
+                    </div>
+                    <div className="optioncardWrapper">
+                      {gradeList.map((item) => (
+                        <div
+                          className={
+                            grade.includes(item)
+                              ? "optionCardSmallSelected"
+                              : "optionCardSmall"
+                          }
+                          onClick={(e) => handleGrade(item)}
+                        >
+                          {item}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="each-acc-addpath-field">
+                    <div className="each-acc-addpath-field-name">
+                      Select ideal grade point average for participant
+                    </div>
+                    <div className="optionCardFullWrapper">
+                      {gradePointAvg.map((item) => (
+                        <div
+                          className={
+                            gradeAvg.includes(item)
+                              ? "optionCardFullSelected"
+                              : "optionCardFull"
+                          }
+                          onClick={(e) => handleGradeAvg(item)}
+                        >
+                          {item}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="each-acc-addpath-field">
+                    <div className="each-acc-addpath-field-name">
+                      Select ideal curriculum for participant
+                    </div>
+                    <div className="optionCardFullWrapper">
+                      {curriculumList.map((item) => (
+                        <div
+                          className={
+                            curriculum.includes(item)
+                              ? "optionCardFullSelected"
+                              : "optionCardFull"
+                          }
+                          onClick={(e) => handleCurriculum(item)}
+                        >
+                          {item}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="each-acc-addpath-field">
+                    <div className="each-acc-addpath-field-name">
+                      Select ideal stream for participant
+                    </div>
+                    <div className="optionCardFullWrapper">
+                      {streamList.map((item) => (
+                        <div
+                          className={
+                            stream.includes(item)
+                              ? "optionCardFullSelected"
+                              : "optionCardFull"
+                          }
+                          onClick={(e) => handleStream(item)}
+                        >
+                          {item}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="each-acc-addpath-field">
+                    <div className="each-acc-addpath-field-name">
+                      Select ideal financial situation for participant
+                    </div>
+                    <div className="optionCardFullWrapper">
+                      {financeList.map((item) => (
+                        <div
+                          className={
+                            finance.includes(item)
+                              ? "optionCardFullSelected"
+                              : "optionCardFull"
+                          }
+                          onClick={(e) => handleFinance(item)}
+                        >
+                          {item}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="each-acc-addpath-field">
+                    <div className="each-acc-addpath-field-name">
+                      What program will they be studying?
+                    </div>
+                    <div className="each-acc-addpath-field-input">
+                      <input
+                        type="text"
+                        placeholder="Name.."
+                        value={pathSteps?.program}
+                        onChange={(e) => {
+                          setPathSteps((prev) => {
+                            return {
+                              ...prev,
+                              program: e.target.value,
+                            };
+                          });
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="each-acc-addpath-field">
+                    <div className="each-acc-addpath-field-name">
+                      What city is the university in?
+                    </div>
+                    <div className="each-acc-addpath-field-input">
+                      <input
+                        type="text"
+                        placeholder="City.."
+                        value={pathSteps?.city}
+                        onChange={(e) => {
+                          setPathSteps((prev) => {
+                            return {
+                              ...prev,
+                              city: e.target.value,
+                            };
+                          });
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="each-acc-addpath-field">
+                    <div className="each-acc-addpath-field-name">
+                      What country is the university in?
+                    </div>
+                    <div className="each-acc-addpath-field-input">
+                      <input
+                        type="text"
+                        placeholder="Country.."
+                        value={pathSteps?.country}
+                        onChange={(e) => {
+                          setPathSteps((prev) => {
+                            return {
+                              ...prev,
+                              country: e.target.value,
+                            };
+                          });
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="each-acc-addpath-field">
+                    <div
+                      className="submit-path-btn"
+                      style={{
+                        opacity: creatingPath
+                          ? "0.5"
+                          : pathSteps?.nameOfPath &&
+                            pathSteps?.description &&
+                            pathSteps?.length &&
+                            pathSteps?.path_type &&
+                            pathSteps?.step_ids?.length > 0 &&
+                            pathSteps?.destination_institution &&
+                            pathSteps?.program &&
+                            pathSteps?.city &&
+                            pathSteps?.country &&
+                            grade.length > 0 &&
+                            gradeAvg.length > 0 &&
+                            curriculum.length > 0 &&
+                            stream.length > 0 &&
+                            finance.length > 0
+                          ? "1"
+                          : "0.5",
+                        cursor: creatingPath
+                          ? "not-allowed"
+                          : pathSteps?.nameOfPath &&
+                            pathSteps?.description &&
+                            pathSteps?.length &&
+                            pathSteps?.path_type &&
+                            pathSteps?.step_ids?.length > 0 &&
+                            pathSteps?.destination_institution &&
+                            pathSteps?.program &&
+                            pathSteps?.city &&
+                            pathSteps?.country &&
+                            grade.length > 0 &&
+                            gradeAvg.length > 0 &&
+                            curriculum.length > 0 &&
+                            stream.length > 0 &&
+                            finance.length > 0
+                          ? "pointer"
+                          : "not-allowed",
+                      }}
+                      onClick={() => {
+                        if (
+                          pathSteps?.nameOfPath &&
+                          pathSteps?.description &&
+                          pathSteps?.length &&
+                          pathSteps?.path_type &&
+                          pathSteps?.step_ids?.length > 0 &&
+                          pathSteps?.destination_institution &&
+                          pathSteps?.program &&
+                          pathSteps?.city &&
+                          pathSteps?.country &&
+                          grade.length > 0 &&
+                          gradeAvg.length > 0 &&
+                          curriculum.length > 0 &&
+                          stream.length > 0 &&
+                          finance.length > 0
+                        ) {
+                          pathSubmission();
+                        }
+                      }}
+                    >
+                      {creatingPath ? "Loading.." : "Submit Path"}
+                    </div>
+                    <div
+                      className="go-back-btn"
+                      onClick={() => {
+                        setpstep(1);
+                        setPathSteps({
+                          nameOfPath: "",
+                          description: "",
+                          length: "",
+                          path_type: "",
+                          step_ids: [],
+                          destination_institution: "",
+                        });
+                      }}
+                    >
+                      Go Back
+                    </div>
+                  </div>
+                </div>
+              ) : pstep === 9 ? (
+                <NewStep1 setpstep={setpstep} />
               ) : (
                 ""
               )}
@@ -1819,6 +2458,7 @@ const AccProfile = () => {
           ""
         )}
       </>
+
       <>
         {showDrop ? (
           <div className="m-drop" onMouseDown={(e) => e.stopPropagation()}>
@@ -1900,6 +2540,7 @@ const AccProfile = () => {
           ""
         )}
       </>
+
       <>
         {createBrandProfile && (
           <div
@@ -2839,6 +3480,7 @@ const AccProfile = () => {
           )}
         </div>
       )}
+
       <ToastContainer />
     </div>
   );

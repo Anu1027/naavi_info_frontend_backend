@@ -171,6 +171,7 @@ const AccDashboard = () => {
       setGrade([...grade, item]);
     }
   };
+  
   const handleGradeAvg = (item) => {
     if (gradeAvg.includes(item)) {
       // If the gradeAvg is already selected, remove it
@@ -2043,6 +2044,7 @@ const AccDashboard = () => {
           </div>
         </div>
       </div>
+
       <>
         {ispopular ? (
           <div
@@ -3047,6 +3049,7 @@ const AccDashboard = () => {
           ""
         )}
       </>
+
       <>
         {showDrop ? (
           <div className="m-drop" onMouseDown={(e) => e.stopPropagation()}>
@@ -3128,6 +3131,7 @@ const AccDashboard = () => {
           ""
         )}
       </>
+
       {serviceActionEnabled && (
         <div className="popularS">
           {serviceActionStep === 1 && (
@@ -3723,6 +3727,7 @@ const AccDashboard = () => {
           )}
         </div>
       )}
+
       <ToastContainer />
     </div>
   );

@@ -736,17 +736,19 @@ const UserProfile = () => {
     }
   };
 
+  const handleChange = () => {
+    if (showDrop) {
+      setShowDrop(false);
+    }
+    navigate("/dashboard/users");
+  };
+
   return (
     <div style={{ overflow: "hidden" }}>
       <div className="dashboard-main">
         <div className="dashboard-body">
-          <div
-            onClick={() => {
-              setShowDrop(false);
-              navigate("/dashboard/users");
-            }}
-          >
-            <Dashsidebar />
+          <div>
+            <Dashsidebar handleChange={handleChange} />
           </div>
           <div className="dashboard-screens" onClick={() => resetpop()}>
             <div style={{ height: "100%" }}>
