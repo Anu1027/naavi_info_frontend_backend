@@ -977,7 +977,7 @@ const AccProfile = () => {
                   <input
                     className="search-input"
                     type="text"
-                    placeholder="Search ..."
+                    placeholder="Search..."
                     // value={search}
                     // onChange={(e) => setSearch(e.target.value)}
                   />
@@ -1441,33 +1441,7 @@ const AccProfile = () => {
                         setShowDrop(false);
                       }}
                     >
-                      <div>Create An Vendor Profile</div>
-                      <div>
-                        <img src={colorArrow} alt="" />
-                      </div>
-                    </div>
-
-                    <div
-                      className="create-acc"
-                      onClick={() => {
-                        setCreateBrandProfile(true);
-                        setShowDrop(false);
-                      }}
-                    >
-                      <div>Create An Distributor Profile</div>
-                      <div>
-                        <img src={colorArrow} alt="" />
-                      </div>
-                    </div>
-
-                    <div
-                      className="create-acc"
-                      onClick={() => {
-                        setCreateBrandProfile(true);
-                        setShowDrop(false);
-                      }}
-                    >
-                      <div>Create An Mentor Profile</div>
+                      <div>Create An Partner Profile</div>
                       <div>
                         <img src={colorArrow} alt="" />
                       </div>
