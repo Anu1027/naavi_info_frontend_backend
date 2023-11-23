@@ -142,6 +142,7 @@ const AccProfile = () => {
   const [curriculum, setCurriculum] = useState([]);
   const [stream, setStream] = useState([]);
   const [finance, setFinance] = useState([]);
+  const [personality, setPersonality] = useState([]);
   const streamList = ["MPC", "BIPC", "CEC", "MEC", "HEC"];
   const curriculumList = ["IB", "IGCSE", "CBSE", "ICSE", "Nordic"];
   const gradeList = ["9", "10", "11", "12"];
@@ -154,6 +155,14 @@ const AccProfile = () => {
     "96% - 100%",
   ];
   const financeList = ["0-25L", "25L-75L", "75L-3CR", "3CR+", "Other"];
+  const personalityList = [
+    "Realistic",
+    "Investigative",
+    "Artistic",
+    "Social",
+    "Enterprising",
+    "Conventional",
+  ];
 
   const {
     allSteps,
@@ -267,7 +276,7 @@ const AccProfile = () => {
       setGrade([...grade, item]);
     }
   };
-  
+
   const handleGradeAvg = (item) => {
     if (gradeAvg.includes(item)) {
       // If the gradeAvg is already selected, remove it
@@ -305,6 +314,16 @@ const AccProfile = () => {
     } else {
       // If the finance is not selected, add it
       setFinance([...finance, item]);
+    }
+  };
+
+  const handlePersonality = (item) => {
+    if (personality.includes(item)) {
+      // If the personality is already selected, remove it
+      setPersonality(personality.filter((o) => o !== item));
+    } else {
+      // If the personality is not selected, add it
+      setPersonality([...personality, item]);
     }
   };
 
@@ -418,6 +437,12 @@ const AccProfile = () => {
       step_ids: [],
       destination_institution: "",
     });
+    setGrade([]);
+    setGradeAvg([]);
+    setCurriculum([]);
+    setStream([]);
+    setFinance([]);
+    setPersonality([]);
   };
 
   const handleLogout = () => {
@@ -1455,7 +1480,7 @@ const AccProfile = () => {
       </div>
 
       <>
-      {ispopular ? (
+        {ispopular ? (
           <div
             className="acc-popular"
             onClick={() => setShowDrop(false)}
@@ -2366,6 +2391,26 @@ const AccProfile = () => {
                   </div>
 
                   <div className="each-acc-addpath-field">
+                    <div className="each-acc-addpath-field-name">
+                      What personality suits this path?
+                    </div>
+                    <div className="optionCardFullWrapper">
+                      {personalityList.map((item) => (
+                        <div
+                          className={
+                            personality.includes(item)
+                              ? "optionCardFullSelected"
+                              : "optionCardFull"
+                          }
+                          onClick={(e) => handlePersonality(item)}
+                        >
+                          {item}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="each-acc-addpath-field">
                     <div
                       className="submit-path-btn"
                       style={{
@@ -2384,7 +2429,8 @@ const AccProfile = () => {
                             gradeAvg.length > 0 &&
                             curriculum.length > 0 &&
                             stream.length > 0 &&
-                            finance.length > 0
+                            finance.length > 0 &&
+                            personality.length > 0
                           ? "1"
                           : "0.5",
                         cursor: creatingPath
@@ -2402,7 +2448,8 @@ const AccProfile = () => {
                             gradeAvg.length > 0 &&
                             curriculum.length > 0 &&
                             stream.length > 0 &&
-                            finance.length > 0
+                            finance.length > 0 &&
+                            personality.length > 0
                           ? "pointer"
                           : "not-allowed",
                       }}
@@ -2421,7 +2468,8 @@ const AccProfile = () => {
                           gradeAvg.length > 0 &&
                           curriculum.length > 0 &&
                           stream.length > 0 &&
-                          finance.length > 0
+                          finance.length > 0 &&
+                          personality.length > 0
                         ) {
                           pathSubmission();
                         }
@@ -2441,6 +2489,12 @@ const AccProfile = () => {
                           step_ids: [],
                           destination_institution: "",
                         });
+                        setGrade([]);
+                        setGradeAvg([]);
+                        setCurriculum([]);
+                        setStream([]);
+                        setFinance([]);
+                        setPersonality([]);
                       }}
                     >
                       Go Back
