@@ -965,7 +965,7 @@ const SingleDirectory = () => {
 
       {showProductInfo && (
         <div
-          className="overlay"
+          className="overlay1"
           onClick={() => {
             setShowProductInfo(false);
             setSelectedProduct("");

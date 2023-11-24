@@ -527,15 +527,15 @@
     position: absolute;
     right: -100%;
     width: 50%;
-    height: 100%;
+    height: calc(100% - 5rem);
     border-left: 0.5px solid #e5e5e5;
     border-top: 0.5px solid #e5e5e5;
-    top: 0;
+    top: 5rem;
     z-index: 17;
     transition: all ease 0.5s;
   }
 
-  .overlay {
+  .overlay1 {
     position: fixed;
     inset: 0;
     z-index: 16;
