@@ -168,6 +168,8 @@ export const CoinContextProvider = ({ children }) => {
   const [showPreLoginModal, setShowPreLoginModal] = useState(false);
   const [checkForHistory, setCheckForHistory] = useState(false);
   const [preLoginHistoryData, setPreLoginHistoryData] = useState([]);
+  const [allServices, setAllServices] = useState([]);
+  const [servicesToggle, setServicesToggle] = useState(false);
 
   useEffect(() => {
     if (coinType == "bonds" || coinType == "moneyMarkets") {
@@ -445,6 +447,10 @@ export const CoinContextProvider = ({ children }) => {
         setCheckForHistory,
         preLoginHistoryData,
         setPreLoginHistoryData,
+        allServices,
+        setAllServices,
+        servicesToggle,
+        setServicesToggle,
       }}
     >
       {children}

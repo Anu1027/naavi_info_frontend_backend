@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
-// import { useEffect } from "react/cjs/react.development";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../accDashbaoard/accDashboard.scss";
@@ -928,11 +927,11 @@ const AccProfile = () => {
       .get(`https://careers.marketsverse.com/steps/get?email=${email}`)
       .then((response) => {
         let result = response?.data?.data;
-        // console.log(result, "all steps fetched");
+        // console.log(result, "all steps fetched accprofile");
         setAllSteps(result);
       })
       .catch((error) => {
-        console.log(error, "error in fetching all steps");
+        console.log(error, "error in fetching all steps accprofile");
       });
   }, []);
 

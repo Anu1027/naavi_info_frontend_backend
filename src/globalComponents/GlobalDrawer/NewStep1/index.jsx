@@ -5,11 +5,19 @@ import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
 import { useStore } from "../../../components/store/store.ts";
 import { useCoinContextData } from "../../../context/CoinContext";
+import arrow from "../../../pages/accDashbaoard/arrow.svg";
+import trash from "../../../pages/accDashbaoard/trash.svg";
 
 const NewStep1 = ({ setpstep }) => {
   const userDetails = JSON.parse(localStorage.getItem("user"));
   const { setaccsideNav, setispopular } = useStore();
-  const { setMypathsMenu } = useCoinContextData();
+  const {
+    setMypathsMenu,
+    servicesToggle,
+    setServicesToggle,
+    allServices,
+    setAllServices,
+  } = useCoinContextData();
 
   const [loading, setLoading] = useState(false);
   const [step, setStep] = useState("");
@@ -66,6 +74,52 @@ const NewStep1 = ({ setpstep }) => {
           setLoading(false);
         }
       });
+  };
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://comms.globalxchange.io/gxb/product/banker/get?category=naavi partners`
+      )
+      .then((response) => {
+        let result = response?.data?.data;
+        // console.log(result, "all services result");
+        setAllServices(result);
+      })
+      .catch((error) => {
+        console.log(error, "error in fetching all services");
+      });
+  }, []);
+
+  const removeStep = (stepId) => {
+    // Find the key corresponding to the value stepId
+    const keyToRemove = Object.keys(stepForm?.other_data).find(
+      (key) => stepForm?.other_data[key] === stepId
+    );
+
+    if (!keyToRemove) {
+      // If the key is not found, do nothing
+      return;
+    }
+
+    // Remove the key from other_data
+    const { [keyToRemove]: removedKey, ...restOtherData } =
+      stepForm?.other_data;
+
+    // Reorder the remaining keys
+    const reorderedOtherData = Object.keys(restOtherData).reduce(
+      (acc, key, index) => ({
+        ...acc,
+        [`productid${index + 1}`]: restOtherData[key],
+      }),
+      {}
+    );
+
+    // Update the state with the modified other_data
+    setStepForm({
+      ...stepForm,
+      other_data: reorderedOtherData,
+    });
   };
 
   const getContent = () => {
@@ -213,6 +267,171 @@ const NewStep1 = ({ setpstep }) => {
                 >
                   Free
                 </div>
+
+                <div className="name">Add services</div>
+                <div
+                  className="each-acc-addpath-field-input-addstep"
+                  style={{ flexDirection: "column" }}
+                >
+                  <div
+                    style={{
+                      width: "100%",
+                      display: "flex",
+                      cursor: "pointer",
+                    }}
+                    onClick={() => {
+                      setServicesToggle(!servicesToggle);
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: "85%",
+                        cursor: "pointer",
+                        paddingLeft: "1.5rem",
+                        borderRadius: "35px",
+                        opacity: "0.25",
+                        fontSize: "1rem",
+                        fontWeight: "500",
+                        display: "flex",
+                        height: "56px",
+                        alignItems: "center",
+                      }}
+                    >
+                      Click To Select
+                    </div>
+                    <div className="arrow-box-addstep">
+                      <img
+                        src={arrow}
+                        alt=""
+                        style={{
+                          transform: servicesToggle ? "rotate(180deg)" : "",
+                        }}
+                      />
+                    </div>
+                  </div>
+                  <div
+                    className="hidden-steps-addstep"
+                    style={{ display: servicesToggle ? "flex" : "none" }}
+                  >
+                    {allServices?.map((e, i) => {
+                      return (
+                        <div
+                          className="each-hidden-step-addstep"
+                          key={i}
+                          onClick={() => {
+                            setStepForm((prev) => {
+                              const productId = `productid${
+                                Object.keys(prev?.other_data).length + 1
+                              }`;
+                              return {
+                                ...prev,
+                                other_data: {
+                                  ...prev?.other_data,
+                                  [productId]: e?.product_id,
+                                },
+                              };
+                            });
+                            setServicesToggle(false);
+                          }}
+                        >
+                          <div className="stepp-textt-addstep">
+                            <div>{e?.product_name}</div>
+                            <div>
+                              <img src={e?.product_icon} alt="" />
+                            </div>
+                          </div>
+                          <div className="stepp-textt1-addstep">
+                            {e?.full_description}
+                          </div>
+                          <div className="stepp-text-amountt-addstep">
+                            <span style={{ fontSize: "1.2rem" }}>
+                              {e?.billing_cycle && e?.billing_cycle?.monthly
+                                ? e?.billing_cycle?.monthly?.coin
+                                : e?.billing_cycle && e?.billing_cycle?.lifetime
+                                ? e?.billing_cycle?.lifetime?.coin
+                                : ""}
+                            </span>
+                            <span style={{ fontSize: "1.2rem" }}>
+                              {e?.billing_cycle && e?.billing_cycle?.monthly
+                                ? Number(
+                                    e?.billing_cycle?.monthly?.price
+                                  )?.toFixed(2)
+                                : e?.billing_cycle && e?.billing_cycle?.lifetime
+                                ? Number(
+                                    e?.billing_cycle?.lifetime?.price
+                                  )?.toFixed(2)
+                                : ""}
+                            </span>
+                            <span
+                              style={{
+                                fontSize: "0.9rem",
+                              }}
+                            >
+                              {e?.monthly ? "/Month" : "/Lifetime"}
+                            </span>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+                <div className="selected-steps-addstep">
+                  {allServices?.map((e, i) => {
+                    if (
+                      Object.values(stepForm?.other_data).includes(
+                        e?.product_id
+                      )
+                    ) {
+                      return (
+                        <div className="each-selected-addstep" key={e?.product_id}>
+                          <div className="stepp-textt-addstep">
+                            <div>{e?.product_name}</div>
+                            <div>
+                              <img src={e?.product_icon} alt="" />
+                            </div>
+                          </div>
+                          <div className="stepp-textt1-addstep">
+                            {e?.full_description}
+                          </div>
+                          <div className="stepp-text-amountt-addstep">
+                            <span style={{ fontSize: "1.2rem" }}>
+                              {e?.billing_cycle && e?.billing_cycle?.monthly
+                                ? e?.billing_cycle?.monthly?.coin
+                                : e?.billing_cycle && e?.billing_cycle?.lifetime
+                                ? e?.billing_cycle?.lifetime?.coin
+                                : ""}
+                            </span>
+                            <span style={{ fontSize: "1.2rem" }}>
+                              {e?.billing_cycle && e?.billing_cycle?.monthly
+                                ? Number(
+                                    e?.billing_cycle?.monthly?.price
+                                  )?.toFixed(2)
+                                : e?.billing_cycle && e?.billing_cycle?.lifetime
+                                ? Number(
+                                    e?.billing_cycle?.lifetime?.price
+                                  )?.toFixed(2)
+                                : ""}
+                            </span>
+                            <span
+                              style={{
+                                fontSize: "0.9rem",
+                              }}
+                            >
+                              {e?.monthly ? "/Month" : "/Lifetime"}
+                            </span>
+                          </div>
+                          <div
+                            className="trash-icon-div-addstep"
+                            onClick={() => removeStep(e?.product_id)}
+                          >
+                            <img src={trash} alt="" />
+                          </div>
+                        </div>
+                      );
+                    }
+                    return null;
+                  })}
+                </div>
                 <div className="space"></div>
               </Scrollbars>
             </div>
@@ -226,14 +445,16 @@ const NewStep1 = ({ setpstep }) => {
                   : stepForm?.name &&
                     stepForm?.description &&
                     stepForm?.length &&
-                    stepForm?.cost
+                    stepForm?.cost &&
+                    Object.keys(stepForm?.other_data).length > 0
                   ? "1"
                   : "0.5",
                 cursor:
                   stepForm?.name &&
                   stepForm?.description &&
                   stepForm?.length &&
-                  stepForm?.cost
+                  stepForm?.cost &&
+                  Object.keys(stepForm?.other_data).length > 0
                     ? "pointer"
                     : "not-allowed",
               }}
@@ -242,7 +463,8 @@ const NewStep1 = ({ setpstep }) => {
                   stepForm?.name &&
                   stepForm?.description &&
                   stepForm?.length &&
-                  stepForm?.cost
+                  stepForm?.cost &&
+                  Object.keys(stepForm?.other_data).length > 0
                 ) {
                   createNewStep();
                 }
