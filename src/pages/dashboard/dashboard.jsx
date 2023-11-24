@@ -1545,7 +1545,7 @@ const Dashboard = () => {
                       <input
                         className="search-input"
                         type="text"
-                        placeholder="Search For Paths..."
+                        placeholder="Find The School Or Program You Want To Attend..."
                         value={searchTerm}
                         onChange={(e) => setSearchterm(e.target.value)}
                       />

@@ -78,6 +78,8 @@ const PathComponent = () => {
     setPerformanceToggle,
     financialToggle,
     setFinancialToggle,
+    personalityToggle,
+    setPersonalityToggle,
     refetchPaths,
     setRefetchPaths,
   } = useContext(GlobalContex);
@@ -281,487 +283,349 @@ const PathComponent = () => {
       {showPathDetails ? (
         <JourneyPage />
       ) : (
-        <LoadScript
-          googleMapsApiKey="AIzaSyB5MJ2jMHzl_ghkbxOsyPmeBmYw_sUsIRQ"
-          libraries={libraries}
-        >
-          <div className="maps-container1">
-            <div className="maps-sidebar1">
+        <div className="maps-container1">
+          <div className="maps-sidebar1">
+            <div
+              className="top-icons1"
+              style={{
+                display:
+                  pathItemSelected && pathItemStep === 3 ? "none" : "flex",
+              }}
+            >
               <div
-                className="top-icons1"
+                className="each-icon1"
+                // onClick={() => {
+                //   setOption("Career");
+                // }}
                 style={{
-                  display:
-                    pathItemSelected && pathItemStep === 3 ? "none" : "flex",
+                  cursor: "not-allowed",
+                  opacity: 0.5,
                 }}
               >
                 <div
-                  className="each-icon1"
-                  // onClick={() => {
-                  //   setOption("Career");
-                  // }}
+                  className="border-div1"
                   style={{
-                    cursor: "not-allowed",
-                    opacity: 0.5,
+                    border:
+                      option === "Career"
+                        ? "1px solid #100F0D"
+                        : "1px solid #e7e7e7",
                   }}
                 >
-                  <div
-                    className="border-div1"
-                    style={{
-                      border:
-                        option === "Career"
-                          ? "1px solid #100F0D"
-                          : "1px solid #e7e7e7",
-                    }}
-                  >
-                    <img src={careerIcon} alt="" />
-                  </div>
-                  <div
-                    className="icon-name-txt1"
-                    style={{
-                      fontWeight: option === "Career" ? "600" : "",
-                    }}
-                  >
-                    Career
-                  </div>
+                  <img src={careerIcon} alt="" />
                 </div>
                 <div
-                  className="each-icon1"
-                  onClick={() => {
-                    setOption("Education");
+                  className="icon-name-txt1"
+                  style={{
+                    fontWeight: option === "Career" ? "600" : "",
                   }}
                 >
-                  <div
-                    className="border-div1"
-                    style={{
-                      border:
-                        option === "Education"
-                          ? "1px solid #100F0D"
-                          : "1px solid #e7e7e7",
-                    }}
-                  >
-                    <img src={educationIcon} alt="" />
-                  </div>
-                  <div
-                    className="icon-name-txt1"
-                    style={{
-                      fontWeight: option === "Education" ? "600" : "",
-                    }}
-                  >
-                    Education
-                  </div>
+                  Career
+                </div>
+              </div>
+              <div
+                className="each-icon1"
+                onClick={() => {
+                  setOption("Education");
+                }}
+              >
+                <div
+                  className="border-div1"
+                  style={{
+                    border:
+                      option === "Education"
+                        ? "1px solid #100F0D"
+                        : "1px solid #e7e7e7",
+                  }}
+                >
+                  <img src={educationIcon} alt="" />
                 </div>
                 <div
-                  className="each-icon1"
-                  // onClick={() => {
-                  //   setOption("Immigration");
-                  // }}
+                  className="icon-name-txt1"
                   style={{
-                    cursor: "not-allowed",
-                    opacity: 0.5,
+                    fontWeight: option === "Education" ? "600" : "",
                   }}
                 >
+                  Education
+                </div>
+              </div>
+              <div
+                className="each-icon1"
+                // onClick={() => {
+                //   setOption("Immigration");
+                // }}
+                style={{
+                  cursor: "not-allowed",
+                  opacity: 0.5,
+                }}
+              >
+                <div
+                  className="border-div1"
+                  style={{
+                    border:
+                      option === "Immigration"
+                        ? "1px solid #100F0D"
+                        : "1px solid #e7e7e7",
+                  }}
+                >
+                  <img src={immigrationIcon} alt="" />
+                </div>
+                <div
+                  className="icon-name-txt1"
+                  style={{
+                    fontWeight: option === "Immigration" ? "600" : "",
+                  }}
+                >
+                  Immigration
+                </div>
+              </div>
+            </div>
+            {pathItemSelected && pathItemStep === 1 ? (
+              <div className="mid-area1" style={{ borderBottom: "none" }}>
+                <div
+                  style={{
+                    fontWeight: "400",
+                    marginTop: "0.5rem",
+                    marginBottom: "0.5rem",
+                  }}
+                >
+                  What do you want to do with this path?
+                </div>
+                <div className="maps-btns-div1">
                   <div
-                    className="border-div1"
-                    style={{
-                      border:
-                        option === "Immigration"
-                          ? "1px solid #100F0D"
-                          : "1px solid #e7e7e7",
+                    className="reset-btn1"
+                    style={{ fontWeight: "400", textAlign: "left" }}
+                    onClick={() => {
+                      // setsideNav("My Journey");
+                      setShowPathDetails(true);
                     }}
                   >
-                    <img src={immigrationIcon} alt="" />
+                    Explore Path
                   </div>
                   <div
-                    className="icon-name-txt1"
-                    style={{
-                      fontWeight: option === "Immigration" ? "600" : "",
+                    className="reset-btn1"
+                    style={{ fontWeight: "400", textAlign: "left" }}
+                    onClick={() => {
+                      setPathItemStep(2);
                     }}
                   >
-                    Immigration
+                    Select Path
+                  </div>
+                  <div
+                    className="reset-btn1"
+                    style={{ fontWeight: "400", textAlign: "left" }}
+                    onClick={() => {
+                      setPathItemSelected(false);
+                      setSelectedPathItem([]);
+                    }}
+                  >
+                    Go Back
                   </div>
                 </div>
               </div>
-              {pathItemSelected && pathItemStep === 1 ? (
-                <div className="mid-area1" style={{ borderBottom: "none" }}>
+            ) : pathItemSelected && pathItemStep === 2 ? (
+              <div className="mid-area1" style={{ borderBottom: "none" }}>
+                <div
+                  style={{
+                    fontWeight: "400",
+                    marginTop: "0.5rem",
+                    marginBottom: "0.5rem",
+                  }}
+                >
+                  Are you sure you want to select this path?
+                </div>
+                <div className="maps-btns-div1">
                   <div
+                    className="reset-btn1"
                     style={{
                       fontWeight: "400",
-                      marginTop: "0.5rem",
-                      marginBottom: "0.5rem",
+                      textAlign: "left",
+                      opacity: loading ? "0.25" : "1",
                     }}
-                  >
-                    What do you want to do with this path?
-                  </div>
-                  <div className="maps-btns-div1">
-                    <div
-                      className="reset-btn1"
-                      style={{ fontWeight: "400", textAlign: "left" }}
-                      onClick={() => {
-                        // setsideNav("My Journey");
-                        setShowPathDetails(true);
-                      }}
-                    >
-                      Explore Path
-                    </div>
-                    <div
-                      className="reset-btn1"
-                      style={{ fontWeight: "400", textAlign: "left" }}
-                      onClick={() => {
-                        setPathItemStep(2);
-                      }}
-                    >
-                      Select Path
-                    </div>
-                    <div
-                      className="reset-btn1"
-                      style={{ fontWeight: "400", textAlign: "left" }}
-                      onClick={() => {
-                        setPathItemSelected(false);
-                        setSelectedPathItem([]);
-                      }}
-                    >
-                      Go Back
-                    </div>
-                  </div>
-                </div>
-              ) : pathItemSelected && pathItemStep === 2 ? (
-                <div className="mid-area1" style={{ borderBottom: "none" }}>
-                  <div
-                    style={{
-                      fontWeight: "400",
-                      marginTop: "0.5rem",
-                      marginBottom: "0.5rem",
-                    }}
-                  >
-                    Are you sure you want to select this path?
-                  </div>
-                  <div className="maps-btns-div1">
-                    <div
-                      className="reset-btn1"
-                      style={{
-                        fontWeight: "400",
-                        textAlign: "left",
-                        opacity: loading ? "0.25" : "1",
-                      }}
-                      onClick={() => {
-                        pathSelection();
-                      }}
-                    >
-                      {loading ? "Loading..." : "Yes, Confirm"}
-                    </div>
-                    <div
-                      className="reset-btn1"
-                      style={{ fontWeight: "400", textAlign: "left" }}
-                      onClick={() => {
-                        setPathItemStep(1);
-                      }}
-                    >
-                      Go Back
-                    </div>
-                  </div>
-                </div>
-              ) : pathItemSelected && pathItemStep === 3 ? (
-                <div className="congrats-area">
-                  <div className="congrats-textt">Congratulations</div>
-                  <div className="congrats-textt1">
-                    You have successfully chosen {selectedPathItem?.nameOfPath}.
-                    You will be redirected to your journey page now.
-                  </div>
-                </div>
-              ) : (
-                <div className="mid-area1">
-                  {pathOption === "Path View" ? (
-                    <div className="current-coord-container">
-                      <div className="current-text">Current Coordinates</div>
-                      <div className="each-coo-field">
-                        <div className="field-name">Grade</div>
-
-                        <div
-                          className="toggleContainer"
-                          onClick={(e) => setGradeToggle(!gradeToggle)}
-                        >
-                          <div
-                            className="toggle"
-                            style={{
-                              transform: !gradeToggle
-                                ? "translateX(0px)"
-                                : "translateX(20px)",
-                            }}
-                          >
-                            &nbsp;
-                          </div>
-                        </div>
-
-                        <div className="field-value">
-                          {levelTwoData ? levelTwoData?.grade : ""}
-                        </div>
-                      </div>
-
-                      <div className="each-coo-field">
-                        <div className="field-name">Curriculum</div>
-                        <div
-                          className="toggleContainer"
-                          onClick={(e) =>
-                            setCurriculumToggle(!curriculumToggle)
-                          }
-                        >
-                          <div
-                            className="toggle"
-                            style={{
-                              transform: !curriculumToggle
-                                ? "translateX(0px)"
-                                : "translateX(20px)",
-                            }}
-                          >
-                            &nbsp;
-                          </div>
-                        </div>
-                        <div className="field-value">
-                          {levelTwoData ? levelTwoData?.curriculum : ""}
-                        </div>
-                      </div>
-                      <div className="each-coo-field">
-                        <div className="field-name">Stream</div>
-                        <div
-                          className="toggleContainer"
-                          onClick={(e) => setStreamToggle(!streamToggle)}
-                        >
-                          <div
-                            className="toggle"
-                            style={{
-                              transform: !streamToggle
-                                ? "translateX(0px)"
-                                : "translateX(20px)",
-                            }}
-                          >
-                            &nbsp;
-                          </div>
-                        </div>
-                        <div className="field-value">
-                          {levelTwoData ? levelTwoData?.stream : ""}
-                        </div>
-                      </div>
-                      <div className="each-coo-field">
-                        <div className="field-name">Performance</div>
-                        <div
-                          className="toggleContainer"
-                          onClick={(e) =>
-                            setPerformanceToggle(!performanceToggle)
-                          }
-                        >
-                          <div
-                            className="toggle"
-                            style={{
-                              transform: !performanceToggle
-                                ? "translateX(0px)"
-                                : "translateX(20px)",
-                            }}
-                          >
-                            &nbsp;
-                          </div>
-                        </div>
-                        <div className="field-value">
-                          {levelTwoData ? levelTwoData?.performance : ""}
-                        </div>
-                      </div>
-                      <div className="each-coo-field">
-                        <div className="field-name">Financial</div>
-                        <div
-                          className="toggleContainer"
-                          onClick={(e) => setFinancialToggle(!financialToggle)}
-                        >
-                          <div
-                            className="toggle"
-                            style={{
-                              transform: !financialToggle
-                                ? "translateX(0px)"
-                                : "translateX(20px)",
-                            }}
-                          >
-                            &nbsp;
-                          </div>
-                        </div>
-                        <div className="field-value">
-                          {levelTwoData ? levelTwoData?.financialSituation : ""}
-                        </div>
-                      </div>
-                      <div className="each-coo-field">
-                        <div className="field-name">School</div>
-                        <div
-                          className="toggleContainer"
-                          style={{ border: "0px" }}
-                        ></div>
-                        <div
-                          className="field-value"
-                          style={{ borderLeft: "0px" }}
-                        >
-                          {levelTwoData ? levelTwoData?.school : ""}
-                        </div>
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="input-div-1">
-                      <input
-                        type="text"
-                        placeholder="Choose Starting Coordinates.."
-                      />
-                    </div>
-                  )}
-                  {containers.map((container, index) => (
-                    <div className="destination-container1" key={container.id}>
-                      <div className="dest-txt1">
-                        <div>
-                          Destination
-                          {/* {container.id} */}
-                        </div>
-                        {container.removable && (
-                          <div
-                            onClick={() => handleRemoveContainer(container.id)}
-                          >
-                            <img src={close} alt="" />
-                          </div>
-                        )}
-                      </div>
-                      <div className="input-div-2">
-                        {pathOption === "Map View" ? (
-                          <Autocomplete
-                            onLoad={(autocomplete) => {
-                              autocompleteRef.current = autocomplete;
-                              autocomplete?.setBounds(pathMap?.getBounds());
-                            }}
-                            onPlaceChanged={handlePlaceSelect}
-                          >
-                            <input
-                              type="text"
-                              placeholder="Where Do You Want To Go?"
-                              // value={container.inputValue1}
-                              // onChange={(e) => {
-                              //   handleInputChange(e, container.id, 1);
-                              //   if (pathOption === "List View") {
-                              //     setSearchterm(e.target.value);
-                              //   }
-                              // }}
-                              value={pathSelectedPlace || ""}
-                              onChange={(e) => {
-                                handleInputChange(e, container.id, 1);
-                                setPathSelectedPlace(e.target.value);
-                                if (pathOption === "Steps") {
-                                  setSearchterm(e.target.value);
-                                }
-                              }}
-                            />
-                          </Autocomplete>
-                        ) : (
-                          <input
-                            type="text"
-                            placeholder="Where Do You Want To Go?"
-                            // value={container.inputValue1}
-                            // onChange={(e) => {
-                            //   handleInputChange(e, container.id, 1);
-                            //   if (pathOption === "List View") {
-                            //     setSearchterm(e.target.value);
-                            //   }
-                            // }}
-                            value={searchTerm}
-                            onChange={(e) => {
-                              handleInputChange(e, container.id, 1);
-                              setSearchterm(e.target.value);
-                            }}
-                          />
-                        )}
-                      </div>
-                      <div className="input-div-2">
-                        <input
-                          type="text"
-                          value={container.inputValue2}
-                          placeholder="By When?"
-                          onChange={(e) =>
-                            handleInputChange(e, container.id, 2)
-                          }
-                        />
-                        {/* <DatePicker
-                        selected={pathSelectedDate}
-                        onChange={handleDateChange}
-                        dateFormat="MM/dd/yyyy"
-                        showMonthDropdown
-                        showYearDropdown
-                        dropdownMode="select"
-                        customInput={<CustomInput />}
-                      /> */}
-                      </div>
-                    </div>
-                  ))}
-                  {/* <div className="add-div1" onClick={handleAddContainer}>
-                  <img src={plus} alt="" />
-                  Add Destination
-                </div> */}
-                  <div className="maps-btns-div1">
-                    <div
-                      className="gs-Btn-maps1"
-                      onClick={(e) => setRefetchPaths(!refetchPaths)}
-                    >
-                      Find Paths
-                    </div>
-                    {/* <div className="reset-btn1" onClick={handleResetContainer}>
-                    Reset
-                  </div> */}
-                  </div>
-                </div>
-              )}
-            </div>
-            <div className="maps-content-area1">
-              <div className="path-options-div">
-                <div className="path-options">
-                  <div className="each-path-opt">Path View</div>
-                  <div
-                    className="toggleContainer1"
                     onClick={() => {
-                      if (pathOption === "Path View") {
-                        setPathOption("Map View");
-                      } else {
-                        setPathOption("Path View");
-                      }
+                      pathSelection();
                     }}
                   >
+                    {loading ? "Loading..." : "Yes, Confirm"}
+                  </div>
+                  <div
+                    className="reset-btn1"
+                    style={{ fontWeight: "400", textAlign: "left" }}
+                    onClick={() => {
+                      setPathItemStep(1);
+                    }}
+                  >
+                    Go Back
+                  </div>
+                </div>
+              </div>
+            ) : pathItemSelected && pathItemStep === 3 ? (
+              <div className="congrats-area">
+                <div className="congrats-textt">Congratulations</div>
+                <div className="congrats-textt1">
+                  You have successfully chosen {selectedPathItem?.nameOfPath}.
+                  You will be redirected to your journey page now.
+                </div>
+              </div>
+            ) : (
+              <div className="mid-area1">
+                <div className="current-coord-container">
+                  <div className="current-text">Current Coordinates</div>
+                  <div className="each-coo-field">
+                    <div className="field-name">Grade</div>
+
                     <div
-                      className="toggle1"
-                      style={{
-                        transform:
-                          pathOption === "Path View"
+                      className="toggleContainer"
+                      onClick={(e) => setGradeToggle(!gradeToggle)}
+                    >
+                      <div
+                        className="toggle"
+                        style={{
+                          transform: !gradeToggle
                             ? "translateX(0px)"
                             : "translateX(20px)",
-                      }}
-                    >
-                      &nbsp;
+                        }}
+                      >
+                        &nbsp;
+                      </div>
+                    </div>
+
+                    <div className="field-value">
+                      {levelTwoData ? levelTwoData?.grade : ""}
                     </div>
                   </div>
-                  <div className="each-path-opt">Map View</div>
+
+                  <div className="each-coo-field">
+                    <div className="field-name">Curriculum</div>
+                    <div
+                      className="toggleContainer"
+                      onClick={(e) => setCurriculumToggle(!curriculumToggle)}
+                    >
+                      <div
+                        className="toggle"
+                        style={{
+                          transform: !curriculumToggle
+                            ? "translateX(0px)"
+                            : "translateX(20px)",
+                        }}
+                      >
+                        &nbsp;
+                      </div>
+                    </div>
+                    <div className="field-value">
+                      {levelTwoData ? levelTwoData?.curriculum : ""}
+                    </div>
+                  </div>
+                  <div className="each-coo-field">
+                    <div className="field-name">Stream</div>
+                    <div
+                      className="toggleContainer"
+                      onClick={(e) => setStreamToggle(!streamToggle)}
+                    >
+                      <div
+                        className="toggle"
+                        style={{
+                          transform: !streamToggle
+                            ? "translateX(0px)"
+                            : "translateX(20px)",
+                        }}
+                      >
+                        &nbsp;
+                      </div>
+                    </div>
+                    <div className="field-value">
+                      {levelTwoData ? levelTwoData?.stream : ""}
+                    </div>
+                  </div>
+                  <div className="each-coo-field">
+                    <div className="field-name">Performance</div>
+                    <div
+                      className="toggleContainer"
+                      onClick={(e) => setPerformanceToggle(!performanceToggle)}
+                    >
+                      <div
+                        className="toggle"
+                        style={{
+                          transform: !performanceToggle
+                            ? "translateX(0px)"
+                            : "translateX(20px)",
+                        }}
+                      >
+                        &nbsp;
+                      </div>
+                    </div>
+                    <div className="field-value">
+                      {levelTwoData ? levelTwoData?.performance : ""}
+                    </div>
+                  </div>
+                  <div className="each-coo-field">
+                    <div className="field-name">Financial</div>
+                    <div
+                      className="toggleContainer"
+                      onClick={(e) => setFinancialToggle(!financialToggle)}
+                    >
+                      <div
+                        className="toggle"
+                        style={{
+                          transform: !financialToggle
+                            ? "translateX(0px)"
+                            : "translateX(20px)",
+                        }}
+                      >
+                        &nbsp;
+                      </div>
+                    </div>
+                    <div className="field-value">
+                      {levelTwoData ? levelTwoData?.financialSituation : ""}
+                    </div>
+                  </div>
+                  <div className="each-coo-field">
+                    <div className="field-name">Personality</div>
+                    <div
+                      className="toggleContainer"
+                      onClick={(e) => setPersonalityToggle(!personalityToggle)}
+                    >
+                      <div
+                        className="toggle"
+                        style={{
+                          transform: !personalityToggle
+                            ? "translateX(0px)"
+                            : "translateX(20px)",
+                        }}
+                      >
+                        &nbsp;
+                      </div>
+                    </div>
+                    <div className="field-value">
+                      {/* {levelTwoData ? levelTwoData?.personality : "--"} */} --
+                    </div>
+                  </div>
+                  <div className="each-coo-field">
+                    <div className="field-name">School</div>
+                    <div
+                      className="toggleContainer"
+                      style={{ border: "0px" }}
+                    ></div>
+                    <div className="field-value" style={{ borderLeft: "0px" }}>
+                      {levelTwoData ? levelTwoData?.school : ""}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="maps-btns-div1">
+                  <div
+                    className="gs-Btn-maps1"
+                    onClick={(e) => setRefetchPaths(!refetchPaths)}
+                  >
+                    Find Paths
+                  </div>
                 </div>
               </div>
-              <>
-                {pathOption === "Map View" ? (
-                  <MapComponent
-                    pathMap={pathMap}
-                    setPathMap={setPathMap}
-                    pathSearchTerm={pathSearchTerm}
-                    pathCurrentLocation={pathCurrentLocation}
-                    setPathCurrentLocation={setPathCurrentLocation}
-                    pathPlaceInfo={pathPlaceInfo}
-                    pathSelectedPlace={pathSelectedPlace}
-                    pathDirections={pathDirections}
-                    setPathDirections={setPathDirections}
-                    pathSelectedLocation={pathSelectedLocation}
-                    pathShowDirections={pathShowDirections}
-                  />
-                ) : pathOption === "Steps" ? (
-                  <Stepview />
-                ) : (
-                  <Pathview />
-                )}
-              </>
-            </div>
+            )}
           </div>
-        </LoadScript>
+          <div className="maps-content-area1">
+            <Pathview />
+          </div>
+        </div>
       )}
     </div>
   );

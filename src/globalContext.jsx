@@ -122,6 +122,7 @@ export const GlobalContexProvider = ({ children }) => {
   const [streamToggle, setStreamToggle] = useState(false);
   const [performanceToggle, setPerformanceToggle] = useState(false);
   const [financialToggle, setFinancialToggle] = useState(false);
+  const [personalityToggle, setPersonalityToggle] = useState(false);
   const [refetchPaths, setRefetchPaths] = useState(false);
 
   const [coinSelect, setCoinSelect] = useState({
@@ -821,6 +822,8 @@ export const GlobalContexProvider = ({ children }) => {
     setPerformanceToggle,
     financialToggle,
     setFinancialToggle,
+    personalityToggle,
+    setPersonalityToggle,
     refetchPaths,
     setRefetchPaths,
   };

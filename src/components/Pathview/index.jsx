@@ -28,6 +28,8 @@ const Pathview = () => {
     setPerformanceToggle,
     financialToggle,
     setFinancialToggle,
+    personalityToggle,
+    setPersonalityToggle,
   } = useContext(GlobalContex);
   const [loading, setLoading] = useState(false);
   const [pathViewData, setPathViewData] = useState([]);
@@ -58,14 +60,19 @@ const Pathview = () => {
       });
   }, [refetchPaths]);
 
-  const filteredPathViewData = pathViewData?.filter((entry) =>
-    entry?.nameOfPath?.toLowerCase()?.includes(searchTerm?.toLowerCase())
+  const filteredPathViewData = pathViewData?.filter(
+    (entry) =>
+      entry?.destination_institution
+        ?.toLowerCase()
+        ?.includes(searchTerm?.toLowerCase()) ||
+      entry?.program?.toLowerCase()?.includes(searchTerm?.toLowerCase())
   );
 
   return (
     <div className="pathviewPage">
       <div className="pathviewNav">
-        <div className="name-div">Name</div>
+        <div className="name-div">School</div>
+        <div className="name-div">Program</div>
         <div className="description-div">Description</div>
       </div>
       <div className="pathviewContent">
@@ -78,13 +85,16 @@ const Pathview = () => {
                   <div className="each-pv-name">
                     <Skeleton width={100} height={30} />
                   </div>
+                  <div className="each-pv-name">
+                    <Skeleton width={100} height={30} />
+                  </div>
                   <div className="each-pv-desc">
                     <Skeleton width={100} height={30} />
                   </div>
                 </div>
               );
             })
-        ) : filteredPathViewData.length > 0 ? (
+        ) : filteredPathViewData?.length > 0 ? (
           filteredPathViewData?.map((e, i) => {
             return (
               <div
@@ -92,12 +102,16 @@ const Pathview = () => {
                 key={i}
                 onClick={() => {
                   setPathItemSelected(true);
-                  localStorage.setItem("selectedPath", JSON.stringify(e?.nameOfPath));
+                  localStorage.setItem(
+                    "selectedPath",
+                    JSON.stringify(e?.nameOfPath)
+                  );
                   // console.log(e?.nameOfPath, 'selected path');
                   setSelectedPathItem(e);
                 }}
               >
-                <div className="each-pv-name">{e?.nameOfPath}</div>
+                <div className="each-pv-name">{e?.destination_institution}</div>
+                <div className="each-pv-name">{e?.program}</div>
                 <div className="each-pv-desc">{e?.description}</div>
               </div>
             );
