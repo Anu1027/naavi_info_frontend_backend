@@ -1,0 +1,37 @@
+{
+    "status": true,
+    "count": 1,
+    "data": [
+      {
+        "_id": "65708e8862586d1800ed01a9",
+        "address": "HITECH CITY ",
+        "bankerTag": "edutechex1",
+        "email": "edutechex@gmail.com",
+        "cognitoName": "edutechex1",
+        "coverPicURL": "https://insurance.apimachine.com/insurance/general/files/92e895aa-2852-4264-a967-d9f24c246746.png",
+        "colorCode": "100F0D",
+        "displayName": "EdutechX",
+        "phone": null,
+        "partneringInstitutions": [],
+        "description": "Unlock your passion and get it mapped to 10K+ courses & 5K+ global universities and companies through scientific methodologies.",
+        "country": "India ",
+        "profilePicURL": "https://insurance.apimachine.com/insurance/general/files/b9d3da13-1a96-4368-a277-f123d2f5702f.png",
+        "profilePicPNG": "https://insurance.apimachine.com/insurance/general/files/b9d3da13-1a96-4368-a277-f123d2f5702f.png",
+        "profilePicWhite": "https://insurance.apimachine.com/insurance/general/files/675cdce0-708d-4673-bb0c-a12d7eb80290.png",
+        "profilePicWhitePNG": "https://insurance.apimachine.com/insurance/general/files/675cdce0-708d-4673-bb0c-a12d7eb80290.png",
+        "autoDeposit": false,
+        "sefcoin_cashback": false,
+        "connectedBondSpread_transfer": null,
+        "other_data": {},
+        "_displayName": "edutechx",
+        "LXAppProfileID": "banker_9u1MC9adgd2ugWKjLvxmHX}",
+        "BankerGXProfile": "banku13212143309f8t1701875335210",
+        "timeStamp": 1701875336669,
+        "category": "naavi partners",
+        "subCategory": "terminals",
+        "bankerFollowersCount": 1,
+        "productsCount": 2
+      }
+    ],
+    "message": ""
+  }

@@ -1,0 +1,3014 @@
+{
+    "status": true,
+    "total": 11,
+    "message": "Paths data found",
+    "data": [
+      {
+        "_id": "6579c112cdbdb90d4d51bbb8",
+        "email": "aditya@zedat.fu-berlin.de",
+        "nameOfPath": "tret",
+        "description": "sddj",
+        "length": "2",
+        "city": "zuuu",
+        "country": "zzu",
+        "the_ids": [
+          {
+            "step_id": "6571b16fb354163ecb8d0790",
+            "backup_pathId": "6578c332cdbdb90d4d517033",
+            "_id": "6579c112cdbdb90d4d51bbb9"
+          }
+        ],
+        "path_type": "education",
+        "personality": "realistic",
+        "destination_institution": "rzzrz",
+        "status": "active",
+        "financialSituation": [
+          "3CR+"
+        ],
+        "performance": [
+          "36% - 60%",
+          "61% - 75%"
+        ],
+        "curriculum": [
+          "IB",
+          "IGCSE"
+        ],
+        "grade": [
+          "10"
+        ],
+        "stream": [
+          "MPC"
+        ],
+        "program": "rzzr",
+        "createdAt": "2023-12-13T14:34:58.980Z",
+        "updatedAt": "2023-12-13T14:34:58.980Z",
+        "__v": 0,
+        "StepDetails": [
+          {
+            "_id": "6571b16fb354163ecb8d0790",
+            "email": "aditya@zedat.fu-berlin.de",
+            "name": "34",
+            "description": "to university",
+            "cost": "free",
+            "other_data": {
+              "productid1": "EGSAT001 aecc084a4d29T1701876520399"
+            },
+            "length": "5",
+            "status": "active",
+            "gradeData": [
+              {
+                "grade": "9",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d0791"
+              },
+              {
+                "grade": "10",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d0792"
+              },
+              {
+                "grade": "11",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d0793"
+              },
+              {
+                "grade": "12",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d0794"
+              }
+            ],
+            "curriculumData": [
+              {
+                "curriculum": "IB",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d0795"
+              },
+              {
+                "curriculum": "IGCSE",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d0796"
+              },
+              {
+                "curriculum": "CBSE",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d0797"
+              },
+              {
+                "curriculum": "ICSE",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d0798"
+              },
+              {
+                "curriculum": "Nordic",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d0799"
+              }
+            ],
+            "financialData": [
+              {
+                "financialSituation": "0-25L",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d079a"
+              },
+              {
+                "financialSituation": "25L-75L",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d079b"
+              },
+              {
+                "financialSituation": "75L-3CR",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d079c"
+              },
+              {
+                "financialSituation": "3CR+",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d079d"
+              },
+              {
+                "financialSituation": "other",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d079e"
+              }
+            ],
+            "streamData": [
+              {
+                "stream": "MPC",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d079f"
+              },
+              {
+                "stream": "BIPC",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d07a0"
+              },
+              {
+                "stream": "CEC",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d07a1"
+              },
+              {
+                "stream": "MEC",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d07a2"
+              },
+              {
+                "stream": "HEC",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d07a3"
+              }
+            ],
+            "gradePointAverageData": [
+              {
+                "gradePointAverage": "0% - 35%",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d07a4"
+              },
+              {
+                "gradePointAverage": "36% - 60%",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d07a5"
+              },
+              {
+                "gradePointAverage": "61% - 75%",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d07a6"
+              },
+              {
+                "gradePointAverage": "76% - 85%",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d07a7"
+              },
+              {
+                "gradePointAverage": "86% - 95%",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d07a8"
+              },
+              {
+                "gradePointAverage": "96% - 100%",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d07a9"
+              }
+            ],
+            "personalityData": [
+              {
+                "personality": "realistic",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d07aa"
+              },
+              {
+                "personality": "investigative",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d07ab"
+              },
+              {
+                "personality": "artistic",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d07ac"
+              },
+              {
+                "personality": "social",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d07ad"
+              },
+              {
+                "personality": "enterprising",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d07ae"
+              },
+              {
+                "personality": "conventional",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d07af"
+              }
+            ],
+            "createdAt": "2023-12-07T11:50:07.418Z",
+            "updatedAt": "2023-12-07T11:50:07.418Z",
+            "__v": 0
+          }
+        ]
+      },
+      {
+        "_id": "6578c332cdbdb90d4d517033",
+        "email": "aditya@zedat.fu-berlin.de",
+        "nameOfPath": "zrur",
+        "description": "HJDJFJ",
+        "length": "3",
+        "city": "trzru",
+        "country": "tzuru",
+        "the_ids": [
+          {
+            "step_id": "6571b16fb354163ecb8d0790",
+            "backup_pathId": "65772341cdbdb90d4d503b0b",
+            "_id": "6578c332cdbdb90d4d517034"
+          }
+        ],
+        "path_type": "education",
+        "personality": "investigative",
+        "destination_institution": "zeueuu",
+        "status": "active",
+        "financialSituation": [
+          "3CR+"
+        ],
+        "performance": [
+          "61% - 75%"
+        ],
+        "curriculum": [
+          "IGCSE"
+        ],
+        "grade": [
+          "10"
+        ],
+        "stream": [
+          "MPC"
+        ],
+        "program": "eureuru",
+        "createdAt": "2023-12-12T20:31:46.526Z",
+        "updatedAt": "2023-12-12T20:31:46.526Z",
+        "__v": 0,
+        "StepDetails": [
+          {
+            "_id": "6571b16fb354163ecb8d0790",
+            "email": "aditya@zedat.fu-berlin.de",
+            "name": "34",
+            "description": "to university",
+            "cost": "free",
+            "other_data": {
+              "productid1": "EGSAT001 aecc084a4d29T1701876520399"
+            },
+            "length": "5",
+            "status": "active",
+            "gradeData": [
+              {
+                "grade": "9",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d0791"
+              },
+              {
+                "grade": "10",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d0792"
+              },
+              {
+                "grade": "11",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d0793"
+              },
+              {
+                "grade": "12",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d0794"
+              }
+            ],
+            "curriculumData": [
+              {
+                "curriculum": "IB",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d0795"
+              },
+              {
+                "curriculum": "IGCSE",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d0796"
+              },
+              {
+                "curriculum": "CBSE",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d0797"
+              },
+              {
+                "curriculum": "ICSE",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d0798"
+              },
+              {
+                "curriculum": "Nordic",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d0799"
+              }
+            ],
+            "financialData": [
+              {
+                "financialSituation": "0-25L",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d079a"
+              },
+              {
+                "financialSituation": "25L-75L",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d079b"
+              },
+              {
+                "financialSituation": "75L-3CR",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d079c"
+              },
+              {
+                "financialSituation": "3CR+",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d079d"
+              },
+              {
+                "financialSituation": "other",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d079e"
+              }
+            ],
+            "streamData": [
+              {
+                "stream": "MPC",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d079f"
+              },
+              {
+                "stream": "BIPC",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d07a0"
+              },
+              {
+                "stream": "CEC",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d07a1"
+              },
+              {
+                "stream": "MEC",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d07a2"
+              },
+              {
+                "stream": "HEC",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d07a3"
+              }
+            ],
+            "gradePointAverageData": [
+              {
+                "gradePointAverage": "0% - 35%",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d07a4"
+              },
+              {
+                "gradePointAverage": "36% - 60%",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d07a5"
+              },
+              {
+                "gradePointAverage": "61% - 75%",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d07a6"
+              },
+              {
+                "gradePointAverage": "76% - 85%",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d07a7"
+              },
+              {
+                "gradePointAverage": "86% - 95%",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d07a8"
+              },
+              {
+                "gradePointAverage": "96% - 100%",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d07a9"
+              }
+            ],
+            "personalityData": [
+              {
+                "personality": "realistic",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d07aa"
+              },
+              {
+                "personality": "investigative",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d07ab"
+              },
+              {
+                "personality": "artistic",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d07ac"
+              },
+              {
+                "personality": "social",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d07ad"
+              },
+              {
+                "personality": "enterprising",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d07ae"
+              },
+              {
+                "personality": "conventional",
+                "description": "er",
+                "_id": "6571b16fb354163ecb8d07af"
+              }
+            ],
+            "createdAt": "2023-12-07T11:50:07.418Z",
+            "updatedAt": "2023-12-07T11:50:07.418Z",
+            "__v": 0
+          }
+        ]
+      },
+      {
+        "_id": "65772341cdbdb90d4d503b0b",
+        "email": "edutechex@gmail.com",
+        "nameOfPath": "Harvard`",
+        "description": "Hi my name is",
+        "length": "3",
+        "city": "Toronto",
+        "country": "Canada",
+        "the_ids": [
+          {
+            "step_id": "65708fe8b354163ecb8d0674",
+            "backup_pathId": "6576dc60b354163ecb8d4a3d",
+            "_id": "65772341cdbdb90d4d503b0c"
+          }
+        ],
+        "path_type": "education",
+        "personality": "realistic",
+        "destination_institution": "adsfadsf",
+        "status": "active",
+        "financialSituation": [
+          "75L-3CR"
+        ],
+        "performance": [
+          "0% - 35%"
+        ],
+        "curriculum": [
+          "IGCSE"
+        ],
+        "grade": [
+          "9"
+        ],
+        "stream": [
+          "CEC"
+        ],
+        "program": "Computer Science",
+        "createdAt": "2023-12-11T14:57:05.282Z",
+        "updatedAt": "2023-12-11T14:57:05.282Z",
+        "__v": 0,
+        "StepDetails": [
+          {
+            "_id": "65708fe8b354163ecb8d0674",
+            "email": "edutechex@gmail.com",
+            "name": "SAT - MACRO ",
+            "description": "The SAT, or Scholastic Assessment Test, is a standardized test widely used for college admissions in the United States. It assesses a student's readiness for college and is intended to provide colleges with a common data point that can be used to compare all applicants. The SAT measures a student's skills in mathematics, evidence-based reading, and writing.",
+            "cost": "free",
+            "other_data": {
+              "productid1": "ktest422fefed042aT1683570718985"
+            },
+            "length": "180",
+            "status": "active",
+            "gradeData": [
+              {
+                "grade": "9",
+                "description": "Rlevant for Grade 9",
+                "_id": "65708fe8b354163ecb8d0675"
+              },
+              {
+                "grade": "10",
+                "description": "Rlevant for Grade 10",
+                "_id": "65708fe8b354163ecb8d0676"
+              },
+              {
+                "grade": "11",
+                "description": "Rlevant for Grade 11",
+                "_id": "65708fe8b354163ecb8d0677"
+              },
+              {
+                "grade": "12",
+                "description": "Rlevant for Grade 12",
+                "_id": "65708fe8b354163ecb8d0678"
+              }
+            ],
+            "curriculumData": [
+              {
+                "curriculum": "IB",
+                "description": "Relevant ",
+                "_id": "65708fe8b354163ecb8d0679"
+              },
+              {
+                "curriculum": "IGCSE",
+                "description": "Relevant ",
+                "_id": "65708fe8b354163ecb8d067a"
+              },
+              {
+                "curriculum": "CBSE",
+                "description": "Relevant ",
+                "_id": "65708fe8b354163ecb8d067b"
+              },
+              {
+                "curriculum": "ICSE",
+                "description": "Relevant ",
+                "_id": "65708fe8b354163ecb8d067c"
+              },
+              {
+                "curriculum": "Nordic",
+                "description": "Relevant ",
+                "_id": "65708fe8b354163ecb8d067d"
+              }
+            ],
+            "financialData": [
+              {
+                "financialSituation": "0-25L",
+                "description": "Relevant ",
+                "_id": "65708fe8b354163ecb8d067e"
+              },
+              {
+                "financialSituation": "25L-75L",
+                "description": "Relevant ",
+                "_id": "65708fe8b354163ecb8d067f"
+              },
+              {
+                "financialSituation": "75L-3CR",
+                "description": "Relevant ",
+                "_id": "65708fe8b354163ecb8d0680"
+              },
+              {
+                "financialSituation": "3CR+",
+                "description": "Relevant ",
+                "_id": "65708fe8b354163ecb8d0681"
+              },
+              {
+                "financialSituation": "other",
+                "description": "Relevant ",
+                "_id": "65708fe8b354163ecb8d0682"
+              }
+            ],
+            "streamData": [
+              {
+                "stream": "MPC",
+                "description": "Relevant ",
+                "_id": "65708fe8b354163ecb8d0683"
+              },
+              {
+                "stream": "BIPC",
+                "description": "Relevant ",
+                "_id": "65708fe8b354163ecb8d0684"
+              },
+              {
+                "stream": "CEC",
+                "description": "Relevant ",
+                "_id": "65708fe8b354163ecb8d0685"
+              },
+              {
+                "stream": "MEC",
+                "description": "Relevant ",
+                "_id": "65708fe8b354163ecb8d0686"
+              },
+              {
+                "stream": "HEC",
+                "description": "Relevant ",
+                "_id": "65708fe8b354163ecb8d0687"
+              }
+            ],
+            "gradePointAverageData": [
+              {
+                "gradePointAverage": "0% - 35%",
+                "description": "Relevant ",
+                "_id": "65708fe8b354163ecb8d0688"
+              },
+              {
+                "gradePointAverage": "36% - 60%",
+                "description": "Relevant ",
+                "_id": "65708fe8b354163ecb8d0689"
+              },
+              {
+                "gradePointAverage": "61% - 75%",
+                "description": "Relevant ",
+                "_id": "65708fe8b354163ecb8d068a"
+              },
+              {
+                "gradePointAverage": "76% - 85%",
+                "description": "Relevant Relevant ",
+                "_id": "65708fe8b354163ecb8d068b"
+              },
+              {
+                "gradePointAverage": "86% - 95%",
+                "description": "Relevant ",
+                "_id": "65708fe8b354163ecb8d068c"
+              },
+              {
+                "gradePointAverage": "96% - 100%",
+                "description": "Relevant ",
+                "_id": "65708fe8b354163ecb8d068d"
+              }
+            ],
+            "personalityData": [
+              {
+                "personality": "realistic",
+                "description": "Relevant ",
+                "_id": "65708fe8b354163ecb8d068e"
+              },
+              {
+                "personality": "investigative",
+                "description": "Relevant ",
+                "_id": "65708fe8b354163ecb8d068f"
+              },
+              {
+                "personality": "artistic",
+                "description": "Relevant ",
+                "_id": "65708fe8b354163ecb8d0690"
+              },
+              {
+                "personality": "social",
+                "description": "Relevant Relevant ",
+                "_id": "65708fe8b354163ecb8d0691"
+              },
+              {
+                "personality": "enterprising",
+                "description": "Relevant ",
+                "_id": "65708fe8b354163ecb8d0692"
+              },
+              {
+                "personality": "conventional",
+                "description": "Relevant ",
+                "_id": "65708fe8b354163ecb8d0693"
+              }
+            ],
+            "createdAt": "2023-12-06T15:14:48.039Z",
+            "updatedAt": "2023-12-06T15:14:48.039Z",
+            "__v": 0
+          }
+        ]
+      },
+      {
+        "_id": "6576dc60b354163ecb8d4a3d",
+        "email": "ramkaluru@edutechex.com",
+        "nameOfPath": "uttu",
+        "description": "Enterprising",
+        "length": "5",
+        "city": "delhi",
+        "country": "india",
+        "the_ids": [
+          {
+            "step_id": "6576d28fb354163ecb8d447e",
+            "backup_pathId": "656f550bb354163ecb8cfabd",
+            "_id": "6576dc60b354163ecb8d4a3e"
+          }
+        ],
+        "path_type": "education",
+        "personality": "enterprising",
+        "destination_institution": "university",
+        "status": "active",
+        "financialSituation": [
+          "25L-75L",
+          "0-25L"
+        ],
+        "performance": [
+          "0% - 35%",
+          "36% - 60%",
+          "61% - 75%"
+        ],
+        "curriculum": [
+          "IGCSE",
+          "CBSE",
+          "ICSE"
+        ],
+        "grade": [
+          "11",
+          "10"
+        ],
+        "stream": [
+          "BIPC",
+          "CEC"
+        ],
+        "program": "computer science",
+        "createdAt": "2023-12-11T09:54:40.321Z",
+        "updatedAt": "2023-12-11T09:54:40.321Z",
+        "__v": 0,
+        "StepDetails": [
+          {
+            "_id": "6576d28fb354163ecb8d447e",
+            "email": "ramkaluru@edutechex.com",
+            "name": "76",
+            "description": "jjjjjdjj",
+            "cost": "paid",
+            "other_data": {
+              "productid1": "EGSAT001 aecc084a4d29T1701876520399"
+            },
+            "length": "4",
+            "status": "active",
+            "gradeData": [
+              {
+                "grade": "9",
+                "description": "zzdhdj",
+                "_id": "6576d28fb354163ecb8d447f"
+              },
+              {
+                "grade": "10",
+                "description": "uuiiiii",
+                "_id": "6576d28fb354163ecb8d4480"
+              },
+              {
+                "grade": "11",
+                "description": "iiuzuii",
+                "_id": "6576d28fb354163ecb8d4481"
+              },
+              {
+                "grade": "12",
+                "description": "uiiiiii",
+                "_id": "6576d28fb354163ecb8d4482"
+              }
+            ],
+            "curriculumData": [
+              {
+                "curriculum": "IB",
+                "description": "tzzz",
+                "_id": "6576d28fb354163ecb8d4483"
+              },
+              {
+                "curriculum": "IGCSE",
+                "description": "zzuu",
+                "_id": "6576d28fb354163ecb8d4484"
+              },
+              {
+                "curriculum": "CBSE",
+                "description": "zzzuuu",
+                "_id": "6576d28fb354163ecb8d4485"
+              },
+              {
+                "curriculum": "ICSE",
+                "description": "tzuuu",
+                "_id": "6576d28fb354163ecb8d4486"
+              },
+              {
+                "curriculum": "Nordic",
+                "description": "tzzzz",
+                "_id": "6576d28fb354163ecb8d4487"
+              }
+            ],
+            "financialData": [
+              {
+                "financialSituation": "0-25L",
+                "description": "zururu",
+                "_id": "6576d28fb354163ecb8d4488"
+              },
+              {
+                "financialSituation": "25L-75L",
+                "description": "zuuu",
+                "_id": "6576d28fb354163ecb8d4489"
+              },
+              {
+                "financialSituation": "75L-3CR",
+                "description": "zuuu",
+                "_id": "6576d28fb354163ecb8d448a"
+              },
+              {
+                "financialSituation": "3CR+",
+                "description": "zuuuu",
+                "_id": "6576d28fb354163ecb8d448b"
+              },
+              {
+                "financialSituation": "other",
+                "description": "ttzzz",
+                "_id": "6576d28fb354163ecb8d448c"
+              }
+            ],
+            "streamData": [
+              {
+                "stream": "MPC",
+                "description": "trururu",
+                "_id": "6576d28fb354163ecb8d448d"
+              },
+              {
+                "stream": "BIPC",
+                "description": "tzzu",
+                "_id": "6576d28fb354163ecb8d448e"
+              },
+              {
+                "stream": "CEC",
+                "description": "tzzzzz",
+                "_id": "6576d28fb354163ecb8d448f"
+              },
+              {
+                "stream": "MEC",
+                "description": "tzzuuu",
+                "_id": "6576d28fb354163ecb8d4490"
+              },
+              {
+                "stream": "HEC",
+                "description": "tzii",
+                "_id": "6576d28fb354163ecb8d4491"
+              }
+            ],
+            "gradePointAverageData": [
+              {
+                "gradePointAverage": "0% - 35%",
+                "description": "zuru",
+                "_id": "6576d28fb354163ecb8d4492"
+              },
+              {
+                "gradePointAverage": "36% - 60%",
+                "description": "zzuuu",
+                "_id": "6576d28fb354163ecb8d4493"
+              },
+              {
+                "gradePointAverage": "61% - 75%",
+                "description": "zzuu",
+                "_id": "6576d28fb354163ecb8d4494"
+              },
+              {
+                "gradePointAverage": "76% - 85%",
+                "description": "zzuu",
+                "_id": "6576d28fb354163ecb8d4495"
+              },
+              {
+                "gradePointAverage": "86% - 95%",
+                "description": "zzuu",
+                "_id": "6576d28fb354163ecb8d4496"
+              },
+              {
+                "gradePointAverage": "96% - 100%",
+                "description": "zzzzz",
+                "_id": "6576d28fb354163ecb8d4497"
+              }
+            ],
+            "personalityData": [
+              {
+                "personality": "realistic",
+                "description": "zrurut",
+                "_id": "6576d28fb354163ecb8d4498"
+              },
+              {
+                "personality": "investigative",
+                "description": "zururuq",
+                "_id": "6576d28fb354163ecb8d4499"
+              },
+              {
+                "personality": "artistic",
+                "description": "zururu",
+                "_id": "6576d28fb354163ecb8d449a"
+              },
+              {
+                "personality": "social",
+                "description": "rztutu",
+                "_id": "6576d28fb354163ecb8d449b"
+              },
+              {
+                "personality": "enterprising",
+                "description": "ruruuru",
+                "_id": "6576d28fb354163ecb8d449c"
+              },
+              {
+                "personality": "conventional",
+                "description": "rztutuu",
+                "_id": "6576d28fb354163ecb8d449d"
+              }
+            ],
+            "createdAt": "2023-12-11T09:12:47.613Z",
+            "updatedAt": "2023-12-11T09:12:47.613Z",
+            "__v": 0
+          }
+        ]
+      },
+      {
+        "_id": "6576d319b354163ecb8d4503",
+        "email": "ramkaluru@edutechex.com",
+        "nameOfPath": "6565",
+        "description": "hfufgifj",
+        "length": "2",
+        "city": "tzuru",
+        "country": "zturur",
+        "the_ids": [
+          {
+            "step_id": "6576d28fb354163ecb8d447e",
+            "backup_pathId": "6571c1ebb354163ecb8d0abd",
+            "_id": "6576d319b354163ecb8d4504"
+          }
+        ],
+        "path_type": "education",
+        "personality": "investigative",
+        "destination_institution": "university",
+        "status": "active",
+        "financialSituation": [
+          "25L-75L"
+        ],
+        "performance": [
+          "36% - 60%",
+          "61% - 75%"
+        ],
+        "curriculum": [
+          "IB",
+          "IGCSE",
+          "CBSE"
+        ],
+        "grade": [
+          "11",
+          "12"
+        ],
+        "stream": [
+          "CEC",
+          "BIPC"
+        ],
+        "program": "trru",
+        "createdAt": "2023-12-11T09:15:05.971Z",
+        "updatedAt": "2023-12-11T09:15:05.971Z",
+        "__v": 0,
+        "StepDetails": [
+          {
+            "_id": "6576d28fb354163ecb8d447e",
+            "email": "ramkaluru@edutechex.com",
+            "name": "76",
+            "description": "jjjjjdjj",
+            "cost": "paid",
+            "other_data": {
+              "productid1": "EGSAT001 aecc084a4d29T1701876520399"
+            },
+            "length": "4",
+            "status": "active",
+            "gradeData": [
+              {
+                "grade": "9",
+                "description": "zzdhdj",
+                "_id": "6576d28fb354163ecb8d447f"
+              },
+              {
+                "grade": "10",
+                "description": "uuiiiii",
+                "_id": "6576d28fb354163ecb8d4480"
+              },
+              {
+                "grade": "11",
+                "description": "iiuzuii",
+                "_id": "6576d28fb354163ecb8d4481"
+              },
+              {
+                "grade": "12",
+                "description": "uiiiiii",
+                "_id": "6576d28fb354163ecb8d4482"
+              }
+            ],
+            "curriculumData": [
+              {
+                "curriculum": "IB",
+                "description": "tzzz",
+                "_id": "6576d28fb354163ecb8d4483"
+              },
+              {
+                "curriculum": "IGCSE",
+                "description": "zzuu",
+                "_id": "6576d28fb354163ecb8d4484"
+              },
+              {
+                "curriculum": "CBSE",
+                "description": "zzzuuu",
+                "_id": "6576d28fb354163ecb8d4485"
+              },
+              {
+                "curriculum": "ICSE",
+                "description": "tzuuu",
+                "_id": "6576d28fb354163ecb8d4486"
+              },
+              {
+                "curriculum": "Nordic",
+                "description": "tzzzz",
+                "_id": "6576d28fb354163ecb8d4487"
+              }
+            ],
+            "financialData": [
+              {
+                "financialSituation": "0-25L",
+                "description": "zururu",
+                "_id": "6576d28fb354163ecb8d4488"
+              },
+              {
+                "financialSituation": "25L-75L",
+                "description": "zuuu",
+                "_id": "6576d28fb354163ecb8d4489"
+              },
+              {
+                "financialSituation": "75L-3CR",
+                "description": "zuuu",
+                "_id": "6576d28fb354163ecb8d448a"
+              },
+              {
+                "financialSituation": "3CR+",
+                "description": "zuuuu",
+                "_id": "6576d28fb354163ecb8d448b"
+              },
+              {
+                "financialSituation": "other",
+                "description": "ttzzz",
+                "_id": "6576d28fb354163ecb8d448c"
+              }
+            ],
+            "streamData": [
+              {
+                "stream": "MPC",
+                "description": "trururu",
+                "_id": "6576d28fb354163ecb8d448d"
+              },
+              {
+                "stream": "BIPC",
+                "description": "tzzu",
+                "_id": "6576d28fb354163ecb8d448e"
+              },
+              {
+                "stream": "CEC",
+                "description": "tzzzzz",
+                "_id": "6576d28fb354163ecb8d448f"
+              },
+              {
+                "stream": "MEC",
+                "description": "tzzuuu",
+                "_id": "6576d28fb354163ecb8d4490"
+              },
+              {
+                "stream": "HEC",
+                "description": "tzii",
+                "_id": "6576d28fb354163ecb8d4491"
+              }
+            ],
+            "gradePointAverageData": [
+              {
+                "gradePointAverage": "0% - 35%",
+                "description": "zuru",
+                "_id": "6576d28fb354163ecb8d4492"
+              },
+              {
+                "gradePointAverage": "36% - 60%",
+                "description": "zzuuu",
+                "_id": "6576d28fb354163ecb8d4493"
+              },
+              {
+                "gradePointAverage": "61% - 75%",
+                "description": "zzuu",
+                "_id": "6576d28fb354163ecb8d4494"
+              },
+              {
+                "gradePointAverage": "76% - 85%",
+                "description": "zzuu",
+                "_id": "6576d28fb354163ecb8d4495"
+              },
+              {
+                "gradePointAverage": "86% - 95%",
+                "description": "zzuu",
+                "_id": "6576d28fb354163ecb8d4496"
+              },
+              {
+                "gradePointAverage": "96% - 100%",
+                "description": "zzzzz",
+                "_id": "6576d28fb354163ecb8d4497"
+              }
+            ],
+            "personalityData": [
+              {
+                "personality": "realistic",
+                "description": "zrurut",
+                "_id": "6576d28fb354163ecb8d4498"
+              },
+              {
+                "personality": "investigative",
+                "description": "zururuq",
+                "_id": "6576d28fb354163ecb8d4499"
+              },
+              {
+                "personality": "artistic",
+                "description": "zururu",
+                "_id": "6576d28fb354163ecb8d449a"
+              },
+              {
+                "personality": "social",
+                "description": "rztutu",
+                "_id": "6576d28fb354163ecb8d449b"
+              },
+              {
+                "personality": "enterprising",
+                "description": "ruruuru",
+                "_id": "6576d28fb354163ecb8d449c"
+              },
+              {
+                "personality": "conventional",
+                "description": "rztutuu",
+                "_id": "6576d28fb354163ecb8d449d"
+              }
+            ],
+            "createdAt": "2023-12-11T09:12:47.613Z",
+            "updatedAt": "2023-12-11T09:12:47.613Z",
+            "__v": 0
+          }
+        ]
+      },
+      {
+        "_id": "6571c1ebb354163ecb8d0abd",
+        "email": "shorupan@gmail.com",
+        "nameOfPath": "Happy",
+        "description": "yes",
+        "length": "21",
+        "city": "Chennai",
+        "country": "India",
+        "the_ids": [
+          {
+            "step_id": "64c5185426fcec00eabbe8e0",
+            "backup_pathId": "656f550bb354163ecb8cfabd",
+            "_id": "6571c1ebb354163ecb8d0abe"
+          }
+        ],
+        "path_type": "education",
+        "personality": "realistic",
+        "destination_institution": "IIT Madras",
+        "status": "active",
+        "financialSituation": [
+          "0-25L"
+        ],
+        "performance": [
+          "0% - 35%"
+        ],
+        "curriculum": [
+          "IB"
+        ],
+        "grade": [
+          "9"
+        ],
+        "stream": [
+          "MPC"
+        ],
+        "program": "Computer Science",
+        "createdAt": "2023-12-07T13:00:27.852Z",
+        "updatedAt": "2023-12-12T12:31:21.541Z",
+        "__v": 0,
+        "StepDetails": [
+          {
+            "_id": "64c5185426fcec00eabbe8e0",
+            "name": "step-add",
+            "icon": "",
+            "description": "There are certain transactions that happen in every app regardless of the business. The revenue from these transactions are captured by us and we want to share it with you.  ",
+            "vendors": [
+              {
+                "name": "vendor1"
+              },
+              {
+                "name": "vendor2"
+              }
+            ],
+            "country": "india",
+            "microsteps": [
+              {
+                "name": "substep1",
+                "value": "one",
+                "price": "10",
+                "currency": "USD",
+                "vendors": [
+                  {
+                    "name": "vendor1"
+                  }
+                ],
+                "nanosteps": [
+                  {
+                    "name": "substep1",
+                    "value": "one",
+                    "price": "10",
+                    "currency": "USD",
+                    "vendors": [
+                      {
+                        "name": "vendor1"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "substep2",
+                "value": "two",
+                "price": "10",
+                "currency": "USD",
+                "vendors": [
+                  {
+                    "name": "vendor1"
+                  }
+                ]
+              }
+            ],
+            "Mentors": [
+              {
+                "name": "mentor1",
+                "value": "one"
+              },
+              {
+                "name": "mentor2",
+                "value": "two"
+              }
+            ],
+            "type": "education",
+            "cost": "free",
+            "other_data": {
+              "productid1": "FXProfcbd5cf3bd77T1681473927354",
+              "productid2": "seo84982f8a6a14T1700847903672"
+            },
+            "status": "active",
+            "createdAt": "2023-07-29T13:47:00.240Z",
+            "updatedAt": "2023-11-27T12:33:07.932Z",
+            "__v": 0,
+            "email": "shorupan@gmail.com",
+            "isCompleted": "false"
+          }
+        ]
+      },
+      {
+        "_id": "656f550bb354163ecb8cfabd",
+        "email": "shorupan@gmail.com",
+        "nameOfPath": "IIT Bombay: Masters Business Administration",
+        "description": "IIT Bombay offers a renowned MBA program known as the SJM School of Management. Here's a glimpse into pursuing an MBA from IIT Bombay:\n\n",
+        "length": "4",
+        "city": "Mumbai",
+        "country": "India",
+        "the_ids": [
+          {
+            "step_id": "656f5235b354163ecb8cf961",
+            "backup_pathId": "656e75a544cf4c9d766400cb",
+            "_id": "656f550bb354163ecb8cfabe"
+          },
+          {
+            "step_id": "656e69a144cf4c9d7663f4ce",
+            "backup_pathId": "656e75a544cf4c9d766400cb",
+            "_id": "656f550bb354163ecb8cfabf"
+          }
+        ],
+        "path_type": "education",
+        "personality": "conventional",
+        "destination_institution": "IIT Bombay",
+        "status": "active",
+        "financialSituation": [
+          "0-25L",
+          "3CR+"
+        ],
+        "performance": [
+          "0% - 35%",
+          "36% - 60%",
+          "61% - 75%"
+        ],
+        "curriculum": [
+          "IB",
+          "IGCSE",
+          "CBSE"
+        ],
+        "grade": [
+          "12",
+          "11",
+          "10"
+        ],
+        "stream": [
+          "MPC",
+          "BIPC",
+          "CEC"
+        ],
+        "program": "Master Business Administration",
+        "createdAt": "2023-12-05T16:51:23.878Z",
+        "updatedAt": "2023-12-05T16:51:23.878Z",
+        "__v": 0,
+        "StepDetails": [
+          {
+            "_id": "656e69a144cf4c9d7663f4ce",
+            "email": "shorupan@gmail.com",
+            "name": "Qualify for JEE (Joint Entrance Examination)",
+            "description": "Preparation: Begin preparations early, preferably during high school. Focus on mastering the JEE syllabus which includes physics, chemistry, and mathematics.\n\nAppear for JEE Main: Register for and attempt the JEE Main exam, the first step towards IITs. It's usually conducted twice a year.\n\nScore High: Aim for a high score as it determines eligibility for the JEE Advanced.",
+            "cost": "free",
+            "other_data": {
+              "productid1": "FXProfcbd5cf3bd77T1681473927354"
+            },
+            "length": "100",
+            "status": "active",
+            "gradeData": [
+              {
+                "grade": "9",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4cf"
+              },
+              {
+                "grade": "10",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4d0"
+              },
+              {
+                "grade": "11",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4d1"
+              },
+              {
+                "grade": "12",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4d2"
+              }
+            ],
+            "curriculumData": [
+              {
+                "_id": "656e69a144cf4c9d7663f4d3"
+              },
+              {
+                "_id": "656e69a144cf4c9d7663f4d4"
+              },
+              {
+                "_id": "656e69a144cf4c9d7663f4d5"
+              },
+              {
+                "_id": "656e69a144cf4c9d7663f4d6"
+              },
+              {
+                "_id": "656e69a144cf4c9d7663f4d7"
+              }
+            ],
+            "financialData": [
+              {
+                "financialSituation": "0-25L",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4d8"
+              },
+              {
+                "financialSituation": "25L-75L",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4d9"
+              },
+              {
+                "financialSituation": "75L-3CR",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4da"
+              },
+              {
+                "financialSituation": "3CR+",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4db"
+              },
+              {
+                "financialSituation": "other",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4dc"
+              }
+            ],
+            "streamData": [
+              {
+                "stream": "MPC",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4dd"
+              },
+              {
+                "stream": "BIPC",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4de"
+              },
+              {
+                "stream": "CEC",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4df"
+              },
+              {
+                "stream": "MEC",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4e0"
+              },
+              {
+                "stream": "HEC",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4e1"
+              }
+            ],
+            "gradePointAverageData": [
+              {
+                "gradePointAverage": "0% - 35%",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4e2"
+              },
+              {
+                "gradePointAverage": "36% - 60%",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4e3"
+              },
+              {
+                "gradePointAverage": "61% - 75%",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4e4"
+              },
+              {
+                "gradePointAverage": "76% - 85%",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4e5"
+              },
+              {
+                "gradePointAverage": "86% - 95%",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4e6"
+              },
+              {
+                "gradePointAverage": "96% - 100%",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4e7"
+              }
+            ],
+            "personalityData": [
+              {
+                "personality": "realistic",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4e8"
+              },
+              {
+                "personality": "investigative",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4e9"
+              },
+              {
+                "personality": "artistic",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4ea"
+              },
+              {
+                "personality": "social",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4eb"
+              },
+              {
+                "personality": "enterprising",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4ec"
+              },
+              {
+                "personality": "conventional",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4ed"
+              }
+            ],
+            "createdAt": "2023-12-05T00:06:57.278Z",
+            "updatedAt": "2023-12-05T00:06:57.278Z",
+            "__v": 0
+          },
+          {
+            "_id": "656f5235b354163ecb8cf961",
+            "email": "shorupan@gmail.com",
+            "name": "Complete Grade 12 With Honours",
+            "description": "Earning honors in Grade 12 typically requires consistent dedication and a strong academic performance. Here are some steps to aim for honors:",
+            "cost": "paid",
+            "other_data": {
+              "productid1": "seo84982f8a6a14T1700847903672",
+              "productid2": "realtymarketf5a296e6dd55T1682706201111"
+            },
+            "length": "365",
+            "status": "active",
+            "gradeData": [
+              {
+                "grade": "9",
+                "description": "Harvard seeks well-rounded individuals who not only excel academically but also contribute to their communities and possess unique qualities or experiences. However, admission to Harvard is extremely competitive, and even with outstanding credentials, acceptance is not guaranteed due to the limited number of available spots.",
+                "_id": "656f5235b354163ecb8cf962"
+              },
+              {
+                "grade": "10",
+                "description": "Harvard seeks well-rounded individuals who not only excel academically but also contribute to their communities and possess unique qualities or experiences. However, admission to Harvard is extremely competitive, and even with outstanding credentials, acceptance is not guaranteed due to the limited number of available spots.",
+                "_id": "656f5235b354163ecb8cf963"
+              },
+              {
+                "grade": "11",
+                "description": "Harvard seeks well-rounded individuals who not only excel academically but also contribute to their communities and possess unique qualities or experiences. However, admission to Harvard is extremely competitive, and even with outstanding credentials, acceptance is not guaranteed due to the limited number of available spots.",
+                "_id": "656f5235b354163ecb8cf964"
+              },
+              {
+                "grade": "12",
+                "description": "Harvard seeks well-rounded individuals who not only excel academically but also contribute to their communities and possess unique qualities or experiences. However, admission to Harvard is extremely competitive, and even with outstanding credentials, acceptance is not guaranteed due to the limited number of available spots.",
+                "_id": "656f5235b354163ecb8cf965"
+              }
+            ],
+            "curriculumData": [
+              {
+                "curriculum": "IB",
+                "description": "Harvard seeks well-rounded individuals who not only excel academically but also contribute to their communities and possess unique qualities or experiences. However, admission to Harvard is extremely competitive, and even with outstanding credentials, acceptance is not guaranteed due to the limited number of available spots.",
+                "_id": "656f5235b354163ecb8cf966"
+              },
+              {
+                "curriculum": "IGCSE",
+                "description": "Harvard seeks well-rounded individuals who not only excel academically but also contribute to their communities and possess unique qualities or experiences. However, admission to Harvard is extremely competitive, and even with outstanding credentials, acceptance is not guaranteed due to the limited number of available spots.",
+                "_id": "656f5235b354163ecb8cf967"
+              },
+              {
+                "curriculum": "CBSE",
+                "description": "Harvard seeks well-rounded individuals who not only excel academically but also contribute to their communities and possess unique qualities or experiences. However, admission to Harvard is extremely competitive, and even with outstanding credentials, acceptance is not guaranteed due to the limited number of available spots.",
+                "_id": "656f5235b354163ecb8cf968"
+              },
+              {
+                "curriculum": "ICSE",
+                "description": "Harvard seeks well-rounded individuals who not only excel academically but also contribute to their communities and possess unique qualities or experiences. However, admission to Harvard is extremely competitive, and even with outstanding credentials, acceptance is not guaranteed due to the limited number of available spots.",
+                "_id": "656f5235b354163ecb8cf969"
+              },
+              {
+                "curriculum": "Nordic",
+                "description": "Harvard seeks well-rounded individuals who not only excel academically but also contribute to their communities and possess unique qualities or experiences. However, admission to Harvard is extremely competitive, and even with outstanding credentials, acceptance is not guaranteed due to the limited number of available spots.",
+                "_id": "656f5235b354163ecb8cf96a"
+              }
+            ],
+            "financialData": [
+              {
+                "financialSituation": "0-25L",
+                "description": "Harvard seeks well-rounded individuals who not only excel academically but also contribute to their communities and possess unique qualities or experiences. However, admission to Harvard is extremely competitive, and even with outstanding credentials, acceptance is not guaranteed due to the limited number of available spots.",
+                "_id": "656f5235b354163ecb8cf96b"
+              },
+              {
+                "financialSituation": "25L-75L",
+                "description": "Harvard seeks well-rounded individuals who not only excel academically but also contribute to their communities and possess unique qualities or experiences. However, admission to Harvard is extremely competitive, and even with outstanding credentials, acceptance is not guaranteed due to the limited number of available spots.",
+                "_id": "656f5235b354163ecb8cf96c"
+              },
+              {
+                "financialSituation": "75L-3CR",
+                "description": "Harvard seeks well-rounded individuals who not only excel academically but also contribute to their communities and possess unique qualities or experiences. However, admission to Harvard is extremely competitive, and even with outstanding credentials, acceptance is not guaranteed due to the limited number of available spots.",
+                "_id": "656f5235b354163ecb8cf96d"
+              },
+              {
+                "financialSituation": "3CR+",
+                "description": "Harvard seeks well-rounded individuals who not only excel academically but also contribute to their communities and possess unique qualities or experiences. However, admission to Harvard is extremely competitive, and even with outstanding credentials, acceptance is not guaranteed due to the limited number of available spots.",
+                "_id": "656f5235b354163ecb8cf96e"
+              },
+              {
+                "financialSituation": "other",
+                "description": "Harvard seeks well-rounded individuals who not only excel academically but also contribute to their communities and possess unique qualities or experiences. However, admission to Harvard is extremely competitive, and even with outstanding credentials, acceptance is not guaranteed due to the limited number of available spots.",
+                "_id": "656f5235b354163ecb8cf96f"
+              }
+            ],
+            "streamData": [
+              {
+                "stream": "MPC",
+                "description": "Harvard seeks well-rounded individuals who not only excel academically but also contribute to their communities and possess unique qualities or experiences. However, admission to Harvard is extremely competitive, and even with outstanding credentials, acceptance is not guaranteed due to the limited number of available spots.",
+                "_id": "656f5235b354163ecb8cf970"
+              },
+              {
+                "stream": "BIPC",
+                "description": "Harvard seeks well-rounded individuals who not only excel academically but also contribute to their communities and possess unique qualities or experiences. However, admission to Harvard is extremely competitive, and even with outstanding credentials, acceptance is not guaranteed due to the limited number of available spots.",
+                "_id": "656f5235b354163ecb8cf971"
+              },
+              {
+                "stream": "CEC",
+                "description": "Harvard seeks well-rounded individuals who not only excel academically but also contribute to their communities and possess unique qualities or experiences. However, admission to Harvard is extremely competitive, and even with outstanding credentials, acceptance is not guaranteed due to the limited number of available spots.",
+                "_id": "656f5235b354163ecb8cf972"
+              },
+              {
+                "stream": "MEC",
+                "description": "Harvard seeks well-rounded individuals who not only excel academically but also contribute to their communities and possess unique qualities or experiences. However, admission to Harvard is extremely competitive, and even with outstanding credentials, acceptance is not guaranteed due to the limited number of available spots.",
+                "_id": "656f5235b354163ecb8cf973"
+              },
+              {
+                "stream": "HEC",
+                "description": "Harvard seeks well-rounded individuals who not only excel academically but also contribute to their communities and possess unique qualities or experiences. However, admission to Harvard is extremely competitive, and even with outstanding credentials, acceptance is not guaranteed due to the limited number of available spots.",
+                "_id": "656f5235b354163ecb8cf974"
+              }
+            ],
+            "gradePointAverageData": [
+              {
+                "gradePointAverage": "0% - 35%",
+                "description": "Harvard seeks well-rounded individuals who not only excel academically but also contribute to their communities and possess unique qualities or experiences. However, admission to Harvard is extremely competitive, and even with outstanding credentials, acceptance is not guaranteed due to the limited number of available spots.",
+                "_id": "656f5235b354163ecb8cf975"
+              },
+              {
+                "gradePointAverage": "36% - 60%",
+                "description": "Harvard seeks well-rounded individuals who not only excel academically but also contribute to their communities and possess unique qualities or experiences. However, admission to Harvard is extremely competitive, and even with outstanding credentials, acceptance is not guaranteed due to the limited number of available spots.",
+                "_id": "656f5235b354163ecb8cf976"
+              },
+              {
+                "gradePointAverage": "61% - 75%",
+                "description": "Harvard seeks well-rounded individuals who not only excel academically but also contribute to their communities and possess unique qualities or experiences. However, admission to Harvard is extremely competitive, and even with outstanding credentials, acceptance is not guaranteed due to the limited number of available spots.",
+                "_id": "656f5235b354163ecb8cf977"
+              },
+              {
+                "gradePointAverage": "76% - 85%",
+                "description": "Harvard seeks well-rounded individuals who not only excel academically but also contribute to their communities and possess unique qualities or experiences. However, admission to Harvard is extremely competitive, and even with outstanding credentials, acceptance is not guaranteed due to the limited number of available spots.",
+                "_id": "656f5235b354163ecb8cf978"
+              },
+              {
+                "gradePointAverage": "86% - 95%",
+                "description": "Harvard seeks well-rounded individuals who not only excel academically but also contribute to their communities and possess unique qualities or experiences. However, admission to Harvard is extremely competitive, and even with outstanding credentials, acceptance is not guaranteed due to the limited number of available spots.",
+                "_id": "656f5235b354163ecb8cf979"
+              },
+              {
+                "gradePointAverage": "96% - 100%",
+                "description": "Harvard seeks well-rounded individuals who not only excel academically but also contribute to their communities and possess unique qualities or experiences. However, admission to Harvard is extremely competitive, and even with outstanding credentials, acceptance is not guaranteed due to the limited number of available spots.",
+                "_id": "656f5235b354163ecb8cf97a"
+              }
+            ],
+            "personalityData": [
+              {
+                "personality": "realistic",
+                "description": "Harvard seeks well-rounded individuals who not only excel academically but also contribute to their communities and possess unique qualities or experiences. However, admission to Harvard is extremely competitive, and even with outstanding credentials, acceptance is not guaranteed due to the limited number of available spots.",
+                "_id": "656f5235b354163ecb8cf97b"
+              },
+              {
+                "personality": "investigative",
+                "description": "Harvard seeks well-rounded individuals who not only excel academically but also contribute to their communities and possess unique qualities or experiences. However, admission to Harvard is extremely competitive, and even with outstanding credentials, acceptance is not guaranteed due to the limited number of available spots.",
+                "_id": "656f5235b354163ecb8cf97c"
+              },
+              {
+                "personality": "artistic",
+                "description": "Harvard seeks well-rounded individuals who not only excel academically but also contribute to their communities and possess unique qualities or experiences. However, admission to Harvard is extremely competitive, and even with outstanding credentials, acceptance is not guaranteed due to the limited number of available spots.",
+                "_id": "656f5235b354163ecb8cf97d"
+              },
+              {
+                "personality": "social",
+                "description": "Harvard seeks well-rounded individuals who not only excel academically but also contribute to their communities and possess unique qualities or experiences. However, admission to Harvard is extremely competitive, and even with outstanding credentials, acceptance is not guaranteed due to the limited number of available spots.",
+                "_id": "656f5235b354163ecb8cf97e"
+              },
+              {
+                "personality": "enterprising",
+                "description": "Harvard seeks well-rounded individuals who not only excel academically but also contribute to their communities and possess unique qualities or experiences. However, admission to Harvard is extremely competitive, and even with outstanding credentials, acceptance is not guaranteed due to the limited number of available spots.",
+                "_id": "656f5235b354163ecb8cf97f"
+              },
+              {
+                "personality": "conventional",
+                "description": "Harvard seeks well-rounded individuals who not only excel academically but also contribute to their communities and possess unique qualities or experiences. However, admission to Harvard is extremely competitive, and even with outstanding credentials, acceptance is not guaranteed due to the limited number of available spots.",
+                "_id": "656f5235b354163ecb8cf980"
+              }
+            ],
+            "createdAt": "2023-12-05T16:39:17.052Z",
+            "updatedAt": "2023-12-05T16:39:17.052Z",
+            "__v": 0
+          }
+        ]
+      },
+      {
+        "_id": "656e940b44cf4c9d76641120",
+        "email": "shorupan@gmail.com",
+        "nameOfPath": "TestDec6",
+        "description": "lkwehflwkhfl",
+        "length": "2",
+        "city": "Hyderabad",
+        "country": "India",
+        "the_ids": [
+          {
+            "step_id": "64c5185426fcec00eabbe8e0",
+            "backup_pathId": "654132022a52a457f415f792",
+            "_id": "656e940b44cf4c9d76641121"
+          },
+          {
+            "step_id": "64cd05ec7bd6a7d3b42a07a8",
+            "backup_pathId": "654132022a52a457f415f792",
+            "_id": "656e940b44cf4c9d76641122"
+          }
+        ],
+        "path_type": "education",
+        "personality": "investigative",
+        "destination_institution": "IIT Madras",
+        "status": "active",
+        "financialSituation": [
+          "0-25L",
+          "25L-75L"
+        ],
+        "performance": [
+          "0% - 35%",
+          "36% - 60%"
+        ],
+        "curriculum": [
+          "IB",
+          "IGCSE"
+        ],
+        "grade": [
+          "9",
+          "10"
+        ],
+        "stream": [
+          "MPC",
+          "BIPC"
+        ],
+        "program": "jqdwjdgj",
+        "createdAt": "2023-12-05T03:07:55.724Z",
+        "updatedAt": "2023-12-12T13:31:07.808Z",
+        "__v": 0,
+        "StepDetails": [
+          {
+            "_id": "64c5185426fcec00eabbe8e0",
+            "name": "step-add",
+            "icon": "",
+            "description": "There are certain transactions that happen in every app regardless of the business. The revenue from these transactions are captured by us and we want to share it with you.  ",
+            "vendors": [
+              {
+                "name": "vendor1"
+              },
+              {
+                "name": "vendor2"
+              }
+            ],
+            "country": "india",
+            "microsteps": [
+              {
+                "name": "substep1",
+                "value": "one",
+                "price": "10",
+                "currency": "USD",
+                "vendors": [
+                  {
+                    "name": "vendor1"
+                  }
+                ],
+                "nanosteps": [
+                  {
+                    "name": "substep1",
+                    "value": "one",
+                    "price": "10",
+                    "currency": "USD",
+                    "vendors": [
+                      {
+                        "name": "vendor1"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "substep2",
+                "value": "two",
+                "price": "10",
+                "currency": "USD",
+                "vendors": [
+                  {
+                    "name": "vendor1"
+                  }
+                ]
+              }
+            ],
+            "Mentors": [
+              {
+                "name": "mentor1",
+                "value": "one"
+              },
+              {
+                "name": "mentor2",
+                "value": "two"
+              }
+            ],
+            "type": "education",
+            "cost": "free",
+            "other_data": {
+              "productid1": "FXProfcbd5cf3bd77T1681473927354",
+              "productid2": "seo84982f8a6a14T1700847903672"
+            },
+            "status": "active",
+            "createdAt": "2023-07-29T13:47:00.240Z",
+            "updatedAt": "2023-11-27T12:33:07.932Z",
+            "__v": 0,
+            "email": "shorupan@gmail.com",
+            "isCompleted": "false"
+          },
+          {
+            "_id": "64cd05ec7bd6a7d3b42a07a8",
+            "name": "step-add12",
+            "icon": "",
+            "description": "There are certain transactions that happen in every app regardless of the business. The revenue from these transactions are captured by us and we want to share it with you.  ",
+            "vendors": [
+              {
+                "name": "vendor1"
+              }
+            ],
+            "country": "india",
+            "microsteps": [
+              {
+                "name": "substep1",
+                "value": "one",
+                "price": "10",
+                "currency": "USD",
+                "vendors": [
+                  {
+                    "name": "vendor1"
+                  }
+                ],
+                "nanosteps": [
+                  {
+                    "name": "substep1",
+                    "value": "one",
+                    "price": "10",
+                    "currency": "USD",
+                    "vendors": [
+                      {
+                        "name": "vendor1"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "Mentors": [
+              {
+                "name": "mentor1",
+                "value": "one"
+              },
+              {
+                "name": "mentor2",
+                "value": "two"
+              }
+            ],
+            "type": "education",
+            "cost": "free",
+            "other_data": {
+              "number": "1234",
+              "address": "abcd"
+            },
+            "status": "active",
+            "createdAt": "2023-08-04T14:06:36.275Z",
+            "updatedAt": "2023-08-04T14:06:36.275Z",
+            "__v": 0,
+            "email": "shorupan@gmail.com",
+            "isCompleted": "false"
+          }
+        ]
+      },
+      {
+        "_id": "656e75a544cf4c9d766400cb",
+        "email": "shorupan@gmail.com",
+        "nameOfPath": "IITMadras: Electrical Engineering",
+        "description": "Engineering at IIT Madras goes beyond traditional academics, focusing on holistic growth, innovation, and research. It provides a platform for students to not only excel academically but also to explore their creativity, leadership skills, and entrepreneurial spirit, preparing them to become industry-ready professionals and innovators.",
+        "length": "2",
+        "city": "Chennai",
+        "country": "India",
+        "the_ids": [
+          {
+            "step_id": "656e69a144cf4c9d7663f4ce",
+            "backup_pathId": "654132022a52a457f415f792",
+            "_id": "656e75a544cf4c9d766400cc"
+          },
+          {
+            "step_id": "656e6ab244cf4c9d7663f511",
+            "backup_pathId": "654132022a52a457f415f792",
+            "_id": "656e75a544cf4c9d766400cd"
+          },
+          {
+            "step_id": "656e6b1344cf4c9d7663f573",
+            "backup_pathId": "654132022a52a457f415f792",
+            "_id": "656e75a544cf4c9d766400ce"
+          },
+          {
+            "step_id": "656e6b7244cf4c9d7663f5f4",
+            "backup_pathId": "654132022a52a457f415f792",
+            "_id": "656e75a544cf4c9d766400cf"
+          }
+        ],
+        "path_type": "education",
+        "personality": "realistic",
+        "destination_institution": "IIT Madras",
+        "status": "active",
+        "financialSituation": [
+          "0-25L"
+        ],
+        "performance": [
+          "0%-35%",
+          "61%-75%"
+        ],
+        "curriculum": [
+          "ICSE",
+          "IB"
+        ],
+        "grade": [
+          "9",
+          "10"
+        ],
+        "stream": [
+          "MPC",
+          "MEC"
+        ],
+        "program": "B.Tech: Electrical Engineering",
+        "createdAt": "2023-12-05T00:58:13.903Z",
+        "updatedAt": "2023-12-05T00:58:13.903Z",
+        "__v": 0,
+        "StepDetails": [
+          {
+            "_id": "656e69a144cf4c9d7663f4ce",
+            "email": "shorupan@gmail.com",
+            "name": "Qualify for JEE (Joint Entrance Examination)",
+            "description": "Preparation: Begin preparations early, preferably during high school. Focus on mastering the JEE syllabus which includes physics, chemistry, and mathematics.\n\nAppear for JEE Main: Register for and attempt the JEE Main exam, the first step towards IITs. It's usually conducted twice a year.\n\nScore High: Aim for a high score as it determines eligibility for the JEE Advanced.",
+            "cost": "free",
+            "other_data": {
+              "productid1": "FXProfcbd5cf3bd77T1681473927354"
+            },
+            "length": "100",
+            "status": "active",
+            "gradeData": [
+              {
+                "grade": "9",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4cf"
+              },
+              {
+                "grade": "10",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4d0"
+              },
+              {
+                "grade": "11",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4d1"
+              },
+              {
+                "grade": "12",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4d2"
+              }
+            ],
+            "curriculumData": [
+              {
+                "_id": "656e69a144cf4c9d7663f4d3"
+              },
+              {
+                "_id": "656e69a144cf4c9d7663f4d4"
+              },
+              {
+                "_id": "656e69a144cf4c9d7663f4d5"
+              },
+              {
+                "_id": "656e69a144cf4c9d7663f4d6"
+              },
+              {
+                "_id": "656e69a144cf4c9d7663f4d7"
+              }
+            ],
+            "financialData": [
+              {
+                "financialSituation": "0-25L",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4d8"
+              },
+              {
+                "financialSituation": "25L-75L",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4d9"
+              },
+              {
+                "financialSituation": "75L-3CR",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4da"
+              },
+              {
+                "financialSituation": "3CR+",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4db"
+              },
+              {
+                "financialSituation": "other",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4dc"
+              }
+            ],
+            "streamData": [
+              {
+                "stream": "MPC",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4dd"
+              },
+              {
+                "stream": "BIPC",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4de"
+              },
+              {
+                "stream": "CEC",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4df"
+              },
+              {
+                "stream": "MEC",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4e0"
+              },
+              {
+                "stream": "HEC",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4e1"
+              }
+            ],
+            "gradePointAverageData": [
+              {
+                "gradePointAverage": "0% - 35%",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4e2"
+              },
+              {
+                "gradePointAverage": "36% - 60%",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4e3"
+              },
+              {
+                "gradePointAverage": "61% - 75%",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4e4"
+              },
+              {
+                "gradePointAverage": "76% - 85%",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4e5"
+              },
+              {
+                "gradePointAverage": "86% - 95%",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4e6"
+              },
+              {
+                "gradePointAverage": "96% - 100%",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4e7"
+              }
+            ],
+            "personalityData": [
+              {
+                "personality": "realistic",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4e8"
+              },
+              {
+                "personality": "investigative",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4e9"
+              },
+              {
+                "personality": "artistic",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4ea"
+              },
+              {
+                "personality": "social",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4eb"
+              },
+              {
+                "personality": "enterprising",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4ec"
+              },
+              {
+                "personality": "conventional",
+                "description": "Getting into IIT Madras, one of India's premier engineering institutions, involves a rigorous process. Here are the steps typically involved:\n\n",
+                "_id": "656e69a144cf4c9d7663f4ed"
+              }
+            ],
+            "createdAt": "2023-12-05T00:06:57.278Z",
+            "updatedAt": "2023-12-05T00:06:57.278Z",
+            "__v": 0
+          },
+          {
+            "_id": "656e6ab244cf4c9d7663f511",
+            "email": "shorupan@gmail.com",
+            "name": "Qualify for JEE Advanced",
+            "description": "Rank High in JEE Main: Based on your JEE Main scores, qualify for the JEE Advanced exam, which is more challenging and tests deeper understanding.\n\nThorough Preparation: Focus on advanced problem-solving skills, understanding concepts deeply, and solving previous years' papers.\n\nAppear for JEE Advanced: Take the JEE Advanced exam. Perform exceptionally well to secure a high rank.",
+            "cost": "paid",
+            "other_data": {
+              "productid1": "satg704b3c3633f9T1702298816916"
+            },
+            "length": "50",
+            "status": "active",
+            "gradeData": [
+              {
+                "grade": "9",
+                "description": "Based on your JEE Main scores, qualify for the JEE Advanced exam, which is more challenging and tests deeper understanding.",
+                "_id": "656e6ab244cf4c9d7663f512"
+              },
+              {
+                "grade": "10",
+                "description": "Based on your JEE Main scores, qualify for the JEE Advanced exam, which is more challenging and tests deeper understanding.",
+                "_id": "656e6ab244cf4c9d7663f513"
+              },
+              {
+                "grade": "11",
+                "description": "Based on your JEE Main scores, qualify for the JEE Advanced exam, which is more challenging and tests deeper understanding.",
+                "_id": "656e6ab244cf4c9d7663f514"
+              },
+              {
+                "grade": "12",
+                "description": "Based on your JEE Main scores, qualify for the JEE Advanced exam, which is more challenging and tests deeper understanding.",
+                "_id": "656e6ab244cf4c9d7663f515"
+              }
+            ],
+            "curriculumData": [
+              {
+                "_id": "656e6ab244cf4c9d7663f516"
+              },
+              {
+                "_id": "656e6ab244cf4c9d7663f517"
+              },
+              {
+                "_id": "656e6ab244cf4c9d7663f518"
+              },
+              {
+                "_id": "656e6ab244cf4c9d7663f519"
+              },
+              {
+                "_id": "656e6ab244cf4c9d7663f51a"
+              }
+            ],
+            "financialData": [
+              {
+                "financialSituation": "0-25L",
+                "description": "Based on your JEE Main scores, qualify for the JEE Advanced exam, which is more challenging and tests deeper understanding.",
+                "_id": "656e6ab244cf4c9d7663f51b"
+              },
+              {
+                "financialSituation": "25L-75L",
+                "description": "Based on your JEE Main scores, qualify for the JEE Advanced exam, which is more challenging and tests deeper understanding.",
+                "_id": "656e6ab244cf4c9d7663f51c"
+              },
+              {
+                "financialSituation": "75L-3CR",
+                "description": "Based on your JEE Main scores, qualify for the JEE Advanced exam, which is more challenging and tests deeper understanding.",
+                "_id": "656e6ab244cf4c9d7663f51d"
+              },
+              {
+                "financialSituation": "3CR+",
+                "description": "Based on your JEE Main scores, qualify for the JEE Advanced exam, which is more challenging and tests deeper understanding.",
+                "_id": "656e6ab244cf4c9d7663f51e"
+              },
+              {
+                "financialSituation": "other",
+                "description": "Based on your JEE Main scores, qualify for the JEE Advanced exam, which is more challenging and tests deeper understanding.",
+                "_id": "656e6ab244cf4c9d7663f51f"
+              }
+            ],
+            "streamData": [
+              {
+                "stream": "MPC",
+                "description": "Based on your JEE Main scores, qualify for the JEE Advanced exam, which is more challenging and tests deeper understanding.",
+                "_id": "656e6ab244cf4c9d7663f520"
+              },
+              {
+                "stream": "BIPC",
+                "description": "Based on your JEE Main scores, qualify for the JEE Advanced exam, which is more challenging and tests deeper understanding.",
+                "_id": "656e6ab244cf4c9d7663f521"
+              },
+              {
+                "stream": "CEC",
+                "description": "Based on your JEE Main scores, qualify for the JEE Advanced exam, which is more challenging and tests deeper understanding.",
+                "_id": "656e6ab244cf4c9d7663f522"
+              },
+              {
+                "stream": "MEC",
+                "description": "Based on your JEE Main scores, qualify for the JEE Advanced exam, which is more challenging and tests deeper understanding.",
+                "_id": "656e6ab244cf4c9d7663f523"
+              },
+              {
+                "stream": "HEC",
+                "description": "Based on your JEE Main scores, qualify for the JEE Advanced exam, which is more challenging and tests deeper understanding.",
+                "_id": "656e6ab244cf4c9d7663f524"
+              }
+            ],
+            "gradePointAverageData": [
+              {
+                "gradePointAverage": "0% - 35%",
+                "description": "Based on your JEE Main scores, qualify for the JEE Advanced exam, which is more challenging and tests deeper understanding.",
+                "_id": "656e6ab244cf4c9d7663f525"
+              },
+              {
+                "gradePointAverage": "36% - 60%",
+                "description": "Based on your JEE Main scores, qualify for the JEE Advanced exam, which is more challenging and tests deeper understanding.",
+                "_id": "656e6ab244cf4c9d7663f526"
+              },
+              {
+                "gradePointAverage": "61% - 75%",
+                "description": "Based on your JEE Main scores, qualify for the JEE Advanced exam, which is more challenging and tests deeper understanding.",
+                "_id": "656e6ab244cf4c9d7663f527"
+              },
+              {
+                "gradePointAverage": "76% - 85%",
+                "description": "Based on your JEE Main scores, qualify for the JEE Advanced exam, which is more challenging and tests deeper understanding.",
+                "_id": "656e6ab244cf4c9d7663f528"
+              },
+              {
+                "gradePointAverage": "86% - 95%",
+                "description": "Based on your JEE Main scores, qualify for the JEE Advanced exam, which is more challenging and tests deeper understanding.",
+                "_id": "656e6ab244cf4c9d7663f529"
+              },
+              {
+                "gradePointAverage": "96% - 100%",
+                "description": "Based on your JEE Main scores, qualify for the JEE Advanced exam, which is more challenging and tests deeper understanding.",
+                "_id": "656e6ab244cf4c9d7663f52a"
+              }
+            ],
+            "personalityData": [
+              {
+                "personality": "realistic",
+                "description": "Based on your JEE Main scores, qualify for the JEE Advanced exam, which is more challenging and tests deeper understanding.",
+                "_id": "656e6ab244cf4c9d7663f52b"
+              },
+              {
+                "personality": "investigative",
+                "description": "Based on your JEE Main scores, qualify for the JEE Advanced exam, which is more challenging and tests deeper understanding.",
+                "_id": "656e6ab244cf4c9d7663f52c"
+              },
+              {
+                "personality": "artistic",
+                "description": "Based on your JEE Main scores, qualify for the JEE Advanced exam, which is more challenging and tests deeper understanding.",
+                "_id": "656e6ab244cf4c9d7663f52d"
+              },
+              {
+                "personality": "social",
+                "description": "Based on your JEE Main scores, qualify for the JEE Advanced exam, which is more challenging and tests deeper understanding.",
+                "_id": "656e6ab244cf4c9d7663f52e"
+              },
+              {
+                "personality": "enterprising",
+                "description": "Based on your JEE Main scores, qualify for the JEE Advanced exam, which is more challenging and tests deeper understanding.",
+                "_id": "656e6ab244cf4c9d7663f52f"
+              },
+              {
+                "personality": "conventional",
+                "description": "Based on your JEE Main scores, qualify for the JEE Advanced exam, which is more challenging and tests deeper understanding.",
+                "_id": "656e6ab244cf4c9d7663f530"
+              }
+            ],
+            "createdAt": "2023-12-05T00:11:30.098Z",
+            "updatedAt": "2023-12-11T12:52:08.168Z",
+            "__v": 0
+          },
+          {
+            "_id": "656e6b1344cf4c9d7663f573",
+            "email": "shorupan@gmail.com",
+            "name": "Counseling and Seat Allocation",
+            "description": "Register for JoSAA Counseling: Once you qualify for JEE Advanced, register for the Joint Seat Allocation Authority (JoSAA) counseling. It handles seat allocation for IITs and other top engineering institutions.\n\nChoice Filling: During counseling, select IIT Madras as one of your choices based on your rank and preferences.\n\nSeat Allocation: Based on your rank, availability of seats, and choices, you'll be allocated a seat in IITs, including IIT Madras.\n",
+            "cost": "paid",
+            "other_data": {
+              "productid1": "realtymarketf5a296e6dd55T1682706201111",
+              "productid2": "FXProfcbd5cf3bd77T1681473927354"
+            },
+            "length": "125",
+            "status": "active",
+            "gradeData": [
+              {
+                "grade": "9",
+                "description": "Once you qualify for JEE Advanced, register for the Joint Seat Allocation Authority (JoSAA) counseling. It handles seat allocation for IITs and other top engineering institutions.",
+                "_id": "656e6b1344cf4c9d7663f574"
+              },
+              {
+                "grade": "10",
+                "description": "Once you qualify for JEE Advanced, register for the Joint Seat Allocation Authority (JoSAA) counseling. It handles seat allocation for IITs and other top engineering institutions.",
+                "_id": "656e6b1344cf4c9d7663f575"
+              },
+              {
+                "grade": "11",
+                "description": "Once you qualify for JEE Advanced, register for the Joint Seat Allocation Authority (JoSAA) counseling. It handles seat allocation for IITs and other top engineering institutions.",
+                "_id": "656e6b1344cf4c9d7663f576"
+              },
+              {
+                "grade": "12",
+                "description": "Once you qualify for JEE Advanced, register for the Joint Seat Allocation Authority (JoSAA) counseling. It handles seat allocation for IITs and other top engineering institutions.",
+                "_id": "656e6b1344cf4c9d7663f577"
+              }
+            ],
+            "curriculumData": [
+              {
+                "_id": "656e6b1344cf4c9d7663f578"
+              },
+              {
+                "_id": "656e6b1344cf4c9d7663f579"
+              },
+              {
+                "_id": "656e6b1344cf4c9d7663f57a"
+              },
+              {
+                "_id": "656e6b1344cf4c9d7663f57b"
+              },
+              {
+                "_id": "656e6b1344cf4c9d7663f57c"
+              }
+            ],
+            "financialData": [
+              {
+                "financialSituation": "0-25L",
+                "description": "Once you qualify for JEE Advanced, register for the Joint Seat Allocation Authority (JoSAA) counseling. It handles seat allocation for IITs and other top engineering institutions.",
+                "_id": "656e6b1344cf4c9d7663f57d"
+              },
+              {
+                "financialSituation": "25L-75L",
+                "description": "Once you qualify for JEE Advanced, register for the Joint Seat Allocation Authority (JoSAA) counseling. It handles seat allocation for IITs and other top engineering institutions.",
+                "_id": "656e6b1344cf4c9d7663f57e"
+              },
+              {
+                "financialSituation": "75L-3CR",
+                "description": "Once you qualify for JEE Advanced, register for the Joint Seat Allocation Authority (JoSAA) counseling. It handles seat allocation for IITs and other top engineering institutions.",
+                "_id": "656e6b1344cf4c9d7663f57f"
+              },
+              {
+                "financialSituation": "3CR+",
+                "description": "Once you qualify for JEE Advanced, register for the Joint Seat Allocation Authority (JoSAA) counseling. It handles seat allocation for IITs and other top engineering institutions.",
+                "_id": "656e6b1344cf4c9d7663f580"
+              },
+              {
+                "financialSituation": "other",
+                "description": "Once you qualify for JEE Advanced, register for the Joint Seat Allocation Authority (JoSAA) counseling. It handles seat allocation for IITs and other top engineering institutions.",
+                "_id": "656e6b1344cf4c9d7663f581"
+              }
+            ],
+            "streamData": [
+              {
+                "stream": "MPC",
+                "description": "Once you qualify for JEE Advanced, register for the Joint Seat Allocation Authority (JoSAA) counseling. It handles seat allocation for IITs and other top engineering institutions.",
+                "_id": "656e6b1344cf4c9d7663f582"
+              },
+              {
+                "stream": "BIPC",
+                "description": "Once you qualify for JEE Advanced, register for the Joint Seat Allocation Authority (JoSAA) counseling. It handles seat allocation for IITs and other top engineering institutions.",
+                "_id": "656e6b1344cf4c9d7663f583"
+              },
+              {
+                "stream": "CEC",
+                "description": "Once you qualify for JEE Advanced, register for the Joint Seat Allocation Authority (JoSAA) counseling. It handles seat allocation for IITs and other top engineering institutions.",
+                "_id": "656e6b1344cf4c9d7663f584"
+              },
+              {
+                "stream": "MEC",
+                "description": "Once you qualify for JEE Advanced, register for the Joint Seat Allocation Authority (JoSAA) counseling. It handles seat allocation for IITs and other top engineering institutions.",
+                "_id": "656e6b1344cf4c9d7663f585"
+              },
+              {
+                "stream": "HEC",
+                "description": "Once you qualify for JEE Advanced, register for the Joint Seat Allocation Authority (JoSAA) counseling. It handles seat allocation for IITs and other top engineering institutions.",
+                "_id": "656e6b1344cf4c9d7663f586"
+              }
+            ],
+            "gradePointAverageData": [
+              {
+                "gradePointAverage": "0% - 35%",
+                "description": "Once you qualify for JEE Advanced, register for the Joint Seat Allocation Authority (JoSAA) counseling. It handles seat allocation for IITs and other top engineering institutions.",
+                "_id": "656e6b1344cf4c9d7663f587"
+              },
+              {
+                "gradePointAverage": "36% - 60%",
+                "description": "Once you qualify for JEE Advanced, register for the Joint Seat Allocation Authority (JoSAA) counseling. It handles seat allocation for IITs and other top engineering institutions.",
+                "_id": "656e6b1344cf4c9d7663f588"
+              },
+              {
+                "gradePointAverage": "61% - 75%",
+                "description": "Once you qualify for JEE Advanced, register for the Joint Seat Allocation Authority (JoSAA) counseling. It handles seat allocation for IITs and other top engineering institutions.",
+                "_id": "656e6b1344cf4c9d7663f589"
+              },
+              {
+                "gradePointAverage": "76% - 85%",
+                "description": "Once you qualify for JEE Advanced, register for the Joint Seat Allocation Authority (JoSAA) counseling. It handles seat allocation for IITs and other top engineering institutions.",
+                "_id": "656e6b1344cf4c9d7663f58a"
+              },
+              {
+                "gradePointAverage": "86% - 95%",
+                "description": "Once you qualify for JEE Advanced, register for the Joint Seat Allocation Authority (JoSAA) counseling. It handles seat allocation for IITs and other top engineering institutions.",
+                "_id": "656e6b1344cf4c9d7663f58b"
+              },
+              {
+                "gradePointAverage": "96% - 100%",
+                "description": "Once you qualify for JEE Advanced, register for the Joint Seat Allocation Authority (JoSAA) counseling. It handles seat allocation for IITs and other top engineering institutions.",
+                "_id": "656e6b1344cf4c9d7663f58c"
+              }
+            ],
+            "personalityData": [
+              {
+                "personality": "realistic",
+                "description": "Once you qualify for JEE Advanced, register for the Joint Seat Allocation Authority (JoSAA) counseling. It handles seat allocation for IITs and other top engineering institutions.",
+                "_id": "656e6b1344cf4c9d7663f58d"
+              },
+              {
+                "personality": "investigative",
+                "description": "Once you qualify for JEE Advanced, register for the Joint Seat Allocation Authority (JoSAA) counseling. It handles seat allocation for IITs and other top engineering institutions.",
+                "_id": "656e6b1344cf4c9d7663f58e"
+              },
+              {
+                "personality": "artistic",
+                "description": "Once you qualify for JEE Advanced, register for the Joint Seat Allocation Authority (JoSAA) counseling. It handles seat allocation for IITs and other top engineering institutions.",
+                "_id": "656e6b1344cf4c9d7663f58f"
+              },
+              {
+                "personality": "social",
+                "description": "Once you qualify for JEE Advanced, register for the Joint Seat Allocation Authority (JoSAA) counseling. It handles seat allocation for IITs and other top engineering institutions.",
+                "_id": "656e6b1344cf4c9d7663f590"
+              },
+              {
+                "personality": "enterprising",
+                "description": "Once you qualify for JEE Advanced, register for the Joint Seat Allocation Authority (JoSAA) counseling. It handles seat allocation for IITs and other top engineering institutions.",
+                "_id": "656e6b1344cf4c9d7663f591"
+              },
+              {
+                "personality": "conventional",
+                "description": "Once you qualify for JEE Advanced, register for the Joint Seat Allocation Authority (JoSAA) counseling. It handles seat allocation for IITs and other top engineering institutions.",
+                "_id": "656e6b1344cf4c9d7663f592"
+              }
+            ],
+            "createdAt": "2023-12-05T00:13:07.670Z",
+            "updatedAt": "2023-12-05T00:13:07.670Z",
+            "__v": 0
+          },
+          {
+            "_id": "656e6b7244cf4c9d7663f5f4",
+            "email": "shorupan@gmail.com",
+            "name": "Admission and Confirmation",
+            "description": "Seat Acceptance: Upon seat allocation to IIT Madras, confirm your acceptance as per the JoSAA guidelines.\n\nDocument Verification: Complete the admission formalities by submitting required documents and paying fees within the stipulated time.",
+            "cost": "free",
+            "other_data": {
+              "productid1": "seo84982f8a6a14T1700847903672",
+              "productid2": "FXProfcbd5cf3bd77T1681473927354",
+              "productid3": "realtymarketf5a296e6dd55T1682706201111"
+            },
+            "length": "33",
+            "status": "active",
+            "gradeData": [
+              {
+                "grade": "9",
+                "description": "Upon seat allocation to IIT Madras, confirm your acceptance as per the JoSAA guidelines.",
+                "_id": "656e6b7244cf4c9d7663f5f5"
+              },
+              {
+                "grade": "10",
+                "description": "Upon seat allocation to IIT Madras, confirm your acceptance as per the JoSAA guidelines.",
+                "_id": "656e6b7244cf4c9d7663f5f6"
+              },
+              {
+                "grade": "11",
+                "description": "Upon seat allocation to IIT Madras, confirm your acceptance as per the JoSAA guidelines.",
+                "_id": "656e6b7244cf4c9d7663f5f7"
+              },
+              {
+                "grade": "12",
+                "description": "Upon seat allocation to IIT Madras, confirm your acceptance as per the JoSAA guidelines.",
+                "_id": "656e6b7244cf4c9d7663f5f8"
+              }
+            ],
+            "curriculumData": [
+              {
+                "_id": "656e6b7244cf4c9d7663f5f9"
+              },
+              {
+                "_id": "656e6b7244cf4c9d7663f5fa"
+              },
+              {
+                "_id": "656e6b7244cf4c9d7663f5fb"
+              },
+              {
+                "_id": "656e6b7244cf4c9d7663f5fc"
+              },
+              {
+                "_id": "656e6b7244cf4c9d7663f5fd"
+              }
+            ],
+            "financialData": [
+              {
+                "financialSituation": "0-25L",
+                "description": "Upon seat allocation to IIT Madras, confirm your acceptance as per the JoSAA guidelines.",
+                "_id": "656e6b7244cf4c9d7663f5fe"
+              },
+              {
+                "financialSituation": "25L-75L",
+                "description": "Upon seat allocation to IIT Madras, confirm your acceptance as per the JoSAA guidelines.",
+                "_id": "656e6b7244cf4c9d7663f5ff"
+              },
+              {
+                "financialSituation": "75L-3CR",
+                "description": "Upon seat allocation to IIT Madras, confirm your acceptance as per the JoSAA guidelines.",
+                "_id": "656e6b7244cf4c9d7663f600"
+              },
+              {
+                "financialSituation": "3CR+",
+                "description": "Upon seat allocation to IIT Madras, confirm your acceptance as per the JoSAA guidelines.",
+                "_id": "656e6b7244cf4c9d7663f601"
+              },
+              {
+                "financialSituation": "other",
+                "description": "Upon seat allocation to IIT Madras, confirm your acceptance as per the JoSAA guidelines.",
+                "_id": "656e6b7244cf4c9d7663f602"
+              }
+            ],
+            "streamData": [
+              {
+                "stream": "MPC",
+                "description": "Upon seat allocation to IIT Madras, confirm your acceptance as per the JoSAA guidelines.",
+                "_id": "656e6b7244cf4c9d7663f603"
+              },
+              {
+                "stream": "BIPC",
+                "description": "Upon seat allocation to IIT Madras, confirm your acceptance as per the JoSAA guidelines.",
+                "_id": "656e6b7244cf4c9d7663f604"
+              },
+              {
+                "stream": "CEC",
+                "description": "Upon seat allocation to IIT Madras, confirm your acceptance as per the JoSAA guidelines.",
+                "_id": "656e6b7244cf4c9d7663f605"
+              },
+              {
+                "stream": "MEC",
+                "description": "Upon seat allocation to IIT Madras, confirm your acceptance as per the JoSAA guidelines.",
+                "_id": "656e6b7244cf4c9d7663f606"
+              },
+              {
+                "stream": "HEC",
+                "description": "Upon seat allocation to IIT Madras, confirm your acceptance as per the JoSAA guidelines.",
+                "_id": "656e6b7244cf4c9d7663f607"
+              }
+            ],
+            "gradePointAverageData": [
+              {
+                "gradePointAverage": "0% - 35%",
+                "description": "Upon seat allocation to IIT Madras, confirm your acceptance as per the JoSAA guidelines.",
+                "_id": "656e6b7244cf4c9d7663f608"
+              },
+              {
+                "gradePointAverage": "36% - 60%",
+                "description": "Upon seat allocation to IIT Madras, confirm your acceptance as per the JoSAA guidelines.",
+                "_id": "656e6b7244cf4c9d7663f609"
+              },
+              {
+                "gradePointAverage": "61% - 75%",
+                "description": "Upon seat allocation to IIT Madras, confirm your acceptance as per the JoSAA guidelines.",
+                "_id": "656e6b7244cf4c9d7663f60a"
+              },
+              {
+                "gradePointAverage": "76% - 85%",
+                "description": "Upon seat allocation to IIT Madras, confirm your acceptance as per the JoSAA guidelines.",
+                "_id": "656e6b7244cf4c9d7663f60b"
+              },
+              {
+                "gradePointAverage": "86% - 95%",
+                "description": "Upon seat allocation to IIT Madras, confirm your acceptance as per the JoSAA guidelines.",
+                "_id": "656e6b7244cf4c9d7663f60c"
+              },
+              {
+                "gradePointAverage": "96% - 100%",
+                "description": "Upon seat allocation to IIT Madras, confirm your acceptance as per the JoSAA guidelines.",
+                "_id": "656e6b7244cf4c9d7663f60d"
+              }
+            ],
+            "personalityData": [
+              {
+                "personality": "realistic",
+                "description": "Upon seat allocation to IIT Madras, confirm your acceptance as per the JoSAA guidelines.",
+                "_id": "656e6b7244cf4c9d7663f60e"
+              },
+              {
+                "personality": "investigative",
+                "description": "Upon seat allocation to IIT Madras, confirm your acceptance as per the JoSAA guidelines.",
+                "_id": "656e6b7244cf4c9d7663f60f"
+              },
+              {
+                "personality": "artistic",
+                "description": "Upon seat allocation to IIT Madras, confirm your acceptance as per the JoSAA guidelines.",
+                "_id": "656e6b7244cf4c9d7663f610"
+              },
+              {
+                "personality": "social",
+                "description": "Upon seat allocation to IIT Madras, confirm your acceptance as per the JoSAA guidelines.",
+                "_id": "656e6b7244cf4c9d7663f611"
+              },
+              {
+                "personality": "enterprising",
+                "description": "Upon seat allocation to IIT Madras, confirm your acceptance as per the JoSAA guidelines.",
+                "_id": "656e6b7244cf4c9d7663f612"
+              },
+              {
+                "personality": "conventional",
+                "description": "Upon seat allocation to IIT Madras, confirm your acceptance as per the JoSAA guidelines.",
+                "_id": "656e6b7244cf4c9d7663f613"
+              }
+            ],
+            "createdAt": "2023-12-05T00:14:42.961Z",
+            "updatedAt": "2023-12-05T00:14:42.961Z",
+            "__v": 0
+          }
+        ]
+      },
+      {
+        "_id": "654bb2ba6425388ac3d1ef53",
+        "email": "shorupan@gmail.com",
+        "nameOfPath": "Harvard Law School",
+        "description": "aasdfadsf",
+        "length": "3",
+        "step_ids": [
+          "6538d9928bfd7c665bcf88b0",
+          "64cd05ec7bd6a7d3b42a07a8",
+          "64c5185426fcec00eabbe8e0"
+        ],
+        "path_type": "education",
+        "destination_institution": "Harvard",
+        "status": "active",
+        "financialSituation": [
+          "3CR+"
+        ],
+        "performance": [
+          "86% - 95%"
+        ],
+        "curriculum": [
+          "CBSE",
+          "ICSE"
+        ],
+        "grade": [
+          "9",
+          "10",
+          "11"
+        ],
+        "stream": [
+          "MEC",
+          "CEC"
+        ],
+        "createdAt": "2023-11-08T16:09:30.038Z",
+        "updatedAt": "2023-11-25T14:18:58.038Z",
+        "__v": 0,
+        "personality": "realistic",
+        "the_ids": [
+          {
+            "step_id": "6538d9928bfd7c665bcf88b0",
+            "backup_pathId": "654132022a52a457f415f792",
+            "_id": "65620252beda4f4c5831592a"
+          },
+          {
+            "step_id": "64c5185426fcec00eabbe8e0",
+            "backup_pathId": "654132022a52a457f415f792",
+            "_id": "65620252beda4f4c5831592b"
+          },
+          {
+            "step_id": "64cd05ec7bd6a7d3b42a07a8",
+            "backup_pathId": "654132022a52a457f415f792",
+            "_id": "65620252beda4f4c5831592c"
+          }
+        ],
+        "StepDetails": [
+          {
+            "_id": "64c5185426fcec00eabbe8e0",
+            "name": "step-add",
+            "icon": "",
+            "description": "There are certain transactions that happen in every app regardless of the business. The revenue from these transactions are captured by us and we want to share it with you.  ",
+            "vendors": [
+              {
+                "name": "vendor1"
+              },
+              {
+                "name": "vendor2"
+              }
+            ],
+            "country": "india",
+            "microsteps": [
+              {
+                "name": "substep1",
+                "value": "one",
+                "price": "10",
+                "currency": "USD",
+                "vendors": [
+                  {
+                    "name": "vendor1"
+                  }
+                ],
+                "nanosteps": [
+                  {
+                    "name": "substep1",
+                    "value": "one",
+                    "price": "10",
+                    "currency": "USD",
+                    "vendors": [
+                      {
+                        "name": "vendor1"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "substep2",
+                "value": "two",
+                "price": "10",
+                "currency": "USD",
+                "vendors": [
+                  {
+                    "name": "vendor1"
+                  }
+                ]
+              }
+            ],
+            "Mentors": [
+              {
+                "name": "mentor1",
+                "value": "one"
+              },
+              {
+                "name": "mentor2",
+                "value": "two"
+              }
+            ],
+            "type": "education",
+            "cost": "free",
+            "other_data": {
+              "productid1": "FXProfcbd5cf3bd77T1681473927354",
+              "productid2": "seo84982f8a6a14T1700847903672"
+            },
+            "status": "active",
+            "createdAt": "2023-07-29T13:47:00.240Z",
+            "updatedAt": "2023-11-27T12:33:07.932Z",
+            "__v": 0,
+            "email": "shorupan@gmail.com",
+            "isCompleted": "false"
+          },
+          {
+            "_id": "64cd05ec7bd6a7d3b42a07a8",
+            "name": "step-add12",
+            "icon": "",
+            "description": "There are certain transactions that happen in every app regardless of the business. The revenue from these transactions are captured by us and we want to share it with you.  ",
+            "vendors": [
+              {
+                "name": "vendor1"
+              }
+            ],
+            "country": "india",
+            "microsteps": [
+              {
+                "name": "substep1",
+                "value": "one",
+                "price": "10",
+                "currency": "USD",
+                "vendors": [
+                  {
+                    "name": "vendor1"
+                  }
+                ],
+                "nanosteps": [
+                  {
+                    "name": "substep1",
+                    "value": "one",
+                    "price": "10",
+                    "currency": "USD",
+                    "vendors": [
+                      {
+                        "name": "vendor1"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "Mentors": [
+              {
+                "name": "mentor1",
+                "value": "one"
+              },
+              {
+                "name": "mentor2",
+                "value": "two"
+              }
+            ],
+            "type": "education",
+            "cost": "free",
+            "other_data": {
+              "number": "1234",
+              "address": "abcd"
+            },
+            "status": "active",
+            "createdAt": "2023-08-04T14:06:36.275Z",
+            "updatedAt": "2023-08-04T14:06:36.275Z",
+            "__v": 0,
+            "email": "shorupan@gmail.com",
+            "isCompleted": "false"
+          },
+          {
+            "_id": "6538d9928bfd7c665bcf88b0",
+            "email": "shorupan@gmail.com",
+            "name": "step001",
+            "description": "There are certain transactions that happen in every app regardless of the business. The revenue from these transactions are captured by us and we want to share it with you.",
+            "cost": "paid",
+            "length": "5",
+            "status": "active",
+            "createdAt": "2023-10-25T09:02:10.230Z",
+            "updatedAt": "2023-11-27T12:38:23.377Z",
+            "__v": 0,
+            "isCompleted": "false",
+            "other_data": {
+              "productid1": "FXProfcbd5cf3bd77T1681473927354",
+              "productid2": "seo84982f8a6a14T1700847903672"
+            }
+          }
+        ]
+      },
+      {
+        "_id": "654132022a52a457f415f792",
+        "email": "shorupan@gmail.com",
+        "nameOfPath": "Med School At UofT",
+        "description": "The Temerty Faculty of Medicine is the medical school of the University of Toronto. Founded in 1843, the faculty is based in Downtown Toronto and is one of Canada's oldest institutions of medical studies",
+        "length": "3",
+        "step_ids": [
+          "6538d9928bfd7c665bcf88b0",
+          "64c5185426fcec00eabbe8e0",
+          "64cd05ec7bd6a7d3b42a07a8"
+        ],
+        "path_type": "education",
+        "destination_institution": "University Of Toronto",
+        "status": "active",
+        "financialSituation": [
+          "0-25L"
+        ],
+        "performance": [
+          "0% - 35%"
+        ],
+        "curriculum": [
+          "IB",
+          "Nordic",
+          "ICSE"
+        ],
+        "grade": [
+          "9"
+        ],
+        "stream": [
+          "MPC"
+        ],
+        "createdAt": "2023-10-31T16:57:38.135Z",
+        "updatedAt": "2023-11-25T14:15:43.325Z",
+        "__v": 0,
+        "city": "Hyderabad",
+        "country": "India",
+        "program": "Masters In Computer Science",
+        "personality": "realistic",
+        "the_ids": [
+          {
+            "step_id": "6538d9928bfd7c665bcf88b0",
+            "backup_pathId": "654132022a52a457f415f792",
+            "_id": "6562018fbeda4f4c5831591a"
+          },
+          {
+            "step_id": "64c5185426fcec00eabbe8e0",
+            "backup_pathId": "654132022a52a457f415f792",
+            "_id": "6562018fbeda4f4c5831591b"
+          },
+          {
+            "step_id": "64cd05ec7bd6a7d3b42a07a8",
+            "backup_pathId": "654132022a52a457f415f792",
+            "_id": "6562018fbeda4f4c5831591c"
+          }
+        ],
+        "StepDetails": [
+          {
+            "_id": "64c5185426fcec00eabbe8e0",
+            "name": "step-add",
+            "icon": "",
+            "description": "There are certain transactions that happen in every app regardless of the business. The revenue from these transactions are captured by us and we want to share it with you.  ",
+            "vendors": [
+              {
+                "name": "vendor1"
+              },
+              {
+                "name": "vendor2"
+              }
+            ],
+            "country": "india",
+            "microsteps": [
+              {
+                "name": "substep1",
+                "value": "one",
+                "price": "10",
+                "currency": "USD",
+                "vendors": [
+                  {
+                    "name": "vendor1"
+                  }
+                ],
+                "nanosteps": [
+                  {
+                    "name": "substep1",
+                    "value": "one",
+                    "price": "10",
+                    "currency": "USD",
+                    "vendors": [
+                      {
+                        "name": "vendor1"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "substep2",
+                "value": "two",
+                "price": "10",
+                "currency": "USD",
+                "vendors": [
+                  {
+                    "name": "vendor1"
+                  }
+                ]
+              }
+            ],
+            "Mentors": [
+              {
+                "name": "mentor1",
+                "value": "one"
+              },
+              {
+                "name": "mentor2",
+                "value": "two"
+              }
+            ],
+            "type": "education",
+            "cost": "free",
+            "other_data": {
+              "productid1": "FXProfcbd5cf3bd77T1681473927354",
+              "productid2": "seo84982f8a6a14T1700847903672"
+            },
+            "status": "active",
+            "createdAt": "2023-07-29T13:47:00.240Z",
+            "updatedAt": "2023-11-27T12:33:07.932Z",
+            "__v": 0,
+            "email": "shorupan@gmail.com",
+            "isCompleted": "false"
+          },
+          {
+            "_id": "64cd05ec7bd6a7d3b42a07a8",
+            "name": "step-add12",
+            "icon": "",
+            "description": "There are certain transactions that happen in every app regardless of the business. The revenue from these transactions are captured by us and we want to share it with you.  ",
+            "vendors": [
+              {
+                "name": "vendor1"
+              }
+            ],
+            "country": "india",
+            "microsteps": [
+              {
+                "name": "substep1",
+                "value": "one",
+                "price": "10",
+                "currency": "USD",
+                "vendors": [
+                  {
+                    "name": "vendor1"
+                  }
+                ],
+                "nanosteps": [
+                  {
+                    "name": "substep1",
+                    "value": "one",
+                    "price": "10",
+                    "currency": "USD",
+                    "vendors": [
+                      {
+                        "name": "vendor1"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "Mentors": [
+              {
+                "name": "mentor1",
+                "value": "one"
+              },
+              {
+                "name": "mentor2",
+                "value": "two"
+              }
+            ],
+            "type": "education",
+            "cost": "free",
+            "other_data": {
+              "number": "1234",
+              "address": "abcd"
+            },
+            "status": "active",
+            "createdAt": "2023-08-04T14:06:36.275Z",
+            "updatedAt": "2023-08-04T14:06:36.275Z",
+            "__v": 0,
+            "email": "shorupan@gmail.com",
+            "isCompleted": "false"
+          },
+          {
+            "_id": "6538d9928bfd7c665bcf88b0",
+            "email": "shorupan@gmail.com",
+            "name": "step001",
+            "description": "There are certain transactions that happen in every app regardless of the business. The revenue from these transactions are captured by us and we want to share it with you.",
+            "cost": "paid",
+            "length": "5",
+            "status": "active",
+            "createdAt": "2023-10-25T09:02:10.230Z",
+            "updatedAt": "2023-11-27T12:38:23.377Z",
+            "__v": 0,
+            "isCompleted": "false",
+            "other_data": {
+              "productid1": "FXProfcbd5cf3bd77T1681473927354",
+              "productid2": "seo84982f8a6a14T1700847903672"
+            }
+          }
+        ]
+      }
+    ]
+  }

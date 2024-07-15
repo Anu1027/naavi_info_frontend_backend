@@ -1,0 +1,431 @@
+.currentstep {
+  width: 100%;
+  height: 100%;
+  color: #1f304f;
+
+  .cs-top-area {
+    width: 100%;
+    height: 8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2rem 35px;
+
+    .cs-text1 {
+      display: flex;
+      justify-content: space-between;
+
+      .back-Btn {
+        cursor: pointer;
+        text-decoration: underline;
+        transition: all ease 0.2s;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+
+    .bold-text {
+      font-size: 1.5rem;
+      font-weight: 500;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  .cs-content {
+    width: 100%;
+    height: calc(100% - 8rem - 70px);
+    padding: 1rem 35px 2rem;
+
+    .overall-cs-content {
+      width: 100%;
+      height: 100%;
+      position: relative;
+
+      .macro-view-box {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        right: 73%;
+
+        .macro-text {
+          height: 2rem;
+        }
+
+        .macro-content {
+          height: calc(100% - 2rem);
+          border-radius: 25px 0 0 25px;
+          border: 1px solid #e5e5e5;
+          padding: 1.5rem 3rem 1.5rem 1.5rem;
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+
+          .macro-image-div {
+            height: 2.5rem;
+          }
+
+          .step-text {
+            font-size: 1.1rem;
+            font-weight: 500;
+            height: 3.5rem;
+            line-height: 1.5;
+          }
+
+          .macro-text-div {
+            font-weight: 300;
+            line-height: 1.8;
+            font-size: 0.8rem;
+            text-transform: none;
+            height: calc(100% - 8rem);
+            overflow-y: scroll;
+          }
+        }
+      }
+
+      .micro-view-box {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        left: 25%;
+        right: 43%;
+
+        .micro-text {
+          height: 2rem;
+        }
+
+        .micro-content {
+          height: calc(100% - 2rem);
+          border-radius: 25px 0 0 25px;
+          border: 1px solid #e5e5e5;
+          padding: 1.5rem 3rem 1.5rem 1.5rem;
+          background: #f1f4f6;
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+
+          .micro-image-div {
+            height: 2.5rem;
+          }
+
+          .step-text {
+            font-size: 1.1rem;
+            font-weight: 500;
+            height: 3.5rem;
+            line-height: 1.5;
+          }
+
+          .micro-text-div-container {
+            width: 100%;
+            height: calc(100% - 8rem);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            overflow-y: scroll;
+
+            .micro-text-div {
+              width: 100%;
+              background: white;
+              padding: 2rem 1rem;
+              display: flex;
+              flex-direction: column;
+              gap: 0.25rem;
+              border-radius: 10px;
+
+              .bold-text {
+                font-weight: 600;
+              }
+
+              .sub-text {
+                font-weight: 300;
+                font-size: 0.8rem;
+                text-transform: none;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 3%;
+
+                .overflow-text {
+                  display: -webkit-box;
+                  -webkit-line-clamp: 1;
+                  -webkit-box-orient: vertical;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
+
+                .unlock-Btn {
+                  color: white;
+                  font-size: 0.6rem;
+                  font-weight: 600;
+                  padding: 0.35rem 1rem;
+                  border-radius: 35px;
+                  background: linear-gradient(
+                    90deg,
+                    #47b4d5 0.02%,
+                    #29449d 119.26%
+                  );
+                  display: flex;
+                  align-items: center;
+                  height: fit-content;
+                  cursor: pointer;
+                  transition: all ease 0.2s;
+
+                  &:hover {
+                    transform: scale(1.05);
+                  }
+                }
+              }
+            }
+
+            .based-text {
+              font-weight: 300;
+              line-height: 1.8;
+              font-size: 0.8rem;
+              text-transform: none;
+              margin-top: 1rem;
+
+              span {
+                font-weight: 600;
+              }
+            }
+          }
+        }
+      }
+
+      .nano-view-box {
+        position: absolute;
+        inset: 0;
+        z-index: 3;
+        left: 55%;
+
+        .nano-text {
+          height: 2rem;
+        }
+
+        .nano-content {
+          height: calc(100% - 2rem);
+          border-radius: 25px;
+          border: 1px solid #e5e5e5;
+          background: white;
+          padding: 1.5rem;
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+
+          .nano-image-div {
+            height: 2.5rem;
+          }
+
+          .step-text {
+            font-size: 1.1rem;
+            font-weight: 500;
+            height: 3.5rem;
+            line-height: 1.5;
+          }
+
+          .nano-overall-div {
+            width: 100%;
+            height: calc(100% - 4.5rem);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+
+            .nano-div1 {
+              width: 100%;
+              height: 100%;
+              border: 1px solid #e5e5e5;
+              border-radius: 15px;
+              z-index: 1;
+            }
+
+            .nano-div2 {
+              width: 50%;
+              height: 100%;
+              border: 1px solid #e5e5e5;
+              border-radius: 15px;
+              left: 25%;
+              right: 25%;
+              position: absolute;
+              background: white;
+              z-index: 2;
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
+              gap: 1.5rem;
+              padding: 1rem;
+              overflow-y: scroll;
+              transition: all linear 0.3s;
+
+              .nano-img {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+
+                img {
+                  height: 40px;
+                }
+              }
+
+              .nano-price {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                gap: 0.5rem;
+                align-items: center;
+
+                .disount-price {
+                  font-size: 1.5rem;
+                  font-weight: 600;
+                }
+
+                .original-price {
+                  opacity: 0.25;
+                  font-weight: 600;
+                  text-decoration: line-through;
+                }
+              }
+
+              .nano-speed-container {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+
+                .speed-div {
+                  display: flex;
+                  justify-content: space-between;
+                  font-size: 0.8rem;
+                  font-weight: 500;
+                }
+              }
+
+              .nano-btns {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+
+                .accept-btn {
+                  width: 100%;
+                  padding: 0.75rem;
+                  color: white;
+                  border-radius: 35px;
+                  background: linear-gradient(
+                    90deg,
+                    #47b4d5 0.02%,
+                    #29449d 119.26%
+                  );
+                  font-size: 0.8rem;
+                  font-weight: 500;
+                  text-align: center;
+                  cursor: pointer;
+                  transition: all ease 0.2s;
+
+                  &:hover {
+                    transform: scale(1.05);
+                  }
+                }
+
+                .reject-btn {
+                  width: 100%;
+                  padding: 0.75rem;
+                  color: white;
+                  border-radius: 35px;
+                  font-size: 0.8rem;
+                  font-weight: 500;
+                  text-align: center;
+                  background: #fe2c55;
+                  cursor: pointer;
+                  transition: all ease 0.2s;
+
+                  &:hover {
+                    transform: scale(1.05);
+                  }
+                }
+              }
+            }
+
+            /* Slide-in animation */
+            .slide-in {
+              animation-name: slideIn;
+              animation-duration: 0.2s;
+              animation-timing-function: ease-out;
+              animation-fill-mode: forwards;
+            }
+
+            @keyframes slideIn {
+              0% {
+                transform: translateX(100%);
+                opacity: 0;
+              }
+              100% {
+                transform: translateX(0);
+                opacity: 1;
+              }
+            }
+
+            /* Fade-out animation */
+            .fade-out {
+              animation-name: fadeOut;
+              animation-duration: 0.2s;
+              animation-timing-function: ease-out;
+              animation-fill-mode: forwards;
+            }
+
+            @keyframes fadeOut {
+              0% {
+                transform: translateX(0);
+                opacity: 1;
+              }
+              100% {
+                transform: translateX(-100%);
+                opacity: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .cs-footer {
+    width: 100%;
+    height: 70px;
+    padding-left: 35px;
+    display: flex;
+    border-top: 0.5px solid #e5e5e5;
+
+    .completed-div {
+      height: 100%;
+      width: 80%;
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+    }
+
+    .yes-no {
+      height: 100%;
+      width: 10%;
+      text-align: center;
+      border-left: 0.5px solid #e5e5e5;
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+      justify-content: center;
+
+      p {
+        margin: 0;
+        cursor: pointer;
+        transition: all linear 0.2s;
+
+        &:hover {
+          transform: scale(1.1);
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}

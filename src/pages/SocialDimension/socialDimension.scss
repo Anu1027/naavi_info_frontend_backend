@@ -1,0 +1,162 @@
+.SocialDimensionPage {
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+
+  .navbar {
+    width: 100%;
+    height: 4rem;
+    padding: 0 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+
+    .hamMenu-home {
+      display: none;
+      position: absolute;
+      left: 1rem;
+      height: 100%;
+
+      img {
+        width: 20px;
+      }
+    }
+
+    .logo {
+      display: flex;
+      cursor: pointer;
+      transition: all ease 0.2s;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+
+    .menu-items {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      font-size: 0.9rem;
+
+      p {
+        margin: 0;
+        cursor: pointer;
+        transition: all ease 0.2s;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+
+  .btns-div {
+    display: flex;
+    gap: 1rem;
+
+    .gs-Btn {
+      color: white;
+      font-weight: 500;
+      border-radius: 35px;
+      background: linear-gradient(89deg, #47b4d5 0%, #29449d 100%);
+      padding: 0.7rem 1.5rem;
+      font-size: 0.8rem;
+    }
+
+    .business-btn {
+      color: white;
+      font-weight: 500;
+      border-radius: 35px;
+      background: #100f0d;
+      padding: 0.5rem 1.5rem;
+    }
+
+    div {
+      cursor: pointer;
+      transition: all ease 0.2s;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  .color-box {
+    width: 100%;
+    height: 1rem;
+    background: linear-gradient(89deg, #47b4d5 0%, #29449d 100%);
+  }
+
+  .socialDimension {
+    width: 100%;
+    height: calc(100% - 5rem);
+    overflow-y: scroll;
+    padding: 1rem;
+
+    .content {
+      padding: 1rem;
+
+      h5 {
+        margin-bottom: 1rem;
+      }
+    }
+
+    .chart-image {
+      width: 100%;
+      height: auto;
+      padding-right: 5rem;
+      object-fit: contain; /* Ensures the image fits within its container without being cropped */
+    }
+
+    .image-container {
+      display: flex;
+      justify-content: flex-start; /* Aligns the image to the left */
+      padding: 1rem;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    
+  }
+
+  span {
+    color: #29449d;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .SocialDimensionPage {
+    .navbar {
+      padding: 0 1rem;
+
+      .hamMenu-home {
+        display: flex;
+      }
+
+      .menu-items {
+        display: none;
+      }
+
+      .btns-div {
+        display: none;
+      }
+    }
+
+    .color-box {
+      height: 0.5rem;
+    }
+
+    .socialDimension {
+      padding: 0.5rem;
+
+      .chart-image,
+      .image-container img {
+        padding: 0.5rem;
+      }
+    }
+  }
+}
