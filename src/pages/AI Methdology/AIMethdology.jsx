@@ -62,16 +62,7 @@ const AIMethdology = () => {
               About Naavi
             </p>
           </div>
-          <div
-            onClick={() => {
-              navigate("/AIMethdology");
-              setPreLoginMenu("AIMethdology");
-            }}
-          >
-            <p style={{ fontWeight: preLoginMenu === "AIMethdology" ? "600" : "" }}>
-              AI Methdology
-            </p>
-          </div>
+          
           {/* <div
             onClick={() => {
               navigate("/maps");
@@ -104,6 +95,16 @@ const AIMethdology = () => {
           </div>
           <div
             onClick={() => {
+              navigate("/AIMethdology");
+              setPreLoginMenu("AIMethdology");
+            }}
+          >
+            <p style={{ fontWeight: preLoginMenu === "AIMethdology" ? "600" : "" }}>
+            AI Methdology
+            </p>
+          </div>
+          <div
+            onClick={() => {
               navigate("/contact");
               setPreLoginMenu("ContactUs");
             }}
@@ -112,6 +113,16 @@ const AIMethdology = () => {
               Contact
             </p>
           </div>
+          <div
+          onClick={() => {
+            navigate("/WhitePaper");
+            setPreLoginMenu("WhitePaper");
+          }}
+        >
+          <p style={{ fontWeight: preLoginMenu === "WhitePaper" ? "600" : "" }}>
+            White Paper
+          </p>
+        </div>
         </div>
         {/* <div className="btns-div"> */}
           {/* <div */}

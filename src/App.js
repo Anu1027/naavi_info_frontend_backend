@@ -21,6 +21,10 @@ import AIMethdology from "./pages/AI Methdology/AIMethdology";
 import SocialDimension from "./pages/SocialDimension/socialDimension";
 import ContactUs from "./pages/contactUs/contactUs";
 import ChatbotPage from "./pages/ChatbotPage/ChatbotPage"; // Create a new component for ChatbotPage
+import WhitePaperPage from "./pages/WhitePaperPage/WhitePaperPage.jsx";
+// src/index.js or src/App.js
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 // import AIMethdology from "./pages/AI methdology";
 
@@ -121,6 +125,7 @@ function App() {
       <Route path="/social" element={<SocialDimension />} />
       <Route path="/contact" element={<ContactUs/>}/>
       <Route path="/chatbot" element={<ChatbotPage />} />
+      <Route path="/WhitePaper" element={<WhitePaperPage />} />
     </Routes>
   );
 }

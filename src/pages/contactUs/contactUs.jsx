@@ -50,16 +50,7 @@ const ContactUs = () => {
                             About Naavi
                         </p>
                     </div>
-                    <div
-                        onClick={() => {
-                            navigate("/AIMethdology");
-                            setPreLoginMenu("AIMethdology");
-                        }}
-                    >
-                        <p style={{ fontWeight: preLoginMenu === "AIMethdology" ? "600" : "" }}>
-                            AI Methdology
-                        </p>
-                    </div>
+                   
                     {/* <div
             onClick={() => {
               navigate("/maps");
@@ -92,12 +83,32 @@ const ContactUs = () => {
                     </div>
                     <div
                         onClick={() => {
+                            navigate("/AIMethdology");
+                            setPreLoginMenu("AIMethdology");
+                        }}
+                    >
+                        <p style={{ fontWeight: preLoginMenu === "AIMethdology" ? "600" : "" }}>
+                           AI Methdology
+                        </p>
+                    </div>
+                    <div
+                        onClick={() => {
                             navigate("/contact");
                             setPreLoginMenu("ContactUs");
                         }}
                     >
                         <p style={{ fontWeight: preLoginMenu === "ContactUs" ? "600" : "" }}>
                             Contact
+                        </p>
+                    </div>
+                    <div
+                        onClick={() => {
+                            navigate("/WhitePaper");
+                            setPreLoginMenu("WhitePaper");
+                        }}
+                    >
+                        <p style={{ fontWeight: preLoginMenu === "WhitePaper" ? "600" : "" }}>
+                            White Paper
                         </p>
                     </div>
                 </div>
@@ -118,7 +129,7 @@ const ContactUs = () => {
                     <div className="bgColor">
                         <div className="child  p-5">
                             <div className="contact">
-                                <h2 className='pb-3'>Contact Us</h2>
+                                <h2 className='pb-3'></h2>
                                 <div className="item ps-2">
                                     <div className="d-flex">
                                         <FontAwesomeIcon icon={faUser} style={iconStyle} /> <p>A SeshAditya</p>

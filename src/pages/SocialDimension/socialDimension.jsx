@@ -38,16 +38,7 @@ const SocialDimension = () => {
               About Naavi
             </p>
           </div>
-          <div
-            onClick={() => {
-              navigate("/AIMethdology");
-              setPreLoginMenu("AIMethdology");
-            }}
-          >
-            <p style={{ fontWeight: preLoginMenu === "AIMethdology" ? "600" : "" }}>
-              AI Methdology
-            </p>
-          </div>
+          
           <div
             onClick={() => {
               setPreLoginMenu("SocialDimension");
@@ -55,6 +46,16 @@ const SocialDimension = () => {
           >
             <p style={{ fontWeight: preLoginMenu === "SocialDimension" ? "600" : "" }}>
               Social Dimension
+            </p>
+          </div>
+          <div
+            onClick={() => {
+              navigate("/AIMethdology");
+              setPreLoginMenu("AIMethdology");
+            }}
+          >
+            <p style={{ fontWeight: preLoginMenu === "AIMethdology" ? "600" : "" }}>
+            AI Methdology
             </p>
           </div>
           <div
@@ -67,6 +68,16 @@ const SocialDimension = () => {
               Contact
             </p>
           </div>
+          <div
+          onClick={() => {
+            navigate("/WhitePaper");
+            setPreLoginMenu("WhitePaper");
+          }}
+        >
+          <p style={{ fontWeight: preLoginMenu === "WhitePaper" ? "600" : "" }}>
+            White Paper
+          </p>
+        </div>
         </div>
       </div>
       <div className="color-box"></div>

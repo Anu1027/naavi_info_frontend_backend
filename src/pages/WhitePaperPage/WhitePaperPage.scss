@@ -1,0 +1,49 @@
+.whitepaper-page {
+  padding: 2rem;
+  background-color: #f8f9fa; // Matching the background color of other sections
+
+  h1 {
+    font-size: 2.0rem;
+    margin-top: 2.0rem;
+    margin-bottom: 2.5rem; // Adjust the margin for spacing
+    color: #08255a; // Matching the text color of other sections
+    font-weight: 600;
+  }
+
+  .bullet-points {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    color: #040405; // Matching the text color of other sections
+
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem; // Adjust the margin for spacing
+      color: #0a0a0a; // Matching the text color of other sections
+    }
+
+    ul {
+      list-style-type: disc;
+      margin-left: 1.5rem;
+      li {
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+
+  .download-button {
+    background: linear-gradient(89deg, #47b4d5 0%, #29449d 100%);
+    border: none;
+    color: white;
+    font-weight: 500;
+    border-radius: 35px;
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all ease 0.2s;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}

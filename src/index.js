@@ -15,6 +15,9 @@ import { saveState } from "./app/browser-storage.ts";
 import ContextProvider from "./pages/dashboard/WalletScan/globalComponents/Context/Context";
 import { GlobalContexProvider1 } from "./pages/dashboard/WalletScan/globalContext";
 import RegistrationContextProvider from "./RegistrationContext";
+// src/index.js or src/App.js
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -41,7 +44,7 @@ root.render(
                 <GlobalContexProvider1>
                   <ContextProvider>
                     <React.StrictMode>
-                      <BrowserRouter basename="/info">
+                      <BrowserRouter basename="info">
                         <Provider store={store}>
                           <App />
                         </Provider>

@@ -175,16 +175,6 @@ const goToChatBot = () => {
             </div>
           </a>
 
-          <div
-            onClick={() => {
-              navigate("/AIMethdology");
-              setPreLoginMenu("AIMethdology");
-            }}
-          >
-            <p style={{ fontWeight: preLoginMenu === "AIMethdology" ? "600" : "" }}>
-            AI Methdology
-            </p>
-          </div>
           {/* <div
             onClick={() => {
               navigate("/maps");
@@ -217,6 +207,16 @@ const goToChatBot = () => {
           </div>
           <div
             onClick={() => {
+              navigate("/AIMethdology");
+              setPreLoginMenu("AIMethdology");
+            }}
+          >
+            <p style={{ fontWeight: preLoginMenu === "AIMethdology" ? "600" : "" }}>
+            AI Methdology
+            </p>
+          </div>
+          <div
+            onClick={() => {
               navigate("/contact");
               setPreLoginMenu("ContactUs");
             }}
@@ -225,6 +225,16 @@ const goToChatBot = () => {
              Contact
             </p>
           </div>
+          <div
+          onClick={() => {
+            navigate("/WhitePaper");
+            setPreLoginMenu("WhitePaper");
+          }}
+        >
+          <p style={{ fontWeight: preLoginMenu === "WhitePaper" ? "600" : "" }}>
+            White Paper
+          </p>
+        </div>
         </div>
         {/* <div className="btns-div"> */}
           {/* <div */}
@@ -242,7 +252,7 @@ const goToChatBot = () => {
         <div className="cover-Img">
           <img src={home1} alt="" />
           <div className="background-tint"></div>
-          <div className="mid-text">AI Generated Educational Pathways (Bildungsverläufe)</div>
+          <div className="mid-text">AI Generated Educational Pathways</div>
           <div className="background-tint1"></div>
           <div className="input-box-container">
             {/* <div className="input-box1">
@@ -263,24 +273,17 @@ const goToChatBot = () => {
           </div>
         </div>
         <div className="cover-Img-mobile">
-          <img src={heroImg} alt="" />
+          <img src={home1} alt="" />
           <div className="background-tint-mobile"></div>
-          <div className="mid-text-mobile">Find Your Education Pathway</div>
+          <div className="mid-text-mobile">AI Generated Educational Pathways</div>
           <div className="background-tint1-mobile"></div>
           <div className="input-box-container-mobile">
-            <div className="input-box1-mobile">
-              {/* <input type="text" placeholder="What Do You Want?" /> */}
-              <div
-                className="createPath-btn-mobile"
-                onClick={() => {
-                  navigate("/maps");
-                }}
-              >
-                Generate Path
-              </div>
+            <div className="createPath-btn-mobile" onClick={goToChatBot}>
+              Generate 
             </div>
           </div>
         </div>
+
         <div className="aboutNaavi container my-3" id="aboutID">
           <h2 className="pt-5">About Naavi</h2>
           <div className="row">
